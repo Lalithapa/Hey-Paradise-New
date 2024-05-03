@@ -1,0 +1,102 @@
+{%- if predictive_search.performed and predictive_search.resources.products.size > 0 -%}
+  <div class="row p-0 search-results-section">
+    <div class="col-12 col-lg-3 p-0">
+      {% if predictive_search.resources.queries.first.text %}
+        <p class="autocorrect-suggestion">
+          Are you looking for
+          <span class="search-results-bold-text p-0">{% if predictive_search.resources.queries.first.text == "la g" or predictive_search.resources.queries.first.text == "la gi" or predictive_search.resources.queries.first.text == "la gir" or predictive_search.resources.queries.first.text == "la girl" %}“{{ "L.A. Girl" | link_to: predictive_search.resources.queries.first.url }}”
+              {% else %}“{{ predictive_search.resources.queries.first.text | link_to: predictive_search.resources.queries.first.url }}”{% endif %}</span>
+        </p>
+      {% else %}
+        <div class="autocorrect-suggestion d-none"><span class="search-results-bold-text">Opps! No Product Found.</span> </div>
+        <ul class="p-0 search-suggestions-container d-flex flex-column" data-suggestion-category="false">
+          <p class="mb-0 search-results-bold-text d-none">Trending Searches</p>
+          <li class="search-suggestions">
+            <a href="/collections/makeup?_pos=1&amp;_psq=m&amp;_ss=e&amp;_v=1.0"> Ohmy Gel Long Lasting Eyeliner </a>
+          </li>
+          <li class="search-suggestions">
+            <a href="/collections/makeup?_pos=1&amp;_psq=m&amp;_ss=e&amp;_v=1.0"> Blush Bomb </a>
+          </li>
+          <li class="search-suggestions">
+            <a href="/collections/makeup?_pos=1&amp;_psq=m&amp;_ss=e&amp;_v=1.0">Shimmer Bomb</a>
+          </li>
+        </ul>
+      {% endif %}
+      {%- if predictive_search.resources.queries.size > 0 or predictive_search.resources.collections.size > 0 -%}
+        <ul class="p-0 search-suggestions-container d-flex flex-column" data-suggestion-category="true">
+          <p class="mb-0 search-results-bold-text d-none">Trending Searches</p>
+          {%- for query in predictive_search.resources.queries limit: 4 -%}
+            <li class="search-suggestions">
+              <a href="{{ query.url }}" aria-label="{{ query.text }}"
+                ><span>{{ query.styled_text }}</span></a
+              >
+            </li>
+          {% endfor %}
+        {% if predictive_search.resources.collections.size >= 1 %} <p class='mb-0 search-results-bold-text'>Collection</p> {% endif %}
+          {%- for collection in predictive_search.resources.collections limit: 3 -%}
+            <li class="search-suggestions">
+              <a href="{{ collection.url }}">{{ collection.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    <div class="col-12 col-lg-9 p-0 ">
+      <div class="search-results-tab-container d-flex justify-content-between">
+        <div class="search-results-tabs  d-flex">
+          {% comment %} <p class="search-result-tab mb-0 active-tab">Best Of lips</p> {% endcomment %}
+          {% comment %} <p class="search-result-tab mb-0">Shop By Brands</p> {% endcomment %}
+        </div>
+        <a href="{{ predictive_search.resources.queries.first.url }}" class="shop-all-btn">Shop All &gt;</a>
+      </div>
+
+      <div class="search-results-product-card-container d-flex flex-column flex-lg-row" id="emptySearch">
+        {%- for product in predictive_search.resources.products limit: 4 -%}
+          <div class="search-results-product-card d-flex align-items-center flex-lg-column">
+            <div class="search-result-product-image-container">
+              <a href="{{ product.url }}" tabindex="-1">
+                {% if product.selected_or_first_available_variant.featured_image.src != blank %}
+                  {%  assign searchedImg  = product.selected_or_first_available_variant.featured_image.src %}
+                  {% else %}
+                  {%  assign searchedImg  = product.featured_image.src %}
+                {% endif %}
+                <img
+                  loading="lazy"
+                  src="https:{{ searchedImg |  image_url }}"
+                  alt="{{ product.url }}"
+                  class="search-result-product-image img-fluid" width="100" height="100"
+                >
+              </a>
+            </div>
+            <div class="w-100">
+              <p class="mb-0 brand-name">{{ product.vendor }}</p>
+              <p class="mb-0 product-title h-auto">{{ product.title | truncatewords: 8, '...' }}</p>
+              <div class="product-price mb-0">
+                <span class="selling-price">{{ product.price | money_without_trailing_zeros }}</span>
+                <span class="old-price">
+                  {% if product.compare_at_price > product.price %}
+                    {{ product.compare_at_price | money_without_trailing_zeros -}}
+                  {% endif %}
+                </span>
+                <span class="discount">
+                  {% if product.compare_at_price > product.price %}
+                    {{-
+                      product.compare_at_price
+                      | minus: product.price
+                      | times: 100.0
+                      | divided_by: product.compare_at_price
+                      | money_without_currency
+                      | times: 100
+                      | remove: '.0'
+                    -}}
+                    % Off
+                  {% endif %}
+                </span>
+            </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{%- endif -%}

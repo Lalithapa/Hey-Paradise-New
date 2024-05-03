@@ -1,0 +1,56 @@
+#widget-fave-html .ssw-wishlist-btn .ssw-fave-btn-content {
+    z-index: 0;
+}
+#ssw-widget-recommends-html {
+  margin: 3rem auto;
+    padding: 0 12px;
+    max-width: 1320px;
+}
+.ssw-reward-tab-right .ssw-reward-tab-closed{
+    right: 12px;
+    bottom: 10%;
+    padding: 5px;
+    border-radius: 50%;
+}
+.ssw-reward-tab-left .ssw-reward-tab-closed, .ssw-reward-tab-right .ssw-reward-tab-closed{
+    background-color: transparent;
+    box-shadow: none;
+}
+.quick-view-details .ssw-hide ,.ssw-reward-tab-title{
+  display:none !important;
+}
+
+@media screen and (min-width: 800px) {
+  .cart-products-container .ssw-faveiticon {
+    position: static !important;
+    display: flex;
+    align-items: center;
+    /* margin-bottom: 12px; */
+  }
+}
+  .cart-products-container .ssw-faveiticon:has(.ssw-icon-heart-o):after {
+    content: 'Wishlist';
+    font-size: 14px;
+  }
+
+  .cart-products-container .ssw-faveiticon:has(.ssw-icon-heart):after {
+    content: 'Added To Wishlist';
+    font-size: 14px;
+  }
+
+
+.cart-products-container .ssw-faveiticon {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: max-content;
+  border-radius: 50px;
+  border: 1px solid #B1B3E3;
+  padding: 7px 14px 6px 10px;
+  display: flex;
+  gap: 4px;
+}
+
+.cart-products-container span.faves-count , .faves-count {
+    display: none !important;
+}

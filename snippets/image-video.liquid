@@ -1,0 +1,108 @@
+{% comment %} if image
+
+{% render 'image-video',
+            If Video is True- checkbox , Default False  
+              showVideo: block.settings['show-video-3'], // 
+              mobileVideo,
+              desktopVideo,
+              posterImage,
+
+            ELSE
+              desktopImage: block.settings['image-3'],
+              mobileImage: block.settings['image-3'],
+              index: 1,
+              class: 'concern-media rounded-[8px] w-full h-full object-cover !aspect-square' // Custom
+            %}
+{% endcomment %}
+{% if mobileImage and showVideo == false %}
+    {% assign mobileImageSetting = mobileImage %}
+    {% assign desktopImageSetting = desktopImage %}
+  
+    {% if mobileImageSetting.alt %}
+      {% assign imageAlt = mobileImageSetting.alt %}
+    {% else %}
+      {% assign imageAlt = 'organic works concern' %}
+    {% endif %}
+    <picture>
+        {% if desktopImageSetting %}
+          <source media="(min-width:768px)" srcset="{{ desktopImageSetting |  image_url }}">
+          <source media="(max-width:767px)" srcset="{{ mobileImageSetting |  image_url }}">
+        {% else %}
+           <source  srcset="{{ mobileImageSetting |  image_url }}">
+        {% endif %}
+    <img loading="lazy" width="100%" height="100%" src="{{ mobileImageSetting | image_url }}"   alt="{{ imageAlt }}" id="{{ mobileImageSetting.id }}" >
+  </picture>
+  
+    {% comment %} If Video {% endcomment %}
+  {% elsif mobileVideo and showVideo == true %}
+    {%- if index == 1 -%}
+      {%- assign autoplay = 1 -%}
+    {%- else -%}
+      {%- assign autoplay = 0 -%}
+    {%- endif -%}
+  
+    {% assign mobileVideoSetting = mobileVideo %}
+    {% assign desktopVideoSetting = desktopVideo %}
+    {% assign posterImage = posterImage %}
+  
+    {% comment %} assign poster image {% endcomment %}
+    {% if posterImage != blank %}
+      {% assign posterImage = posterImage | image_url %}
+    {% else %}
+      {% assign posterImage = mobileVideoSetting.preview_image.src | image_url %}
+    {% endif %}
+  
+    {% comment %} assign alt {% endcomment %}
+    {% if mobileVideoSetting.alt %}
+      {% assign videoAlt = mobileVideoSetting.alt %}
+    {% else %}
+      {% assign videoAlt = 'organic works concern video' %}
+    {% endif %}
+  
+    {% if desktopVideoSetting %}
+      <!-- Display the video tag -->
+      <video
+        alt="{{ videoAlt }}"
+        poster="{{ posterImage }}"
+        autoplay="{{ autoplay }}"
+        muted
+        loop
+        preload="auto"
+        src="{{ mobileVideoSetting.sources[1].url }}"
+        mime-type="{{ mobileVideoSetting.sources[1].mime_type }}"
+        class="{%  if class %}{{ class }}{% endif %} mobile-screen"
+      >
+        <p>Video Tag is not supported by your browser</p>
+      </video>
+  
+      <video
+        alt="{{ videoAlt }}"
+  
+        poster="{{ posterImage }}"
+        autoplay="{{ autoplay }}"
+        muted
+        loop
+        preload="auto"
+        src="{{ desktopVideoSetting.sources[1].url }}"
+        mime-type="{{ desktopVideoSetting.sources[1].mime_type }}"
+        class="{%  if class %}{{ class }}{% endif %} desktop-screen"
+      >
+        <p>Video Tag is not supported by your browser</p>
+      </video>
+    {% else %}
+      <!-- Display the video tag -->
+      <video
+        alt="{{ videoAlt }}"
+        poster="{{ posterImage }}"
+        autoplay="{{ autoplay }}"
+        muted
+        loop
+        preload="auto"
+        src="{{ mobileVideoSetting.sources[1].url }}"
+        mime-type="{{ mobileVideoSetting.sources[1].mime_type }}"
+        class="{%  if class %}{{ class }}{% endif %}"
+      >
+        <p>Video Tag is not supported by your browser</p>
+      </video>
+    {% endif %}
+  {% endif %}

@@ -1,0 +1,605 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "3ca2d601-1f92-42d7-8c19-e304e97fabe9": {
+      "type": "Main_Banner",
+      "blocks": {
+        "image_aXnCEY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/makeup-banner.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/mobile-makeup-banner.jpg",
+            "block_link_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_aXnCEY"
+      ],
+      "settings": {
+        "showCat": false,
+        "showTiles": "Category"
+      }
+    },
+    "multi_carousel_43HwGm": {
+      "type": "Multi-carousel",
+      "blocks": {
+        "careproof_RkAGMb": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/5057566712217_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Product 1"
+          }
+        },
+        "careproof_FVzLpV": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/849953023243_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Product 1"
+          }
+        },
+        "careproof_WVm7cY": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Product 1"
+          }
+        },
+        "careproof_LJndjE": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/5057566711975_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Product 1"
+          }
+        },
+        "careproof_K7a9BG": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/5057566712200_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Product 5"
+          }
+        }
+      },
+      "block_order": [
+        "careproof_RkAGMb",
+        "careproof_FVzLpV",
+        "careproof_WVm7cY",
+        "careproof_LJndjE",
+        "careproof_K7a9BG"
+      ],
+      "settings": {
+        "sectionTitle": "Shop By Category",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "1",
+        "lagreScreenGap": 20,
+        "smallScreenGap": 10,
+        "bottomTextBackground": "",
+        "smallNumber": 2,
+        "mediumNumber": 2.8,
+        "largeNumber": 4.2,
+        "defaultNumber": 4.2
+      }
+    },
+    "a67d1187-40f6-4f9d-adcb-201f8ff7fb19": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Selling Fast",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#ffffff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "la-colors",
+        "viewAllBtn": true,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "c478d4b1-ad16-4b47-8999-e5c214a7b03b": {
+      "type": "Image_carousel",
+      "blocks": {
+        "dfff9ff2-b9af-4a97-9397-fa74ef657782": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3972.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "a7eeee0e-21c8-4ceb-a23e-a90668e33756": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3974.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "8c907700-949a-40fe-8b39-2e1b0ab64bba": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3973.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "29736856-9866-408c-b5a4-726b2b358bbd": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3972.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "06a74858-ce3c-4ebd-8c60-89e12a0d6eb0": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3973.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "9f2da14f-a56d-4276-adb6-7820c975c6d3": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3974.png",
+            "threedtxt": "Discover More"
+          }
+        }
+      },
+      "block_order": [
+        "dfff9ff2-b9af-4a97-9397-fa74ef657782",
+        "a7eeee0e-21c8-4ceb-a23e-a90668e33756",
+        "8c907700-949a-40fe-8b39-2e1b0ab64bba",
+        "29736856-9866-408c-b5a4-726b2b358bbd",
+        "06a74858-ce3c-4ebd-8c60-89e12a0d6eb0",
+        "9f2da14f-a56d-4276-adb6-7820c975c6d3"
+      ],
+      "settings": {
+        "qsirguwfh": "",
+        "sfswdef": "Accessory Essentials",
+        "bgcolor": true,
+        "dfasasd": "#fff0ea"
+      }
+    },
+    "04b1addd-5828-4da5-a467-1ac279f549d2": {
+      "type": "Brand_Spotlight",
+      "blocks": {
+        "feedback_eTpjih": {
+          "type": "Feedback",
+          "settings": {
+            "userRating": 4,
+            "userName": "LT",
+            "feedbackText": "“From prepping to ace the base to those defined, to those luscious lips, L.A. Girl has an answer in...”"
+          }
+        },
+        "feedback_CanBji": {
+          "type": "Feedback",
+          "settings": {
+            "userRating": 3,
+            "userName": "LT",
+            "feedbackText": "“From prepping to ace the base to those defined, to those luscious lips, L.A. Girl has an answer in...”"
+          }
+        },
+        "feedback_Q98eG6": {
+          "type": "Feedback",
+          "settings": {
+            "userRating": 5,
+            "userName": "LT",
+            "feedbackText": "“From prepping to ace the base to those defined, to those luscious lips, L.A. Girl has an answer in...”"
+          }
+        }
+      },
+      "block_order": [
+        "feedback_eTpjih",
+        "feedback_CanBji",
+        "feedback_Q98eG6"
+      ],
+      "custom_css": [
+        ".slick-prev-btn {top: 40%; left: 15px;}",
+        ".slick-next-btn {top: 40%; right: 15px;}"
+      ],
+      "settings": {
+        "mainImage": "shopify:\/\/shop_images\/carbon.jpg",
+        "mainLogo": "shopify:\/\/shop_images\/logo_31c5313f-bc25-4f69-9b2f-5b0a347a8b6c.png",
+        "heartColor": "#a3d0ba",
+        "viewAllBtn": true,
+        "home_featured_products": "face",
+        "backgroundcolor": "#f3fff8",
+        "smallNumber": 2,
+        "mediumNumber": 2.5,
+        "largeNumber": 2,
+        "extraLargeNumber": 2.5
+      }
+    },
+    "multi_carousel_naKYN7": {
+      "type": "Multi-carousel",
+      "blocks": {
+        "concern_njzBgG": {
+          "type": "concern",
+          "settings": {
+            "concernImg": "shopify:\/\/shop_images\/5057566723183_3.jpg",
+            "concernURL": "shopify:\/\/collections",
+            "concernTitle": "Acne & Blemishes",
+            "concernText": "Treat Blackheads, Pimples, Hormonal Flare-ups & more.",
+            "concernBtnText": "Shop Now"
+          }
+        },
+        "concern_9dR3XT": {
+          "type": "concern",
+          "settings": {
+            "concernImg": "shopify:\/\/shop_images\/84995301974105.jpg",
+            "concernURL": "shopify:\/\/collections",
+            "concernTitle": "Acne & Blemishes",
+            "concernText": "Treat Blackheads, Pimples, Hormonal Flare-ups & more.",
+            "concernBtnText": "Shop Now"
+          }
+        },
+        "concern_mcFW4q": {
+          "type": "concern",
+          "settings": {
+            "concernImg": "shopify:\/\/shop_images\/84995302264203.jpg",
+            "concernURL": "shopify:\/\/collections",
+            "concernTitle": "Acne & Blemishes",
+            "concernText": "Treat Blackheads, Pimples, Hormonal Flare-ups & more.",
+            "concernBtnText": "Shop Now"
+          }
+        },
+        "concern_NYNQpz": {
+          "type": "concern",
+          "settings": {
+            "concernImg": "shopify:\/\/shop_images\/get-the-glam-2.png",
+            "concernURL": "shopify:\/\/collections",
+            "concernTitle": "Acne & Blemishes",
+            "concernText": "Treat Blackheads, Pimples, Hormonal Flare-ups & more.",
+            "concernBtnText": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "concern_njzBgG",
+        "concern_9dR3XT",
+        "concern_mcFW4q",
+        "concern_NYNQpz"
+      ],
+      "settings": {
+        "sectionTitle": "MUA’s Must-Haves",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "3\/4",
+        "lagreScreenGap": 20,
+        "smallScreenGap": 12,
+        "bottomTextBackground": "linear-gradient(0deg, #292929 0%, rgba(47, 47, 47, 0.84) 20.87%, rgba(47, 47, 47, 0.43) 55.83%, rgba(74, 74, 74, 0.00) 93.04%)",
+        "smallNumber": 2,
+        "mediumNumber": 2.5,
+        "largeNumber": 3,
+        "defaultNumber": 3
+      }
+    },
+    "63c0511b-a755-4a28-83d2-c49f3e90c1f9": {
+      "type": "Reviews-Banner",
+      "blocks": {
+        "034ebefb-60cf-439a-b97a-be46459c5f46": {
+          "type": "Image",
+          "settings": {
+            "dasfdf": "shopify:\/\/shop_images\/signin-banner.jpg",
+            "asdasdasd": "shopify:\/\/shop_images\/signin-banner.jpg",
+            "sdfgsdfsd": "",
+            "urlaftrlogin": "",
+            "dflkjghdfjkg": "",
+            "dfsdf": "",
+            "txtdfsdf": ""
+          }
+        }
+      },
+      "block_order": [
+        "034ebefb-60cf-439a-b97a-be46459c5f46"
+      ],
+      "settings": {
+        "qsirguwfh": ""
+      }
+    },
+    "f0c0f0bc-8cde-4215-b564-ff33eac90b2c": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Baggit’ when it’s hot",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#ffffff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "face",
+        "viewAllBtn": false,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "194d7e87-96b5-4763-86ef-96ff55f8f8cf": {
+      "type": "multi-carousel",
+      "blocks": {
+        "dd38603f-b719-4169-994d-603560bb2ea7": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/deals-gif1.gif",
+            "dealsURL": "",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "228a6b4f-ef5d-443b-97fb-7736c7a8ddce": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/crausel-img3.jpg",
+            "dealsURL": "",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "d6c0d616-b0d5-4db7-82fd-5d96f8d1e4aa": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/crausel-img2.jpg",
+            "dealsURL": "",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "e741045f-410f-4cf7-987f-d1735dc2e600": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/deals-gif1.gif",
+            "dealsURL": "",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "09fb2ee4-09ba-4902-816d-4b3e613e132c": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/deals-img1.jpg",
+            "dealsURL": "",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "dd38603f-b719-4169-994d-603560bb2ea7",
+        "228a6b4f-ef5d-443b-97fb-7736c7a8ddce",
+        "d6c0d616-b0d5-4db7-82fd-5d96f8d1e4aa",
+        "e741045f-410f-4cf7-987f-d1735dc2e600",
+        "09fb2ee4-09ba-4902-816d-4b3e613e132c"
+      ],
+      "disabled": true,
+      "settings": {
+        "sectionTitle": "What’s your concern?",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "3\/4",
+        "lagreScreenGap": 10,
+        "smallScreenGap": 6,
+        "bottomTextBackground": "linear-gradient(0deg, #292929 0%, rgba(47, 47, 47, 0.84) 20.87%, rgba(47, 47, 47, 0.43) 55.83%, rgba(74, 74, 74, 0.00) 93.04%)",
+        "smallNumber": 1.5,
+        "mediumNumber": 2,
+        "largeNumber": 2.8,
+        "defaultNumber": 3
+      }
+    },
+    "b2ae577c-9fb6-41f7-a5f3-3c0e6173e735": {
+      "type": "multi-carousel",
+      "blocks": {
+        "deals_Y3LNAz": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/849953023243_3.jpg",
+            "dealsURL": "shopify:\/\/collections",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "deals_iwR9dx": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/get-the-glam-2.png",
+            "dealsURL": "shopify:\/\/collections",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "deals_A4MfVb": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/get-the-glam-3.png",
+            "dealsURL": "shopify:\/\/collections",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "deals_afrw7b": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/849953023243_3.jpg",
+            "dealsURL": "shopify:\/\/collections",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "deals_d6RDM4": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/get-the-glam-2.png",
+            "dealsURL": "shopify:\/\/collections",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "deals_z9ajYe": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/get-the-glam-2.png",
+            "dealsURL": "shopify:\/\/collections",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "deals_Y3LNAz",
+        "deals_iwR9dx",
+        "deals_A4MfVb",
+        "deals_afrw7b",
+        "deals_d6RDM4",
+        "deals_z9ajYe"
+      ],
+      "settings": {
+        "sectionTitle": "Tools & Brush Bundles",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "3\/4",
+        "lagreScreenGap": 20,
+        "smallScreenGap": 12,
+        "bottomTextBackground": "linear-gradient(0deg, #292929 0%, rgba(47, 47, 47, 0.84) 20.87%, rgba(47, 47, 47, 0.43) 55.83%, rgba(74, 74, 74, 0.00) 93.04%)",
+        "smallNumber": 2,
+        "mediumNumber": 2.8,
+        "largeNumber": 3.5,
+        "defaultNumber": 3.5
+      }
+    },
+    "product_collection_slides_3MjcLe": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Bags To Bag",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#fff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "all",
+        "viewAllBtn": true,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "product_collection_slides_AUpfnX": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Lash’em Up",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#fff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "bh-cosmetics",
+        "viewAllBtn": true,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "glam_essentials_nVbbpk": {
+      "type": "glam-essentials",
+      "blocks": {
+        "video_with_card_LCrFG6": {
+          "type": "video-with-card",
+          "settings": {
+            "glam-ess-video": "shopify:\/\/files\/videos\/Snapinsta.app_video_7C44319EB63384547E56C18F8BAF6DAA_video_dashinit.mp4",
+            "glam-ess-product": "glaze-lip-duo"
+          }
+        },
+        "video_with_card_ErTDHg": {
+          "type": "video-with-card",
+          "settings": {
+            "glam-ess-video": "shopify:\/\/files\/videos\/Snapinsta.app_video_89441517BA9568132254CF434C63F2A8_video_dashinit.mp4",
+            "glam-ess-product": "lamel-16-shades-of-burgundy-eyeshadow-palette",
+            "glam-ess-image": "shopify:\/\/shop_images\/get-the-glam-2.png"
+          }
+        },
+        "video_with_card_UTDCNH": {
+          "type": "video-with-card",
+          "settings": {
+            "glam-ess-video": "shopify:\/\/files\/videos\/Snapinsta.app_video_7C44319EB63384547E56C18F8BAF6DAA_video_dashinit.mp4",
+            "glam-ess-product": "lamel-blush-cheek",
+            "glam-ess-image": "shopify:\/\/shop_images\/get-the-glam-3.png"
+          }
+        },
+        "video_with_card_MhY4DY": {
+          "type": "video-with-card",
+          "settings": {
+            "glam-ess-video": "shopify:\/\/files\/videos\/Snapinsta.app_video_89441517BA9568132254CF434C63F2A8_video_dashinit.mp4",
+            "glam-ess-product": "bh-cosmetics-unleashed-6-color-shadow-palette",
+            "glam-ess-image": "shopify:\/\/shop_images\/get-the-glam-4.png"
+          }
+        }
+      },
+      "block_order": [
+        "video_with_card_LCrFG6",
+        "video_with_card_ErTDHg",
+        "video_with_card_UTDCNH",
+        "video_with_card_MhY4DY"
+      ],
+      "settings": {
+        "glam-ess-title": "International Glam Essentials",
+        "glam-ess-num-slides-mobile": "1.5",
+        "glam-ess-num-slides-tab": "2.5",
+        "glam-ess-num-slides-desktop": "3.5"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "3ca2d601-1f92-42d7-8c19-e304e97fabe9",
+    "multi_carousel_43HwGm",
+    "a67d1187-40f6-4f9d-adcb-201f8ff7fb19",
+    "c478d4b1-ad16-4b47-8999-e5c214a7b03b",
+    "04b1addd-5828-4da5-a467-1ac279f549d2",
+    "multi_carousel_naKYN7",
+    "63c0511b-a755-4a28-83d2-c49f3e90c1f9",
+    "f0c0f0bc-8cde-4215-b564-ff33eac90b2c",
+    "194d7e87-96b5-4763-86ef-96ff55f8f8cf",
+    "b2ae577c-9fb6-41f7-a5f3-3c0e6173e735",
+    "product_collection_slides_3MjcLe",
+    "product_collection_slides_AUpfnX",
+    "glam_essentials_nVbbpk"
+  ]
+}

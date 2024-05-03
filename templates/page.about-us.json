@@ -1,0 +1,134 @@
+{
+  "sections": {
+    "main": {
+      "type": "navbar",
+      "custom_css": [
+        ".nav-link {color: #393939;}"
+      ],
+      "settings": {}
+    },
+    "75505515-a7d7-4f62-bb1f-dd4fefc96cfc": {
+      "type": "main-search",
+      "disabled": true,
+      "settings": {
+        "columns_desktop": 4
+      }
+    },
+    "1697019192594acecc": {
+      "type": "apps",
+      "settings": {}
+    },
+    "ca3643c4-98a4-4e81-a71f-70b3376b40d5": {
+      "type": "about-us",
+      "blocks": {
+        "0ef9d645-2aa7-473f-af18-38220da28b8e": {
+          "type": "image_picker",
+          "settings": {
+            "aboutcardimage": "shopify:\/\/shop_images\/Group_9249.svg"
+          }
+        },
+        "42b5726a-cf93-48af-baea-188fec7aa0b8": {
+          "type": "image_picker",
+          "settings": {
+            "aboutcardimage": "shopify:\/\/shop_images\/Group_9265.svg"
+          }
+        },
+        "b9e67f7a-fd2c-4af1-ba61-336c1d32d335": {
+          "type": "image_picker",
+          "settings": {
+            "aboutcardimage": "shopify:\/\/shop_images\/Group_9263.svg"
+          }
+        },
+        "8e8c6262-006d-4e23-9fc7-359b62336dd8": {
+          "type": "image_picker",
+          "settings": {
+            "aboutcardimage": "shopify:\/\/shop_images\/Group_9248.svg"
+          }
+        },
+        "9528dc77-bc31-434b-b469-6c076fae7c64": {
+          "type": "image_picker",
+          "settings": {
+            "aboutcardimage": "shopify:\/\/shop_images\/Group_9261.svg"
+          }
+        },
+        "4c0aceba-a9b9-429b-9d31-36c1b7d24165": {
+          "type": "image_picker",
+          "settings": {
+            "aboutcardimage": "shopify:\/\/shop_images\/Group_9262.svg"
+          }
+        },
+        "1a06af0d-9d8f-4ef7-b13a-21b213ef4e9b": {
+          "type": "image_picker",
+          "settings": {
+            "aboutcardimage": "shopify:\/\/shop_images\/Group_9264.svg"
+          }
+        },
+        "4a6702b3-8bf2-44c6-bb9d-9398504dd9b8": {
+          "type": "image_picker",
+          "settings": {
+            "aboutcardimage": "shopify:\/\/shop_images\/Group_9260.svg"
+          }
+        },
+        "e7d7aa59-b592-49c1-8df7-b57460140ee2": {
+          "type": "image_picker",
+          "settings": {
+            "aboutcardimage": "shopify:\/\/shop_images\/Group_9259.svg"
+          }
+        },
+        "191ef4c6-5a37-41a3-92a0-bef9c80f2400": {
+          "type": "image_picker",
+          "settings": {
+            "aboutcardimage": "shopify:\/\/shop_images\/Group_9257.svg"
+          }
+        },
+        "464613e8-20a8-44c2-9536-d53b202a0d99": {
+          "type": "image_picker",
+          "settings": {
+            "aboutcardimage": "shopify:\/\/shop_images\/Group_9258.svg"
+          }
+        },
+        "bd640164-726e-4cf8-8c1c-0c942e18c28c": {
+          "type": "image_picker",
+          "settings": {
+            "aboutcardimage": "shopify:\/\/shop_images\/Group_9256.svg"
+          }
+        },
+        "2254e52d-f91d-47c2-a097-e858aef9521b": {
+          "type": "image_picker",
+          "settings": {
+            "aboutcardimage": "shopify:\/\/shop_images\/Group_9247.svg"
+          }
+        },
+        "7403dee1-1773-4514-8db3-c2c23334e0a9": {
+          "type": "image_picker",
+          "settings": {
+            "aboutcardimage": "shopify:\/\/shop_images\/2nd.svg"
+          }
+        }
+      },
+      "block_order": [
+        "0ef9d645-2aa7-473f-af18-38220da28b8e",
+        "42b5726a-cf93-48af-baea-188fec7aa0b8",
+        "b9e67f7a-fd2c-4af1-ba61-336c1d32d335",
+        "8e8c6262-006d-4e23-9fc7-359b62336dd8",
+        "9528dc77-bc31-434b-b469-6c076fae7c64",
+        "4c0aceba-a9b9-429b-9d31-36c1b7d24165",
+        "1a06af0d-9d8f-4ef7-b13a-21b213ef4e9b",
+        "4a6702b3-8bf2-44c6-bb9d-9398504dd9b8",
+        "e7d7aa59-b592-49c1-8df7-b57460140ee2",
+        "191ef4c6-5a37-41a3-92a0-bef9c80f2400",
+        "464613e8-20a8-44c2-9536-d53b202a0d99",
+        "bd640164-726e-4cf8-8c1c-0c942e18c28c",
+        "2254e52d-f91d-47c2-a097-e858aef9521b",
+        "7403dee1-1773-4514-8db3-c2c23334e0a9"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "75505515-a7d7-4f62-bb1f-dd4fefc96cfc",
+    "1697019192594acecc",
+    "ca3643c4-98a4-4e81-a71f-70b3376b40d5"
+  ]
+}

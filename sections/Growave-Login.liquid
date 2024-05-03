@@ -1,0 +1,27 @@
+<div class="container">
+  {% capture the_snippet_content %}{% render 'ssw-login-helper' %}{% endcapture %}
+  {% unless the_snippet_content contains 'Liquid error' %}
+    {{ the_snippet_content }}
+  {% endunless %}
+  {% capture the_snippet_contentS %}{% render 'ssw-helpers' %}{% endcapture %}
+  {% unless the_snippet_contentS contains 'Liquid error' %}
+    {{ the_snippet_contentS }}
+  {% endunless %}
+</div>
+{% schema %}
+{
+  "name": "Growave Login",
+  "settings": [],
+   "presets": [
+  {
+    "name": "Growave Login"
+  }
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

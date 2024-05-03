@@ -1,0 +1,43 @@
+<a href="javascript:void(0)" class="social-share-wrapper">
+  {% assign firstAvailableVariant = product.selected_or_first_available_variant %}
+    <img src="https://cdn.shopify.com/s/files/1/0577/9000/5290/files/hay-icon_1.png?v=1709724338" alt="socialshare" width="255" height="40" loading="lazy">
+</a>
+
+<script>
+  $(document).ready(function () {
+    const getShareData = (
+  title = 'HOK makeup',
+  productTitle = 'this amazing product',
+  text = `Hey! Checkout ${productTitle} at HOK Makeup`,
+  url = 'https://www.hokmakeup.com/',
+) => {
+  const shareData = {
+    title,
+    text,
+    url,
+  };
+  return shareData;
+};
+
+const webShare = async (shareData) => {
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+    } catch (error) {
+      console.log('Error sharing:', error);
+    }
+  } else {
+    console.log('Web Share API is not supported in this browser.');
+  }
+};
+    $('.social-share-wrapper').on('click', function () {
+      const productTitle = "{{- product.title -}}"; 
+      const shopUrl = "{{- shop.url | escape -}}";
+      const variantUrl = "{{- firstAvailableVariant.url | escape -}}";
+      const productUrl = `${shopUrl}${variantUrl}`;
+  
+      const shareData = getShareData(undefined, productTitle, undefined, productUrl);
+      webShare(shareData);
+    });
+  });
+</script>

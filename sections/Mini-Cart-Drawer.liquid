@@ -1,0 +1,38 @@
+{% assign recomCollectionHandle = section.settings['recom-collection-handle'] %}
+{% liquid
+  assign recomCollectionHandle = section.settings['recom-collection-handle']
+  assign recomCollection = collections[recomCollectionHandle]
+  assign recomToShow = section.settings['recom-to-show']
+%}
+
+{% render 'cart-draw', cart_coll: recomCollection, recomToShow: recomToShow %}
+
+{% schema %}
+{
+  "name": "Mini Cart Drawer",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "cart_collection_products",
+      "label": "Add cart Collection for Recommended Products"
+    },
+    {
+      "type": "text",
+      "id": "recom-collection-handle",
+      "label": "Add cart Collection for Recommended Products",
+      "default": "makeup"
+    },
+    {
+      "type": "number",
+      "id": "recom-to-show",
+      "label": "Products to show in recommended collection",
+      "default": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mini Cart Drawer"
+    }
+  ]
+}
+{% endschema %}

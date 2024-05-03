@@ -1,0 +1,430 @@
+<div id='get-glam-wrapper' class='container'>
+  <h1 id='get-glam-title'>{{ section.settings['get-glam-title'] }}</h1>
+  <div id='get-glam-content'>
+    <div id='get-glam-slider-wrapper'>
+      <div id='get-glam-slider'>
+        {% for block in section.blocks %}
+          <div class='get-glam-slide' id='get-glam-slide-{{forloop.index0 }}'>
+            {% if block.settings['get-glam-image'] != blank %}
+              <img
+                width='100%'
+                height='100%'
+                loading='lazy'
+                src='{{ block.settings.get-glam-image |image_url  }}'
+                alt='Get The Glam {{forloop.index0 }}'
+                class='get-glam-media'
+              >
+            {% endif %}
+
+            {% if block.settings['get-glam-top-1']
+              and block.settings['get-glam-left-1']
+              and block.settings['get-glam-product-1'] != blank
+            %}
+              {% render 'get-the-glam-pulse-btn',
+                top: block.settings['get-glam-top-1'],
+                left: block.settings['get-glam-left-1'],
+                product: block.settings['get-glam-product-1'],
+                index: forloop.index0
+              %}
+              <div
+                class='get-glam-detail-container'
+                data-product-handle='{{block.settings['get-glam-product-1'].handle |  handleize}}'
+                data-index='{{forloop.index0}}'
+              >
+                {% render 'glass-card',
+                  product: block.settings['get-glam-product-1']
+                %}
+              </div>
+            {% endif %}
+
+            {% if block.settings['get-glam-top-2']
+              and block.settings['get-glam-left-2']
+              and block.settings['get-glam-product-2'] != blank
+            %}
+              {% render 'get-the-glam-pulse-btn',
+                top: block.settings['get-glam-top-2'],
+                left: block.settings['get-glam-left-2'],
+                product: block.settings['get-glam-product-2'],
+                index: forloop.index0
+              %}
+              <div
+                class='get-glam-detail-container'
+                data-product-handle='{{block.settings['get-glam-product-2'].handle |  handleize}}'
+                data-index='{{forloop.index0}}'
+              >
+                {% render 'glass-card',
+                  product: block.settings['get-glam-product-2']
+                %}
+              </div>
+            {% endif %}
+
+            {% if block.settings['get-glam-top-3']
+              and block.settings['get-glam-left-3']
+              and block.settings['get-glam-product-3'] != blank
+            %}
+              {% render 'get-the-glam-pulse-btn',
+                top: block.settings['get-glam-top-3'],
+                left: block.settings['get-glam-left-3'],
+                product: block.settings['get-glam-product-3'],
+                index: forloop.index0
+              %}
+              <div
+                class='get-glam-detail-container'
+                data-product-handle='{{block.settings['get-glam-product-3'].handle |  handleize}}'
+                data-index='{{forloop.index0}}'
+              >
+                {% render 'glass-card',
+                  product: block.settings['get-glam-product-3']
+                %}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <div id='get-glam-slider-nav'>
+        <button type='button' id='get-glam-slider-prev'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='32'
+            height='32'
+            viewBox='0 0 28 28'
+            fill='none'
+          >
+            <g opacity="0.4">
+              <path d="M17.2148 7L10.2148 14L17.2148 21" stroke="#585858" stroke-width="2" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </button>
+        <button type='button' id='get-glam-slider-next'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='32'
+            height='32'
+            viewBox='0 0 28 28'
+            fill='none'
+          >
+            <path d="M10.7852 7L17.7852 14L10.7852 21" stroke="#585585" stroke-opacity="0.533333" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #get-glam-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 32px 0 24px 0;
+  background-color:#FBFBFB;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+     margin-top:40px;
+  }
+
+  #get-glam-title {
+    margin: 0;
+    padding: 0;
+
+    color: #393939;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px; /* 125% */
+    text-transform: capitalize;
+  }
+
+  #get-glam-content {
+    width: 100%;
+    /* padding-left: 6px; */
+  }
+
+  #get-glam-slider-wrapper {
+    position: relative;
+    padding-left: 6px;
+    width: 100%;
+  }
+
+  #get-glam-slider {
+    width: 100%;
+  }
+
+  #get-glam-slider-nav {
+    display: none;
+    position: absolute;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 100%;
+  }
+
+  #get-glam-slider-nav > button {
+    border: none;
+    background: none;
+    height: 55px;
+    aspect-ratio: 1;
+  }
+
+  #get-glam-slider-nav > button > svg {
+    height: 28px;
+    width: 28px;
+  }
+
+  #get-glam-slider-prev {
+    left: -55px;
+  }
+  #get-glam-slider-next {
+    right: -55px;
+  }
+
+  #get-glam-slider .get-glam-slide {
+    position: relative;
+    margin: 0 6px;
+
+    overflow: hidden;
+    aspect-ratio: 3/4 !important;
+  }
+
+  #get-glam-slider .get-glam-slide .get-glam-media {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    
+    object-fit: contain;
+    aspect-ratio: 3/4 !important;
+  }
+
+  /* Get Glam pulse Buttons and Details  */
+  .pulse-btn {
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 24px;
+    height: 24px;
+
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+  }
+
+  .pulse-btn > .pulse-btn-bg,
+  .pulse-btn > .pulse-btn-fill {
+    position: absolute;
+    height: 5px;
+    aspect-ratio: 1;
+
+    background: #e1e1e1;
+
+    border-radius: 100%;
+  }
+
+  .pulse-btn > .pulse-btn-bg {
+    animation: pulse 1.2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1, 1);
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
+  .get-glam-detail-container {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+
+    padding: 10px;
+  }
+
+  /* media */
+  @media (min-width: 992px) {
+    #get-glam-wrapper {
+      padding: 32px 55px;
+      row-gap: 40px;
+    
+      border-radius:8px;
+      margin-top:96px;
+    }
+
+    #get-glam-slider .get-glam-slide .get-glam-media {
+      border-radius: 8px;
+    }
+
+    .get-glam-detail-container {
+      padding: 15px;
+    }
+
+    #get-glam-slider-wrapper {
+      padding-left: 0px;
+    }
+
+    #get-glam-slider-nav {
+      display: block;
+    }
+
+    #get-glam-title {
+      font-size: 28px;
+      line-height: 32px;
+    }
+
+    .pulse-btn > .pulse-btn-bg,
+    .pulse-btn > .pulse-btn-fill {
+      height: 8px;
+    }
+  }
+</style>
+
+<script>
+  $(document).ready(function () {
+    $('#get-glam-slider').slick({
+      arrows: false,
+      appendArrows: $('#get-glam-slider-nav'),
+      prevArrow: $('#get-glam-slider-prev'),
+      nextArrow: $('#get-glam-slider-next'),
+      infinite: false,
+      speed: 300,
+      slidesToShow: 1.5,
+      slidesToScroll: 1,
+      mobileFirst: true,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2.5,
+            slidesToScroll: 1,
+            arrows: true,
+          },
+        },
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 3.5,
+            slidesToScroll: 1,
+            arrows: true,
+          },
+        },
+      ],
+    });
+
+    $('.pulse-btn').on('click', function () {
+      const $btn = $(this);
+      const productHandle = $btn.attr('data-product-handle');
+      const index = $btn.attr('data-index');
+
+      // hide all get glam details inside of get glam slides
+      $('.get-glam-slide').find('.get-glam-detail-container').hide();
+      $('.get-glam-slide')
+        .find(
+          `.get-glam-detail-container[data-product-handle=${productHandle}][data-index=${index}]`,
+        )
+        .show();
+
+      $('#get-glam-slider').slick('slickGoTo', index);
+    });
+
+    $('.get-glam-slide img').on('click', function () {
+      console.log('img clicked');
+      $('.get-glam-slide .get-glam-detail-container').hide();
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Get The Glam",
+  "class": "get-glam-section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "get-glam-title",
+      "label": "Add Your Heading Here"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Image",
+      "type": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "get-glam-image",
+          "label": "Image"
+        },
+        {
+          "type": "number",
+          "id": "get-glam-top-1",
+          "label": "Top offset percentage for button 1"
+        },
+        {
+          "type": "number",
+          "id": "get-glam-left-1",
+          "label": "Left offset percentage for button 1"
+        },
+        {
+          "type": "product",
+          "id": "get-glam-product-1",
+          "label": "Product for button 1"
+        },
+        {
+          "type": "number",
+          "id": "get-glam-top-2",
+          "label": "Top offset percentage for button 2"
+        },
+        {
+          "type": "number",
+          "id": "get-glam-left-2",
+          "label": "Left offset percentage for button 2"
+        },
+        {
+          "type": "product",
+          "id": "get-glam-product-2",
+          "label": "Product for button 2"
+        },
+        {
+          "type": "number",
+          "id": "get-glam-top-3",
+          "label": "Top offset percentage for button 3"
+        },
+        {
+          "type": "number",
+          "id": "get-glam-left-3",
+          "label": "Left offset percentage for button 3"
+        },
+        {
+          "type": "product",
+          "id": "get-glam-product-3",
+          "label": "Product for button 3"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Get The Glam",
+      "settings": {
+        "get-glam-title": "Get The Glam"
+      }
+    }
+  ]
+}
+{% endschema %}

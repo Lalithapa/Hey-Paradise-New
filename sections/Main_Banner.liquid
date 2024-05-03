@@ -1,0 +1,516 @@
+{%- style -%}
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top_desktop }}px;
+    margin-bottom: {{ section.settings.margin_bottom_desktop }}px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top_mobile }}px;
+      margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+<div id="carousel_slider" class="position-relative overflow-hidden section-{{ section.id }}-margin">
+  <div class="overflow-hidden" id="banner-slider-{{ section.id }}">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide">
+          {% if block.type == 'image' %}
+          <div class="hp-hero">
+            <a href="{{ block.settings.block_link_2 }}" class="slide111--card">
+                {% render 'image-video',
+                    showVideo:false
+                    desktopImage: block.settings.image,
+                    mobileImage: block.settings.image_mobile %}
+            </a>
+          </div>
+        {% elsif block.type == 'video' %}
+          {%- if forloop.first -%}
+            {%- assign autoplay = 1 -%}
+          {%- else -%}
+            {%- assign autoplay = 0 -%}
+          {%- endif -%}
+          <div class="hp-hero">
+            <a href="{{ block.settings.block_link_2 }}" >
+              {% render 'image-video',
+              showVideo:true
+              mobileVideo: block.settings['mob-vid'],
+              desktopVideo: block.settings['desk-vid'],
+              posterImage: block.settings['mob-vid']
+               %}
+            </a>
+          </div>
+        {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="banner-dots text-center" id="banner-dots-{{ section.id }}"></div>
+    {% comment %}<div id="sliderItem_right_{{ section.id }}">
+      {% render 'carousel-next-btn-svg' %}
+    </div>
+    <div id="sliderItem_left_{{ section.id }}">
+      {% render 'carousel-prev-btn-svg' %}
+    </div> {% endcomment %}
+</div>
+  <div class="menus mobile-screen">
+    <ul class="d_cent">
+      {% for link in linklists['main-mega-menu'].links -%}
+        <li class="list-inline-item">
+          <a href="{{ link.url }}"> {{ link.title | escape }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% if section.settings.showCat %}
+  <div class="container cat-container px-0">
+    <div class="product-carousel-wrapper banner-container shadow" id="tiles-slider-{{ section.id }}">
+      <div class="categories-container swiper-wrapper">
+        {%- assign categoryToShow = 'Product ' | append: section.settings.showTiles -%}
+        {%- for filter in collection.filters -%}
+          {%- if filter.label == categoryToShow -%}
+            {%- for filter_value in filter.values -%}
+              {% case filter_value.label %}
+                {% when 'Face Wash & Cleansers' %}
+                  {% assign tile_Img = settings.face_wash_and_cleansers %}
+                {% when 'Toners' %}
+                  {% assign tile_Img = settings.toners %}
+                {% when 'Face Mists' %}
+                  {% assign tile_Img = settings.face_mists %}
+                {% when 'Micellar Water' %}
+                  {% assign tile_Img = settings.micellar_water %}
+                {% when 'Face Wipes' %}
+                  {% assign tile_Img = settings.face_wipes %}
+                {% when 'Serum' %}
+                  {% assign tile_Img = settings.serum %}
+                {% when 'Eye Cream & Balms' %}
+                  {% assign tile_Img = settings.eye_cream_and_balms %}
+                {% when 'Face & Gel Moisturizers' %}
+                  {% assign tile_Img = settings.face_and_gel_moisturizers %}
+                {% when 'Day Cream' %}
+                  {% assign tile_Img = settings.day_cream %}
+                {% when 'Face Oil' %}
+                  {% assign tile_Img = settings.face_oil %}
+                {% when 'Night Cream' %}
+                  {% assign tile_Img = settings.night_cream %}
+                {% when 'Face SPF' %}
+                  {% assign tile_Img = settings.face_spf %}
+                {% when 'Scrubs & Exfoliators' %}
+                  {% assign tile_Img = settings.scrubs_and_exfoliators %}
+                {% when 'Masks & Peels' %}
+                  {% assign tile_Img = settings.masks_and_peels %}
+                {% when 'Sleeping Masks' %}
+                  {% assign tile_Img = settings.sleeping_masks %}
+                {% when 'Sheet Masks' %}
+                  {% assign tile_Img = settings.sheet_masks %}
+                {% when 'Lip Masks' %}
+                  {% assign tile_Img = settings.lip_masks %}
+                {% when 'Lip Balm' %}
+                  {% assign tile_Img = settings.lip_balm %}
+                {% when 'Lip Oil' %}
+                  {% assign tile_Img = settings.lip_oil %}
+                {% when 'Lip Scrubs' %}
+                  {% assign tile_Img = settings.lip_scrubs %}
+                {% when 'Lip Serum' %}
+                  {% assign tile_Img = settings.lip_serum %}
+                {% when 'Lip SPF' %}
+                  {% assign tile_Img = settings.lip_spf %}
+                {% when 'Shower Gel & Body Wash' %}
+                  {% assign tile_Img = settings.shower_gel_and_body_wash %}
+                {% when 'Body Oils' %}
+                  {% assign tile_Img = settings.body_oils %}
+                {% when 'Body Lotions' %}
+                  {% assign tile_Img = settings.body_lotions %}
+                {% when 'Creams' %}
+                  {% assign tile_Img = settings.creams %}
+                {% when 'Body Balm' %}
+                  {% assign tile_Img = settings.body_balm %}
+                {% when 'Body Butter' %}
+                  {% assign tile_Img = settings.body_butter %}
+                {% when 'Body SPF' %}
+                  {% assign tile_Img = settings.body_spf %}
+                {% when 'Body Mists' %}
+                  {% assign tile_Img = settings.body_mists %}
+                {% when 'Makeup Value Sets' %}
+                  {% assign tile_Img = settings.makeup_value_sets %}
+                {% when 'Makeup & Skin Mix' %}
+                  {% assign tile_Img = settings.makeup_and_skin_mix %}
+                {% when 'Fragrance Bundles' %}
+                  {% assign tile_Img = settings.fragrance_bundles %}
+                {% when 'Skincare Routine' %}
+                  {% assign tile_Img = settings.skincare_routine %}
+                {% when 'Skincare Combos' %}
+                  {% assign tile_Img = settings.skincare_combos %}
+                {% when 'Shampoo' %}
+                  {% assign tile_Img = settings.shampoo %}
+                {% when 'Conditioner' %}
+                  {% assign tile_Img = settings.conditioner %}
+                {% when 'Hair Mask' %}
+                  {% assign tile_Img = settings.hair_mask %}
+                {% when 'Hair Cream' %}
+                  {% assign tile_Img = settings.hair_cream %}
+                {% when 'Hair Spray' %}
+                  {% assign tile_Img = settings.hair_spray %}
+                {% when 'Scrubs' %}
+                  {% assign tile_Img = settings.scrubs %}
+                {% when 'Bath & Body Essentials' %}
+                  {% assign tile_Img = settings.bath_and_body_essentials %}
+                {% when 'False Eyelashes' %}
+                  {% assign tile_Img = settings.false_eyelashes %}
+                {% when 'Lash Glue' %}
+                  {% assign tile_Img = settings.lash_glue %}
+                {% when 'Brush Sets' %}
+                  {% assign tile_Img = settings.brush_sets %}
+                {% when 'Mirror' %}
+                  {% assign tile_Img = settings.mirror %}
+                {% when 'Face Brushes' %}
+                  {% assign tile_Img = settings.face_brushes %}
+                {% when 'Eye Brushes' %}
+                  {% assign tile_Img = settings.eye_brushes %}
+                {% when 'Brow Brushes' %}
+                  {% assign tile_Img = settings.brow_brushes %}
+                {% when 'Lip Brushes' %}
+                  {% assign tile_Img = settings.lip_brushes %}
+                {% when 'Sponges & Applicators' %}
+                  {% assign tile_Img = settings.sponges_and_applicators %}
+                {% when 'Nail Polish' %}
+                  {% assign tile_Img = settings.nail_polish %}
+                {% when 'Press on Nails' %}
+                  {% assign tile_Img = settings.press_on_nails %}
+                {% when 'Stones' %}
+                  {% assign tile_Img = settings.stones %}
+                {% when 'Bags & Pouches' %}
+                  {% assign tile_Img = settings.bags_and_pouches %}
+                {% when 'Tools & Brush Bundles' %}
+                  {% assign tile_Img = settings.tools_and_brush_bundles %}
+                {% when 'Face' %}
+                  {% assign tile_Img = settings.face %}
+                  {% assign tile_Link = "https://www.heyparadise.com/collections/face" %}
+                {% when 'Brows' %}
+                  {% assign tile_Img = settings.brows %}
+                {% when 'Eyes' %}
+                  {% assign tile_Img = settings.eyes %}
+                  {% assign tile_Link = "https://www.heyparadise.com/collections/eyes" %}
+                {% when 'Lips' %}
+                  {% assign tile_Img = settings.lips %}
+                {% when 'Accessories' %}
+                  {% assign tile_Img = settings.accessories %}
+                {% when 'Tools & Brushes' %}
+                  {% assign tile_Img = settings.tools_and_brushes %}
+                {% when 'Brows Super Savers' %}
+                  {% assign tile_Img = settings.brows_super_savers %}
+                {% when 'Accessories Super Savers' %}
+                  {% assign tile_Img = settings.accessories_super_savers %}
+                {% when 'Cleansers' %}
+                  {% assign tile_Img = settings.cleansers %}
+                {% when 'Toners & Mists' %}
+                  {% assign tile_Img = settings.toners_and_mists %}
+                {% when 'Seums' %}
+                  {% assign tile_Img = settings.seums %}
+                {% when 'Moisturizers' %}
+                  {% assign tile_Img = settings.moisturizers %}
+                {% when 'Masks' %}
+                  {% assign tile_Img = settings.masks %}
+                {% when 'Exfoliators' %}
+                  {% assign tile_Img = settings.exfoliators %}
+                {% when 'Lip Care' %}
+                  {% assign tile_Img = settings.lip_care %}
+                {% when 'Sun Care' %}
+                  {% assign tile_Img = settings.sun_care %}
+                {% when 'Body Care' %}
+                  {% assign tile_Img = settings.body_care %}
+                {% when "Men's Skincare" %}
+                  {% assign tile_Img = settings.mens_skincare %}
+                {% when 'Skincare Value Mix' %}
+                  {% assign tile_Img = settings.skincare_value_mix %}
+                {% when 'Gift Sets' %}
+                  {% assign tile_Img = settings.gift_sets %}
+                {% when 'Body Cleansers & Scrubs' %}
+                  {% assign tile_Img = settings.body_cleansers_and_scrubs %}
+                {% when "Body Care Women's Fragrances" %}
+                  {% assign tile_Img = settings.body_care_womens_fragrances %}
+                {% when "Body Care Men's Fragrances" %}
+                  {% assign tile_Img = settings.body_care_mens_fragrances %}
+                {% when 'Eye Accessories' %}
+                  {% assign tile_Img = settings.eye_accessories %}
+                {% when 'Nails' %}
+                  {% assign tile_Img = settings.nails %}
+                {% when 'Mirror Face & Body Jewels' %}
+                  {% assign tile_Img = settings.mirror_face_and_body_jewels %}
+                {% when 'Bags & Poches Makeup' %}
+                  {% assign tile_Img = settings.bags_and_poches_makeup %}
+                {% when 'Skin Hair Bath & Body Fragrances Accessories' %}
+                  {% assign tile_Img = settings.skin_hair_bath_and_body_fragrances_accessories %}
+                {% when 'Lamel' %}
+                  {% assign tile_Img = settings.lamel %}
+                {% when 'Makeup Revolution' %}
+                  {% assign tile_Img = settings.makeup_revolution %}
+                {% when 'Milani' %}
+                  {% assign tile_Img = settings.milani %}
+                {% when 'L.A. Girl' %}
+                  {% assign tile_Img = settings.la_girl %}
+                {% when 'BH Cosmetics' %}
+                  {% assign tile_Img = settings.bh_cosmetics %}
+                {% when 'Pigment Play' %}
+                  {% assign tile_Img = settings.pigment_play %}
+                {% when 'Lord & Berry' %}
+                  {% assign tile_Img = settings.lord_and_berry %}
+                {% when 'Relove By Revolution' %}
+                  {% assign tile_Img = settings.relove_by_revolution %}
+                {% when 'L.A. Colors' %}
+                  {% assign tile_Img = settings.la_colors %}
+                {% when 'Physician Formula' %}
+                  {% assign tile_Img = settings.physician_formula %}
+                {% when 'Nicka K' %}
+                  {% assign tile_Img = settings.nicka_k %}
+                {% when 'XX Revolution' %}
+                  {% assign tile_Img = settings.xx_revolution %}
+                {% when 'Makeup Obsession' %}
+                  {% assign tile_Img = settings.makeup_obsession %}
+                {% when 'Revolution Pro' %}
+                  {% assign tile_Img = settings.revoltuion_pro %}
+                {% when 'I Heart Revolution' %}
+                  {% assign tile_Img = settings.i_heart_revolution %}
+                {% when 'Lip Smacker' %}
+                  {% assign tile_Img = settings.lip_smacker %}
+                {% when 'Wet n Wild' %}
+                  {% assign tile_Img = settings.wet_n_wild %}
+                {% when 'Carbon Theory' %}
+                  {% assign tile_Img = settings.carbon_theory %}
+                {% when 'Eveline Cosmetics' %}
+                  {% assign tile_Img = settings.eveline_cosmetics %}
+                {% when 'Revolution Skin' %}
+                  {% assign tile_Img = settings.revolution_skin %}
+                {% when 'Organic Works' %}
+                  {% assign tile_Img = settings.organic_works %}
+                {% when 'Koric' %}
+                  {% assign tile_Img = settings.koric %}
+                {% when 'Derma E' %}
+                  {% assign tile_Img = settings.derma_e %}
+                {% when 'Revolution Man' %}
+                  {% assign tile_Img = settings.revolution_man %}
+                {% when 'Revolution Haircare' %}
+                  {% assign tile_Img = settings.revolution_haircare %}
+                {% when 'Superdrug' %}
+                  {% assign tile_Img = settings.superdrug %}
+                {% else %}
+                  {% assign tile_Img = settings.default %}
+              {% endcase %}
+              <div class="categories d_cent swiper-slide">
+                {% if categoryToShow == "Product Type" or categoryToShow == "Product Main Category" %}
+                 {% assign tile_Link = filter_value.url_to_add %} 
+                {% endif %}
+                <a href="{{ tile_Link }}">
+                <img
+                  loading="lazy"
+                  src="{{ tile_Img | image_url }}"
+                  width="124"
+                  height="auto"
+                  alt="{{ filter_value.label | escape }}"
+                  class="img-fluid categories-img"
+                >
+                <p class="categories-title">{{ filter_value.label | truncatewords: 2 }}</p></a>
+              </div>
+            {% endfor %}
+          {%- endif -%}
+        {%- endfor %}
+      </div>
+      {% comment %} <div class="carousel-btn border-0" id="tiles-slider-{{ section.id }}_prev" >
+        {% render 'carousel-prev-btn-svg' %}
+      </div>
+      <div class="carousel-btn border-0" id="tiles-slider-{{ section.id }}_next" >
+        {% render 'carousel-next-btn-svg' %}
+      </div> {% endcomment %}
+    </div>
+  </div>
+{% endif %}
+{% if section.blocks.size > 1 %}
+<style>
+  #banner-dots-{{ section.id }}{
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+  }
+</style>
+{% endif %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      {% if section.blocks.size > 1 %}
+      const mainBanner = new Swiper('#banner-slider-{{ section.id }}', {
+        slidesPerView: 1,
+        keyboard: {
+          enabled: true,
+          onlyInViewport: true,
+        },
+        loop:true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: "#banner-dots-{{ section.id }}",
+          clickable: true,
+        },
+        mousewheel: {
+          invert: false,
+          sensitivity: 10,
+          forceToAxis: true,
+        },
+        autoHeight: true,
+        // navigation: { 
+          //   prevEl: '#tiles-slider-{{ section.id }}', 
+          //   nextEl: '#tiles-slider-{{ section.id }}',
+        // },
+      });
+      {% endif %}
+      {% if section.settings.showCat %}
+      const mainProductTiles = new Swiper('#tiles-slider-{{ section.id }}', {
+        slidesPerView: 3.5,
+        spaceBetween: 12,
+        keyboard: {
+          enabled: true,
+          onlyInViewport: true,
+        },
+        // navigation: { 
+        //     prevEl: '#tiles-slider-{{ section.id }}_prev', 
+        //     nextEl: '#tiles-slider-{{ section.id }}_next'
+        // },
+        breakpoints: {
+        1024: {
+          slidesPerView: 5,
+          spaceBetween: 30,
+        },
+        1280: {
+          slidesPerView: 6,
+          spaceBetween: 40,
+        },
+      },
+      });
+    {% endif %}
+    });
+  </script>
+{% schema %}
+{
+  "name": "Main Banner",
+  "class": "slideshow dynamic__section section__slideshow",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Mobile Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "checkbox",
+      "id": "showCat",
+      "default": false,
+      "label": "Show Tiles"
+    },
+    {
+      "type": "radio",
+      "id": "showTiles",
+      "label": "Choose Collection Tiles",
+      "options": [
+        { "value": "Sub Category", "label": "Show Sub Catagories" },
+        { "value": "Concern", "label": "Show Concern" },
+        { "value": "Type", "label": "Show Type" },
+        { "value": "Category", "label": "Show Main Category" }
+      ],
+      "default": "Category"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Image",
+      "type": "image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Desktop image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile image"
+        },
+        {
+          "type": "url",
+          "id": "block_link_2",
+          "label": "Second link"
+        }
+      ]
+    },
+    {
+      "name": "Video",
+      "type": "video",
+      "settings": [
+        {
+          "type": "video",
+          "id": "desk-vid",
+          "label": "Desktop video"
+        },
+        {
+          "type": "video",
+          "id": "mob-vid",
+          "label": "Mobile video"
+        },
+        {
+          "type": "url",
+          "id": "block_link_2",
+          "label": "Second link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main Banner",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

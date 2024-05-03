@@ -1,0 +1,222 @@
+{% liquid
+  assign productCreatedDate = product.created_at | date: '%s' | plus: 0
+  assign oneMonthAgo = 'now' | date: '%s' | minus: 2592000 | plus: 0
+  assign has_size_option = false
+  for option in product.options_with_values
+    for value in option.values
+      if option.name == 'Size'
+        assign has_size_option = true
+      elsif option.name == 'Color'
+        assign has_size_option = false
+      endif
+    endfor
+  endfor
+%}
+<div class="product-card {% if card_margin %} mx-1 mx-md-3{% else %} mx-auto {% endif  %}">
+  <a href="{{ product.url }}" class="position-relative" id="product-url-{{ sectionId | remove:'_' | remove:'-' }}-{{ index }}">
+    <div class="product-image p-0">
+      {% assign ifTag = false %} 
+      {% for tags in product.tags %}
+        {% if tags contains 'label' or tags == 'Hey Exclusive' %}
+        {% assign ifTag = true %} 
+        {% endif %} 
+      {% endfor %}
+      {% if ifTag %}
+      <div class="tags">
+        {% if productCreatedDate >= oneMonthAgo %}
+          <p class="tag mb-2" tag="newIn">New In</p>
+          {% comment %} <p class="tag mb-2" data-tag="onlyAtHey">ONLY AT HEY!</p> {% endcomment %}
+        {% endif %}
+        {% for tags in product.tags %}
+          {% if tags contains 'label' %}
+            {% unless tags contains '_label_New' %}
+              <p
+                class="tag mb-2"
+                style=" color:{{ tags | split: '_' | slice:4 }};background-color:{{ tags | split: '_' | slice:3 }}"
+              >
+                {{ tags | split: '_' | slice: 2 }}
+              </p>
+            {% endunless %}
+          {% elsif tags == 'Hey Exclusive' %}
+            <div class="exclusiveTag">
+              <img
+                loading="lazy" class="lazyload"
+                width="46" height="47"
+                src="https://cdn.shopify.com/s/files/1/0577/9000/5290/files/exclusive_20ae9f20-a2c9-4ba6-9a18-733feac4edb5.svg?v=1701330661"
+                alt="Hey Exclusive tag"
+                tag="exclusive"
+              >
+            </div>
+          {% endif %}
+        {% endfor %}
+        </div>
+      {% endif %}
+      {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,600,800,900,1000,1200', image:product.images[0] -%}{%- endcapture -%}
+      {% comment %} {% if product.images.size > 1 %}
+        {%- assign img_url = product.featured_image -%}
+        {%- assign img_url_1 = product.images[0].src -%}
+        {%- assign img_url_2 = product.images[1].src -%}
+          <img
+          class="img-fluid product-img-1 lazyload"
+          src="{{ img_url_1 | image_url }}"
+          data-src="{{ img_url_1 | image_url }}"
+          data-widths="[{{ supported_sizes }}]"
+          data-sizes="auto"
+          alt="{{ product.images[0].alt }}"
+          >
+        <img
+          class="img-fluid product-img-2 lazyload"
+          src="{{ img_url_2 | image_url }}"
+          data-src="{{ img_url_2 | image_url }}"
+          data-widths="[{{ supported_sizes }}]"
+          data-sizes="auto"
+          alt="{{ product.images[1].alt }}"
+        >
+      {% else %} 
+      {% endif %}
+    {% endcomment %}
+    {% if template != "search" %}
+      {% assign main_img_data = product.featured_image | json %}
+      {% assign main_img = product.featured_image | img_url:'292x390' %}
+      {% if main_img_data == "null" %}
+        {% assign main_img = 'https://cdn.shopify.com/s/files/1/0577/9000/5290/files/no-image.jpg?v=1705558418' | append: ""  %}
+      {% endif %}
+        <img
+        loading="lazy"
+        class="img-fluid"
+        width="100%"
+        height="auto"
+        src="{{ main_img }}"
+        data-src="{{ main_img }}"
+        data-widths="[{{ supported_sizes }}]"
+        data-sizes="auto"
+        alt="{{ product.title }}"
+        title="{{ product.title }}"
+        >
+        {% else %}
+        {% if product.selected_or_first_available_variant.featured_image.src != blank %}
+          {%  assign searchedImg  = product.selected_or_first_available_variant.featured_image.src %}
+          {% else %}
+          {%  assign searchedImg  = product.featured_image.src %}
+        {% endif %}
+        <img
+        class="img-fluid lazyload"
+        width="100%"
+        height="auto"
+        src="{{ searchedImg |  image_url }}"
+        data-src="{{ searchedImg |  image_url }}"
+        data-widths="[{{ supported_sizes }}]"
+        data-sizes="auto"
+        alt="{{ product.title }}"
+        title="{{ product.title }}"
+        >
+    {% endif %}
+      
+    </div>
+   <div class="gw-wishlist">
+  {% capture the_snippet_fave_icon %}{% render 'ssw-widget-faveicon' with product.id %}{% endcapture %}
+    {% unless the_snippet_fave_icon contains 'Liquid error' %}
+      {{ the_snippet_fave_icon }}
+    {% endunless %}
+   </div>
+  </a>
+  <div class="product-details">
+    <div>
+      <p class="mb-0 product-brand">{{ product.vendor }}</p>
+      <p class="mb-0 product-title">{{ product.title }}</p>
+    </div>
+    {% capture the_snippet_review_avg %}{% render 'ssw-widget-avg-rate-listing', product: product %}{% endcapture %}
+    {% unless the_snippet_review_avg contains 'Liquid error' %}
+      {{ the_snippet_review_avg }}
+    {% endunless %}
+    <div>
+      <div class="product-price mb-0">
+        {% assign first_availablevariant = product.selected_or_first_available_variant %}
+        <span>
+          <span class="selling-price">{{ first_availablevariant.price | money_without_trailing_zeros }}</span>
+          <span class="old-price">
+            {% if first_availablevariant.compare_at_price > first_availablevariant.price %}
+              {{ first_availablevariant.compare_at_price | money_without_trailing_zeros -}}
+            {% endif %}
+          </span>
+          <span class="discount">
+            {% if first_availablevariant.compare_at_price > first_availablevariant.price %}
+              {{-
+                first_availablevariant.compare_at_price
+                | minus: first_availablevariant.price
+                | times: 100.0
+                | divided_by: first_availablevariant.compare_at_price
+                | money_without_currency
+                | times: 100
+                | remove: '.0'
+              -}}
+              % Off
+            {% endif %}
+          </span>
+        </span>
+      </div>
+      {% if show_button %}
+        {% if has_size_option %}
+          <div class="product-qty-container d-flex shades">
+            {% for variant in product.variants limit: 3 %}
+              <div class="product-qty">{{ variant.title }}</div>
+            {% endfor %}
+          </div>
+        {% else %}
+        <div class="shades" adsada>
+          {% if product.available and product.variants.size > 1 %}
+            {% for variant in product.variants limit: 3 %}
+              <span
+            class="shade{% unless variant.available %} m-disabled{% endunless %}"
+                style="{% if product.variants[forloop.index0].metafields.custom.colour != blank %}
+              background-color:{{ product.variants[forloop.index0].metafields.custom.colour }} !important;
+            {% else %}
+              background-image: url({% if product.variants[forloop.index0].metafields.custom.variant !=blank %}
+            {{- product.variants[forloop.index0].metafields.custom.variant | image_url -}} {% else %} {{ variant.featured_image | image_url }}{% endif %}); background-size: contain; {% endif %}
+                "
+              ></span>
+            {% endfor %}
+            {% if product.variants.size > 3 %}
+              {% assign product_count = product.variants.size | minus: 3 %}
+              <span class="more-shade">+{{ product_count | t }}</span>
+            {% endif %}
+          {% endif %}
+        </div>
+      {% endif %}
+      {% endif %}
+    </div>
+    {% if show_button %}
+      {% if showLink %}
+        <a href="{{ product.url }}">
+      {% else %}
+        <div
+        {% if product.available and product.variants.size > 1 %}
+          data-quickviewID="{{ product.id }}"
+          data-quickviewHandle="{{ product.handle }}"
+          data-quickviewslide="open"
+        {% if product.available and product.variants.size > 1 %} pdp_MediaData='{{ product.media | json }}'{% endif %}
+          isOpened="false"
+          data-sectionID="{{ sectionId }}{{ index }}"
+          firstImgPos="{{ first_availablevariant.featured_media.position | plus:if_video }}"
+          {% else %}
+          atc_cta="product"
+          data-product_id="{{ product.selected_or_first_available_variant.id }}"
+          data-product_quantity='1'
+        {% endif %}
+        >
+      {% endif %}
+      <button class="select-shade">
+        {% if product.available and product.variants.size > 1 %}
+          Select {% if has_size_option %}Size{% else %}Shade{% endif %}
+        {% else %}
+          Add To Bag
+        {% endif %}
+      </button>
+      {% if showLink %}
+        </a>
+      {% else %}
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>

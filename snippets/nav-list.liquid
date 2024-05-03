@@ -1,0 +1,158 @@
+<li class="m-menu-items">
+  {%- if link.links != blank and link.title != 'New In' -%}
+    <input
+      type="checkbox"
+      class="menu-slide d-none"
+      name=""
+      id="{{ link.title | escape | append: index }}"
+      data-menu="slide"
+    >
+    {% comment %} class="menu-toggle" for new In  {% endcomment %}
+    <label for="{{ link.title | escape | append: index }}" class="menu-slide">{{ link.title | escape }}</label>
+    <div class="m-sub-menu-slide-container">
+      <div class="m-header d-flex align-items-center" style="padding: 20px;">
+        <label
+          for="{{ link.title | escape | append: index  }}"
+          class="d-flex justify-content-center align-items-center me-3"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="8"
+            height="12"
+            viewBox="0 0 8 12"
+            fill="none"
+          >
+            <path d="M7 1L2 6L7 11" stroke="#393939" stroke-width="1.5"
+                stroke-linecap="round" />
+          </svg>
+        </label>
+        <div class="m-slide-title">{{ link.title | escape }}</div>
+        <label
+          for="{{ link.title | escape | append: index }}"
+          style="padding-right: 16px;"
+          class="slide-close d-flex align-items-center justify-content-center border-0 bg-transparent"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="13"
+            height="14"
+            viewBox="0 0 13 14"
+            fill="none"
+          >
+            <path d="M0.5 1L12.5 13" stroke="#393939" stroke-linecap="round" />
+            <path d="M12.5 1L0.5 13" stroke="#393939" stroke-linecap="round" />
+          </svg>
+        </label>
+      </div>
+       {% comment %}{% if showSearchBtn %}
+        <div class="m-section-cover">
+          <div class="m-search-box d-flex justify-content-center align-items-center w-100">
+            <input
+              type="text"
+              class="m-search flex-fill border-0"
+              placeholder="What are you looking for?"
+              readonly
+            >
+            <span class="">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="23"
+                height="22"
+                viewBox="0 0 23 22"
+                fill="none"
+              >
+                <circle cx="10.25" cy="9.75" r="8.75" stroke="#393939" stroke-width="1.5" />
+                <path d="M21.5 21L17.75 17.25" stroke="#393939" stroke-width="1.5"
+                    stroke-linecap="round" />
+              </svg>
+            </span>
+          </div>
+        </div> 
+      {% endif %}{% endcomment %}
+      <ul class="m-section-cover m-menu-dropdown-fix">
+        {% assign randomNumber = "now" | date: "%N" | modulo: 30 %}
+        {%- for childlink in link.links -%}
+          <li class="m-menu-dropdown-items">
+            {%- if childlink.links != blank -%}
+              <input
+                type="checkbox"
+                class="menu-toggle d-none"
+                name=""
+                id="{{ childlink.title | escape | append: randomNumber }}"
+                data-menu="dropdown"
+              >
+              <label for="{{ childlink.title | escape | append: randomNumber }}" class="menu-toggle">
+                {{- childlink.title | escape -}}
+              </label>
+              <ul class="m-sub-menu-dropdown-container">
+                {% if childlink.title == 'Shop By Brands' %}
+                  <div class="child-trending-container d-flex">
+                    <a href="" class="trending-items">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="7"
+                        height="8"
+                        viewBox="0 0 7 8"
+                        fill="none"
+                      >
+                        <path d="M2.93589 1.18864L5.9445 1.04262M5.9445 1.04262L6.09052 4.05123M5.9445 1.04262L0.577152 6.95755" stroke="#393939" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      lamel
+                    </a>
+                    <a href="" class="trending-items">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="7"
+                        height="8"
+                        viewBox="0 0 7 8"
+                        fill="none"
+                      >
+                        <path d="M2.93589 1.18864L5.9445 1.04262M5.9445 1.04262L6.09052 4.05123M5.9445 1.04262L0.577152 6.95755" stroke="#393939" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      Makeup Revolution
+                    </a>
+                    <a href="" class="trending-items">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="7"
+                        height="8"
+                        viewBox="0 0 7 8"
+                        fill="none"
+                      >
+                        <path d="M2.93589 1.18864L5.9445 1.04262M5.9445 1.04262L6.09052 4.05123M5.9445 1.04262L0.577152 6.95755" stroke="#393939" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      lamel Makeup Revolution
+                    </a>
+                  </div>
+                {% endif %}
+                {%- for grandchildlink in childlink.links -%}
+                  <li>{{ grandchildlink.title | escape | link_to: grandchildlink.url }}</li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% elsif link.title == 'New In' %}
+    <input
+      type="checkbox"
+      class="menu-toggle d-none"
+      name=""
+      id="{{ link.title | escape | append: index }}"
+      data-menu="dropdown"
+    >
+    <label for="{{ link.title | escape | append: index }}" class="menu-toggle">{{ link.title | escape }}</label>
+    <ul class="m-sub-menu-dropdown-container">
+      {%- for childlink in link.links -%}
+        <li>
+          <a class="no_line" href="{{ childlink.url }}"> {{ childlink.title | escape }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    {{ link.title | escape | link_to: link.url }}
+  {% endif %}
+</li>

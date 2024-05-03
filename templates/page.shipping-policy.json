@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "e31fc60d-0245-44a9-b78d-388e44465e5d": {
+      "type": "Main_Banner",
+      "settings": {
+        "showCat": false,
+        "showTiles": "Category"
+      }
+    },
+    "92b6c182-5369-49cc-8448-9af883a5af7a": {
+      "type": "textContent",
+      "settings": {
+        "textareatitle": "Shipping Policy",
+        "textareacontent": "<p>Our dedication is to ensure precise, excellent condition, and punctual delivery of your orders and and we've partnered exclusively with reputable national courier services for shipping.<br\/>Please not that orders over ₹600 enjoy complimentary shipping and for orders below ₹600, a nominal fee of ₹100 is applied.<br\/>Your order are dispatched within 48 hours of placing it after a thorough inspection to ensure it's in perfect condition before we ship it out. We are committed to getting your products to you in the best condition, as quickly as possible, no matter where you are.<br\/>You can easily track your orders online once it's dispatched.<br\/>In case of any difficulty, questions or concerns, feel free to contact us at support@hokmakeup.com or call us at 9810245261.<br\/><br\/><strong>*<\/strong>Please note that Hey! reserves the authority to cancel orders or items at any time if there are concerns or questions. In case of cancellation, refunds for prepaid orders will be processed within 24-48 business hours. If you have any questions or concerns, feel free to contact us at support@hokmakeup.com or call us at 9810245261.<\/p>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "e31fc60d-0245-44a9-b78d-388e44465e5d",
+    "92b6c182-5369-49cc-8448-9af883a5af7a"
+  ]
+}

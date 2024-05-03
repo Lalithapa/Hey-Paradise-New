@@ -1,0 +1,424 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "3ca2d601-1f92-42d7-8c19-e304e97fabe9": {
+      "type": "Main_Banner",
+      "blocks": {
+        "image_whAjaC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/makeup-banner.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/mobile-makeup-banner.jpg",
+            "block_link_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_whAjaC"
+      ],
+      "settings": {
+        "showCat": false,
+        "showTiles": "Category"
+      }
+    },
+    "38859b27-e11e-44bd-9146-cf5edef2ae42": {
+      "type": "multi-carousel",
+      "blocks": {
+        "efec98e1-2701-4e54-8f76-af82f77bb2a1": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/banner1.gif",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Shop All"
+          }
+        },
+        "9d675f61-aa2c-4a94-9a5b-d083e4a43a35": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/banner1.gif",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Shop All"
+          }
+        },
+        "e7849a6e-e59c-4b00-8fd8-e3b6bc2716b6": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/banner1.gif",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Shop All"
+          }
+        },
+        "08910d59-d1ae-49f1-bd2a-a0281c40edd3": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/banner1.gif",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Shop All"
+          }
+        },
+        "eabee601-22d4-424d-b515-a73bb2432e94": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/banner1.gif",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Shop All"
+          }
+        },
+        "b4a0568d-2fbd-4ef1-b032-f75a3d174d1b": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/banner1.gif",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Shop All"
+          }
+        }
+      },
+      "block_order": [
+        "efec98e1-2701-4e54-8f76-af82f77bb2a1",
+        "9d675f61-aa2c-4a94-9a5b-d083e4a43a35",
+        "e7849a6e-e59c-4b00-8fd8-e3b6bc2716b6",
+        "08910d59-d1ae-49f1-bd2a-a0281c40edd3",
+        "eabee601-22d4-424d-b515-a73bb2432e94",
+        "b4a0568d-2fbd-4ef1-b032-f75a3d174d1b"
+      ],
+      "settings": {
+        "sectionTitle": "Shop By category",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "1",
+        "lagreScreenGap": 20,
+        "smallScreenGap": 12,
+        "bottomTextBackground": "",
+        "smallNumber": 2.5,
+        "mediumNumber": 3,
+        "largeNumber": 4.5,
+        "defaultNumber": 4.5
+      }
+    },
+    "a67d1187-40f6-4f9d-adcb-201f8ff7fb19": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Selling Fast",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#fff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "face",
+        "viewAllBtn": true,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "c478d4b1-ad16-4b47-8999-e5c214a7b03b": {
+      "type": "Image_carousel",
+      "blocks": {
+        "dfff9ff2-b9af-4a97-9397-fa74ef657782": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3972.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "a7eeee0e-21c8-4ceb-a23e-a90668e33756": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3974.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "8c907700-949a-40fe-8b39-2e1b0ab64bba": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3973.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "29736856-9866-408c-b5a4-726b2b358bbd": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3972.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "06a74858-ce3c-4ebd-8c60-89e12a0d6eb0": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3973.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "9f2da14f-a56d-4276-adb6-7820c975c6d3": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3974.png",
+            "threedtxt": "Discover More"
+          }
+        }
+      },
+      "block_order": [
+        "dfff9ff2-b9af-4a97-9397-fa74ef657782",
+        "a7eeee0e-21c8-4ceb-a23e-a90668e33756",
+        "8c907700-949a-40fe-8b39-2e1b0ab64bba",
+        "29736856-9866-408c-b5a4-726b2b358bbd",
+        "06a74858-ce3c-4ebd-8c60-89e12a0d6eb0",
+        "9f2da14f-a56d-4276-adb6-7820c975c6d3"
+      ],
+      "settings": {
+        "qsirguwfh": "",
+        "sfswdef": "Tress favorites",
+        "bgcolor": true,
+        "dfasasd": "#fff0ea"
+      }
+    },
+    "04b1addd-5828-4da5-a467-1ac279f549d2": {
+      "type": "Brand_Spotlight",
+      "custom_css": [
+        ".feedback-slider-container::before {background: #f3fff8;}",
+        ".slick-prev-btn {top: 40%; left: 15px;}",
+        ".slick-next-btn {top: 40%; right: 15px;}"
+      ],
+      "settings": {
+        "mainImage": "shopify:\/\/shop_images\/carbon.jpg",
+        "mainLogo": "shopify:\/\/shop_images\/logo.png",
+        "heartColor": "",
+        "viewAllBtn": false,
+        "home_featured_products": "face",
+        "backgroundcolor": "",
+        "smallNumber": 2,
+        "mediumNumber": 2,
+        "largeNumber": 2,
+        "extraLargeNumber": 2
+      }
+    },
+    "082a9be7-91ca-491b-baa8-39de6d194b10": {
+      "type": "multi-carousel",
+      "blocks": {
+        "89ae8726-6e8f-497e-9eed-02ff638c6b7e": {
+          "type": "concern",
+          "settings": {
+            "concernImg": "shopify:\/\/shop_images\/crausel-img2.jpg",
+            "concernURL": "",
+            "concernTitle": "Acne & Blemishes",
+            "concernText": "Treat Blackheads, Pimples, Hormonal Flare-ups & more.",
+            "concernBtnText": "Shop Now"
+          }
+        },
+        "59288f4e-486f-4abf-bb13-893833abf0e4": {
+          "type": "concern",
+          "settings": {
+            "concernImg": "shopify:\/\/shop_images\/deals-img1.jpg",
+            "concernURL": "",
+            "concernTitle": "Dark Spots & Hyper-pigmentation",
+            "concernText": "Erase dark spots and Illuminate your skin.",
+            "concernBtnText": "Shop Now"
+          }
+        },
+        "336bc959-10fb-4bb9-b8b1-3fd4a095381c": {
+          "type": "concern",
+          "settings": {
+            "concernImg": "shopify:\/\/shop_images\/crausel-img3.jpg",
+            "concernURL": "",
+            "concernTitle": "Dull Skin",
+            "concernText": "Treat Blackheads, Pimples, Hormonal Flare-ups & more.",
+            "concernBtnText": "Shop Now"
+          }
+        },
+        "3fe58ce0-c848-4e55-aee9-9d94870cf524": {
+          "type": "concern",
+          "settings": {
+            "concernImg": "shopify:\/\/shop_images\/crausel-img2.jpg",
+            "concernURL": "",
+            "concernTitle": "Acne & Blemishes",
+            "concernText": "Treat Blackheads, Pimples, Hormonal Flare-ups & more.",
+            "concernBtnText": "Shop Now"
+          }
+        },
+        "656e5b3d-4a5e-4acb-b954-b0eee195c741": {
+          "type": "concern",
+          "settings": {
+            "concernImg": "shopify:\/\/shop_images\/deals-img1.jpg",
+            "concernURL": "",
+            "concernTitle": "Dark Spots & Hyper-pigmentation",
+            "concernText": "Erase dark spots and Illuminate your skin.",
+            "concernBtnText": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "89ae8726-6e8f-497e-9eed-02ff638c6b7e",
+        "59288f4e-486f-4abf-bb13-893833abf0e4",
+        "336bc959-10fb-4bb9-b8b1-3fd4a095381c",
+        "3fe58ce0-c848-4e55-aee9-9d94870cf524",
+        "656e5b3d-4a5e-4acb-b954-b0eee195c741"
+      ],
+      "settings": {
+        "sectionTitle": "What’s your concern?",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "3\/4",
+        "lagreScreenGap": 10,
+        "smallScreenGap": 6,
+        "bottomTextBackground": "linear-gradient(0deg, #292929 0%, rgba(47, 47, 47, 0.84) 20.87%, rgba(47, 47, 47, 0.43) 55.83%, rgba(74, 74, 74, 0.00) 93.04%)",
+        "smallNumber": 2,
+        "mediumNumber": 2.5,
+        "largeNumber": 3,
+        "defaultNumber": 3
+      }
+    },
+    "63c0511b-a755-4a28-83d2-c49f3e90c1f9": {
+      "type": "Reviews-Banner",
+      "blocks": {
+        "034ebefb-60cf-439a-b97a-be46459c5f46": {
+          "type": "Image",
+          "settings": {
+            "dasfdf": "shopify:\/\/shop_images\/signin-banner.jpg",
+            "asdasdasd": "shopify:\/\/shop_images\/signin-banner.jpg",
+            "sdfgsdfsd": "",
+            "urlaftrlogin": "",
+            "dflkjghdfjkg": "",
+            "dfsdf": "",
+            "txtdfsdf": ""
+          }
+        }
+      },
+      "block_order": [
+        "034ebefb-60cf-439a-b97a-be46459c5f46"
+      ],
+      "settings": {
+        "qsirguwfh": ""
+      }
+    },
+    "f0c0f0bc-8cde-4215-b564-ff33eac90b2c": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Baggit’ when it’s hot",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#fff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "face",
+        "viewAllBtn": false,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "194d7e87-96b5-4763-86ef-96ff55f8f8cf": {
+      "type": "multi-carousel",
+      "blocks": {
+        "dd38603f-b719-4169-994d-603560bb2ea7": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/deals-gif1.gif",
+            "dealsURL": "shopify:\/\/collections",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "077e3273-b182-4e51-8a37-4fa447e1f868": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/crausel-img3.jpg",
+            "dealsURL": "shopify:\/\/collections",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "0a85910d-ae6f-4b77-8321-f8a16e235363": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/crausel-img2.jpg",
+            "dealsURL": "shopify:\/\/collections",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "3a3703dd-e4d1-4d54-81f0-90813fb9e21f": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/crausel-img3.jpg",
+            "dealsURL": "shopify:\/\/collections",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "0ade750a-afe6-49d4-a5b3-6e2590b2f139": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/deals-img1.jpg",
+            "dealsURL": "shopify:\/\/collections",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "dd38603f-b719-4169-994d-603560bb2ea7",
+        "077e3273-b182-4e51-8a37-4fa447e1f868",
+        "0a85910d-ae6f-4b77-8321-f8a16e235363",
+        "3a3703dd-e4d1-4d54-81f0-90813fb9e21f",
+        "0ade750a-afe6-49d4-a5b3-6e2590b2f139"
+      ],
+      "settings": {
+        "sectionTitle": "Drool Over Deals",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "3\/4",
+        "lagreScreenGap": 10,
+        "smallScreenGap": 6,
+        "bottomTextBackground": "linear-gradient(0deg, #292929 0%, rgba(47, 47, 47, 0.84) 20.87%, rgba(47, 47, 47, 0.43) 55.83%, rgba(74, 74, 74, 0.00) 93.04%)",
+        "smallNumber": 1.5,
+        "mediumNumber": 2,
+        "largeNumber": 2.8,
+        "defaultNumber": 3
+      }
+    }
+  },
+  "order": [
+    "main",
+    "3ca2d601-1f92-42d7-8c19-e304e97fabe9",
+    "38859b27-e11e-44bd-9146-cf5edef2ae42",
+    "a67d1187-40f6-4f9d-adcb-201f8ff7fb19",
+    "c478d4b1-ad16-4b47-8999-e5c214a7b03b",
+    "04b1addd-5828-4da5-a467-1ac279f549d2",
+    "082a9be7-91ca-491b-baa8-39de6d194b10",
+    "63c0511b-a755-4a28-83d2-c49f3e90c1f9",
+    "f0c0f0bc-8cde-4215-b564-ff33eac90b2c",
+    "194d7e87-96b5-4763-86ef-96ff55f8f8cf"
+  ]
+}

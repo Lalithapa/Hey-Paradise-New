@@ -1,0 +1,106 @@
+{% assign splicesectionId = section.id | remove: '-' | slice: 25, 33 %}
+<div class="container product-recommendations"
+    data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.no_of_product }}&intent=related">
+    {%- if recommendations.performed? and recommendations.products_count > 0 -%}
+    <div class="text-center">
+        <h2>You May Also Like</h2> 
+    </div>
+    <div class="d_cent flex-nowrap" id="recom_products">
+        {%- for product in recommendations.products -%}
+        {% assign indexIs = forloop.index0 %}
+        <div class="p-0 col-6 col-md-3">
+          {% render 'main_product_cards' product:product , sectionId: splicesectionId
+          ,card_margin:true,show_button:false ,showLink:true %}
+        </div>
+        {%- endfor -%}
+    </div>
+    {%- endif -%}
+</div>
+
+{% javascript %}
+
+const handleRecIntersection = async(entries, observer) => {
+if (!entries[0].isIntersecting) return;
+
+observer.unobserve(productRecommendationsSection);
+
+const url = productRecommendationsSection.dataset.url;
+
+await fetch(url)
+.then(response => response.text())
+.then(text => {
+const html = document.createElement('div');
+html.innerHTML = text;
+const recommendations = html.querySelector('.product-recommendations');
+
+if (recommendations && recommendations.innerHTML.trim().length) {
+productRecommendationsSection.innerHTML = recommendations.innerHTML;
+ready();
+//initializeQuickViewSlider();
+};
+})
+.catch(e => {
+console.error(e);
+});
+};
+
+const productRecommendationsSection = document.querySelector('.product-recommendations');
+const observer = new IntersectionObserver(handleRecIntersection, {rootMargin: '0px 0px 200px 0px'});
+
+observer.observe(productRecommendationsSection);
+{% endjavascript %}
+
+{% schema %}
+{
+"name": "Product recommendations",
+"settings": [
+{
+"type": "range",
+"id": "no_of_product",
+"min": 4,
+"max": 10,
+"step": 1,
+"unit": "s",
+"label": "Number of Products",
+"default": 4
+}
+],
+"presets": [
+{
+"name": "Product recommendations"
+}
+]
+}
+{% endschema %}
+<script>
+    const ready = () => {
+        $('#recom_products').slick({
+            infinite: false,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 2,
+            mobileFirst: true,
+            arrows : false,
+            responsive: [
+                {
+                breakpoint: 0,
+                settings: {
+                    slidesToShow:2
+                }
+                },
+                {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2.5
+                }
+                },
+                {
+                breakpoint: 1440,
+                settings: {
+                    slidesToShow: 4
+                }
+                }
+            ]
+            });
+    };
+</script>

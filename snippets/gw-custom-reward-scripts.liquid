@@ -1,0 +1,30 @@
+{% if customer %}
+  {% if template.name == 'account' %}
+  <h1 class="ssw-hide testik">{{ template.name }}</h1>
+  <div class="reward-page">
+    <div class="ssw-html-widget" data-request-url="reward" data-accounts_enabled="1"></div>
+  </div>
+  <script>
+    window.addEventListener("sswhelperload", () => {
+       sswRun(function(){
+         var waitForContaier = setInterval(function() {
+         	ssw(".reward-page").css("display", "none");
+           if( ssw('.ssw-points-count').length) {
+             clearInterval(waitForContaier)
+             const points = ssw('.ssw-points-count');
+             const tier = ssw('.current-tier .ssw-reward-page-viptiers-item__status span');
+             if(points.length){
+             	ssw('.account-reward-points').replaceWith(points);
+             	ssw('.account-auth-option-title.points').replaceWith(points.text());
+             	ssw('.rwd-points').replaceWith(points.text());
+             	ssw('.rw-money').replaceWith(+(points.text() / 100));
+             }
+             if(tier.length) ssw('.account-reward-tier').replaceWith(tier);
+            }
+
+         }, 500)
+         })
+       })
+  </script>
+    {% endif %}
+{% endif %}

@@ -1,0 +1,69 @@
+{% liquid
+  assign has_size_option = false
+  for option in product.options_with_values
+    for value in option.values
+      if option.name == 'Size'
+        assign has_size_option = true
+      elsif option.name == 'Color'
+        assign has_size_option = false
+      endif
+    endfor
+  endfor
+%}
+<div class="p-0 d_cent">
+  <div class="product-card mx-1 mx-md-3 ">
+    <a id="recently-viewed-url-{{ sectionId|handle }}-{{ index }}" href="{{product.url}}">
+      <div class="product-image p-0">
+        <img
+          id="recently-viewed-image-{{ sectionId|handle }}-{{ index }}"
+          loading="lazy"
+          class="img-fluid asp34"
+          src="{{product.featured_image | img_url:'292x390' }}"
+          alt="{{product.title}}"
+          title="{{product.title}}"
+          width="292"
+          height="390"
+        >
+      </div>
+      <div class="product-details">
+        <div>
+          <p id="recently-viewed-vendor-{{ sectionId|handle }}-{{ index }}" class="mb-0 product-brand">
+            {{ product.vendor }}
+          </p>
+          <p id="recently-viewed-title-{{ sectionId|handle }}-{{ index }}" class="mb-0 product-title">
+            {{ product.title }}
+          </p>
+        </div>
+        <div>
+          <div class="product-price mb-0">
+            <span>
+              <span id="recently-viewed-selling-price-{{ sectionId|handle }}-{{ index }}" class="selling-price">
+                {{- product.price | money_with_currency -}}
+              </span>
+              <span id="recently-viewed-old-price-{{ sectionId|handle }}-{{ index }}" class="old-price">
+                {% if product.compare_at_price > product.price %}
+                  {{ product.compare_at_price | money_with_currency }}
+                {% endif %}
+              </span>
+
+              <span id="recently-viewed-discount-{{ sectionId|handle }}-{{ index }}" class="discount">
+                {% if product.compare_at_price > product.price %}
+                  {{-
+                    product.compare_at_price
+                    | minus: product.price
+                    | times: 100.0
+                    | divided_by: product.compare_at_price
+                    | money_without_currency
+                    | times: 100
+                    | remove: '.0'
+                  -}}
+                  % Off
+                {% endif %}
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

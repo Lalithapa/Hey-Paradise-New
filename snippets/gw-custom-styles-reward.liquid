@@ -1,0 +1,302 @@
+<style>
+:root {
+      --gw_main_color: #393939;
+    }
+     
+    #ssw-reward-box .ssw-reward-programs div {
+      font-family: var(--font-poppins);
+      color: #585858;
+    }
+
+    #ssw-reward-box .ssw-reward-program-title,
+    #ssw-reward-box .ssw-program-title-wrapper {
+      font-weight: 600;
+      color: #393939;
+    }
+
+    .ssw-reward-programs .ssw-reward-program .ssw-reward-program-description {
+      font-size: 12px;
+    }
+
+    .ssw-reward-programs .ssw-reward-program .ssw-points-program-items, 
+    .ssw-reward-programs .ssw-reward-program .ssw-referral-program-items {
+      font-size: 13px
+    }
+
+    .ssw-reward-box-rule-description {
+      font-family: var(--font-poppins) !important; 
+    }
+
+    .ssw-reward-box-rule-description .ssw-reward-box-earning-rule-title {
+      font-size: 13px;
+      color: #393939;
+    }
+
+    #ssw-reward-box .ssw-reward-box-earning-rule-title+.ssw-reward-box-text, #ssw-reward-box .ssw-reward-redeem-info, #ssw-reward-box .ssw-reward-user-reward-expire, #ssw-reward-box .ssw-reward-user-reward-info {
+      font-size: 12px !important;
+      color: #9B9B9B !important;
+    }
+
+    .ssw-reward-program {
+      background: #FCFCFC !important;
+      box-shadow: none !important;
+    }
+
+     .ssw-reward-box #gw-ref-link-main,
+     .ssw-reward-wrapper #gw-ref-link,
+      #ssw-reward-popup-birthday-content .ssw-reward-birthday-field {
+       font-size: 11px;
+       color: #919191;
+       margin-right: 0;
+        border-radius: 100px 0 0 100px;
+        border: 1px solid #E1E2FC;
+     }
+
+  #ssw-reward-popup-birthday-content .ssw-reward-birthday-field {
+    border-radius: 100px;
+  }
+
+     button.ssw-reward-friend-copy.ssw-reward-btn.gw-fsize-ms,
+     #ssw-reward-popup-birthday-content .ssw-reward-birthday-btn {
+           border-radius: 0 100px 100px 0 !important;
+          background: #E1E2FC;
+          color: #404184; 
+          font-weight: 500;
+          border: 1px solid #E1E2FC;
+     }
+
+     #ssw-reward-box-rewards-wrapper .ssw-reward-btn,
+     .ssw-reward-box-earning-rule-btn,
+  .gw-container .ssw-reward-btn {
+       background: #DEDFFC !important;
+    padding: 8px 16px !important;
+    color: #404184 !important;
+    font-size: 12px !important;
+    border-radius: 50px !important;
+       line-height: 20px;
+     }
+
+  .ssw-reward-auth-wrapper .ssw-reward-auth-title {
+    font-size: 14px !important;
+  }
+
+     .ssw-reward-box-tier::before {
+       background-color: #D9D9D9;
+     }
+
+     .ssw-reward-box-history-body, .ssw-reward-box-history-date {
+       font-size: 12px !important;
+     }
+
+     .ssw-reward-box-balance .ssw-points-count, .ssw-reward-page-balance .ssw-points-count {
+       font-size: 22px !important;
+       color: #393939 !important;
+     }
+     #ssw-reward-flexible-redeem-discount-amount-popup, 
+     #ssw-reward-flexible-redeem-discount-price-popup {
+       font-size: 13px !important;
+       font-weight: 500 !important;
+     }
+
+     .ssw-reward-flexible-redeem-info {
+       border-top: 1px solid #E1E1E1;
+       border-bottom: 1px solid #E1E1E1;
+     }
+     .ssw-reward-flexible-redeem-info-column:first-child {
+       border-color: #E1E1E1 !important;
+     }
+
+     #ssw-reward-flexible-redeem-form-popup #ssw-reward-flexible-redeem-redeem-btn-popup {
+       background: #DEDFFC !important;
+    padding: 8px 16px !important;
+    color: #404184 !important;
+    font-size: 12px !important;
+    border-radius: 50px !important;
+       line-height: 20px;
+       width: 100%;
+       margin-top: 3rem;
+    text-align: center;
+    font-weight: 500;
+     }
+
+     input#ssw-reward-flexible-redeem-input-discount-range-popup {
+	--thumb-height: 1.125em;
+	--track-height: 4px;
+	--track-color: #F2F2F2;
+	--brightness-hover: 100%;
+	--brightness-down: 80%;
+}
+
+input#ssw-reward-flexible-redeem-input-discount-range-popup {
+	color: #2b2d42;
+
+	--thumb-height: 12px;
+	--thumb-width: 12px;
+	--clip-edges: 0.0125em;
+}
+
+/* === range commons === */
+input#ssw-reward-flexible-redeem-input-discount-range-popup {
+	position: relative;
+	overflow: hidden;
+}
+
+input#ssw-reward-flexible-redeem-input-discount-range-popup:active {
+	cursor: grabbing;
+}
+
+/* === WebKit specific styles === */
+input#ssw-reward-flexible-redeem-input-discount-range-popup,
+input#ssw-reward-flexible-redeem-input-discount-range-popup::-webkit-slider-runnable-track,
+input#ssw-reward-flexible-redeem-input-discount-range-popup::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	transition: all ease 100ms;
+	height: var(--thumb-height);
+}
+
+input#ssw-reward-flexible-redeem-input-discount-range-popup::-webkit-slider-runnable-track,
+input#ssw-reward-flexible-redeem-input-discount-range-popup::-webkit-slider-thumb {
+	position: relative;
+}
+
+input#ssw-reward-flexible-redeem-input-discount-range-popup::-webkit-slider-thumb {
+	--thumb-radius: calc((var(--thumb-height) * 0.5) - 1px);
+	--clip-top: calc((var(--thumb-height) - var(--track-height)) * 0.5 - 0.5px);
+	--clip-bottom: calc(var(--thumb-height) - var(--clip-top));
+	--clip-further: calc(100% + 1px);
+	--box-fill: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0
+		100vmax #C2C4F0;
+
+	width: var(--thumb-width, var(--thumb-height));
+	background: linear-gradient(#C2C4F0 0 0) scroll no-repeat left center /
+		50% calc(var(--track-height) + 1px);
+	background-color: #C2C4F0;
+	box-shadow: var(--box-fill);
+	border-radius: var(--thumb-width, var(--thumb-height));
+
+	filter: brightness(100%);
+	clip-path: polygon(
+		100% -1px,
+		var(--clip-edges) -1px,
+		0 var(--clip-top),
+		-100vmax var(--clip-top),
+		-100vmax var(--clip-bottom),
+		0 var(--clip-bottom),
+		var(--clip-edges) 100%,
+		var(--clip-further) var(--clip-further)
+	);
+}
+
+input#ssw-reward-flexible-redeem-input-discount-range-popup:hover::-webkit-slider-thumb {
+	filter: brightness(var(--brightness-hover));
+	cursor: grab;
+}
+
+input#ssw-reward-flexible-redeem-input-discount-range-popup::-webkit-slider-runnable-track {
+	background: linear-gradient(var(--track-color) 0 0) scroll no-repeat center /
+		100% calc(var(--track-height) + 1px);
+}
+
+input#ssw-reward-flexible-redeem-input-discount-range-popup:disabled::-webkit-slider-thumb {
+	cursor: not-allowed;
+}
+
+     input#ssw-reward-flexible-redeem-input-discount-range-popup {
+       border: none !important;
+       background: #fff !important;
+     }
+
+     input#ssw-reward-flexible-redeem-input-discount-range-popup::-webkit-slider-thumb {
+       background: #fff;
+       border: 3px solid #8F92D4;
+       width: 12px;
+       height: 12px;
+     }
+
+     input[type=range].ssw-reward-input-range:active {
+       cursor: grabbing;
+     }
+
+     #ssw-reward-flexible-redeem-discount-min-popup br,
+     #ssw-reward-flexible-redeem-discount-max-popup br {
+       display: none;
+     }
+
+     #ssw-reward-flexible-redeem-discount-min-popup,
+     #ssw-reward-flexible-redeem-discount-max-popup {
+       font-size: 13px;
+       display: flex;
+       column-gap: 5px;
+     }
+
+     .ssw-reward-box.ssw-reward-tab-right {
+       transition: all 1s;
+     }
+
+     .gw-points-rewards p {
+        font-family: Poppins;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 20px;
+        color: #393939;
+     }
+
+     .gw-points-rewards button {
+        font-family: Poppins;
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 12px;
+        color: #A5A5A5;       
+     }
+
+     .ssw-points-program-items .ssw-points-program-icon .ssw-icon-earn-points,
+     .ssw-points-program-items .ssw-points-program-icon .ssw-icon-get-reward {
+       display: none;
+     }
+
+     .ssw-reward-popup-earning-rules .ssw-points-program-icon,
+     .ssw-reward-popup-spending-rules .ssw-points-program-icon {
+       width: 20px;
+       height: 20px;
+       background-size: 20px;
+         background-repeat: no-repeat;
+         background-position: center;
+     }
+
+      .ssw-reward-popup-earning-rules .ssw-points-program-icon {
+         background-image: url({{ 'earning_rules.png' | asset_url }});
+      }
+
+       .ssw-reward-popup-spending-rules .ssw-points-program-icon {
+       background-image: url({{ 'spending_rules.png' | asset_url }});
+       }
+
+    @media screen and (max-width: 991px) {
+      .ssw-reward-tab-ico{
+        margin: 0 !important;
+      }
+      .ssw-reward-tab-right .ssw-reward-tab-closed {
+        border-radius: 30px 0px 0px 30px;
+        padding: 8px;
+        bottom: 50% !important;
+        right: 0;
+      }
+      .ssw-reward-tab-title{
+        display:none !important;
+      }
+    }
+  
+     @media screen and (min-width: 991px) {
+       #ssw-reward-box {
+         max-width: 390px;
+       }
+     }
+
+  .ssw-reward-box-rule-icon-wrapper .ssw-square {
+    border: 0 !important;
+  }
+
+  .ssw-reward-box-rule-icon-wrapper .ssw-square-border {
+    display: none;
+  }
+</style>

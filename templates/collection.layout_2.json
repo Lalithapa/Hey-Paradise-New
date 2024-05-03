@@ -1,0 +1,194 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "background-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "enable_filtering": true,
+        "filter_type": "drawer",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "3bd32a3a-b1bf-4a31-9ea8-abb65b8b7dca": {
+      "type": "Main_Banner",
+      "blocks": {
+        "f2060c8f-fda1-4ab6-a978-c5c7857457b7": {
+          "type": "image",
+          "settings": {
+            "image": "{{ collection.metafields.custom.desktop_banner.value }}",
+            "image_mobile": "{{ collection.metafields.custom.mobile_banner.value }}",
+            "block_link_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "f2060c8f-fda1-4ab6-a978-c5c7857457b7"
+      ],
+      "settings": {
+        "showCat": true,
+        "showTiles": "Category"
+      }
+    },
+    "8db924a9-02b3-4065-8523-b4320f00124e": {
+      "type": "Product-Collection-Slides",
+      "custom_css": [
+        ".product_slider_head {margin-top: -9px;}",
+        ".product-card {margin-top: 0px;}",
+        "@media only screen and (max-width: 992px) {.product_slider_head {margin-top: -24px; } .product-card {margin-top: 0px; }}"
+      ],
+      "settings": {
+        "maindtext": "Hey Highlights",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#ffffff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": true,
+        "indi_barDef": true,
+        "productLimit": 7,
+        "home_featured_products": "{{ collection }}",
+        "viewAllBtn": false,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "fdd70707-ab86-4cc0-aec4-127c6570bbe2": {
+      "type": "main-collection",
+      "settings": {
+        "maindtext": "",
+        "margintop": false,
+        "productStarts": 7,
+        "showAd1": true,
+        "ad1_container": false,
+        "showAd2": true,
+        "ad2_container": false,
+        "showAd3": true,
+        "ad3_container": false
+      }
+    },
+    "0e4c362d-35f0-4d56-b24d-be8ac03a7e76": {
+      "type": "Multi-carousel",
+      "blocks": {
+        "e3b7f1b3-8106-4834-ba25-298bddb0efc7": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "{{ collection.metafields.custom.carousel_image_1.value }}",
+            "careproofURL": "{{ collection.metafields.custom.carousel_product_url.value }}",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "{{ collection.metafields.custom.carousel_product_text.value }}"
+          }
+        },
+        "63610294-f2d3-4ac7-b89d-3e3a0900a92f": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "{{ collection.metafields.custom.carousel_image_2.value }}",
+            "careproofURL": "{{ collection.metafields.custom.carousel_product_url_2.value }}",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "{{ collection.metafields.custom.carousel_product_text_2.value }}"
+          }
+        },
+        "68a40e12-32e0-4c84-83ce-fddc5ec526cb": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "{{ collection.metafields.custom.carousel_image_3.value }}",
+            "careproofURL": "{{ collection.metafields.custom.carousel_product_url_3.value }}",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "{{ collection.metafields.custom.carousel_product_text_3.value }}"
+          }
+        },
+        "e98b7a72-1e5b-406a-afe0-fdcd6e159b30": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "{{ collection.metafields.custom.carousel_image_4.value }}",
+            "careproofURL": "{{ collection.metafields.custom.carousel_product_url_4.value }}",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "{{ collection.metafields.custom.carousel_product_text_4.value }}"
+          }
+        },
+        "39851010-e25d-4880-be42-d286c4685855": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "{{ collection.metafields.custom.carousel_image_5.value }}",
+            "careproofURL": "{{ collection.metafields.custom.carousel_product_url_5.value }}",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "{{ collection.metafields.custom.carousel_product_text_5.value }}"
+          }
+        },
+        "e1036eae-5bf0-4f63-828d-cca61f39671d": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "{{ collection.metafields.custom.carousel_image_6.value }}",
+            "careproofURL": "{{ collection.metafields.custom.carousel_product_url_6.value }}",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "{{ collection.metafields.custom.carousel_product_text_6.value }}"
+          }
+        },
+        "8d9a9f24-320c-460a-9bb9-feb72d7d9e57": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "{{ collection.metafields.custom.carousel_image_7.value }}",
+            "careproofURL": "{{ collection.metafields.custom.carousel_product_url_7.value }}",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "{{ collection.metafields.custom.carousel_product_text_7.value }}"
+          }
+        }
+      },
+      "block_order": [
+        "e3b7f1b3-8106-4834-ba25-298bddb0efc7",
+        "63610294-f2d3-4ac7-b89d-3e3a0900a92f",
+        "68a40e12-32e0-4c84-83ce-fddc5ec526cb",
+        "e98b7a72-1e5b-406a-afe0-fdcd6e159b30",
+        "39851010-e25d-4880-be42-d286c4685855",
+        "e1036eae-5bf0-4f63-828d-cca61f39671d",
+        "8d9a9f24-320c-460a-9bb9-feb72d7d9e57"
+      ],
+      "settings": {
+        "sectionTitle": "Insta Made me by It",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "55\/76",
+        "lagreScreenGap": 12,
+        "smallScreenGap": 10,
+        "bottomTextBackground": "",
+        "smallNumber": 2.2,
+        "mediumNumber": 3.2,
+        "largeNumber": 4.5,
+        "defaultNumber": 4.5
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "3bd32a3a-b1bf-4a31-9ea8-abb65b8b7dca",
+    "8db924a9-02b3-4065-8523-b4320f00124e",
+    "fdd70707-ab86-4cc0-aec4-127c6570bbe2",
+    "0e4c362d-35f0-4d56-b24d-be8ac03a7e76"
+  ]
+}

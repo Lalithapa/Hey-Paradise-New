@@ -1,0 +1,862 @@
+{% capture account_element %}
+<div class="account-auth-header">
+  <button type="button" class="auth-close-btn border-0 bg-transparent close_overlay mobile-screen">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M1 1L13 13" stroke="#393939" stroke-width="1.2" stroke-linecap="round" />
+      <path d="M13 1L1 13" stroke="#393939" stroke-width="1.2" stroke-linecap="round" />
+    </svg>
+  </button>
+  <p class="account-auth-title mb-0">Hey! {% if customer %} {{ customer.first_name }} {% else %} there {% endif %}
+  </p>
+  <p class="account-auth-offer mb-0">{% if customer %} Welcome to the #Hey!Fam {% else %} Get exclusive rewards,
+    offers
+    and more {% endif %} </p>
+  {% if customer %}
+  <a href="{{ routes.account_url }}" class="view-profile-btn d-block">View Profile</a>
+  {% else %}
+  {% comment %} <a href="{{ routes.account_login_url }}"><button class="account-auth-login-btn"> Sign Up/Login</button></a> {% endcomment %}
+<button class="account-auth-login-btn" {% if template == 'customers/login' or template == 'customers/register' %} disabled {% endif %} >Sign Up/Login</button>
+  {% endif %}
+</div>
+<ul class="account-auth-body">
+  <li class="account-auth-option-container">
+    <a href="javascript:void(0)" class="account-auth-options d-flex ">
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" fill="none">
+          <path
+            d="M23.9998 7.07227C24.0251 4.19612 21.1331 2.32763 18.9044 3.75674C18.4764 1.97904 17.0142 0.666016 15.2811 0.666016H8.71869C6.98564 0.666016 5.52343 1.97904 5.09547 3.75674C4.60038 3.44701 4.02935 3.27018 3.42185 3.27018C1.53505 3.27018 0 4.97581 0 7.07227C0 13.536 3.33256 16.189 3.64165 16.421C4.24835 16.8949 5.11689 16.393 5.10929 15.5618C5.10929 15.1972 4.94069 14.8764 4.68545 14.6902C4.62447 14.6428 3.94713 14.1012 3.28104 12.9526C2.34805 11.3439 1.87499 9.36544 1.87499 7.07227C1.87499 6.12456 2.56892 5.35352 3.42185 5.35352C4.27478 5.35352 4.96872 6.12456 4.96872 7.07227V9.31185C4.85617 13.5128 7.88877 17.6906 11.0624 19.8033V22.6452C11.1119 24.0273 12.8883 24.0262 12.9374 22.6452V19.8104C16.1511 17.7113 19.1392 13.5596 19.0311 9.31185V7.07227C19.0311 6.12456 19.7251 5.35352 20.578 5.35352C21.4309 5.35352 22.1248 6.12456 22.1248 7.07227C22.1248 9.36544 21.6518 11.3439 20.7188 12.9527C20.0527 14.1012 19.3753 14.6428 19.3144 14.6903C19.0591 14.8764 18.8905 15.1973 18.8905 15.5618C18.8829 16.3932 19.7518 16.8949 20.3582 16.421C20.6673 16.189 23.9998 13.536 23.9998 7.07227ZM17.1561 9.31185C17.2656 12.8207 14.6387 16.2593 12.0056 18.0005C9.39406 16.2337 6.73599 12.7858 6.8437 9.31185V4.83268C6.8437 3.68393 7.68482 2.74935 8.71869 2.74935H15.2811C16.315 2.74935 17.1561 3.68393 17.1561 4.83268V9.31185ZM17.6249 26.291C17.6249 26.8663 17.2052 27.3327 16.6874 27.3327H7.31245C6.06858 27.2777 6.06952 25.3039 7.31245 25.2493H16.6874C17.2052 25.2493 17.6249 25.7157 17.6249 26.291ZM15.2811 6.44727C15.2811 7.02258 14.8614 7.48893 14.3437 7.48893H9.65618C8.41232 7.43393 8.41326 5.46013 9.65618 5.4056H14.3437C14.8614 5.4056 15.2811 5.87195 15.2811 6.44727Z"
+            fill="#F4A812" />
+        </svg>
+      </span>
+      <div>
+        <p class="account-auth-option-title mb-0">Hey! Rewards</p>
+        <p class="account-auth-option-sub-text mb-0"> {% if customer %}Available Points{% else %}Sign In & Get 200
+          Reward Points{% endif %}</p>
+      </div>
+      {% if customer %}
+        <div class="d-flex flex-column align-items-end" style="flex: 1;">
+        <p class="account-auth-option-title points text-end mb-0">0
+        </p>
+        <p class="account-auth-option-sub-text text-end mb-0">Points</p>
+      </div>
+      {% endif %}
+    </a>
+  </li>
+  <li class="account-auth-option-container has-arrow">
+    <a href="/pages/wishlist" class="account-auth-options d-flex ">
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="22" viewBox="0 0 25 22" fill="none">
+          <path
+            d="M3.14081 12.4899L11.5153 20.3568C11.8398 20.6616 12.002 20.814 12.2 20.814C12.398 20.814 12.5602 20.6616 12.8847 20.3568L21.2592 12.4899C23.6066 10.2847 23.8917 6.65592 21.9174 4.11128L21.5461 3.63281C19.1843 0.588696 14.4436 1.09922 12.784 4.57638C12.5496 5.06755 11.8504 5.06755 11.616 4.57638C9.95644 1.09922 5.21567 0.588691 2.85386 3.63281L2.48263 4.11128C0.508338 6.65592 0.7934 10.2847 3.14081 12.4899Z"
+            stroke="#F294B7" stroke-width="2" />
+        </svg>
+      </span>
+      <div class=" ">
+        <p class="account-auth-option-title mb-0">Wishlist</p>
+        <p class="account-auth-option-sub-text mb-0">View saved products</p>
+      </div>
+    </a>
+  </li>
+  <li class="account-auth-option-container has-arrow">
+    <a href="{% if customer %}/account {% else %} javascript:void(0){% endif %}" class="account-auth-options d-flex ">
+      <span class="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M11.7674 1.9968C11.5958 1.92769 11.4042 1.92769 11.2326 1.9968L2.65363 5.44468L6.10938 6.83278L14.9558 3.27802L11.7674 1.9968ZM16.8906 4.05657L8.04425 7.61134L11.5 8.99944L20.3464 5.44468L16.8906 4.05657ZM21.5625 6.51212L12.2188 10.2677V21.7105L21.5625 17.955V6.51212ZM10.7812 21.712V10.2662L1.4375 6.51212V17.9564L10.7812 21.712ZM10.6993 0.654917C11.2133 0.448361 11.7867 0.448361 12.3007 0.654917L22.5486 4.77446C22.6819 4.82811 22.7961 4.92062 22.8765 5.04008C22.957 5.15953 23 5.30045 23 5.44468V17.9564C22.9998 18.245 22.9136 18.527 22.7524 18.7659C22.5913 19.0048 22.3626 19.1898 22.0958 19.2969L11.7674 23.4482C11.5958 23.5173 11.4042 23.5173 11.2326 23.4482L0.905625 19.2969C0.638611 19.19 0.409605 19.0052 0.248173 18.7662C0.0867412 18.5273 0.000296598 18.2452 0 17.9564L0 5.44468C3.34074e-05 5.30045 0.0430441 5.15953 0.123491 5.04008C0.203939 4.92062 0.318137 4.82811 0.451375 4.77446L10.6993 0.654917Z"
+            fill="#F3A07A" />
+        </svg>
+      </span>
+      <div class=" ">
+        <p class="account-auth-option-title mb-0">Orders</p>
+        <p class="account-auth-option-sub-text mb-0">
+          {% if customer %} View previous orders {% else %} Sign Up / Login to view {% endif %} </p>
+      </div>
+    </a>
+  </li>
+  <li class="account-auth-option-container has-arrow">
+    <a href="/pages/rewards" class="account-auth-options d-flex ">
+      <span class=" ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="29" height="26" viewBox="0 0 29 26" fill="none">
+          <path
+            d="M16.5 24L5.6797 10.4746C5.34718 10.059 5.18092 9.85115 5.13625 9.6007C5.09159 9.35024 5.17575 9.09776 5.34407 8.59278L6.9633 3.73509C7.40332 2.41505 7.62332 1.75503 8.1471 1.37752C8.67087 1 9.36659 1 10.758 1H22.242C23.6334 1 24.3291 1 24.8529 1.37752C25.3767 1.75503 25.5967 2.41505 26.0367 3.73509L27.6559 8.59278C27.8243 9.09776 27.9084 9.35024 27.8637 9.6007C27.8191 9.85115 27.6528 10.059 27.3203 10.4746L16.5 24ZM16.5 24L21.5312 8.1875M16.5 24L11.4688 8.1875M27.2812 9.625L21.5312 8.1875M21.5312 8.1875L19.375 2.4375M21.5312 8.1875H11.4688M13.625 2.4375L11.4688 8.1875M11.4688 8.1875L5.71875 9.625"
+            stroke="#C9B541" stroke-width="1.5" stroke-linecap="round" />
+          <path
+            d="M4.9 21.7586L4.9 21.7586C5.00137 22.0627 5.05206 22.2148 5.10276 22.2811C5.30288 22.5429 5.69712 22.5429 5.89724 22.2811C5.94794 22.2148 5.99863 22.0627 6.1 21.7586L6.1 21.7586C6.18177 21.5133 6.22266 21.3906 6.27555 21.2796C6.47291 20.8653 6.80672 20.5315 7.22099 20.3341C7.33201 20.2813 7.45468 20.2404 7.7 20.1586L7.7 20.1586C8.00412 20.0572 8.15618 20.0065 8.2225 19.9558C8.48431 19.7557 8.48431 19.3615 8.2225 19.1614C8.15618 19.1107 8.00412 19.06 7.7 18.9586L7.7 18.9586C7.45468 18.8768 7.33201 18.8359 7.22099 18.783C6.80672 18.5857 6.47291 18.2519 6.27555 17.8376C6.22266 17.7266 6.18177 17.6039 6.1 17.3586C5.99863 17.0545 5.94794 16.9024 5.89724 16.8361C5.69712 16.5743 5.30288 16.5743 5.10276 16.8361C5.05206 16.9024 5.00137 17.0545 4.9 17.3586C4.81823 17.6039 4.77734 17.7266 4.72445 17.8376C4.52709 18.2519 4.19329 18.5857 3.77901 18.783C3.66799 18.8359 3.54532 18.8768 3.3 18.9586C2.99588 19.06 2.84382 19.1107 2.7775 19.1614C2.51569 19.3615 2.51569 19.7557 2.7775 19.9558C2.84382 20.0065 2.99588 20.0572 3.3 20.1586C3.54532 20.2404 3.66799 20.2813 3.77901 20.3341C4.19329 20.5315 4.52709 20.8653 4.72445 21.2796C4.77734 21.3906 4.81822 21.5133 4.9 21.7586Z"
+            stroke="#C9B541" stroke-width="1.5" />
+        </svg>
+      </span>
+      <div class=" ">
+        <p class="account-auth-option-title mb-0">Hey! Perks</p>
+        <p class="account-auth-option-sub-text mb-0">Exclusive offers, saving and more</p>
+      </div>
+    </a>
+  </li>
+  <li class="account-auth-option-container has-arrow">
+    <a href="{% if customer %}/account {% else %} javascript:void(0){% endif %}" class="account-auth-options d-flex ">
+      <span class=" ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="28" viewBox="0 0 20 28" fill="none">
+          <path
+            d="M9.73294 13.7959C8.66953 13.7959 7.6059 13.3911 6.79648 12.5815C5.17722 10.9624 5.17722 8.32782 6.79648 6.70856C7.58069 5.92413 8.6236 5.49219 9.73294 5.49219C10.8423 5.49219 11.885 5.92435 12.6694 6.70856C14.2887 8.32782 14.2887 10.9624 12.6694 12.5815C11.8598 13.3911 10.7964 13.7959 9.73294 13.7959ZM9.73294 7.13602C9.09015 7.13602 8.44736 7.38062 7.95795 7.87003C6.97913 8.84885 6.97913 10.4414 7.95795 11.4202C8.43198 11.8943 9.06238 12.1553 9.73294 12.1553C10.4035 12.1553 11.0339 11.8943 11.5079 11.4202C12.4868 10.4414 12.4868 8.84885 11.5079 7.87003C11.0185 7.38062 10.3757 7.13602 9.73294 7.13602Z"
+            fill="#81AB96" />
+          <path
+            d="M9.74228 28L9.10718 27.254C8.73547 26.8172 0 16.4778 0 9.73267C0 4.36603 4.36603 0 9.73267 0C15.0993 0 19.4653 4.36603 19.4653 9.73267C19.4653 16.1461 10.7375 26.7943 10.3661 27.2444L9.74228 28ZM9.73267 1.64255C5.27179 1.64255 1.64255 5.27179 1.64255 9.73267C1.64255 12.2397 3.13748 15.8679 5.96585 20.2252C7.43365 22.4864 8.91171 24.4013 9.72369 25.4147C10.537 24.3735 12.0291 22.3956 13.5061 20.0915C16.3302 15.6863 17.8228 12.1041 17.8228 9.73267C17.8228 5.27179 14.1935 1.64255 9.73267 1.64255Z"
+            fill="#81AB96" />
+        </svg>
+      </span>
+      <div class=" ">
+        <p class="account-auth-option-title mb-0">My Addresses</p>
+        <p class="account-auth-option-sub-text mb-0"> {% if customer %} View all addresses {% else %} Sign Up / Login to
+          view {% endif %} </p>
+      </div>
+    </a>
+  </li>
+  {% if customer %}
+  <li class="account-auth-option-container">
+    <a href="/account/logout" class="account-auth-options d-flex ">
+      <span class=" ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M20.2073 8.60857L20.2075 8.60841C20.3978 8.41807 20.7064 8.41796 20.897 8.60849L22.9964 10.7078C23.7345 11.4459 23.7345 12.6478 22.9964 13.386L20.897 15.4853C20.8016 15.5806 20.6777 15.6281 20.5521 15.6281C20.4268 15.6281 20.3028 15.5807 20.2074 15.4853L20.2073 15.4852C20.017 15.2949 20.017 14.9863 20.2073 14.7961L20.2074 14.796L21.7007 13.3026L22.4689 12.5344H21.3825H10.1254C9.85611 12.5344 9.6379 12.3162 9.6379 12.0469C9.6379 11.7776 9.85611 11.5594 10.1254 11.5594H21.3825H22.4689L21.7007 10.7912L20.2074 9.29778L20.2073 9.29768C20.017 9.10741 20.017 8.79884 20.2073 8.60857ZM16.4726 18.375V20.25C16.4726 22.0693 14.9918 23.55 13.1725 23.55H3.75016C1.93077 23.55 0.45 22.0693 0.45 20.25V3.75C0.45 1.93074 1.93077 0.45 3.75016 0.45H13.1725C14.9918 0.45 16.4726 1.93074 16.4726 3.75V5.625C16.4726 5.89428 16.2544 6.1125 15.9851 6.1125C15.7157 6.1125 15.4975 5.89428 15.4975 5.625V3.75C15.4975 2.46764 14.4548 1.425 13.1725 1.425H3.75016C2.4678 1.425 1.42508 2.46764 1.42508 3.75V20.25C1.42508 21.5324 2.4678 22.575 3.75016 22.575H13.1725C14.4548 22.575 15.4975 21.5324 15.4975 20.25V18.375C15.4975 18.1057 15.7157 17.8875 15.9851 17.8875C16.2544 17.8875 16.4726 18.1057 16.4726 18.375Z"
+            stroke="#8F93DF" stroke-width="0.9" />
+        </svg>
+      </span>
+      <div class=" ">
+        <p class="account-auth-option-title mb-0">Logout</p>
+        <p class="account-auth-option-sub-text mb-0">We will miss you</p>
+      </div>
+    </a>
+  </li>
+  {% endif %}
+</ul>
+<div class="account-auth-footer">
+  <p class="account-auth-footer-text ">Have we met socially?</p>
+  <div class="account-auth-footer-icons d-flex justify-content-center">
+    <a href="https://www.instagram.com/hokmakeup/">
+      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <path
+          d="M22.0425 10.8205C21.8183 10.8205 21.5992 10.887 21.4128 11.0115C21.2264 11.136 21.0812 11.313 20.9954 11.5201C20.9096 11.7272 20.8872 11.9551 20.9309 12.1749C20.9746 12.3948 21.0826 12.5967 21.2411 12.7552C21.3996 12.9137 21.6015 13.0217 21.8214 13.0654C22.0412 13.1091 22.2691 13.0867 22.4762 13.0009C22.6833 12.9151 22.8603 12.7699 22.9848 12.5835C23.1093 12.3971 23.1758 12.178 23.1758 11.9538C23.1758 11.6533 23.0564 11.365 22.8439 11.1525C22.6313 10.9399 22.343 10.8205 22.0425 10.8205ZM26.3869 13.1061C26.3685 12.3225 26.2218 11.5472 25.9525 10.8111C25.7123 10.1812 25.3386 9.61094 24.8569 9.1394C24.3892 8.6553 23.8176 8.2839 23.1852 8.05329C22.4511 7.77578 21.6749 7.62565 20.8902 7.6094C19.8891 7.55273 19.568 7.55273 16.9991 7.55273C14.4302 7.55273 14.1091 7.55273 13.108 7.6094C12.3233 7.62565 11.5472 7.77578 10.813 8.05329C10.1818 8.28624 9.61068 8.65732 9.14135 9.1394C8.65726 9.60707 8.28585 10.1787 8.05524 10.8111C7.77773 11.5452 7.62761 12.3214 7.61135 13.1061C7.55469 14.1072 7.55469 14.4283 7.55469 16.9972C7.55469 19.5661 7.55469 19.8872 7.61135 20.8883C7.62761 21.673 7.77773 22.4491 8.05524 23.1833C8.28585 23.8157 8.65726 24.3873 9.14135 24.855C9.61068 25.337 10.1818 25.7081 10.813 25.9411C11.5472 26.2186 12.3233 26.3687 13.108 26.385C14.1091 26.4416 14.4302 26.4416 16.9991 26.4416C19.568 26.4416 19.8891 26.4416 20.8902 26.385C21.6749 26.3687 22.4511 26.2186 23.1852 25.9411C23.8176 25.7105 24.3892 25.3391 24.8569 24.855C25.3407 24.3852 25.7148 23.8144 25.9525 23.1833C26.2218 22.4472 26.3685 21.6719 26.3869 20.8883C26.3869 19.8872 26.4436 19.5661 26.4436 16.9972C26.4436 14.4283 26.4436 14.1072 26.3869 13.1061ZM24.6869 20.775C24.68 21.3745 24.5715 21.9685 24.3658 22.5316C24.215 22.9426 23.9728 23.314 23.6575 23.6177C23.3511 23.9299 22.9805 24.1716 22.5714 24.3261C22.0082 24.5317 21.4142 24.6403 20.8147 24.6472C19.8702 24.6944 19.5208 24.7038 17.0369 24.7038C14.553 24.7038 14.2036 24.7038 13.2591 24.6472C12.6366 24.6588 12.0168 24.563 11.4269 24.3638C11.0357 24.2015 10.6821 23.9604 10.388 23.6555C10.0745 23.3521 9.83537 22.9804 9.68913 22.5694C9.45855 21.9982 9.33066 21.3907 9.31135 20.775C9.31135 19.8305 9.25469 19.4811 9.25469 16.9972C9.25469 14.5133 9.25469 14.1638 9.31135 13.2194C9.31559 12.6065 9.42747 11.9991 9.64191 11.425C9.80818 11.0263 10.0634 10.671 10.388 10.3861C10.675 10.0613 11.0296 9.80344 11.4269 9.63051C12.0026 9.42278 12.6094 9.3142 13.2214 9.3094C14.1658 9.3094 14.5152 9.25273 16.9991 9.25273C19.483 9.25273 19.8325 9.25273 20.7769 9.3094C21.3764 9.31628 21.9704 9.42486 22.5336 9.63051C22.9628 9.7898 23.348 10.0488 23.6575 10.3861C23.967 10.6762 24.2088 11.0309 24.3658 11.425C24.5757 12.0001 24.6843 12.6072 24.6869 13.2194C24.7341 14.1638 24.7436 14.5133 24.7436 16.9972C24.7436 19.4811 24.7341 19.8305 24.6869 20.775ZM16.9991 12.1522C16.0413 12.154 15.1055 12.4398 14.31 12.9733C13.5145 13.5068 12.8949 14.2641 12.5297 15.1496C12.1644 16.0351 12.0698 17.009 12.2578 17.9482C12.4458 18.8874 12.908 19.7498 13.586 20.4264C14.2639 21.1031 15.1273 21.5636 16.0668 21.7498C17.0064 21.9359 17.9801 21.8394 18.8649 21.4725C19.7496 21.1055 20.5057 20.4845 21.0377 19.6879C21.5697 18.8914 21.8536 17.955 21.8536 16.9972C21.8548 16.3598 21.73 15.7284 21.4864 15.1394C21.2428 14.5504 20.8851 14.0154 20.434 13.5651C19.9828 13.1148 19.4471 12.7582 18.8576 12.5157C18.2681 12.2732 17.6365 12.1497 16.9991 12.1522ZM16.9991 20.1422C16.3771 20.1422 15.7691 19.9577 15.2519 19.6122C14.7347 19.2666 14.3316 18.7754 14.0935 18.2007C13.8555 17.626 13.7932 16.9937 13.9146 16.3836C14.0359 15.7736 14.3354 15.2132 14.7753 14.7733C15.2151 14.3335 15.7755 14.034 16.3856 13.9126C16.9956 13.7913 17.628 13.8535 18.2027 14.0916C18.7773 14.3296 19.2685 14.7327 19.6141 15.2499C19.9597 15.7671 20.1441 16.3752 20.1441 16.9972C20.1441 17.4102 20.0628 17.8191 19.9047 18.2007C19.7467 18.5823 19.515 18.929 19.223 19.221C18.9309 19.5131 18.5842 19.7447 18.2027 19.9028C17.8211 20.0608 17.4121 20.1422 16.9991 20.1422Z"
+          fill="#404184" />
+      </svg>
+    </a>
+    <a href="https://www.facebook.com/hokmakeup/">
+      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <path
+          d="M19.8715 10.988H21.5V8.12603C20.7115 8.04084 19.9193 7.99878 19.1266 8.00003C16.7705 8.00003 15.1593 9.49402 15.1593 12.23V14.588H12.5V17.792H15.1593V26H18.347V17.792H20.9976L21.3961 14.588H18.347V12.545C18.347 11.6 18.5895 10.988 19.8715 10.988Z"
+          fill="#404184" />
+      </svg>
+    </a>
+    <a href="https://www.youtube.com/c/hokmakeup">
+      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <path
+          d="M20.5029 16.2721L15.2006 13.2151C14.9482 13.0695 14.6383 13.071 14.3871 13.2188C14.1359 13.3668 13.9814 13.6388 13.9814 13.9331V20.0471C13.9814 20.3413 14.1359 20.6134 14.3871 20.7613C14.6383 20.9092 14.9482 20.9107 15.2006 20.7651L20.5029 17.7081C21.0492 17.3992 21.0491 16.5809 20.5029 16.2721ZM15.6128 18.6261V15.3541L18.4504 16.9901L15.6128 18.6261ZM27.1271 12.6007C26.8618 10.7038 25.3608 9.24855 23.4767 9.06174C21.9884 8.91418 19.6566 8.73828 16.9996 8.73828C14.3425 8.73828 12.0107 8.91418 10.5224 9.06174C8.63834 9.24851 7.13728 10.7038 6.87205 12.6007C6.45411 15.6052 6.45411 18.3956 6.87205 21.4001C7.13728 23.297 8.63834 24.7523 10.5224 24.9391C12.0107 25.0866 14.3425 25.2626 16.9996 25.2626C19.6566 25.2626 21.9884 25.0866 23.4767 24.9391C25.3608 24.7523 26.8618 23.297 27.1271 21.4001C27.545 18.3956 27.545 15.6052 27.1271 12.6007ZM25.5117 21.1685C25.3524 22.308 24.4502 23.1822 23.3177 23.2945C21.8656 23.4385 19.5907 23.6102 16.9996 23.6102C14.4084 23.6102 12.1335 23.4386 10.6814 23.2945C9.5489 23.1822 8.64674 22.308 8.48743 21.1684C8.28986 19.7555 8.18969 18.3532 8.18969 17.0004C8.18969 15.6477 8.28986 14.2454 8.48743 12.8324C8.64674 11.6929 9.5489 10.8186 10.6814 10.7063C12.1335 10.5623 14.4084 10.3907 16.9996 10.3907C19.5907 10.3907 21.8656 10.5623 23.3177 10.7063C24.4502 10.8186 25.3524 11.6929 25.5117 12.8324C25.9082 15.6836 25.9082 18.3173 25.5117 21.1685Z"
+          fill="#404184" />
+      </svg>
+    </a>
+  </div>
+</div>
+{% endcapture %}
+<Header>
+  <div class='container-fluid p-0' style='box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.04);'>
+    <div class='top-bar-shipping w-100 p-0'>
+      <div class='row' id='announce_bar'>
+        <div class='col-12 col-lg-4'>
+          <div class='text-center' id='adasdadas'>
+            {% for block in section.blocks %}
+            <div class='vertical_announce'>{{ block.settings.bklc }}</div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class='col-4 desktop-screen'>
+          <div class='row align-items-center mx-5'>
+            <div class='col-4'>
+              <a href='https://bit.ly/3ERJ7kN' class='no-line'>
+                <p>
+                  <svg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 16 18' fill='none'>
+                    <path
+                      d="M8.39804 16.804L8.74336 17.4697H8.74336L8.39804 16.804ZM7.60196 16.804L7.25664 17.4697H7.25664L7.60196 16.804ZM14.25 8C14.25 10.2364 13.111 12.0661 11.7225 13.4666C10.3347 14.8664 8.76052 15.7711 8.05271 16.1382L8.74336 17.4697C9.51848 17.0677 11.2453 16.0785 12.7877 14.5227C14.3295 12.9676 15.75 10.78 15.75 8H14.25ZM8 1.75C11.4518 1.75 14.25 4.54822 14.25 8H15.75C15.75 3.71979 12.2802 0.25 8 0.25V1.75ZM1.75 8C1.75 4.54822 4.54822 1.75 8 1.75V0.25C3.71979 0.25 0.25 3.71979 0.25 8H1.75ZM7.94729 16.1382C7.23948 15.7711 5.66527 14.8664 4.27749 13.4666C2.88902 12.0661 1.75 10.2364 1.75 8H0.25C0.25 10.78 1.67049 12.9676 3.21227 14.5227C4.75474 16.0785 6.48152 17.0677 7.25664 17.4697L7.94729 16.1382ZM8.05271 16.1382C8.01637 16.157 7.98363 16.157 7.94729 16.1382L7.25664 17.4697C7.72602 17.7132 8.27398 17.7132 8.74336 17.4697L8.05271 16.1382ZM10.25 8C10.25 9.24264 9.24264 10.25 8 10.25V11.75C10.0711 11.75 11.75 10.0711 11.75 8H10.25ZM8 5.75C9.24264 5.75 10.25 6.75736 10.25 8H11.75C11.75 5.92893 10.0711 4.25 8 4.25V5.75ZM5.75 8C5.75 6.75736 6.75736 5.75 8 5.75V4.25C5.92893 4.25 4.25 5.92893 4.25 8H5.75ZM8 10.25C6.75736 10.25 5.75 9.24264 5.75 8H4.25C4.25 10.0711 5.92893 11.75 8 11.75V10.25Z"
+                      fill="#000" />
+                  </svg>
+                  Find us
+                </p>
+              </a>
+            </div>
+            <div class='col-4'>
+              <a href="https://www.heyparadise.com/products/gift-card" class='no-line'>
+                <p>
+                  <svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 19' fill='none'>
+                    <path
+                      d="M1 8C1 7.05719 1 6.58579 1.29289 6.29289C1.58579 6 2.05719 6 3 6H17C17.9428 6 18.4142 6 18.7071 6.29289C19 6.58579 19 7.05719 19 8V9.5C19 9.96594 19 10.1989 18.9239 10.3827C18.8224 10.6277 18.6277 10.8224 18.3827 10.9239C18.1989 11 17.9659 11 17.5 11V11C17.0341 11 16.8011 11 16.6173 11.0761C16.3723 11.1776 16.1776 11.3723 16.0761 11.6173C16 11.8011 16 12.0341 16 12.5V16C16 16.9428 16 17.4142 15.7071 17.7071C15.4142 18 14.9428 18 14 18H6C5.05719 18 4.58579 18 4.29289 17.7071C4 17.4142 4 16.9428 4 16V12.5C4 12.0341 4 11.8011 3.92388 11.6173C3.82239 11.3723 3.62771 11.1776 3.38268 11.0761C3.19891 11 2.96594 11 2.5 11V11C2.03406 11 1.80109 11 1.61732 10.9239C1.37229 10.8224 1.17761 10.6277 1.07612 10.3827C1 10.1989 1 9.96594 1 9.5V8Z"
+                      stroke="#000" stroke-width="1.5" />
+                    <path d="M3 11H17" stroke="#000" stroke-width="1.5" stroke-linecap="round" />
+                    <path d="M10 5L10 18" stroke="#000" stroke-width="1.5" stroke-linecap="round" />
+                    <path
+                      d="M10 5L9.12144 4.12144C8.05514 3.05514 6.75521 2.25174 5.3246 1.77487V1.77487C4.18099 1.39366 3 2.24487 3 3.45035V3.63246C3 4.44914 3.52259 5.1742 4.29737 5.43246L6 6"
+                      stroke="#000" stroke-width="1.5" stroke-linecap="round" />
+                    <path
+                      d="M10 5L10.8786 4.12144C11.9449 3.05514 13.2448 2.25174 14.6754 1.77487V1.77487C15.819 1.39366 17 2.24487 17 3.45035V3.63246C17 4.44914 16.4774 5.1742 15.7026 5.43246L14 6"
+                      stroke="#000" stroke-width="1.5" stroke-linecap="round" />
+                  </svg>
+                  Gift card
+                </p>
+              </a>
+            </div>
+            <div class='col-4'>
+              <a href='/pages/contact' class='no-line'>
+                <p>
+                  <svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20' fill='none'>
+                    <circle cx="10" cy="10" r="9" stroke="#000" stroke-width="1.5" />
+                    <circle cx="10" cy="16" r="0.5" fill="#33363F" stroke="#000" />
+                    <path
+                      d="M10 14V12.5811C10 11.6369 10.6042 10.7986 11.5 10.5V10.5C12.3958 10.2014 13 9.3631 13 8.41886V7.90569C13 6.30092 11.6991 5 10.0943 5H10C8.34315 5 7 6.34315 7 8V8"
+                      stroke="#000" stroke-width="1.5" />
+                  </svg>
+                  Help
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='announce_bar2'>
+        <div class='vertical_announce'>{{ section.settings.sdjkhfgksh }}</div>
+      </div>
+    </div>
+    <div class='container'>
+      <div class='desktop-screen' id='head-list'>
+        <div>
+          <a class='navbar-brand logo-image desktop-screen' href='/' style='width: max-content;'>
+            {{ section.settings.header_logo }}
+          </a>
+        </div>
+        <div>
+          <ul class='list-unstyled' id='header-list'>
+            <li>
+              <div class='search'>
+                {% comment %}
+                <form action="/search" name="GET" role="search" class="Search__Form">
+
+                  <input type="search" class="search__input" name="q" autocomplete="off" autocorrect="off"
+                    autocapitalize="off" aria-label="Search..." placeholder="Search..." autofocus="">
+                  <input type="hidden" name="type" value="product">
+                </form>
+                {% endcomment %}
+                <div class='search__input'>
+                  <span class='txt-type-desktop'></span>
+                </div>
+                <button class='search__button'>
+                  <svg class='search__icon' aria-hidden='true' viewBox='0 0 24 24'>
+                    <g>
+                      <path
+                        d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                      </path>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+            </li>
+            <li>
+              <a href='https://www.delhivery.com/tracking'>
+                <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'>
+                  <path d="M2.6416 6.2002L9.99993 10.4585L17.3083 6.2252M9.99993 18.0085V10.4502" stroke="#191919"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path
+                    d="M8.27454 2.0665L3.82454 4.5415C2.81621 5.09984 1.99121 6.49984 1.99121 7.64984V12.3582C1.99121 13.5082 2.81621 14.9082 3.82454 15.4665L8.27454 17.9415C9.22454 18.4665 10.7829 18.4665 11.7329 17.9415L16.1829 15.4665C17.1912 14.9082 18.0162 13.5082 18.0162 12.3582V7.64984C18.0162 6.49984 17.1912 5.09984 16.1829 4.5415L11.7329 2.0665C10.7745 1.53317 9.22454 1.53317 8.27454 2.0665Z"
+                    stroke="#191919" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M14.1671 11.0332V7.98317L6.25879 3.4165" stroke="#191919" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Track Order</a>
+            </li>
+            <li>
+              <a href='/pages/rewards' style='color:#404184;'>
+                <svg xmlns='http://www.w3.org/2000/svg' width='25' height='24' viewBox='0 0 25 24' fill='none'>
+                  <path
+                    d="M13.3359 21.6074L4.01564 9.95705C3.68312 9.5414 3.51686 9.33358 3.47219 9.08312C3.42752 8.83267 3.51169 8.58018 3.68001 8.0752L4.92424 4.34251C5.36425 3.02247 5.58426 2.36245 6.10804 1.98494C6.63181 1.60742 7.32753 1.60742 8.71897 1.60742H17.9529C19.3443 1.60742 20.0401 1.60742 20.5638 1.98494C21.0876 2.36245 21.3076 3.02247 21.7476 4.34251L22.9919 8.0752C23.1602 8.58018 23.2444 8.83267 23.1997 9.08312C23.155 9.33358 22.9888 9.5414 22.6562 9.95705L13.3359 21.6074ZM13.3359 21.6074L17.7109 7.85742M13.3359 21.6074L8.96094 7.85742M22.7109 9.10742L17.7109 7.85742M17.7109 7.85742L15.8359 2.85742M17.7109 7.85742H8.96094M10.8359 2.85742L8.96094 7.85742M8.96094 7.85742L3.96094 9.10742"
+                    stroke="#404184" stroke-width="1.8" stroke-linecap="round" />
+                  <path
+                    d="M2.83332 19.0338L2.83333 19.0339C2.854 19.0959 2.86434 19.1269 2.87075 19.1425C3.04044 19.5561 3.62622 19.5561 3.79592 19.1425C3.80233 19.1269 3.81267 19.0959 3.83333 19.0339L3.83335 19.0338C3.85003 18.9838 3.85837 18.9587 3.8669 18.9352C4.06891 18.3762 4.50904 17.9361 5.06797 17.7341C5.09155 17.7256 5.11658 17.7172 5.16663 17.7005L5.16667 17.7005C5.22867 17.6799 5.25967 17.6695 5.2753 17.6631C5.68894 17.4934 5.68894 16.9076 5.2753 16.7379C5.25967 16.7315 5.22867 16.7212 5.16667 16.7005L5.16663 16.7005C5.11658 16.6838 5.09155 16.6755 5.06797 16.667C4.50904 16.4649 4.06891 16.0248 3.8669 15.4659C3.85837 15.4423 3.85003 15.4173 3.83334 15.3672L3.83333 15.3672C3.81267 15.3052 3.80233 15.2742 3.79592 15.2585C3.62622 14.8449 3.04044 14.8449 2.87075 15.2585C2.86434 15.2742 2.854 15.3052 2.83333 15.3672C2.81664 15.4173 2.8083 15.4423 2.79977 15.4659C2.59775 16.0248 2.15762 16.4649 1.5987 16.667C1.57511 16.6755 1.55008 16.6838 1.50001 16.7005L1.5 16.7005C1.438 16.7212 1.40699 16.7315 1.39136 16.7379C0.977731 16.9076 0.977731 17.4934 1.39136 17.6631C1.40699 17.6695 1.438 17.6799 1.5 17.7005C1.55007 17.7172 1.57511 17.7256 1.5987 17.7341C2.15762 17.9361 2.59775 18.3762 2.79977 18.9352C2.80829 18.9587 2.81664 18.9838 2.83332 19.0338Z"
+                    stroke="#404184" stroke-width="1.8" />
+                </svg>
+                Hey! Perks</a>
+            </li>
+            <li class='account-auth-btn'>
+              <button class='border-0 bg-transparent account-btn'>
+                <svg xmlns='http://www.w3.org/2000/svg' width='22' height='23' viewBox='0 0 22 23' fill='none'>
+                  <circle cx="10.9974" cy="9.02865" r="3.33333" stroke="#393939" stroke-width="1.8"
+                    stroke-linecap="round" />
+                  <circle cx="11" cy="11.252" r="10" stroke="#393939" stroke-width="1.8" />
+                  <path
+                    d="M17.6693 18.7036C17.276 17.5223 16.4095 16.4785 15.2042 15.734C13.9988 14.9895 12.5219 14.5859 11.0026 14.5859C9.48327 14.5859 8.0064 14.9895 6.80103 15.734C5.59566 16.4785 4.72917 17.5223 4.33594 18.7036"
+                    stroke="#393939" stroke-width="1.8" stroke-linecap="round" />
+                </svg>
+              </button>
+
+              <div class='account-auth-container'>
+                {{ account_element }}
+              </div>
+            </li>
+            <li>
+              {% capture the_snippet_fave_icon_menu %}{% render 'ssw-widget-faveicon-menu' with product.id %}
+                {% endcapture %}
+              {% unless the_snippet_fave_icon_menu contains 'Liquid error' %}
+              {{ the_snippet_fave_icon_menu }}
+              {% endunless %}
+            </li>
+            <li>
+              <a href='javascript:void(0)' class='cart-open'>
+                <svg xmlns='http://www.w3.org/2000/svg' width='23' height='23' viewBox='0 0 23 23' fill='none'>
+                  <path
+                    d="M6.83398 10.6641L6.83398 5.91897C6.83398 3.34164 8.92332 1.2523 11.5007 1.2523V1.2523C14.078 1.2523 16.1673 3.34164 16.1673 5.91897L16.1673 10.6641"
+                    stroke="#404184" stroke-width="1.8" stroke-linecap="round" />
+                  <path
+                    d="M1.86334 10.8053C2.0073 9.06322 2.07928 8.19217 2.65348 7.66347C3.22768 7.13477 4.1017 7.13477 5.84975 7.13477H17.1503C18.8983 7.13477 19.7723 7.13477 20.3465 7.66347C20.9207 8.19217 20.9927 9.06322 21.1367 10.8053L21.8211 19.0877C21.9048 20.1007 21.9467 20.6071 21.6496 20.9298C21.3525 21.2524 20.8443 21.2524 19.8279 21.2524H3.1721C2.15568 21.2524 1.64747 21.2524 1.3504 20.9298C1.05332 20.6071 1.09518 20.1007 1.17889 19.0877L1.86334 10.8053Z"
+                    stroke="#404184" stroke-width="1.8" />
+                </svg>
+                <span class='cart_item_count' {% if cart.item_count == 0 %} style="display:none"{%- endif -%}>{{ cart.item_count }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class='mobile-screen'>
+      <div class='container-fluid'>
+        <div class='row' id='header_bg'>
+          <div class='col-12'>
+            <div class='row justify-content-between'>
+              <div class='col-4 p-0 d_cent justify-content-start'>
+                <ul class='list-unstyled d-flex gap-2'>
+                  <li class='d_cent hamburger_menu menu-slide-toggle'>
+                    <svg xmlns='http://www.w3.org/2000/svg' width='50' height='44' viewBox='0 0 50 44' fill='none'>
+                      <path d="M16 16H34" stroke="#191919" stroke-width="2" stroke-linecap="round" />
+                      <path d="M16 22L33.3573 22" stroke="#191919" stroke-width="2" stroke-linecap="round" />
+                      <path d="M16 28H34" stroke="#191919" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                  </li>
+                  <li class='d_cent hamburger-back-btn d-none'>
+                    <img src='https://cdn.shopify.com/s/files/1/0673/6396/3172/files/back-arrow.svg' alt='back'
+                      class='img-fluid'>
+                  </li>
+                  <li>
+                    <a class='navbar-brand logo-image' href='/'><span>
+                        {{ section.settings.mobile_logo }}
+                      </span></a>
+                  </li>
+                </ul>
+              </div>
+              <div class='col-5 '>
+                <ul class='right-menu-list'>
+                  <li>
+                    <a href='javascript:void(0)' class='icon-size' id='search_mobile'>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <ellipse cx="9.41712" cy="9.41712" rx="8.41712" ry="8.41712" stroke="#393939" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15.2734 15.7087L18.5734 19.0002" stroke="#393939" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </a>
+                  </li>
+                  <li class='position-relative'>
+                    {% capture the_snippet_fave_icon_menu %}{% render 'ssw-widget-faveicon-menu' with product.id %}
+                    {% endcapture %}
+                  {% unless the_snippet_fave_icon_menu contains 'Liquid error' %}
+                  {{ the_snippet_fave_icon_menu }}
+                  {% endunless %}
+                    {% comment %} <a href='/pages/wishlist' class='header__icon h-wishlist-icon wishlist-page-widget'>
+                      <svg class='headwishIcon' xmlns='http://www.w3.org/2000/svg' width='22' height='19'
+                        viewBox='0 0 22 19' fill='none'>
+                        <path
+                          d="M3.45068 10.9082L10.4033 17.4395C10.6428 17.6644 10.7625 17.7769 10.9037 17.8046C10.9673 17.8171 11.0327 17.8171 11.0963 17.8046C11.2375 17.7769 11.3572 17.6644 11.5967 17.4395L18.5493 10.9082C20.5055 9.07059 20.7431 6.0466 19.0978 3.92607L18.7885 3.52734C16.8203 0.99058 12.8696 1.41601 11.4867 4.31365C11.2913 4.72296 10.7087 4.72296 10.5133 4.31365C9.13037 1.41601 5.17972 0.990584 3.21154 3.52735L2.90219 3.92607C1.25695 6.0466 1.4945 9.07059 3.45068 10.9082Z"
+                          stroke="#191919" stroke-width="2" />
+                      </svg>
+                    </a> {% endcomment %}
+                  </li>
+                  <li class='position-relative'>
+                    <a href='javascript:void(0)' class='icon-size cart-open'>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                        <path d="M6.78516 9.47021L6.78516 5.1664C6.78516 2.86525 8.6506 0.999802 10.9517 0.999802V0.999802C13.2529 0.999802 15.1183 2.86525 15.1183 5.1664L15.1183 9.47022" stroke="#393939" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M2.31473 9.96711C2.45765 8.22386 2.52911 7.35223 3.1034 6.82309C3.6777 6.29395 4.55225 6.29395 6.30135 6.29395H15.5968C17.3459 6.29395 18.2204 6.29395 18.7947 6.82309C19.369 7.35223 19.4405 8.22386 19.5834 9.96711L20.1465 16.8362C20.2295 17.8486 20.271 18.3548 19.974 18.6772C19.6769 18.9996 19.169 18.9996 18.1532 18.9996H3.74489C2.72908 18.9996 2.22118 18.9996 1.92413 18.6772C1.62708 18.3548 1.66858 17.8486 1.75158 16.8362L2.31473 9.96711Z" stroke="#393939" stroke-width="1.5"/>
+                      </svg>
+                      <span class='cart_item_count' {% if cart.item_count == 0 %} style="display:none"{%- endif -%}>
+                        {{- cart.item_count -}}
+                      </span>
+                    </a>
+                    {% comment %} <span class="mini_cart_item_count">{{ cart.item_count }}</span> {% endcomment %}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% render 'mobile-nav' %}
+  </div>
+</Header>
+{% render 'gw-custom-reward-scripts' %}
+{% comment %} Search Flow {% endcomment %}
+<div class="transparent-overlay d-none"></div>
+<div class='search-section-container d-none'>
+  <div class='container-fluid search-container'>
+    <button class='search-close-btn border-0 bg-transparent'>
+      <img src='https://cdn.shopify.com/s/files/1/0673/6396/3172/files/close.svg?v=1696318785' alt='close-svg'>
+    </button>
+
+    <div class='container px-0'>
+      <div id='id-header-predictive-search-container' class='search-box-container row'>
+        <span class='search-input-icon'>
+          <svg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' fill='none'>
+            <circle cx="20.75" cy="20.75" r="8.75" stroke="#393939" stroke-width="1.7" />
+            <path d="M32 32L28.25 28.25" stroke="#393939" stroke-width="1.7" stroke-linecap="round" />
+          </svg>
+        </span>
+        {% comment %} Predictive Search starts {% endcomment %}
+        <predictive-search>
+          <form id='header-predictive-search-form-{{section.id |  handleize}}' action='{{ routes.search_url }}'
+            method='get' role='search'>
+            <input id='Search' type='search' class='search-input col-12' name='q' value='{{ search.terms | escape }}'
+              role='combobox' aria-expanded='false' aria-owns='predictive-search-results'
+              aria-controls='predictive-search-results' aria-haspopup='listbox' aria-autocomplete='list'
+              autocomplete='off'>
+            <input name='options[prefix]' type='hidden' value='last'>
+          </form>
+        </predictive-search>
+        <span class='search-input-clear d-none'> Clear </span>
+      </div>
+      {% comment %} Search Performs Starts {% endcomment %}
+      <div class='row p-0 search-results-section' id='emptySearch'>
+        <div class='col-12 col-lg-3 p-0'>
+          <div id='empltySearchParam' style='display:none;'>
+            <p class='search-results-bold-text d-none'>Opps! No Product
+            Found.</p>
+          </div>
+          <ul class='p-0 search-suggestions-container d-flex flex-column' data-suggestion-category='false'>
+            <p class='mb-0 search-results-bold-text'>Trending Searches</p>
+            {{ section.settings.search_list }}
+          </ul>
+        </div>
+        <div class='col-12 col-lg-9 p-0 '>
+          <div class='search-results-tab-container d-flex justify-content-between'>
+            <div class='search-results-tabs d-flex'></div>
+            <a href='{{ collections[section.settings.home_search_products].url }}' class='shop-all-btn'>Shop All ></a>
+          </div>
+          <div class='search-results-product-card-container d-flex flex-column flex-lg-row' id='emptySearch'>
+            {% for product in collections[section.settings.home_search_products].products
+            limit: 4
+            %}
+            <div class='search-results-product-card d-flex align-items-center flex-lg-column'>
+              <div class='search-result-product-image-container'>
+                <a href='{{ product.url }}' tabindex='-1'>
+                  <img loading='lazy' src='{{ product.featured_image | img_url:'210x280' }}' alt='{{ product.url }}'
+                    class='search-result-product-image img-fluid'>
+                </a>
+              </div>
+              <div class='w-100'>
+                <p class='mb-0 brand-name'>{{ product.vendor }}</p>
+                <p class='mb-0 product-title'>{{ product.title | truncatewords: 8, '...' }}</p>
+                <div class="product-price mb-0">
+                  <span class="selling-price">{{ product.price | money_without_trailing_zeros }}</span>
+                  <span class="old-price">
+                    {% if product.compare_at_price > product.price %}
+                      {{ product.compare_at_price | money_without_trailing_zeros -}}
+                    {% endif %}
+                  </span>
+                  <span class="discount">
+                    {% if product.compare_at_price > product.price %}
+                      {{-
+                        product.compare_at_price
+                        | minus: product.price
+                        | times: 100.0
+                        | divided_by: product.compare_at_price
+                        | money_without_currency
+                        | times: 100
+                        | remove: '.0'
+                      -}}
+                      % Off
+                    {% endif %}
+                  </span>
+              </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% comment %} If Search Performed {% endcomment %}
+      <div id='predictive-search-products' tabindex='-1'></div>
+    </div>
+  </div>
+</div>
+{% comment %} Toaster/ Snackbar {% endcomment %}
+<div id='toastifies' class='toastersd d_cent' style='display:none'>
+  <div class='notification success'>
+    <span class='d_cent'>
+      <svg xmlns='http://www.w3.org/2000/svg' width='43' height='43' viewBox='0 0 43 43' fill='none'>
+        <circle cx="21.5" cy="21.5" r="21.5" fill="#E1E2FC" />
+        <mask id="mask0_4177_65197" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="43"
+          height="43">
+          <circle cx="21.5" cy="21.5" r="21.5" fill="#E1E2FC" />
+        </mask>
+        <g mask="url(#mask0_4177_65197)">
+          <path
+            d="M16.7852 20.4112L16.7852 15.6294C16.7852 13.0727 18.8578 11.0001 21.4145 11.0001V11.0001C23.9711 11.0001 26.0438 13.0727 26.0438 15.6294L26.0438 20.4112"
+            stroke="#656AD2" stroke-width="1.5" stroke-linecap="round" />
+          <path
+            d="M11.8562 20.5567C11.9991 18.8135 12.0706 17.9419 12.6449 17.4127C13.2192 16.8836 14.0937 16.8836 15.8428 16.8836H26.989C28.7381 16.8836 29.6127 16.8836 30.187 17.4127C30.7613 17.9419 30.8327 18.8135 30.9757 20.5567L31.6545 28.8368C31.7375 29.8492 31.779 30.3554 31.4819 30.6778C31.1849 31.0002 30.677 31.0002 29.6612 31.0002H13.1707C12.1549 31.0002 11.647 31.0002 11.3499 30.6778C11.0529 30.3554 11.0944 29.8492 11.1774 28.8368L11.8562 20.5567Z"
+            fill="#656AD2" stroke="#656AD2" stroke-width="1.5" />
+        </g>
+      </svg>
+      <span>Product Added To bag</span>
+    </span>
+    <span class='cart-open view'>View
+      <svg xmlns='http://www.w3.org/2000/svg' width='6' height='10' viewBox='0 0 6 10' fill='none'>
+        <path d="M1 9.5L5 5L1 0.5" stroke="#393939" stroke-width="1.5" />
+      </svg>
+    </span>
+  </div>
+</div>
+{% comment %} Toaster/ Snackbar {% endcomment %}
+<div class='overlay-container close_overlay'></div>
+<div class='account-auth-container d-lg-none'>
+  {{ account_element }}
+</div>
+<div class='d-none' id="catagory-section">
+  <div class="megamenus-item">
+      <ul class="m-menu-container d-flex flex-column pl-0">
+        {% for link in linklists['main-mega-menu'].links -%}
+          {% render "nav-list" , link: link , index: 1 , showSearchBtn:false %}
+        {% endfor %}
+      </ul>
+    </div>
+</div>
+{% unless template == 'customers/login' or template == 'customers/register' %}
+<div class="sign-up-container">
+  <div class="sign-up-container-topbar">
+    <button type="button" class="sign-up-container-close-btn bg-transparent border-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M1 1L13 13" stroke="#393939" stroke-linecap="round" />
+        <path d="M13 1L1 13" stroke="#393939" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+    {% render 'otp-validator' %}
+  {% comment %} <div class="main-sign-up-container d-flex flex-column align-items-center text-center">
+    <p class="sign-up-greet">Nice to see you</p>
+    <p class="sign-up-massage">Join the #Hey! Fam and get exclusive Rewards, Discount Codes, Free Gifts and more.
+    </p>
+    <p class="sign-up-title">SIGN UP/ LOGIN</p>
+    <button type="button" class="sign-in-with-mobile-btn border-0">CONTINUE WITH MOBILE NO.</button>
+  </div>
+  <div class="sign-up-section-divider-container d-flex align-items-center">
+    <div class="sign-up-section-divider-line"></div>
+    <div class="sign-up-section-divider-text">OR</div>
+    <div class="sign-up-section-divider-line"></div>
+  </div>
+  <div class="sub-sign-up-container">
+    <p class="sub-sign-up-text text-center">Continue with</p>
+    <div class="sub-sign-up-methods d-flex align-items-center justify-content-center">
+      <a href=""> google </a>
+      <a href=""> facebook </a>
+      <a href=""> apple </a>
+      <a href=""> gmail </a>
+    </div>
+  </div> {% endcomment %}
+  </div>
+{% endunless %}
+{% comment %} 
+<div class="sign-up-form-container">
+  <div class="sign-up-form-header">
+    <p class="sign-up-header-small-text">You're almost there</p>
+    <p class="sign-up-header-title mb-0">Keep up the excitement</p>
+    <button class="sign-up-form-close-btn bg-transparent border-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M1 1L13 13" stroke="#393939" stroke-linecap="round" />
+        <path d="M13 1L1 13" stroke="#393939" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+  <div class="sign-up-form-area">
+    <form action="" class="d-flex flex-column">
+      <input type="text" class="sign-up-name" placeholder="Enter Name*">
+      <input type="email" class="sign-up-email" placeholder="Enter Email (Optional)">
+      <div class="sign-up-mobile-details d-flex">
+        <select name="" id="" class="sign-up-country-code">
+          <option value="+91">+91</option>
+          <option value="+91">+90</option>
+          <option value="+91">+92</option>
+          <option value="+91">+1</option>
+        </select>
+        <input type="text" inputmode="numeric" pattern="[0-9]" class="sign-up-number"
+          placeholder="Enter your Mobile No.">
+      </div>
+      <button type="submit" class="sign-up-form-submit-btn border-0">Save Info</button>
+    </form>
+  </div>
+</div>
+{% endcomment %}
+<script type='application/ld+json'>
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if settings.logo %}
+      "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.social_twitter_link | json }},
+      {{ settings.social_facebook_link | json }},
+      {{ settings.social_pinterest_link | json }},
+      {{ settings.social_instagram_link | json }},
+      {{ settings.social_tiktok_link | json }},
+      {{ settings.social_tumblr_link | json }},
+      {{ settings.social_snapchat_link | json }},
+      {{ settings.social_youtube_link | json }},
+      {{ settings.social_vimeo_link | json }}
+    ],
+    "url": {{ request.origin | append: page.url | json }}
+  }
+</script>
+
+{%- if request.page_type == 'index' -%}
+{% assign potential_action_target = request.origin
+| append: routes.search_url
+| append: '?q={search_term_string}'
+%}
+<script type='application/ld+json'>
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ request.origin | append: page.url | json }}
+    }
+  </script>
+{% endif %}
+
+<script>
+  $(document).ready(function () {
+    {% if cart.item_count == 0 %}
+    $('#empty-slider-cards').slick();
+    {% endif %}
+    function removeExtraSpaces(inputString) {
+      // Use a regular expression to replace consecutive spaces with a single space
+      return inputString.replace(/\s+/g, ' ').trim();
+    }
+
+    document.getElementById('header-predictive-search-form-{{section.id |  handleize}}')
+      .addEventListener('submit', function (event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        const inputElement = document.getElementById('Search');
+        const inputValue = removeExtraSpaces(inputElement.value);
+
+        // Check if the input is not empty or blank
+        if (inputValue === '') {
+          return;
+        }
+
+        // Update the input value with the cleaned value
+        inputElement.value = inputValue;
+
+        // Now you can submit the form programmatically
+        // For example, you can uncomment the next line
+        this.submit();
+      });
+     
+    // const suggestionSlider = new Swiper('.suggestion-slider', {
+    //   loop: false,
+    //   slidesPerView: '1.4',
+    //   spaceBetween: 10,
+    //   breakpoints: {
+    //     0: {
+    //       slidesPerView: 2,
+    //     },
+    //     600: {
+    //       slidesPerView: 2.4,
+    //     },
+    //   },
+    // });
+  });
+
+  /*  let announcement = tns({
+       container: "#adasdadas",
+       loop: true,
+       items: 1,
+       slideBy: 1,
+       axis: "vertical",
+       arrowKeys: false,
+       controls: false,
+       nav: false,
+       swipeAngle: false,
+       speed: 400,
+       autoplay: true,
+       autoplayTimeout: 20000,
+       autoplayButtonOutput: false,
+   });
+  const freeGiftSwiper = new Swiper('.free-gift-swiper', {
+           loop: false,
+           slidesPerView: "1.4",
+           spaceBetween: 10,
+           pagination: {
+               el: ".gift-cards-pagination",
+               type: "fraction",
+           },
+           navigation: {
+               nextEl: '.gift-right',
+               prevEl: '.gift-left',
+           },
+           breakpoints: {
+               0: {
+                   slidesPerView: 1
+
+               },
+               600: {
+                   slidesPerView: 1.4
+
+               },
+           },
+       }); */
+</script>
+{% schema %}
+{
+"name": "Main Header",
+"settings": [
+{
+"type": "text",
+"id": "sdjkhfgksh",
+"label": "Announcement 2 Offer Text "
+},
+{
+"type": "html",
+"id": "header_logo",
+"label": "Header Logo In Svg"
+},
+{
+"type": "html",
+"id": "mobile_logo",
+"label": "Mobile Logo In Svg"
+},
+{
+"type": "video",
+"id": "hjks",
+"label": "add video"
+},
+{
+"type": "image_picker",
+"id": "sdffj",
+"label": "Add your Desktop Logo Here"
+},
+{
+"type": "image_picker",
+"id": "sjdhksjf",
+"label": "Add Your Mobile Logo Here"
+},
+{
+"type": "header",
+"content": "cart and other assets"
+},
+{
+"type": "collection",
+"id": "cart_collection_products",
+"label": "Add cart Collection for Recommended Products"
+},
+{
+"type": "checkbox",
+"id": "hskjfd",
+"label": "Show Cart",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "heyhbs",
+"label": "Show Wishlist",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "skdieuf",
+"label": "Show Account",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "opwrire",
+"label": "Show extra icon",
+"default": true
+},
+{
+"type": "header",
+"content": "Add Extra Icon Here"
+},
+{
+"type": "html",
+"id": "perior",
+"label": "Add your SVG"
+},
+{
+"type": "text",
+"id": "potus",
+"label": "Add your text here"
+},
+{
+"type": "url",
+"id": "oprutqw",
+"label": "Add your url here"
+},
+{
+"type": "header",
+"content": "Navigation Starts From Here"
+},
+{
+"type": "link_list",
+"id": "sjdhkewew",
+"label": "Add your menu here"
+},
+{
+"type": "textarea",
+"id": "lkjhgsd",
+"label": "Add Menu Items"
+},
+{
+"type": "color",
+"id": "ojfchkls",
+"label": "Add Color To Menu Items"
+},
+{
+"type": "collection",
+"id": "home_search_products",
+"label": "Add Search Trending Products"
+},
+{
+"type": "html",
+"id": "search_list",
+"label": "Add Search Trending Products"
+}
+],
+"blocks": [
+{
+"name": "Image With Text",
+"type": "Image",
+"settings": [
+{
+"type": "text",
+"id": "bklc",
+"label": "Offer Text"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Main Header",
+"category": "Image"
+}
+]
+}
+{% endschema %}
+{% stylesheet %}
+{% endstylesheet %}

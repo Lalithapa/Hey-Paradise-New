@@ -1,0 +1,154 @@
+{% assign spliceSection = section.id | remove: '-' | slice: 20, 30 %}
+{% assign productLimit = section.settings.productLimit %}
+<div class="container" id="product-{{ section.id }}">
+  {% unless section.settings.comboSection %}
+    <div class="product_slider_head">
+      <p class="deals_txt">{{ section.settings.maindtext }}</p>
+    </div>
+    {% if section.settings.maindtextSub != blank %}
+      <p class="sellermini_txt text-center" style="color:{{ section.settings.tcgjsgd}}">
+        {{ section.settings.maindtextSub }}
+      </p>
+    {% endif %}
+  {% endunless %}
+
+  <div class="product-carousel-wrapper" id="{{ section.id }}">
+    <button
+      class="carousel-btn border-0 prev"
+      id="new-product-carousel-prev-btn-{{ section.id }}"
+    >
+      {% render 'carousel-prev-btn-svg' %}
+    </button>
+
+    <div class="product-carousel row element-carousel element-carousel-bar" id="new-product-carousel-{{ section.id }}">
+      {% for product in collections[section.settings.home_featured_products].products limit: productLimit %}
+        <div class="col-6 col-md-3 d_cent element-carousel-item">
+          {% render 'main_product_cards',
+            product: product,
+            sectionId: spliceSection,
+            card_margin: false,
+            show_button: true,
+            index: forloop.index0
+          %}
+        </div>
+      {% endfor %}
+    </div>
+    {% if section.settings.viewAllBtn %}
+      <a
+        href="{{ collections[section.settings.home_featured_products].url }}"
+        class="collection-view-btn"
+        id="collection-view-btn-{{ section.id }}"
+        >View All</a
+      >
+    {% endif %}
+
+    <button
+      class="carousel-btn border-0 next"
+      id="new-product-carousel-next-btn-{{ section.id }}"
+    >
+      {% render 'carousel-next-btn-svg' %}
+    </button>
+  </div>
+</div>
+{% for product in collections[section.settings.home_featured_products].products limit: productLimit %}
+  {% render 'quick_shades', product: product, sectionId: spliceSection, index: forloop.index0 %}
+{% endfor %}
+<script>
+  $(document).ready(function ready() {
+    const settings = {
+      root: $('#new-product-carousel-{{ section.id }}'),
+      slides: $('#new-product-carousel-{{section.id}} > .element-carousel-item'),
+      prev: $('#new-product-carousel-prev-btn-{{section.id}}'),
+      next: $('#new-product-carousel-next-btn-{{section.id}}'),
+      mouseDragHandlers: true,
+      removeControls: true,
+    };
+
+    const carousel = new Carousel(settings);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "New Product Carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "maindtext",
+      "label": "Add Your Heading Here"
+    },
+    {
+      "type": "text",
+      "id": "maindtextSub",
+      "label": "Add Your Sub Heading Here"
+    },
+    {
+      "type": "checkbox",
+      "id": "comboSection",
+      "label": "Make This Combo Section",
+      "info": "Section Title will be hidden if you make it combo section"
+    },
+    {
+      "type": "color",
+      "id": "bgColor",
+      "label": "Background Color",
+      "default": "#fff"
+    },
+    {
+      "type": "checkbox",
+      "id": "indi_barSm",
+      "label": "Add indicator bar in small screen?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "indi_barMd",
+      "label": "Add indicator bar in medium screen?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "indi_barLg",
+      "label": "Add indicator bar in large screen?",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "indi_barDef",
+      "label": "Add indicator bar in Default Screen?",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "productLimit",
+      "label": "Number of Products",
+      "info": "Enter number of total products that you want to show in this slider",
+      "default": 15
+    },
+    {
+      "type": "collection",
+      "id": "home_featured_products",
+      "label": "Collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "viewAllBtn",
+      "label": "Show View All Collection Button"
+    },
+    {
+      "type": "color",
+      "id": "tcgjsgd",
+      "label": "Add Sub Heading Color",
+      "default": "#191919"
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Product Carousel"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}

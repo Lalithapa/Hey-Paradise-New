@@ -1,0 +1,110 @@
+{% comment %} {% assign splicesectionId = section.id | remove: '-' | slice: 25, 33 %}
+<div
+  class="container product-comp"
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=8&intent=complementary"
+>
+  {%- if recommendations.performed? and recommendations.products_count > 0 -%}
+    <div class="text-center">
+      <h2>More To Love</h2>
+    </div>
+    <div class="d_cent" id="comp_products">
+      {%- for product in recommendations.products -%}
+        {% assign indexIs = forloop.index0 %}
+        <div class="p-0 d_cent">
+          {% render 'main_product_cards',
+            product: product,
+            sectionId: splicesectionId,
+            card_margin: true,
+            show_button: true,
+            showLink: true
+          %}
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
+<script>
+  const handleCompIntersection = async (entries, observer) => {
+      if (!entries[0].isIntersecting) return;
+      observer.unobserve(productCompSection);
+      const url = productCompSection.dataset.url;
+      await fetch(url)
+          .then(response => response.text())
+          .then(text => {
+              const html = document.createElement('div');
+              html.innerHTML = text;
+              const recommendations = html.querySelector('.product-comp');
+
+              if (recommendations && recommendations.innerHTML.trim().length) {
+                  productCompSection.innerHTML = recommendations.innerHTML;
+                  com_ready();
+                  initializeQuickViewSlider();
+              };
+
+          })
+          .catch(e => {
+              console.error(e);
+          });
+  };
+
+  const productCompSection = document.querySelector('.product-comp');
+  const observer = new IntersectionObserver(handleCompIntersection, { rootMargin: '0px 0px 200px 0px' });
+
+  observer.observe(productCompSection);
+</script>
+
+<script>
+  const com_ready = () => {
+    $('#comp_products').slick({
+            infinite: false,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 2,
+            mobileFirst: true,
+            arrows : false,
+            responsive: [
+                {
+                breakpoint: 0,
+                settings: {
+                    slidesToShow:2
+                }
+                },
+                {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2.5
+                }
+                },
+                {
+                breakpoint: 1440,
+                settings: {
+                    slidesToShow: 4
+                }
+                }
+            ]
+            });
+  };
+</script> {% endcomment %}
+
+{% schema %}
+{
+"name": "Product Complementary",
+"settings": [
+{
+"type": "range",
+"id": "no_of_product",
+"min": 4,
+"max": 10,
+"step": 1,
+"unit": "s",
+"label": "Number of Products",
+"default": 4
+}
+],
+"presets": [
+{
+"name": "Product Complementary"
+}
+]
+}
+{% endschema %}

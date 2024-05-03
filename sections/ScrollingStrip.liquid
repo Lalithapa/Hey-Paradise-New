@@ -1,0 +1,84 @@
+<div class="main-spaces py-0" style="background-image:url('{{section.settings.hasjkdhka | image_url }}')">
+    <div id="slideshow" class="club-slide">
+        <div class="repetition clubs">
+            <div class="repetition__group">
+                {% for block in section.blocks %}
+                <h4>
+                    <div style="position: relative;" class="lazyload-wrapper">
+                        <img class="brand-logos d-none d-lg-block" src="{{ block.settings.aloefruinc | image_url }}"
+                            data-sizes="auto" alt="promo-images-{{ forloop.index }}">
+                        <img class="brand-logos d-block d-lg-none" src="{{ block.settings.sdfgfsd | image_url }}"
+                            data-sizes="auto" alt="promo-images-{{ forloop.index }}">
+                    </div>
+                </h4>
+                {% endfor %}
+            </div>
+            <div aria-hidden="true" class="repetition__group">
+                {% for block in section.blocks %}
+                <h4>
+                    <div style="position: relative;" class="lazyload-wrapper">
+                        <img class="brand-logos d-none d-lg-block" src="{{ block.settings.aloefruinc | image_url }}"
+                            data-sizes="auto" alt="promo-images-{{ forloop.index }}">
+                        <img class="brand-logos d-block d-lg-none" src="{{ block.settings.sdfgfsd | image_url }}"
+                            data-sizes="auto" alt="promo-images-{{ forloop.index }}">
+                    </div>
+                </h4>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+  <div>
+    <img src="https://cdn.shopify.com/s/files/1/0577/9000/5290/files/about_the_brand_dektop.svg?v=1699515795" class="img-fluid" width="100%" >
+  </div>
+</div>
+{% schema %}
+{
+"name": "Scrolling Strip",
+"settings": [
+{
+"type": "text",
+"id": "qsirguwfh",
+"label": "Add Your Heading Here"
+},
+{
+"type": "image_picker",
+"id": "hasjkdhka",
+"label": "Add background Color"
+},
+{
+"type": "text",
+"id": "asdasd",
+"label": "Add main Heading"
+}
+],
+"blocks": [
+{
+"name": "Image With Text",
+"type": "Image",
+"settings": [
+{
+"type": "image_picker",
+"id": "aloefruinc",
+"label": "Add Your Image Here"
+},
+{
+"type": "image_picker",
+"id": "sdfgfsd",
+"label": "Add Your Image Here Mobile"
+},
+{
+"type": "url",
+"id": "sdfasdf",
+"label": "Add Your link"
+}
+]
+}
+],
+
+"presets": [
+{
+"name": "Scrolling Strip"
+}
+]
+}
+{% endschema %}

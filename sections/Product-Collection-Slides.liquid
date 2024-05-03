@@ -1,0 +1,344 @@
+{%- style -%}
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top_desktop }}px;
+    margin-bottom: {{ section.settings.margin_bottom_desktop }}px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top_mobile }}px;
+      margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+{% assign spliceSection = section.id | remove: '-' | slice: 20, 30 %}
+{% assign productLimit = section.settings.productLimit %}
+<div class="container section-{{ section.id }}-margin {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" id="product-{{ section.id }}">
+  {% unless section.settings.comboSection %}
+  <div class="product_slider_head">
+    <p class="deals_txt">{{ section.settings.maindtext }}</p>
+  </div>
+    {% if section.settings.maindtextSub != blank %}
+      <p class="sellermini_txt text-center" style="color:{{ section.settings.tcgjsgd}}">
+        {{ section.settings.maindtextSub }}
+      </p>
+    {% endif %}
+  {% endunless %}
+<div class="product_slider_head-cover position-relative">
+  <div id="{{ section.id }}" class="row product-slides-container element-carousel">
+    <div class="swiper-wrapper p-0">
+      {% for product in collections[section.settings.home_featured_products].products limit: productLimit %}
+      <div class="swiper-slide col-6 col-md-3">
+        {% render 'main_product_cards',
+        product: product,
+        sectionId: spliceSection,
+        card_margin: true,
+        show_button: true,
+        index: forloop.index0
+        %}
+      </div>
+      {% endfor %}
+    </div>
+    <!-- Uncomment the pagination section if needed -->
+     {% comment %} <div class="swiper-pagination dot-slide-bar-{{ section.id }}"></div>  {% endcomment %}
+    <div class="swiper-button-next {{ section.id }}-next desktop-screen"></div> 
+    <div class="swiper-button-prev {{ section.id }}-prev desktop-screen"></div>
+    <div class="swiper-scrollbar p-0 {% unless template contains 'collection' %}mobile-screen{% endunless %}"></div> 
+  </div>
+</div>
+</div>
+ {% comment %} <div class="quickview-handle-container">
+  {% for product in collections[section.settings.home_featured_products].products limit: productLimit %}
+    {% render 'quick_shades', product: product, sectionId: spliceSection , index:forloop.index0 %}
+  {% endfor %}
+  </div> {% endcomment %}
+
+{% comment %} {% if section.settings.viewAllBtn %}
+<a href='{{ collections[section.settings.home_featured_products].url }}' class='collection-view-btn'
+  id='collection-view-btn-{{ section.id }}'>View All</a>
+{% endif %} {% endcomment %}
+<style>
+    .dot-slide-bar-{{ section.id }}{
+    position : relative;
+    max-width: calc(100% - 125px);
+    margin:auto;
+    }
+  .dot-slide-bar-{{ section.id }} .slick-dots{
+    display:flex;
+    background-color:#F2F2F2;
+    bottom:6px;
+    border-radius:4px;
+    height:4px;
+    padding: 0;
+  }
+  .dot-slide-bar-{{ section.id }} .slick-dots li{
+  width:100%;
+    height:100%;
+    flex:1;
+    margin:0;
+  }
+  .dot-slide-bar-{{ section.id }} .slick-dots li.slick-active{
+    border-radius:4px;
+    background-color:#7C7C7C;
+  }
+    
+     .product-slides-container {
+       margin: 0 auto;
+     }
+
+     @media only screen and (max-width:992px){
+      .dot-slide-bar-{{ section.id }}{
+    max-width: 100%;
+  }
+  .product_slider_head-cover{
+    padding: 0 0 1px 0;
+     }
+
+      #{{ section.id }} .collection-view-btn{
+      transform:rotate(-90deg) translate(0px,200%);
+     }
+       .product-slides-container{max-width: 100%;}
+     }
+
+     @media only screen and (max-width:576px){
+      #{{ section.id }} .collection-view-btn{
+        transform:rotate(-90deg) translate(50%,100%);
+        background: #f3f3f3;
+     }
+     }
+</style>
+{% style %}
+ {% if template contains "collection" %}
+    .element-carousel { 
+        padding-bottom: 40px;
+      }
+  {% endif %}
+{%- if section.settings.comboSection -%}
+  {% if template == "collection" %}
+     .product-slides-container{
+       max-width: calc(100%);
+     }
+       {% else %}
+     .product-slides-container{
+       max-width: calc(100% - 125px);
+     }
+       {% endif %}
+
+     #{{ section.id }} .collection-view-btn{
+      transform:rotate(-90deg) translate(0px,100%);
+     }
+  #product-{{ section.id }}{
+    background-color: {{ section.settings.bgColor }} ;
+    padding: 72px 0px 48px 0px;
+    border-radius : 0 0 8px 8px;
+    }
+  .dot-slide-bar-{{ section.id }} .slick-dots{
+    bottom:-10px;
+  }
+    @media only screen and (max-width:992px){
+      #product-{{ section.id }}{
+    padding: 40px 0px 24px 0px;
+    border-radius : 0 0 0px 0px;
+    }
+    .dot-slide-bar-{{ section.id }} .slick-dots{
+    bottom:6px;
+  }
+    }
+    {%- endif -%}
+  
+{% endstyle %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const mainBanner = new Swiper('#{{ section.id }}', {
+      slidesPerView: 2,
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+      },
+      freeMode: true,
+      // Uncomment the pagination section if needed
+      pagination: {
+        el: ".dot-slide-bar-{{ section.id }}",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next.{{ section.id }}-next",
+        prevEl: ".swiper-button-prev.{{ section.id }}-prev",
+      },
+      breakpoints: {
+        576: {
+          slidesPerView: 2
+        },
+        992: {
+          slidesPerView: 2.5
+        },
+        1200: {
+          slidesPerView: 4
+        },
+      },
+      scrollbar: {
+            el: '.swiper-scrollbar',
+            // Makes the Scrollbar Draggable
+            draggable: true,
+            // Snaps slider position to slides when you release Scrollbar
+            snapOnRelease: true,
+            // Size (Length) of Scrollbar Draggable Element in px
+            dragSize: 'auto',
+        },
+    });
+  });
+
+
+  // $('#{{ product_card_slider }}').on('afterChange', function () {
+  //     let totalSlides = $('#{{ section.id }} .slick-slide');
+  //     let maxSlideIndex = -1;
+  //     let maxSlideElement = null;
+  //     totalSlides.each(function () {
+  //       let slideIndex = parseInt($(this).attr('data-slick-index'), 10);
+  //       if (slideIndex > maxSlideIndex) {
+  //         maxSlideIndex = slideIndex;
+  //         maxSlideElement = this;
+  //       }
+  //     });
+
+  //     if ($(maxSlideElement).hasClass("slick-active")) {
+  //     $("#collection-view-btn-{{ section.id }}").addClass("collection-view-btn-show");
+  //   } else {
+  //     $("#collection-view-btn-{{ section.id }}").removeClass("collection-view-btn-show");
+  //   }
+  //   });
+
+</script>
+{% schema %}
+{
+  "name": "Product Collection Slides",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Mobile Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "text",
+      "id": "maindtext",
+      "label": "Add Your Heading Here"
+    },
+    {
+      "type": "text",
+      "id": "maindtextSub",
+      "label": "Add Your Sub Heading Here"
+    },
+    {
+      "type": "checkbox",
+      "id": "comboSection",
+      "label": "Make This Combo Section",
+      "info": "Section Title will be hidden if you make it combo section"
+    },
+    {
+      "type": "color",
+      "id": "bgColor",
+      "label": "Background Color",
+      "default": "#fff"
+    },
+    {
+      "type": "checkbox",
+      "id": "indi_barSm",
+      "label": "Add indicator bar in small screen?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "indi_barMd",
+      "label": "Add indicator bar in medium screen?",
+       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "indi_barLg",
+      "label": "Add indicator bar in large screen?",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "indi_barDef",
+      "label": "Add indicator bar in Default Screen?",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "productLimit",
+      "label": "Number of Products",
+      "info": "Enter number of total products that you want to show in this slider",
+      "default" : 15
+    },
+    {
+      "type": "collection",
+      "id": "home_featured_products",
+      "label": "Collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "viewAllBtn",
+      "label": "Show View All Collection Button"
+    },
+    {
+      "type": "color",
+      "id": "tcgjsgd",
+      "label": "Add Sub Heading Color",
+      "default": "#191919"
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Product Collection Slides"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}

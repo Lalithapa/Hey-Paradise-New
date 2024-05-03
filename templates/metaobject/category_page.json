@@ -1,0 +1,74 @@
+{
+  "sections": {
+    "main_banner_pdGt6B": {
+      "type": "Main_Banner",
+      "blocks": {
+        "image_EgXH9K": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/makeup-banner.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/mobile-makeup-banner.jpg",
+            "block_link_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_EgXH9K"
+      ],
+      "settings": {
+        "margin_top_desktop": 36,
+        "margin_bottom_desktop": 36,
+        "margin_top_mobile": 36,
+        "margin_bottom_mobile": 36,
+        "showCat": false,
+        "showTiles": "Category"
+      }
+    },
+    "rich_text_TbRz9d": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_RAFhyL": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ metaobject.header | metafield_text }}",
+            "heading_size": "h1"
+          }
+        },
+        "text_LVzCXC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "button_ydWqj4": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_RAFhyL",
+        "text_LVzCXC",
+        "button_ydWqj4"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main_banner_pdGt6B",
+    "rich_text_TbRz9d"
+  ]
+}

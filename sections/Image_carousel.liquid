@@ -1,0 +1,149 @@
+<div class="container beauty-section {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+  <div id="distributor_elem" class="position-relative">
+    <div class="text-center">
+      <p class="sellermini_txt">{{ section.settings.qsirguwfh }}</p>
+      <p class="deals_txt">{{ section.settings.sfswdef }}</p>
+    </div>
+
+    <div class="product-carousel-wrapper">
+      <button
+      class="carousel-btn border-0 prev"
+      id="new-product-carousel-prev-btn-{{ section.id }}"
+    >
+      {% render 'carousel-prev-btn-svg' %}
+    </button>
+
+      <div class="product-carousel row element-carousel" id="new-product-carousel-{{ section.id }}">
+        {% for block in section.blocks %}
+          <div class="col-5 col-md-3 d_cent dist-slider-cards element-carousel-item">
+            <a href="{{ block.settings.threedlink }}" class="no-line w-100">
+              <img
+                width="100%"
+                height="100%"
+                loading="lazy"
+                src="{{ block.settings.threeddd |image_url  }}"
+                alt="distributor Image{{forloop.index }}"
+              >
+              <p class="sub_text">
+                {{ block.settings.threedtxt }}
+                <svg xmlns="http://www.w3.org/2000/svg" width="6" height="8" viewBox="0 0 6 8" fill="none">
+                  <path d="M1.32031 7L4.32031 4L1.32031 1" stroke="#404184"/>
+                </svg>
+              </p>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+      <button
+      class="carousel-btn border-0 next"
+      id="new-product-carousel-next-btn-{{ section.id }}"
+    >
+      {% render 'carousel-next-btn-svg' %}
+    </button>
+    </div>
+  </div>
+</div>
+{% if section.settings.bgcolor %}
+<style>
+     #distributor_elem::before {
+      content: '';
+      width: 103%;
+      height: 80%;
+      position: absolute;
+      background:{{ section.settings.dfasasd }};
+      left: -6px;
+      top: -32px;
+      z-index: -1;
+      border-radius: 4px;
+
+    }
+</style>
+      {% else %}
+      <style>
+     .beauty-section {
+        margin-top: 96px;
+      }
+        #distributor_elem::before{
+          content:none;
+        }
+
+      @media only screen and (max-width: 992px) {
+        .beauty-section {
+          margin-top: 40px;
+          overflow-x: hidden;
+        }
+      }
+      </style>
+  {% endif %}
+<script>
+  $(document).ready(function ready() {
+    const settings = {
+      root: $('#new-product-carousel-{{ section.id }}'),
+      slides: $('#new-product-carousel-{{section.id}} > .element-carousel-item'),
+      prev: $('#new-product-carousel-prev-btn-{{section.id}}'),
+      next: $('#new-product-carousel-next-btn-{{section.id}}'),
+      mouseDragHandlers: true,
+      removeControls: true,
+    };
+
+    const carousel = new Carousel(settings);
+  });
+</script>
+{% schema %}
+{
+  "name": "Image Carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "qsirguwfh",
+      "label": "Add Your Heading Here"
+    },
+    {
+      "type": "text",
+      "id": "sfswdef",
+      "label": "Add Your Sub Heading Here"
+    },
+    {
+      "type": "checkbox",
+      "id": "bgcolor",
+      "label": "Add Background Color",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "dfasasd",
+      "label": "Add background color",
+      "default": "#FFF0EA"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Image With Text",
+      "type": "Image",
+      "settings": [
+        {
+          "type": "url",
+          "id": "threedlink",
+          "label": "Add Url"
+        },
+        {
+          "type": "image_picker",
+          "id": "threeddd",
+          "label": "Add Your Image Here"
+        },
+        {
+          "type": "text",
+          "id": "threedtxt",
+          "label": "Add Your Image Text Here"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Image Carousel"
+    }
+  ]
+}
+{% endschema %}

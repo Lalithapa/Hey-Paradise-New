@@ -1,0 +1,12 @@
+<button
+  type='button'
+  id='pulse-btn-{{product.handle| handleize}}-{{ index }}'
+  data-index='{{index}}'
+  data-product-handle='{{product.handle| handleize}}'
+  class='pulse-btn'
+  data-product-handle='{{ product | json }}'
+  style='top:{{ top }}%; left:{{ left }}%'
+>
+  <div class='pulse-btn-bg'></div>
+  <div class='pulse-btn-fill'></div>
+</button>

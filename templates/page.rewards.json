@@ -1,0 +1,110 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "1bdebf7a-1866-417f-9a32-930107844c4b": {
+      "type": "reward-section",
+      "blocks": {
+        "19f846b7-e1f9-4150-b968-042c25d7536f": {
+          "type": "Image",
+          "settings": {
+            "howItWorksIcon": "shopify:\/\/shop_images\/profile.svg",
+            "howItWorksTitle": "Create Account",
+            "howItWorksText": "All You have to do is Sign up-it’s FREE! Get 200 reward Points instantly when you join",
+            "howItWorksBtnText": "Join Now",
+            "howItWorksBtnURL": "\/account\/login"
+          }
+        },
+        "855b9350-3f4f-4eaa-a336-002c4e3c19f5": {
+          "type": "Image",
+          "settings": {
+            "howItWorksIcon": "shopify:\/\/shop_images\/bags.svg",
+            "howItWorksTitle": "Shop More, Earn More",
+            "howItWorksText": "Collect 1 point for every ₹1 spent on shopping. Earn extra points by indulging in something fun.",
+            "howItWorksBtnText": "Start Shopping",
+            "howItWorksBtnURL": "\/"
+          }
+        },
+        "018b47da-ec1c-465b-bd51-94aed12c0af7": {
+          "type": "Image",
+          "settings": {
+            "howItWorksIcon": "shopify:\/\/shop_images\/diamond.svg",
+            "howItWorksTitle": "Get Rewarded",
+            "howItWorksText": "We Love You Back!Get exclusive offers, gifts & benefits just for you.",
+            "howItWorksBtnText": "Explore Benefits",
+            "howItWorksBtnURL": "#levelsBenefits"
+          }
+        }
+      },
+      "block_order": [
+        "19f846b7-e1f9-4150-b968-042c25d7536f",
+        "855b9350-3f4f-4eaa-a336-002c4e3c19f5",
+        "018b47da-ec1c-465b-bd51-94aed12c0af7"
+      ],
+      "settings": {
+        "rewardBanner": "shopify:\/\/shop_images\/banner_6431d228-5327-4695-a8e4-8dd090db5f0d.jpg",
+        "bgaksjhd": "#ffffff",
+        "pointHistoryBanner": "shopify:\/\/shop_images\/points-banner.jpg"
+      }
+    },
+    "a7dcbcc7-2ecd-429a-8cf4-79996559e195": {
+      "type": "reward-guide",
+      "blocks": {
+        "b989e5b8-3a0b-4f26-b670-16b6d57a765a": {
+          "type": "text",
+          "settings": {
+            "brandImage": "shopify:\/\/shop_images\/joy.png",
+            "brandLogo": "shopify:\/\/shop_images\/blish.svg",
+            "brandLogoText": "Free to join",
+            "backgroundColor": "pink",
+            "offers": "<ul class=\"level-fun-brand-offers-container\">\n                                    <li class=\"level-fun-brand-offers\">\n                                        2000 Points Sign In Bonus\n                                    <\/li>\n                                    <li class=\"level-fun-brand-offers\">\n                                        1X points on ₹1 per purchase\n                                    <\/li>\n                                    <li class=\"level-fun-brand-offers\">\n                                        5% Off On Birthday\n                                    <\/li>\n                                    <li class=\"level-fun-brand-offers\">\n                                        Members only Offers\n                                    <\/li>\n                                <\/ul>"
+          }
+        },
+        "b6ff0dfa-e8f9-4671-838f-f43cdbe1c446": {
+          "type": "text",
+          "settings": {
+            "brandImage": "shopify:\/\/shop_images\/blish.png",
+            "brandLogo": "shopify:\/\/shop_images\/blish.svg",
+            "brandLogoText": "spend ₹4000+ quarterly",
+            "backgroundColor": "yellow",
+            "offers": "<ul class=\"level-fun-brand-offers-container\">\n                                    <li class=\"level-fun-brand-offers\">\n                                        3000 Points for level up\n                                    <\/li>\n                                    <li class=\"level-fun-brand-offers\">\n                                        1.5X points on ₹1 per purchase \n                                    <\/li>\n                                    <li class=\"level-fun-brand-offers\">\n                                        10% Off On Birthday\n                                    <\/li>\n                                    <li class=\"level-fun-brand-offers\">\n                                        Free Samples\/ Gifts\n                                    <\/li>\n\n<li class=\"level-fun-brand-offers\">\n                                        Free Shipping on orders above  ₹399\n                                    <\/li>\n                                    <li class=\"level-fun-brand-offers\">\n                                        Members only Offers\n                                    <\/li>\n                                                                  \n                                <\/ul>"
+          }
+        },
+        "13ab623c-758f-4e99-bb89-9e46b6a8a192": {
+          "type": "text",
+          "settings": {
+            "brandImage": "shopify:\/\/shop_images\/euphoria.png",
+            "brandLogo": "shopify:\/\/shop_images\/blish.svg",
+            "brandLogoText": "spend ₹8000+ quarterly",
+            "backgroundColor": "sea-green",
+            "offers": "<ul class=\"level-fun-brand-offers-container\">\n                                    <li class=\"level-fun-brand-offers\">\n                                        4000 Points for level up\n                                    <\/li>\n                                    <li class=\"level-fun-brand-offers\">\n                                        2X points on ₹1 per purchase \n                                    <\/li>\n                                    <li class=\"level-fun-brand-offers\">\n                                        15% Off On Birthday\n                                    <\/li>\n                                    <li class=\"level-fun-brand-offers\">\n                                        Free Samples\/ Gifts\n                                    <\/li>\n<li class=\"level-fun-brand-offers\">\n                                        Free Shipping\n                                    <\/li>\n                                                                     <li class=\"level-fun-brand-offers\">\n                                        Members only Offers\n                                    <\/li>\n\n                                <\/ul>"
+          }
+        }
+      },
+      "block_order": [
+        "b989e5b8-3a0b-4f26-b670-16b6d57a765a",
+        "b6ff0dfa-e8f9-4671-838f-f43cdbe1c446",
+        "13ab623c-758f-4e99-bb89-9e46b6a8a192"
+      ],
+      "settings": {}
+    },
+    "b0dbed1f-51d9-4a37-ba2d-208cfff08a5e": {
+      "type": "reward-uses",
+      "settings": {
+        "howToUsePointsImage": "shopify:\/\/shop_images\/img1.jpg"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1bdebf7a-1866-417f-9a32-930107844c4b",
+    "a7dcbcc7-2ecd-429a-8cf4-79996559e195",
+    "b0dbed1f-51d9-4a37-ba2d-208cfff08a5e"
+  ]
+}

@@ -1,0 +1,753 @@
+  {%- style -%}
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top_desktop }}px;
+      margin-bottom: {{ section.settings.margin_bottom_desktop }}px;
+    }
+  
+    @media screen and (max-width: 768px) {
+      .section-{{ section.id }}-margin {
+        margin-top: {{ section.settings.margin_top_mobile }}px;
+        margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+      }
+    }
+  {%- endstyle -%}
+{% liquid
+  assign isFilled = false
+  for block in section.blocks
+    if block.settings.careproofImg or block.settings.dealsImg or block.settings.concernImg or block.settings.brandRatingImg or block.settings.slideImg
+      assign isFilled = true
+    endif
+  endfor
+%}
+<div class="container multi-slider-section section-{{ section.id }}-margin" id="section-{{ section.id }}">
+  {% if isFilled and section.settings.sectionTitle %}
+    <p class="section-title deals_txt">{{ section.settings.sectionTitle }}</p>
+  {% endif %}
+  <div class="deals-slider-container position-relative">
+    <div class="deals-cover">
+      <div class="{{ section.id }}-deals row d-flex flex-nowrap overflow-hidden"
+          data-slick='{
+            "dots": false,
+            "infinite": false,
+            "speed": 300,
+            "slidesToShow": {{ section.settings.defaultNumber }},
+            "slidesToScroll": 2,
+            "prevArrow": ".slick-prev-btn-{{ section.id }}",
+            "nextArrow": ".slick-next-btn-{{ section.id }}",
+            "responsive": [
+              {
+                "breakpoint": 1200,
+                "settings": {
+                  "slidesToShow": {{ section.settings.largeNumber }},
+                  "infinite": true,
+                  "arrows": true
+                }
+              },
+              {
+                "breakpoint": 992,
+                "settings": {
+                  "slidesToShow": {{ section.settings.mediumNumber }},
+                  "arrows": false
+                }
+              },
+              {
+                "breakpoint": 576,
+                "settings": {
+                  "slidesToShow": {{ section.settings.smallNumber }},
+                  "arrows": false
+                }
+              }
+            ]
+          }'>
+        {% for block in section.blocks %}
+          {% if block.type == 'deals' %}
+            {% if block.settings.dealsURL != blank %}
+              <div class="deals-card col-6 col-md-3">
+                <a href="{{ block.settings.dealsImg }}" class="card-inner {{ section.id }}-multi-slide-card">
+                  <img
+                    loading="lazy"
+                    src="{{ block.settings.dealsImg | image_url }}"
+                    alt="{{ block.settings.dealsImg |  escape }}"
+                    class="deals-img"
+                  >
+                  <div class="deals-card-{{ section.id }}-footer">
+                    <p class="deals-title mb-0">{{ block.settings.dealsTitle }}</p>
+                    <p class="deals-discount mb-0">{{ block.settings.dealsDiscount }}</p>
+                    <p class="deals-btn mb-0">{{ block.settings.dealsBtnText }}</p>
+                  </div>
+                </a>
+              </div>
+            {% endif %}
+          {% elsif block.type == 'concern' %}
+            {% if block.settings.concernImg != blank %}
+              <div class="deals-card col-6 col-md-3">
+                <a href="{{ block.settings.concernURL }}" class="card-inner {{ section.id }}-multi-slide-card">
+                  <img
+                    loading="lazy"
+                    src="{{ block.settings.concernImg | image_url }}"
+                    alt="{{ block.settings.concernImg | escape }}"
+                    class="deals-img"
+                  >
+                  <div class="concern-card-{{ section.id }}-footer">
+                    <p class="concern-title mb-0">{{ block.settings.concernTitle }}</p>
+                    <p class="concern-text mb-0">{{ block.settings.concernText }}</p>
+                    <p class="concern-btn mb-0">{{ block.settings.concernBtnText }}</p>
+                  </div>
+                </a>
+              </div>
+            {% endif %}
+          {% elsif block.type == 'careproof' %}
+            {% if block.settings.careproofImg != blank %}
+              <div class="deals-card col-6 col-md-3">
+                <a href="{{ block.settings.careproofURL }}" class="card-inner {{ section.id }}-multi-slide-card">
+                  <img
+                    loading="lazy"
+                    src="{{ block.settings.careproofImg | img_url:"290x410" }}"
+                    alt="{{ block.settings.careproofImg | escape }}"
+                    class="deals-img"
+                    width="290"
+                    height="410"
+                  >
+                  <div class="careproof-card-{{ section.id }}-footer">
+                    <p class="careproof-result mb-0">{{ block.settings.careproofResult }}</p>
+                    <p class="careproof-text mb-0">{{ block.settings.careproofText }}</p>
+                  </div>
+                </a>
+                <a href="{{ block.settings.careproofURL }}" class="careproof-product">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                      <path d="M4.5426 1.04002L8.78026 0.83435M8.78026 0.83435L8.98593 5.072M8.78026 0.83435L1.22029 9.16558" stroke="#404184" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  {{ block.settings.careproofProduct -}}
+                </a>
+              </div>
+            {% endif %}
+          {% elsif block.type == 'brandRating' %}
+            {% if block.settings.brandRatingImg != blank %}
+              <div class="deals-card">
+                <a href="{{ block.settings.brandRatingURL }}" class="card-inner {{ section.id }}-multi-slide-card">
+                  <img
+                    loading="lazy"
+                    src="{{ block.settings.brandRatingImg | image_url }}"
+                    alt="{{ block.settings.brandRatingImg | escape }}"
+                    class="deals-img"
+                  >
+                  <div class="brandRating-card-{{ section.id }}-footer">
+                    <p class="brandRating-title mb-0">{{ block.settings.brandRatingTitle }}</p>
+
+                    <div class="brand-rating d-flex">
+                      {% assign userRating = block.settings.brandRatingStar %}
+
+                      {% for i in (1..5) %}
+                        {% if i <= userRating %}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="15"
+                            height="13"
+                            viewBox="0 0 15 13"
+                            fill="none"
+                          >
+                            <path d="M1.53477 7.21474L6.94952 12.5155C7.08491 12.648 7.15261 12.7143 7.2255 12.7498C7.3637 12.8171 7.52518 12.8171 7.66339 12.7498C7.73628 12.7143 7.80397 12.648 7.93936 12.5155L7.93937 12.5155L13.3541 7.21474C14.806 5.79343 14.9839 3.51781 13.7706 1.88812L13.4485 1.45549C11.9554 -0.549934 8.85942 -0.222867 7.81835 2.05027C7.67179 2.37028 7.2171 2.37028 7.07054 2.05027C6.02947 -0.222867 2.93347 -0.549931 1.4404 1.45549L1.1183 1.88812C-0.0950267 3.51781 0.0828981 5.79343 1.53477 7.21474Z" fill="#EFB567"/>
+                          </svg>
+                        {% else %}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="13"
+                            viewBox="0 0 16 13"
+                            fill="none"
+                          >
+                            <path d="M2.08946 7.21474L7.50421 12.5155C7.6396 12.648 7.7073 12.7143 7.78019 12.7498C7.91839 12.8171 8.07987 12.8171 8.21807 12.7498C8.29097 12.7143 8.35866 12.648 8.49405 12.5155L8.49406 12.5155L13.9088 7.21474C15.3607 5.79343 15.5386 3.51781 14.3253 1.88812L14.0032 1.45549C12.5101 -0.549934 9.4141 -0.222867 8.37303 2.05027C8.22647 2.37028 7.77179 2.37028 7.62523 2.05027C6.58416 -0.222867 3.48815 -0.549931 1.99509 1.45549L1.67299 1.88812C0.459661 3.51781 0.637586 5.79343 2.08946 7.21474Z" fill="#FFFBFB"/>
+                          </svg>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    <p class="brandRating-text mb-0">{{ block.settings.brandRatingText }}</p>
+                    <p class="brandRating-btn mb-0">{{ block.settings.brandRatingBtnText }}</p>
+                  </div>
+                </a>
+              </div>
+            {% endif %}
+          {% else %}
+            {% if block.settings.slideImg != blank %}
+              <div class="deals-card">
+                <a href="{{ block.settings.slideURL }}" class="card-inner {{ section.id }}-multi-slide-card">
+                  <img
+                    loading="lazy"
+                    src="{{ block.settings.slideImg | image_url }}"
+                    alt="{{ block.settings.slideImg |  escape }}"
+                    class="deals-img"
+                  >
+                </a>
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <button class="slick-prev-btn slick-prev-btn-{{ section.id }} border-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M18.5718 5.50977L10.082 13.9996L18.5718 22.4894" stroke="#585858" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <button class="slick-next-btn slick-next-btn-{{ section.id }} border-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M9.42817 5.50977L17.918 13.9996L9.42817 22.4894" stroke="#585858" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+</div>
+<style>
+  .multi-slider-section {
+    position: relative;
+  }
+  .deals-cover {
+    padding: 0 65px;
+  }
+
+  .deals-card {
+    margin: 0 {{ section.settings.lagreScreenGap | divided_by: 2 }}px;
+  }
+  .card-inner{
+    overflow: hidden;
+    border-radius: 12px;
+    display: block;
+    position: relative;
+  }
+
+  .{{ section.id }}-multi-slide-card{
+    aspect-ratio: {{ section.settings.aspectRatio }};
+  }
+
+  .deals-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .deals-card-{{ section.id }}-footer,
+  .concern-card-{{ section.id }}-footer,
+  .brandRating-card-{{ section.id }}-footer,
+  .careproof-card-{{ section.id }}-footer {
+    background: {{ section.settings.bottomTextBackground }};
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .deals-card-{{ section.id }}-footer {
+    padding: 54px 12px 12px 12px;
+    gap: 10px;
+  }
+  .concern-card-{{ section.id }}-footer {
+    gap: 12px;
+    padding: 54px 12px 24px 12px;
+  }
+  .brandRating-card-{{ section.id }}-footer{
+    gap: 8px;
+    padding: 34px 12px 24px 12px;
+  }
+  .careproof-card-{{ section.id }}-footer{
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    padding: 54px 8px 20px 8px;
+  }
+
+  .deals-title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+  .deals-discount {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+  }
+  .deals-btn {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+
+  .concern-title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px; /* 120% */
+  }
+  .concern-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+  }
+  .concern-btn {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px; /* 150% */
+  }
+
+  .brandRating-title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px; /* 120% */
+  }
+
+  .brand-rating {
+    gap: 4px;
+  }
+
+  .brandRating-text {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px; /* 133.333% */
+  }
+  .brandRating-btn {
+    margin-top: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px; /* 150% */
+  }
+
+  .careproof-result{
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 50px; /* 100% */
+  }
+  .careproof-text{
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px; /* 116.667% */
+    text-transform: uppercase;
+  }
+  .careproof-product{
+    color: #404184;
+    font-size: 16px;
+    font-weight: 500;
+    display: block;
+    line-height: 24px; /* 150% */
+    margin-top: 12px;
+  }
+
+  @media only screen and (max-width: 992px) {
+
+    .deals-cover {
+      padding: 0;
+    }
+    .deals-card {
+      margin: 0 {{ section.settings.smallScreenGap | divided_by: 2 }}px;
+    }
+
+    .deals-card-{{ section.id }}-footer {
+      padding: 44px 6px 8px 6px;
+      gap: 6px;
+    }
+    .concern-card-{{ section.id }}-footer {
+      gap: 8px;
+      padding: 44px 8px 12px 8px;
+    }
+    .brandRating-card-{{ section.id }}-footer{
+      gap: 7px;
+    padding: 34px 8px 16px 8px;
+  }
+
+    .deals-title {
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 16px;
+    }
+    .deals-discount {
+      font-size: 10px;
+      line-height: 12px;
+    }
+    .deals-btn {
+      font-size: 14px;
+      line-height: 12px;
+    }
+
+    .concern-title {
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 16px; /* 120% */
+    }
+    .concern-text {
+      font-size: 11px;
+      line-height: 14px; /* 150% */
+    }
+    .concern-btn {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px; /* 150% */
+    }
+
+    .brandRating-title {
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 16px; /* 120% */
+  }
+
+    .brand-rating {
+      gap: 2px;
+    }
+
+    .brandRating-text {
+      font-size: 12px;
+      line-height: 16px; /* 133.333% */
+    }
+    .brandRating-btn {
+      margin-top: 5px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 12px; /* 150% */
+    }
+
+    .careproof-result{
+      font-size: 35px;
+      line-height: 28px; /* 100% */
+    }
+    .careproof-text{
+    font-size: 10px;
+    }
+    .careproof-product{
+      font-size: 12px;
+      line-height: 14px; /* 150% */
+      margin-top: 8px;
+    }
+
+    .multi-slider-section::before {
+      height: calc(80% + 32px);
+    }
+  }
+</style>
+{% style %}
+    {% if section.settings.bgColor == "rgba(0,0,0,0)" or section.settings.bgColor == "#fff" or section.settings.bgColor == "#ffffff" or section.settings.bgColor == blank or section.settings.comboSection == true %}
+      /* #section-{{ section.id }} { margin-top: 96px; } 
+       @media only screen and (max-width: 992px){
+        #section-{{ section.id }} { margin-top: 40px; }
+      } */
+
+      {% else %}
+      #section-{{ section.id }} { margin-top: 128px; }
+      #section-{{ section.id }}::before {
+    position: absolute;
+    content: "";
+    top: -32px;
+   width: 100%;
+   height: calc(70% + 32px);
+   border-radius: 4px;
+   z-index: -1;
+   background-color: {{ section.settings.bgColor }};
+  }
+
+
+      @media only screen and (max-width: 992px){
+        #section-{{ section.id }} { margin-top: 72px; }
+      }
+
+    {% endif %}
+
+    {% if section.settings.comboSection %}
+      #section-{{ section.id }}::before{
+        content:none !important;
+      }
+      #section-{{ section.id }}{
+  padding: 48px 0px 0px 0px;
+  background-color: {{ section.settings.bgColor }};
+  border-radius: 8px 8px 0 0;
+      }
+      @media only screen and (max-width : 992px){
+        #section-{{ section.id }}{
+  padding: 20px 0px 0px 0px;
+  background-color: {{ section.settings.bgColor }};
+  border-radius: 0px 0px 0 0;
+      }
+      }
+    {% endif %}
+{% endstyle %}
+<script>
+    $('.{{ section.id }}-deals').slick();
+</script>
+{% schema %}
+{
+  "name": "Multi Carousel",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Mobile Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "text",
+      "id": "sectionTitle",
+      "label": "Section Title"
+    },
+    {
+      "type": "checkbox",
+      "id": "comboSection",
+      "label": "Make This Combo Section"
+    },
+    {
+      "type": "color",
+      "id": "bgColor",
+      "label": "Background Color"
+    },
+    {
+      "type": "text",
+      "id": "aspectRatio",
+      "label": "Aspect Ratio of slides (Optional)",
+      "info": "Please write aspect ratio in proper format (Example: 3/4)",
+      "default": "3/4"
+    },
+    {
+      "type": "number",
+      "id": "lagreScreenGap",
+      "label": "Margin between slides in Large Screens",
+      "info": "This number will be calculated in px",
+      "default": 12
+    },
+    {
+      "type": "number",
+      "id": "smallScreenGap",
+      "label": "Margin between slides in Small screens",
+      "info": "This number will be calculated in px",
+      "default": 10
+    },
+    {
+      "type": "text",
+      "id": "bottomTextBackground",
+      "label": "Text Background",
+      "info": "accepts Color name/ Color code / Gradient",
+      "default": "linear-gradient(0deg, #292929 0%, rgba(47, 47, 47, 0.84) 20.87%, rgba(47, 47, 47, 0.43) 55.83%, rgba(74, 74, 74, 0.00) 93.04%)"
+    },
+    {
+      "type": "number",
+      "id": "smallNumber",
+      "label": "Number Of slides for Small Screen",
+      "default": 2
+    },
+    {
+      "type": "number",
+      "id": "mediumNumber",
+      "label": "Number Of slides for medium Screen",
+      "default": 3
+    },
+    {
+      "type": "number",
+      "id": "largeNumber",
+      "label": "Number Of slides for Large Screen",
+      "default": 4
+    },
+    {
+      "type": "number",
+      "id": "defaultNumber",
+      "label": "Number Of slides for Default Screen",
+      "default": 4
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Image Template",
+      "type": "image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "slideImg",
+          "label": "Slide Image"
+        },
+        {
+          "type": "url",
+          "id": "slideURL",
+          "label": "Slide URL"
+        }
+      ]
+    },
+    {
+      "name": "Deals Template",
+      "type": "deals",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "dealsImg",
+          "label": "Deal Image"
+        },
+        {
+          "type": "url",
+          "id": "dealsURL",
+          "label": "Deal URL"
+        },
+        {
+          "type": "text",
+          "id": "dealsTitle",
+          "label": "Deal Title"
+        },
+        {
+          "type": "text",
+          "id": "dealsDiscount",
+          "label": "Discount Text"
+        },
+        {
+          "type": "text",
+          "id": "dealsBtnText",
+          "label": "Button Text",
+          "default": "Shop Now"
+        }
+      ]
+    },
+    {
+      "name": "Brands Rating Template",
+      "type": "brandRating",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "brandRatingImg",
+          "label": "Brand Rating Image"
+        },
+        {
+          "type": "url",
+          "id": "brandRatingURL",
+          "label": "Brand Rating URL"
+        },
+        {
+          "type": "text",
+          "id": "brandRatingTitle",
+          "label": "Brand Rating Title"
+        },
+        {
+          "type": "range",
+          "id": "brandRatingStar",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Brand Rating ( Number of Stars )",
+          "default": 4
+        },
+        {
+          "type": "text",
+          "id": "brandRatingText",
+          "label": "Brand Rating Text"
+        },
+        {
+          "type": "text",
+          "id": "brandRatingBtnText",
+          "label": "Button Text",
+          "default": "Shop Now"
+        }
+      ]
+    },
+    {
+      "name": "Concern Template",
+      "type": "concern",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "concernImg",
+          "label": "Concern Image"
+        },
+        {
+          "type": "url",
+          "id": "concernURL",
+          "label": "Concern URL"
+        },
+        {
+          "type": "text",
+          "id": "concernTitle",
+          "label": "Concern Title"
+        },
+        {
+          "type": "text",
+          "id": "concernText",
+          "label": "Concern Text"
+        },
+        {
+          "type": "text",
+          "id": "concernBtnText",
+          "label": "Button Text",
+          "default": "Shop Now"
+        }
+      ]
+    },
+    {
+      "name": "Careproof Template",
+      "type": "careproof",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "careproofImg",
+          "label": "Careproof Image"
+        },
+        {
+          "type": "url",
+          "id": "careproofURL",
+          "label": "Careproof URL"
+        },
+        {
+          "type": "text",
+          "id": "careproofResult",
+          "label": "Careproof Result (in %)"
+        },
+        {
+          "type": "text",
+          "id": "careproofText",
+          "label": "Careproof Text"
+        },
+        {
+          "type": "text",
+          "id": "careproofProduct",
+          "label": "Product Name"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Multi Carousel"
+    }
+  ]
+}
+{% endschema %}

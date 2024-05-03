@@ -1,0 +1,71 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-search",
+      "disabled": true,
+      "settings": {
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "article_show_date": true,
+        "article_show_author": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "f1c07f31-7c1d-499a-8ef2-ebaeba4a7692": {
+      "type": "Main_Banner",
+      "blocks": {
+        "image_XzHf88": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ORGANIC-SEPTEMBER-BANNER---Copy3_2000x_d7007ca7-0460-4a8b-b0e4-e4508a83f0cf.webp",
+            "image_mobile": "shopify:\/\/shop_images\/banner2.jpg",
+            "block_link_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_XzHf88"
+      ],
+      "settings": {
+        "showCat": false,
+        "showTiles": "Category"
+      }
+    },
+    "f1ebc883-fbb2-4e39-927b-707c252a756c": {
+      "type": "search-result",
+      "disabled": true,
+      "settings": {
+        "columns_desktop": 4
+      }
+    },
+    "4b502521-8145-4bc5-8f67-cfe817cc6eef": {
+      "type": "main-collection",
+      "settings": {
+        "maindtext": "",
+        "margintop": false,
+        "productStarts": 0,
+        "showAd1": true,
+        "ad1_container": true,
+        "showAd2": true,
+        "ad2_container": true,
+        "showAd3": true,
+        "ad3_container": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "f1c07f31-7c1d-499a-8ef2-ebaeba4a7692",
+    "f1ebc883-fbb2-4e39-927b-707c252a756c",
+    "4b502521-8145-4bc5-8f67-cfe817cc6eef"
+  ]
+}

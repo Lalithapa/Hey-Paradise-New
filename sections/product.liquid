@@ -1,0 +1,1010 @@
+
+{% capture star_ratings %}
+  <div class="rating">
+    {% for _ in (1..5) %}
+      <img src="https://cdn.shopify.com/s/files/1/0673/6396/3172/files/Star_1.svg?v=1692598346" width="14" height="14" alt="stars" class="img-fluid">
+    {% endfor %}
+  </div>
+{% endcapture %}
+{% capture product_Custom_Details %}
+  <div class="product-desription-details">
+                {{ product.description }}
+                <!-- Product Sku -->
+                <p class="b-pdp_accordion-product_code_wrapper mt-3">
+                  Product SKU :
+                  <span class="b-pdp_accordion-product_code">
+                    {{- product.selected_or_first_available_variant.sku -}}
+                  </span>
+                </p>
+                <!-- Expiry -->
+                {% if product.metafields.custom.self_life != blank %}
+                  <p class="product-info-details">
+                    <span>Shelf Life :</span>
+                    {{ product.metafields.custom.self_life | remove: '["' | remove: '"]' }}
+                  </p>
+                {% endif %}
+                <!-- Country Of Origin -->
+                {% if product.metafields.custom.country_of_origins != blank %}
+                  <p class="product-info-details">
+                    <span>Country of Origin :</span>
+                    {{ product.metafields.custom.country_of_origins }}
+                  </p>
+                {% endif %}
+
+                <!-- Manufacturer Name -->
+                {% if product.metafields.custom.name_of_mfg != blank %}
+                  <p class="product-info-details">
+                    <span>Manufacturer Name :</span>
+                    {{ product.metafields.custom.name_of_mfg }}
+                  </p>
+                {% endif %}
+                <!-- Address of Manufacturer -->
+                {% if product.metafields.custom.address_of_mfg != blank %}
+                  <p class="product-info-details">
+                    <span>Address of Manufacturer :</span>
+                    {{ product.metafields.custom.address_of_mfg }}
+                  </p>
+                {% endif %}
+              </div>
+{% endcapture %}
+{% liquid
+  assign has_size_option = false
+  for option in product.options_with_values
+    for value in option.values
+      if option.name == 'Size'
+        assign has_size_option = true
+      elsif option.name == 'Color'
+        assign has_size_option = false
+      endif
+    endfor
+  endfor
+%}
+
+{% assign first_variant = product.selected_or_first_available_variant %}
+<section class="bg-white">
+  <div class="container">
+    <div class="row py-0 py-md-5">
+      <div class="col-12 col-md-6">
+        <div class="row varient-container sticky200">
+          <div class="live-views m-live-views d-md-none">
+            <span
+              ><img
+                loading="lazy"
+                src="https://cdn.shopify.com/s/files/1/1743/7443/files/33d72e41b1889e6e1bee4e76cf87b0e9.gif?v=1693810925"
+                width="23"
+                height="23"
+                alt="eyes"
+                class="img-fluid"
+            ></span>
+            <p class="live-viewing-number">{{ 'now' | date: '%N' | modulo: 199 | plus: 59 }} People Are Viewing</p>
+          </div>
+          <div class="product-preview-container">
+            <div class="row">
+              {% if product.media.size > 1 %}
+                <div
+                  class="col-12 col-lg-3 order-2 d-lg-block"
+                >
+                  <div class="product-preview-track">
+                    <button
+                      style="transform: rotate(90deg);"
+                      class="product-preview-track-prev w-100"
+                      direction="previous"
+                    >
+                      {% render 'carousel-prev-btn-svg' %}
+                    </button>
+
+                    <div class="tns-slide position-relative">
+                      <div class="product-thumb-slider">
+                        {% for media in product.media %}
+                          {% if media.media_type == 'image' %}
+                            <div class="thumbset-{{ forloop.index }} thumb_container mx-auto">
+                              <img
+                                {% unless forloop.first %}
+                                  loading="lazy"
+                                {% endunless %}
+                                src="{{ media | image_url }}"
+                                class="img-fluid asp34"
+                                alt="{{ product.title }}"
+                                title="{{ product.title }}"
+                              >
+                            </div>
+                          {% else %}
+                            <div class="thumbset-{{ forloop.index }} thumb_container mx-auto">
+                              {{
+                                media
+                                | video_tag:
+                                  loop: true,
+                                  muted: true,
+                                  autoplay: true,
+                                  class: 'd-lg-block img-fluid asp34'
+                              }}
+                            </div>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+
+                    <button
+                      class="product-preview-track-next w-100"
+                      style="transform: rotate(90deg);"
+                      direction="next"
+                    >
+                      {% render 'carousel-next-btn-svg' %}
+                    </button>
+                  </div>
+                </div>
+              {% endif %}
+
+              <div
+                class="col-12{% if product.media.size > 1 %} col-lg-9 {% endif %} order-1 order-lg-3"
+              >
+                {% capture the_snippet_fave_icon %}{% render 'ssw-widget-faveicon' with product.id %}{% endcapture %}
+                {% unless the_snippet_fave_icon contains 'Liquid error' %}
+                  {{ the_snippet_fave_icon }}
+                {% endunless %}
+                <div class="product-main-slider row d-flex flex-nowrap overflow-hidden">
+                  {% for media in product.media %}
+                    <div class="childset-{{ forloop.index }} col-12">
+                      {% if media.media_type == 'image' %}
+                        <a
+                          href="{{ media | image_url }}"
+                          data-fancybox="slideShow"
+                          data-caption="{{ product.variant.title }}"
+                        >
+                          <img
+                            src="{{ media | image_url }}"
+                            class="img-fluid asp34"
+                            alt="{{ product.title |  append: forloop.index }}"
+                            title="{{ product.title }}"
+                          >
+                        </a>
+                      {% else %}
+                        <a
+                          href="{{ media.sources[0].url }}"
+                          data-fancybox="slideShow"
+                          data-caption="{{ product.variant.title }}"
+                        >
+                          {{
+                            media
+                            | video_tag: loop: true, muted: true, autoplay: true, class: 'd-block img-fluid asp34'
+                          }}
+                        </a>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </div>
+                {% if product.title contains 'E-Gift card' %}
+                  <div id="data-e-gift">
+                    <span class="e-email"></span>
+                    <span class="e-name"></span>
+                    <span class="e-message"></span>
+                    <span class="e-date"></span>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6">
+        <div class="product-details-container">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when '@app' %}
+                {% render block %}
+              {% when 'social-share' %}
+                  <div class="social-share-section pt-3 pb-2 w-100 h-100">
+                    {% render 'social-share' %}
+                  </div>
+              {% when 'title' %}
+                <div class="product-info">
+                  <p class="product-brand">{{ product.vendor }}</p>
+                  <p class="product-title" productPage>{{ product.title }}</p>
+                </div>
+              {% when 'pricing' %}
+                <div class="product-pricing">
+                  <div class="product-prices">
+                    <span>
+                      <span class="selling-price">{{ first_variant.price | money_without_trailing_zeros }}</span>
+                      <span class="old-price">
+                        {% if first_variant.compare_at_price > first_variant.price %}
+                          {{ first_variant.compare_at_price | money_without_trailing_zeros -}}
+                        {% endif %}
+                      </span>
+                      <span class="discount">
+                        {% if first_variant.compare_at_price > first_variant.price %}
+                          {{-
+                            first_variant.compare_at_price
+                            | minus: first_variant.price
+                            | times: 100.0
+                            | divided_by: first_variant.compare_at_price
+                            | money_without_currency
+                            | times: 100
+                            | remove: '.0'
+                          -}}
+                          % Off
+                        {% endif %}
+                      </span>
+                    </span>
+                  </div>
+                  <p class="tax-info">Inclusive Of All Taxes</p>
+                </div>
+              {% when 'variant_picker' %}
+                <div class="product-varient-selector">
+                  {% if product.available and product.variants.size > 1 %}
+                    <div>
+                      <p class="current-shade">
+                        {% if product.title == 'E-Gift card' -%}
+                          Vibe
+                        {%- elsif has_size_option -%}
+                          SIZE
+                        {%- else -%}
+                          SHADE
+                        {%- endif -%}
+                        : <span>{{ first_variant.title }}</span>
+                      </p>
+                    </div>
+                  {% endif %}
+                  <div class="swatches shades">
+                    {% if product.available and product.variants.size > 1 %}
+                      {% render 'swatches'
+                        with 'Color' as swatch,
+                        class_variable: class_variable,
+                        sectionId: section.id,
+                        product: product,
+                        firstAvailable: first_variant,
+                        showall: true,
+                        showdropdown: true
+                      %}
+                    {% endif %}
+                  </div>
+                </div>
+              {% when 'reward-notification' %}
+                {% unless customer %}
+                  <div class="reward-notification">
+                    <span class="required-star">*</span>
+                    <span class="login-for-reward"><a href="/login">Login</a>/<a href="/register">Sign Up</a></span>
+                    For
+                    <span class="number-of-reward-points">{{ product.price | divided_by: 10 }} REWARD POINTS</span>
+                  </div>
+                {% endunless %}
+              {% when 'reward-cards' %}
+                <div class="reward-coupon-cards-container">
+                  <div>
+                    <div class="reward-coupon-cards" offer="gifts">
+                      <div class="reward-coupon-icon">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="48"
+                          height="49"
+                          viewBox="0 0 48 49"
+                          fill="none"
+                        >
+                          <g clip-path="url(#clip0_690_24562)">
+                              <path
+                                  d="M46.594 22.008H21.1205L22.4866 17.5246C22.5953 17.1679 22.5578 16.7827 22.3824 16.4536C22.2071 16.1245 21.9082 15.8785 21.5515 15.7699L13.3227 13.2627C12.5797 13.0361 11.7943 13.455 11.568 14.1978L9.576 20.7357C9.20408 20.4668 8.78652 20.2582 8.33484 20.1216C6.14177 19.4574 3.81796 20.7016 3.15417 22.8945C2.55168 24.8846 2.94947 26.9424 4.05481 28.5289C2.25512 29.236 0.782832 30.7277 0.18025 32.7178C-0.141334 33.78 -0.0300775 34.9039 0.493679 35.8825C1.01744 36.8609 1.89089 37.5769 2.95303 37.8985C3.35109 38.0191 3.75769 38.0788 4.16213 38.0788C4.20571 38.0788 4.2492 38.0761 4.29279 38.0747L2.43508 44.1718C2.32636 44.5285 2.36385 44.9137 2.53922 45.2428C2.71458 45.5719 3.01358 45.8179 3.37021 45.9265L11.599 48.4337C11.7357 48.4753 11.8736 48.4951 12.0093 48.4951C12.6117 48.4951 13.169 48.1047 13.3536 47.4986L16.2598 37.9606V47.0888C16.2598 47.8653 16.8893 48.4948 17.6657 48.4948H46.594C47.3704 48.4948 47.9999 47.8653 47.9999 47.0888V23.414C47.9999 22.6375 47.3704 22.008 46.594 22.008ZM5.84531 23.7092C5.94926 23.3659 6.18077 23.0835 6.49701 22.9142C6.81334 22.7449 7.17673 22.709 7.52006 22.8129C7.86723 22.918 8.15366 23.1516 8.32668 23.471C8.49783 23.787 8.53551 24.1479 8.43279 24.4874L7.3879 27.9167C6.02977 27.0371 5.35361 25.3334 5.84531 23.7092ZM5.43946 34.3111C5.33543 34.6548 5.10429 34.9373 4.78861 35.1063C4.4734 35.2754 4.11086 35.3112 3.76772 35.2073C3.4243 35.1033 3.14198 34.8719 2.97271 34.5556C2.80344 34.2393 2.76744 33.876 2.87139 33.5326C3.15979 32.5801 3.80184 31.7968 4.67932 31.3272C5.2432 31.0255 5.86096 30.8772 6.48323 30.8857L5.43965 34.3106C5.43965 34.3107 5.43956 34.3109 5.43946 34.3111ZM11.0737 45.3341L5.5346 43.6464L13.848 16.3622L19.3871 18.0499L11.0737 45.3341ZM27.2129 45.6829H19.0717V28.732L20.2637 24.8199H27.2129V45.6829ZM34.2349 45.6829H30.0249V24.8199H34.2349V45.6829ZM45.1881 45.6829H37.0468V24.8199H45.1881V45.6829Z"
+                                  fill="#393939" />
+                              <path
+                                  d="M24.4172 13.0174C26.4429 15.6575 29.9851 17.9059 31.4141 18.7501C31.6345 18.8804 31.8818 18.9455 32.1291 18.9455C32.3703 18.9455 32.6115 18.8835 32.8282 18.7594C34.2556 17.9415 37.7961 15.7429 39.8374 13.0012C41.2995 11.0374 42.0917 8.96863 42.1919 6.85233C42.1998 6.68455 42.2037 6.53496 42.2037 6.39521C42.2037 3.14789 39.5597 0.505859 36.3097 0.505859C34.7163 0.505859 33.2127 1.16374 32.1233 2.25756C31.0342 1.16384 29.5314 0.505859 27.9405 0.505859H27.9248C26.4038 0.505859 24.9734 1.09719 23.896 2.1717C22.738 3.32663 22.0688 4.9681 22.0556 6.68212C22.0551 6.69936 22.0547 6.71651 22.0547 6.73385C22.0547 6.75447 22.0551 6.77481 22.0556 6.796C22.071 8.90189 22.8655 10.995 24.4172 13.0174ZM24.8672 6.73395C24.8672 5.74286 25.2369 4.80567 25.8815 4.16269C26.2684 3.7769 26.9365 3.31772 27.9281 3.31772H27.9366C29.2005 3.31772 30.3561 4.10823 30.8121 5.28481C31.0219 5.82581 31.5426 6.18254 32.1229 6.18254H32.123C32.7033 6.18254 33.2241 5.8259 33.4338 5.2849C33.8901 4.10823 35.0458 3.31772 36.3095 3.31772C38.009 3.31772 39.3917 4.69825 39.3917 6.39521C39.3917 6.49147 39.389 6.59439 39.383 6.71923C39.3098 8.26651 38.7037 9.81509 37.5819 11.3219C36.1136 13.2938 33.5438 15.0342 32.1374 15.8988C30.6226 14.9509 28.1119 13.2137 26.648 11.3057C25.4773 9.77985 24.8782 8.25563 24.8673 6.77838C24.8673 6.7706 24.8672 6.76291 24.867 6.75466C24.8671 6.74773 24.8672 6.74088 24.8672 6.73395Z"
+                                  fill="#393939" />
+                          </g>
+                          <defs>
+                              <clipPath id="clip0_690_24562">
+                                  <rect width="48" height="48" fill="white"
+                                      transform="translate(0 0.5)" />
+                              </clipPath>
+                          </defs>
+                        </svg>
+                      </div>
+                      <div class="reward-coupon-details">
+                        <div class="coupon-title">GET THE SCOOP!</div>
+                        <div class="coupon-text">Get free Best Sellers on cart value worth ₹799 & above.</div>
+                        <div class="view-gifts-section">
+                          <button class="view-gifts-slide-btn">View Gifts</button>
+                          <div class="view-gifts-slide">
+                            <button class="view-gifts-slide-close-btn">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="13"
+                                viewBox="0 0 14 13"
+                                fill="none"
+                              >
+                                <path d="M1 0.5L13 12.5" stroke="#393939" stroke-linecap="round" />
+                                <path d="M13 0.5L1 12.5" stroke="#393939" stroke-linecap="round" />
+                              </svg>
+                            </button>
+                            <div class="view-gifts-contents">
+                              <div class="gift-slide-heading">
+                                <div class="gift-slide-details">
+                                  <div class="coupon-title">HEY! GIVE AWAYS</div>
+                                  <div class="coupon-text">
+                                    Give Some, Get Some!Free best sellers on cart value worth:
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="">
+                                <ul class="reward-points-container" role="tablist">
+                                  <li class="reward-points" role="presentation">
+                                    <button
+                                      class="active"
+                                      data-bs-toggle="tab"
+                                      data-bs-target="#home-tab-pane"
+                                      type="button"
+                                      role="tab"
+                                      aria-controls="home-tab-pane"
+                                      aria-selected="true"
+                                    >
+                                      <span>₹799</span> & above
+                                    </button>
+                                  </li>
+
+                                  <li class="reward-points" role="presentation">
+                                    <button
+                                      class=""
+                                      data-bs-toggle="tab"
+                                      data-bs-target="#profile-tab-pane"
+                                      type="button"
+                                      role="tab"
+                                      aria-controls="profile-tab-pane"
+                                      aria-selected="false"
+                                    >
+                                      <span>₹1299</span> & above
+                                    </button>
+                                  </li>
+
+                                  <li class="reward-points" role="presentation">
+                                    <button
+                                      class=""
+                                      data-bs-toggle="tab"
+                                      data-bs-target="#contact-tab-pane"
+                                      type="button"
+                                      role="tab"
+                                      aria-controls="contact-tab-pane"
+                                      aria-selected="false"
+                                    >
+                                      <span>₹1699</span> & above
+                                    </button>
+                                  </li>
+                                </ul>
+
+                                <div class="tab-content" id="myTabContent">
+                                  <div
+                                    class="tab-pane fade show active"
+                                    id="home-tab-pane"
+                                    role="tabpanel"
+                                    aria-labelledby="home-tab"
+                                    tabindex="0"
+                                  >
+                                    <div class="reward-product-container">
+                                      <p class="reward-product-title">*Select your freebie at checkout!</p>
+                                      <div class="reward-product-card-container">
+                                        <div class="reward-product-card">
+                                          <div class="reward-product-image">
+                                            <img
+                                              src="https://hokdevelopment.myshopify.com/cdn/shop/products/FPR229_SPF_BFF_Primer_1.png?v=1682091436"
+                                              alt=""
+                                              class="img-fluid"
+                                            >
+                                          </div>
+                                          <div class="reward-product-details">
+                                            <p class="product-brand">Koric + Milani</p>
+                                            <p class="product-details">Flawless Beauty essentials</p>
+                                          </div>
+                                        </div>
+
+                                        <div class="reward-product-card">
+                                          <div class="reward-product-image">
+                                            <img
+                                              src="https://hokdevelopment.myshopify.com/cdn/shop/products/FPR229_SPF_BFF_Primer_1.png?v=1682091436"
+                                              alt=""
+                                              class="img-fluid"
+                                            >
+                                          </div>
+                                          <div class="reward-product-details">
+                                            <p class="product-brand">Koric</p>
+                                            <p class="product-details">Flawless Beauty essentials</p>
+                                          </div>
+                                        </div>
+
+                                        <div class="reward-product-card">
+                                          <div class="reward-product-image">
+                                            <img
+                                              src="https://hokdevelopment.myshopify.com/cdn/shop/products/FPR229_SPF_BFF_Primer_1.png?v=1682091436"
+                                              alt=""
+                                              class="img-fluid"
+                                            >
+                                          </div>
+                                          <div class="reward-product-details">
+                                            <p class="product-brand">Makeup Revolution</p>
+                                            <p class="product-details">Flawless Beauty essentials</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div
+                                    class="tab-pane fade"
+                                    id="profile-tab-pane"
+                                    role="tabpanel"
+                                    aria-labelledby="profile-tab"
+                                    tabindex="0"
+                                  >
+                                    <div class="reward-product-container">
+                                      <p class="reward-product-title">*Select your freebie at checkout!</p>
+                                      <div class="reward-product-card-container">
+                                        <div class="reward-product-card">
+                                          <div class="reward-product-image">
+                                            <img
+                                              src="https://hokdevelopment.myshopify.com/cdn/shop/products/FPR229_SPF_BFF_Primer_1.png?v=1682091436"
+                                              alt=""
+                                              class="img-fluid"
+                                            >
+                                          </div>
+                                          <div class="reward-product-details">
+                                            <p class="product-brand">Koric + Milani</p>
+                                            <p class="product-details">Flawless Beauty essentials</p>
+                                          </div>
+                                        </div>
+
+                                        <div class="reward-product-card">
+                                          <div class="reward-product-image">
+                                            <img
+                                              src="https://hokdevelopment.myshopify.com/cdn/shop/products/FPR229_SPF_BFF_Primer_1.png?v=1682091436"
+                                              alt=""
+                                              class="img-fluid"
+                                            >
+                                          </div>
+                                          <div class="reward-product-details">
+                                            <p class="product-brand">Koric</p>
+                                            <p class="product-details">Flawless Beauty essentials</p>
+                                          </div>
+                                        </div>
+
+                                        <div class="reward-product-card">
+                                          <div class="reward-product-image">
+                                            <img
+                                              src="https://hokdevelopment.myshopify.com/cdn/shop/products/FPR229_SPF_BFF_Primer_1.png?v=1682091436"
+                                              alt=""
+                                              class="img-fluid"
+                                            >
+                                          </div>
+                                          <div class="reward-product-details">
+                                            <p class="product-brand">Makeup Revolution</p>
+                                            <p class="product-details">Flawless Beauty essentials</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="tab-pane fade"
+                                    id="contact-tab-pane"
+                                    role="tabpanel"
+                                    aria-labelledby="contact-tab"
+                                    tabindex="0"
+                                  >
+                                    <div class="reward-product-container">
+                                      <p class="reward-product-title">*Select your freebie at checkout!</p>
+                                      <div class="reward-product-card-container">
+                                        <div class="reward-product-card">
+                                          <div class="reward-product-image">
+                                            <img
+                                              src="https://hokdevelopment.myshopify.com/cdn/shop/products/FPR229_SPF_BFF_Primer_1.png?v=1682091436"
+                                              alt=""
+                                              class="img-fluid"
+                                            >
+                                          </div>
+                                          <div class="reward-product-details">
+                                            <p class="product-brand">Koric + Milani</p>
+                                            <p class="product-details">Flawless Beauty essentials</p>
+                                          </div>
+                                        </div>
+
+                                        <div class="reward-product-card">
+                                          <div class="reward-product-image">
+                                            <img
+                                              src="https://hokdevelopment.myshopify.com/cdn/shop/products/FPR229_SPF_BFF_Primer_1.png?v=1682091436"
+                                              alt=""
+                                              class="img-fluid"
+                                            >
+                                          </div>
+                                          <div class="reward-product-details">
+                                            <p class="product-brand">Koric</p>
+                                            <p class="product-details">Flawless Beauty essentials</p>
+                                          </div>
+                                        </div>
+
+                                        <div class="reward-product-card">
+                                          <div class="reward-product-image">
+                                            <img
+                                              src="https://hokdevelopment.myshopify.com/cdn/shop/products/FPR229_SPF_BFF_Primer_1.png?v=1682091436"
+                                              alt=""
+                                              class="img-fluid"
+                                            >
+                                          </div>
+                                          <div class="reward-product-details">
+                                            <p class="product-brand">Makeup Revolution</p>
+                                            <p class="product-details">Flawless Beauty essentials</p>
+                                          </div>
+                                        </div>
+                                        <div class="reward-product-card">
+                                          <div class="reward-product-image">
+                                            <img
+                                              src="https://hokdevelopment.myshopify.com/cdn/shop/products/FPR229_SPF_BFF_Primer_1.png?v=1682091436"
+                                              alt=""
+                                              class="img-fluid"
+                                            >
+                                          </div>
+                                          <div class="reward-product-details">
+                                            <p class="product-brand">Makeup Revolution</p>
+                                            <p class="product-details">Flawless Beauty essentials</p>
+                                          </div>
+                                        </div>
+                                        <div class="reward-product-card">
+                                          <div class="reward-product-image">
+                                            <img
+                                              src="https://hokdevelopment.myshopify.com/cdn/shop/products/FPR229_SPF_BFF_Primer_1.png?v=1682091436"
+                                              alt=""
+                                              class="img-fluid"
+                                            >
+                                          </div>
+                                          <div class="reward-product-details">
+                                            <p class="product-brand">Makeup Revolution</p>
+                                            <p class="product-details">Flawless Beauty essentials</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="view-gifts-banner d-none d-lg-grid">reward</div>
+
+                              <div class="view-gifts-terms d-none d-lg-flex">
+                                <p class="t-c">T&C</p>
+                                <p class="t-c-d">
+                                  *Freebies are available to customers who meet specific price conditions as outlined in
+                                  our promotions and marketing materials.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="reward-coupon-cards" offer="discount">
+                      <div class="reward-coupon-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none">
+                          <g clip-path="url(#clip0_3211_33302)">
+                            <path d="M39.2081 21.5439C39.0391 21.1981 39.0391 20.8016 39.2081 20.4559L40.7746 17.2514C41.6467 15.4671 40.9557 13.3405 39.2014 12.4097L36.0506 10.7379C35.7106 10.5576 35.4776 10.2367 35.4111 9.85779L34.7948 6.3445C34.4517 4.38839 32.6423 3.07393 30.6762 3.3521L27.1446 3.85167C26.7634 3.90548 26.3864 3.78292 26.1099 3.51542L23.5464 1.03547C22.1189 -0.34544 19.8828 -0.345522 18.4555 1.03547L15.8918 3.51567C15.6152 3.78325 15.2383 3.90556 14.8572 3.85191L11.3255 3.35234C9.35882 3.07401 7.55004 4.38864 7.2069 6.34474L6.59069 9.85788C6.52416 10.2369 6.29111 10.5577 5.95126 10.7381L2.80046 12.4099C1.04615 13.3406 0.355121 15.4674 1.22727 17.2516L2.79365 20.4561C2.96263 20.8018 2.96263 21.1984 2.79365 21.5441L1.22719 24.7485C0.355038 26.5328 1.04607 28.6594 2.80038 29.5902L5.95118 31.262C6.29111 31.4423 6.52416 31.7632 6.59069 32.1421L7.2069 35.6554C7.51928 37.4361 9.0462 38.685 10.8011 38.6848C10.9739 38.6848 11.1493 38.6727 11.3256 38.6477L14.8573 38.1482C15.2381 38.0941 15.6153 38.2169 15.8919 38.4844L18.4555 40.9644C19.1693 41.6549 20.0849 42.0001 21.0009 42C21.9166 41.9999 22.8328 41.6547 23.5463 40.9644L26.1099 38.4844C26.3865 38.2169 26.7635 38.0947 27.1446 38.1482L30.6762 38.6477C32.6432 38.926 34.4517 37.6114 34.7948 35.6553L35.4111 32.1422C35.4777 31.7632 35.7107 31.4424 36.0506 31.262L39.2014 29.5902C40.9557 28.6595 41.6467 26.5327 40.7746 24.7484L39.2081 21.5439ZM38.066 27.4503L34.9152 29.1221C33.9106 29.6552 33.2216 30.6033 33.0252 31.7235L32.409 35.2367C32.2929 35.8985 31.681 36.3431 31.0155 36.2491L27.4838 35.7496C26.3576 35.59 25.2431 35.9525 24.4257 36.7432L21.862 39.2231C21.3792 39.6902 20.6226 39.6902 20.1396 39.2231L17.5761 36.7431C16.8852 36.0748 15.9821 35.7127 15.0392 35.7127C14.8664 35.7127 14.6923 35.7248 14.5179 35.7495L10.9862 36.2491C10.3213 36.3431 9.70893 35.8985 9.59277 35.2366L8.97647 31.7233C8.77993 30.6031 8.09103 29.6549 7.0864 29.122L3.9356 27.4502C3.34203 27.1353 3.10824 26.4158 3.4033 25.8121L4.96976 22.6076C5.46917 21.5858 5.46917 20.4139 4.96976 19.3921L3.4033 16.1876C3.10824 15.584 3.34203 14.8645 3.9356 14.5495L7.0864 12.8778C8.09095 12.3446 8.77993 11.3965 8.97639 10.2763L9.59261 6.7631C9.70876 6.10128 10.3205 5.65667 10.9861 5.75068L14.5177 6.25024C15.6436 6.40963 16.7585 6.0473 17.5759 5.25661L20.1395 2.77665C20.6224 2.30957 21.379 2.30957 21.8619 2.77665L24.4255 5.25661C25.2429 6.04738 26.3576 6.40963 27.4837 6.25024L31.0154 5.75068C31.6804 5.65659 32.2927 6.10128 32.4088 6.7631L33.025 10.2764C33.2216 11.3966 33.9105 12.3448 34.9151 12.8778L38.0659 14.5495C38.6595 14.8645 38.8933 15.584 38.5982 16.1876L37.0317 19.3921C36.5323 20.4138 36.5323 21.5858 37.0317 22.6075L38.5982 25.812C38.8933 26.4158 38.6596 27.1354 38.066 27.4503Z" fill="#393939" stroke="#F8F8F8" stroke-width="0.8"/>
+                            <path d="M29.8504 12.1502C29.3775 11.6772 28.6105 11.6772 28.1375 12.1502L12.1506 28.1371C11.6777 28.6101 11.6777 29.377 12.1506 29.85C12.3871 30.0865 12.6971 30.2048 13.007 30.2048C13.317 30.2048 13.627 30.0866 13.8634 29.85L29.8503 13.8631C30.3235 13.39 30.3235 12.6232 29.8504 12.1502Z" fill="#393939" stroke="#F8F8F8" stroke-width="0.8"/>
+                            <path d="M16.1549 10.0994C13.7061 10.0994 11.7139 12.0916 11.7139 14.5404C11.7139 16.9892 13.7061 18.9815 16.1549 18.9815C18.6037 18.9815 20.596 16.9892 20.596 14.5404C20.596 12.0916 18.6037 10.0994 16.1549 10.0994ZM16.1549 16.559C15.0419 16.559 14.1363 15.6535 14.1363 14.5403C14.1363 13.4273 15.0419 12.5217 16.1549 12.5217C17.268 12.5217 18.1736 13.4273 18.1736 14.5403C18.1735 15.6535 17.268 16.559 16.1549 16.559Z" fill="#393939" stroke="#F8F8F8" stroke-width="0.8"/>
+                            <path d="M25.8454 23.0188C23.3966 23.0188 21.4043 25.0111 21.4043 27.4599C21.4043 29.9086 23.3966 31.9009 25.8454 31.9009C28.2941 31.9009 30.2864 29.9086 30.2864 27.4599C30.2864 25.0111 28.2941 23.0188 25.8454 23.0188ZM25.8454 29.4785C24.7323 29.4785 23.8267 28.5729 23.8267 27.4599C23.8267 26.3468 24.7322 25.4412 25.8454 25.4412C26.9584 25.4412 27.864 26.3468 27.864 27.4599C27.864 28.5729 26.9584 29.4785 25.8454 29.4785Z" fill="#393939" stroke="#F8F8F8" stroke-width="0.8"/>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_3211_33302">
+                              <rect width="42" height="42" fill="white"/>
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </div>
+                      <div class="reward-coupon-details">
+                        <div class="coupon-title">20% off! WAITING FOR YOU</div>
+                        <div class="coupon-text">
+                          Get 20% Off On All Your Favourite Products From Makeup Revolution.
+                        </div>
+                        <div class="view-gifts-section">
+                          <div id="offerToCopy" coupon="free20000" style="width:max-content;">COPY CODE</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% when 'live_count' %}
+                <div class="live-views d-none d-md-flex">
+                  <span
+                    ><img
+                      loading="lazy"
+                      src="https://cdn.shopify.com/s/files/1/1743/7443/files/33d72e41b1889e6e1bee4e76cf87b0e9.gif?v=1693810925"
+                      width="23"
+                      height="23"
+                      alt="eyes"
+                      class="img-fluid"
+                  ></span>
+                  <p class="live-viewing-number">
+                    {{ 'now' | date: '%N' | modulo: 199 | plus: 59 }} People Are Viewing
+                  </p>
+                </div>
+              {% when 'ATB' %}
+                {% if product.title contains 'E-Gift card' %}
+                  {%- assign product_form_id = 'product-form-' | append: section.id -%}
+                  {% form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate' %}
+                    <input
+                      type="hidden"
+                      name="id"
+                      data-gtm-form-interact-field-id="1"
+                      value="{{ product.selected_or_first_available_variant.id }}"
+                      class="product-variant-id"
+                      data-type="hey-paradise-gifts"
+                    >
+                    {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
+                    <button
+                      id="ProductSubmitButton-{{ section_id }}"
+                      type="submit"
+                      name="add"
+                      class="add-quick-bag-btn-notify rounded-pill border-0"
+                    >
+                      <span> Send Gift </span>
+                    </button>
+                  {% endform %}
+                {% else %}
+                  <div class="add-to-bag-btn {% if product.variants.size > 1 %}d-none d-md-block{% else %}product-adding-for-mobile{% endif %}">
+                    {%- form 'product',
+                      product,
+                      id: product_form_id,
+                      class: 'form w-100',
+                      novalidate: 'novalidate',
+                      data-type: 'add-to-cart-form'
+                    -%}
+                      <input
+                        type="hidden"
+                        name="id"
+                        value="{{ product.selected_or_first_available_variant.id }}"
+                        disabled
+                        class="product-variant-id"
+                      >
+                      <button
+                        type="button"
+                        data-product_id="{{ product.selected_or_first_available_variant.id }}"
+                        data-product_quantity="1"
+                      >
+                        Add To Bag
+                      </button>
+                    {% endform %}
+                  </div>
+                {% endif %}
+            {% endcase %}
+          {% endfor %}
+
+          <div class="review-container d-none d-md-flex">
+            <p class="review-title">Review Highlight</p>
+            <div class="reviews">
+              {{ star_ratings }}
+              <div class="review-text">
+                "I got the same shade name as my normal Shape Tape (light medium) and it was a perfect match..."
+              </div>
+              <div class="reviewer">Nikhil Bhatia (16/08/2023)</div>
+            </div>
+          </div>
+          <div class="product-more-details d-none d-md-block">
+            <div class="product-description-container">
+              <input type="checkbox" id="product-description1">
+              <label for="product-description1">Description</label>
+              {{ product_Custom_Details }}
+            </div>
+            {% if product.metafields.custom.ingredient != blank %}
+              <div class="product-ingredients-container">
+                <input type="checkbox" name="" id="product-ingredients1">
+                <label for="product-ingredients1">Ingredients</label>
+                <div class="product-ingredients-details">
+                  {{ product.metafields.custom.ingredient | capitalize }}
+                </div>
+              </div>
+            {% endif %}
+            {% if product.metafields.custom.how_to_uses != blank %}
+              <div class="product-htu-container">
+                <input type="checkbox" name="" id="product-htu1">
+                <label for="product-htu1">How to Use</label>
+                <div class="product-htu-details">
+                  {{ product.metafields.custom.how_to_uses }}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="d-md-none">
+  <div class="container">
+    <div class="review-container">
+      <p class="review-title">Review Highlight</p>
+      <div class="reviews">
+        {{ star_ratings }}
+        <div class="review-text">
+          "I got the same shade name as my normal Shape Tape (light medium) and it was a perfect match..."
+        </div>
+        <div class="reviewer">Nikhil Bhatia (16/08/2023)</div>
+      </div>
+      <div class="view-more-reviews-container" id="view-latest-reviews">
+        <a class="view-more-reviews" href="#view-reviews"
+          >View More
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="10"
+              height="7"
+              viewBox="0 0 10 7"
+              fill="none"
+            >
+              <path d="M1 1L5 5L9 1" stroke="#404184" stroke-width="1.5" stroke-linecap="round" />
+            </svg></span
+        ></a>
+      </div>
+    </div>
+
+    <div class="product-more-details">
+      <div class="product-description-container" id="view-reviews">
+        <input type="checkbox" name="" id="product-description">
+        <label for="product-description">Description</label>
+        {{ product_Custom_Details }}
+      </div>
+      {% if product.metafields.custom.ingredient != blank %}
+        <div class="product-ingredients-container">
+          <input type="checkbox" name="" id="product-ingredients">
+          <label for="product-ingredients">Ingredients</label>
+          <div class="product-ingredients-details">
+            {{ product.metafields.custom.ingredient | capitalize }}
+          </div>
+        </div>
+      {% endif %}
+      {% if product.metafields.custom.how_to_uses != blank %}
+        <div class="product-htu-container">
+          <input type="checkbox" name="" id="product-htu">
+          <label for="product-htu">How to Use</label>
+          <div class="product-htu-details">
+            {{ product.metafields.custom.how_to_uses }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{{ 'product.css' | asset_url | stylesheet_tag: preload: true }}
+{% if template == 'product' %}
+  <style>
+    .product-preview-track {
+    max-height: 800px;
+    overflow-y: hidden;
+}
+    @media only screen and (max-width: 992px) {
+      .product-thumb-slider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 10px;
+      }
+      .product-thumb-slider .thumb_container img,
+      .product-thumb-slider .thumb_container video {
+        display: none;
+      }
+      .product-thumb-slider .thumb_container {
+        height: 6px;
+        width: 6px;
+        background-color: #eeeeee;
+        margin: 0 !important;
+      }
+      .product-thumb-slider .thumb_container.tns-nav-active {
+        background-color: #cdcdcd;
+      }
+
+      #tns1-mw {
+        height: auto !important;
+      }
+      #tns1-iw {
+        margin: 0;
+      }
+      .product-adding-for-mobile {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #fff;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        padding: 17px 12px;
+        gap: 6px;
+        box-shadow: 0px 4px 8px 0px;
+        transition: height 0.5s ease-out;
+      }
+      .dropdown-color-name {
+        max-width: 80px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .product-adding-for-mobile > div {
+        flex: 1;
+      }
+      .custom-dropdown {
+        position: static;
+      }
+      .dropdown-button {
+        border-radius: 50px;
+      }
+      .dropdown-content {
+        position: static;
+        height: 50vh;
+        overflow-y: auto;
+        transition: height 0.5s ease;
+        /* background:#fff; */
+      }
+
+      .product-details-container .add-to-bag-btn button {
+        padding: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+      }
+    }
+  </style>
+{% endif %}
+<script>
+  $(document).ready(function () {
+    $('#offerToCopy').click(function (event) {
+      event.preventDefault();
+      let couponCode = $(this).attr('coupon');
+      $.ajax({
+        url: `{{ shop.url }}/discount/${couponCode}`,
+        success: function (data) {
+          alert('Your discount has been applied!');
+          $(this).text('Coupon Applied');
+        },
+      });
+    });
+    $('.view-gifts-slide-btn').click(function () {
+      $('.view-gifts-slide').addClass('active');
+      $('.cart-overlay').addClass('cart-overlay-open');
+    });
+    $('.view-gifts-slide-close-btn, .cart-overlay').click(function () {
+      $('.view-gifts-slide').removeClass('active');
+      $('.cart-overlay').removeClass('cart-overlay-open');
+    });
+  });
+</script>
+
+<script>
+    let first_Selected = {{ first_variant.featured_media.position }}; 
+    let vertical_slider = tns({
+      container: '.product-thumb-slider',
+      items: 4,
+      gutter: 12,
+      axis: 'vertical',
+      mouseDrag: true,
+      controls: true,
+      loop: false,
+      nav:false,
+      arrowKeys: true,
+      navAsThumbnails: false,
+      prevButton: '.product-preview-track-prev',
+      nextButton: '.product-preview-track-next'
+      });
+    
+      let mainSlider = tns({
+        container: '.product-main-slider',
+        items: 1,
+        mouseDrag: true,
+        navContainer: '.product-thumb-slider',
+        controlsContainer:'.product-thumb-slider',
+        navAsThumbnails: true,
+        mode: 'gallery',
+        controls: false,
+        loop: false
+      });
+
+      if (mainSlider && vertical_slider) {
+        mainSlider.goTo(first_Selected -1);
+        vertical_slider.goTo(first_Selected -1);
+        $(`.product-preview-container`).fadeIn(100);
+      }
+    document.addEventListener("DOMContentLoaded", (event) => {
+      setInterval(liveViewsCounter, 120000);
+    });
+    const liveViewsCounter = () => {
+      let CurruntViews = Math.floor(Math.random() * (199 - 59 + 1)) + 59;
+      return $('.live-viewing-number').text(`${CurruntViews} People Are Viewing`);
+    }
+
+    liveViewsCounter();
+
+    {% if product.title contains "E-Gift card" %}
+    let giftHandler = $('#data-e-gift');
+    
+    $('.giftHandle').on('input',function() {
+      var inputValue = $(this).val();  // Fix: Use $(param).val() to get the input value
+      var fillerElem = $(this).attr("filler");
+      // Update the content of the output div
+      if (fillerElem == 'email') {
+        $(giftHandler).find('.e-email').text(inputValue);
+      } else if (fillerElem == 'name') {
+        $(giftHandler).find('.e-name').text(inputValue);
+      } else if (fillerElem == 'message') {
+        $(giftHandler).find('.e-message').text(inputValue);
+      } else if (fillerElem == 'date') {
+        $(giftHandler).find('.e-date').text(inputValue);
+      }
+    });
+    {% endif %}
+</script>
+
+
+{% schema %}
+{
+  "name": "Main Product",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "limited_stocks",
+      "label": "Show stock notification if low:",
+      "default": true
+    },
+    {
+      "type": "number",
+      "id": "qty_tres",
+      "label": "Stock Threshold Limit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1
+    },
+    {
+      "type": "social-share",
+      "name": "Social Share",
+      "limit": 1
+    },
+    {
+      "type": "pricing",
+      "name": "Pricing",
+      "limit": 1
+    },
+    {
+      "type": "variant_picker",
+      "name": "Variant Picker",
+      "limit": 1
+    },
+    {
+      "type": "reward-notification",
+      "name": "Reward Notification",
+      "limit": 1
+    },
+    {
+      "type": "reward-cards",
+      "name": "Reward Cards",
+      "limit": 1
+    },
+    {
+      "type": "live_count",
+      "name": "Live Counter",
+      "limit": 1
+    },
+    {
+      "type": "ATB",
+      "name": "Add To Bag button",
+      "limit": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main Product",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

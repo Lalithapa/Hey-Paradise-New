@@ -1,0 +1,44 @@
+<div class='glass-card'>
+  {% if product.featured_media.media_type == 'image' %}
+    <img
+      class='glass-card-featured-media'
+      src='{{product.featured_media.src |  image_url }}'
+      alt='{{product.featured_media.alt}}'
+      loading='lazy'
+    >
+  {% elsif product.featured_media.media_type == 'video' %}
+    <video
+      class='glass-card-featured-media'
+      src='{{product.featured_media.sources[0].src |  image_url }}'
+      type='{{product.featured_media.sources[0].mime_type}}'
+      poster='{{product.featured_media.preview_image.src |  image_url }}'
+      alt='{{product.featured_media.alt}}'
+      autoplay='true'
+      loop='ture'
+      muted='true'
+      preload='none'
+      loading='lazy'
+    ></video>
+  {% endif %}
+  <div class='glass-card-content'>
+    <div class='glass-card-title-wrapper'>
+      <p class='glass-card-vendor'>{{- product.vendor -}}</p>
+      <p class='glass-card-title'>
+        {{- product.title -}}
+      </p>
+    </div>
+    <div class='glass-card-price-wrapper'>
+      <p class='glass-card-price'>
+        {{- product.price | money_with_currency -}}
+      </p>
+      {% if product.compare_at_price
+        and product.compare_at_price > product.price
+      %}
+        <s class='glass-card-compare-at-price'>
+          {{- product.compare_at_price | money_with_currency -}}
+        </s>
+      {% endif %}
+    </div>
+  </div>
+  <a href='{{product.url}}' class='glass-card-fab'>+</a>
+</div>

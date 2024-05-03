@@ -1,0 +1,104 @@
+ <section>
+  <div class="container talk-slider-container">
+    <p class="brand-section-title">{{ section.settings.talkofthetowntitle }}</p>
+
+    <div class="talk-slider swiper px-4">
+      <button class="talk-slide-prev border-0 bg-transparent d-none d-sm-inline">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29" fill="none">
+          <path d="M18.5718 6.00977L10.082 14.4996L18.5718 22.9894" stroke="#585858" stroke-width="2"
+              stroke-linecap="round" />
+        </svg>
+      </button>
+      <button class="talk-slide-next border-0 bg-transparent d-none d-sm-inline">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29" fill="none">
+          <path d="M9.42817 6.00977L17.918 14.4996L9.42817 22.9894" stroke="#585858" stroke-width="2"
+              stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide">
+            <div class="slide-cards">
+              <div class="slide-card-image-container" style="background-color:{{ block.settings.brandbgcolor }}">
+                <img src="{{ block.settings.brandimage | image_url }}" alt="" class="img-fluid">
+              </div>
+              <div class="slide-card-brand-container">
+                <img src="{{ block.settings.brandlogo | image_url }}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="talk-slide-pagination d-flex align-items-center justify-content-center py-2 d-sm-none"></div>
+    </div>
+  </div>
+</section>
+
+{% javascript %}
+  const swiper = new Swiper('.talk-slider', {
+    slidesPerView: 2,
+    spaceBetween: 25,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: '.talk-slide-next',
+      prevEl: '.talk-slide-prev',
+    },
+    pagination: {
+      el: '.talk-slide-pagination',
+    },
+    breakpoints: {
+      992: {
+        slidesPerView: 3,
+      },
+      1200: {
+        slidesPerView: 4,
+      },
+    },
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Talk of the town",
+  "settings": [
+    {
+      "type": "text",
+      "id": "talkofthetowntitle",
+      "label": "Add Your Heading Here"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Image With Logo",
+      "type": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "brandimage",
+          "label": "Add Your Image Here"
+        },
+        {
+          "type": "image_picker",
+          "id": "brandlogo",
+          "label": "Add Your logo Here"
+        },
+        {
+          "type": "color",
+          "id": "brandbgcolor",
+          "label": "Choose Background Color"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Talk of the town"
+    }
+  ]
+}
+{% endschema %}

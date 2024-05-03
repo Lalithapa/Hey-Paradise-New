@@ -1,0 +1,233 @@
+<div class='mobile-nav d-lg-none'>
+  <div class='m-header'>
+    <img
+      loading='lazy'
+      src='https://cdn.shopify.com/s/files/1/0673/6396/3172/files/Logo.svg?v=1694073877'
+      alt='logo'
+      class='img-fluid'
+      width='90px'
+    >
+    <button
+      class='slide-close d-flex align-items-center justify-content-center border-0 bg-transparent menu-slide-toggle'
+    >
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        width='13'
+        height='14'
+        viewBox='0 0 13 14'
+        fill='none'
+      >
+        <path d="M0.5 1L12.5 13" stroke="#393939" stroke-linecap="round" />
+        <path d="M12.5 1L0.5 13" stroke="#393939" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+  <div class='m-content'>
+    <div class='m-search'>
+      <input
+        type='text'
+        class='m-search-input'
+        placeholder='What are you looking for?'
+      >
+      <span class='m-search-icon'>
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          width='23'
+          height='22'
+          viewBox='0 0 23 22'
+          fill='none'
+        >
+          <circle cx="10.25" cy="9.75" r="8.75" stroke="#393939" stroke-width="1.5" />
+          <path d="M21.5 21L17.75 17.25" stroke="#393939" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+      </span>
+    </div>
+
+    <div class="m-banner" id="m-nav-banner" 
+      {% if customer %} data-slick='{"dots": false,"infinite": true, "slidesToShow": 1,"autoplay":true, "slidesToScroll": 1, "arrows": false}'{% endif %} >
+      {% if customer %}
+      <div class="position-relative">
+        <img loading="lazy" width="100%" height="auto"
+          src="https://cdn.shopify.com/s/files/1/0577/9000/5290/files/Rectangle_4127_1.png?v=1709292358"
+          alt="hey-banner" class="banner-img">
+        <div class="m-banner-info-container">
+          <p class="m-banner-text">Hey! {{ customer.first_name }}</p>
+          <p class="m-banner-sub-text">Get many surprises</p>
+          <a class="m-banner-sub-text" href="/account">View Profile <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="8" height="9" viewBox="0 0 8 9" fill="none">
+                <path d="M1.5 1.32202L5.5 4.82202L1.5 8.32202" stroke="#393939" stroke-width="1.2"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span></a>
+        </div>
+      </div>
+      <div class="position-relative ">
+        <a href="/">
+          <img loading="lazy" width="100%" height="auto"
+            src="https://cdn.shopify.com/s/files/1/0577/9000/5290/files/Rectangle_4127.png?v=1709291064"
+            alt="hey-banner" class="banner-img"></a>
+      </div>
+      {% else %}
+      <div class="position-relative ">
+        <img loading="lazy" width="100%" height="auto"
+          src="https://cdn.shopify.com/s/files/1/0577/9000/5290/files/Rectangle_4127_1.png?v=1709292358"
+          alt="hey-banner" class="banner-img">
+        <div class="m-banner-info-container">
+          <p class="m-banner-text">Join the Hey! Fam</p>
+          <p class="m-banner-sub-text">Get exclusive rewards, offers and more</p>
+          <a class="m-banner-sub-text" href="/account">Sign Up/Login <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="8" height="9" viewBox="0 0 8 9" fill="none">
+                <path d="M1.5 1.32202L5.5 4.82202L1.5 8.32202" stroke="#393939" stroke-width="1.2"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span></a>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class='m-trending'>
+      <p class='m-0 m-trending-title'>Trending</p>
+      <div class='m-trending-tags-container'>
+        <a href='' class='m-trending-tag rounded-pill'>
+          <span>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='8'
+              height='8'
+              viewBox='0 0 8 8'
+              fill='none'
+            >
+              <path
+                  d="M3.43605 1.18852L6.44465 1.0425M6.44465 1.0425L6.59067 4.05111M6.44465 1.0425L1.0773 6.95742"
+                  stroke="#404184" stroke-width="1.2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+            </svg>
+          </span>
+          Ohmy Gel Long Lasting Eyeliner
+        </a>
+        <a href='' class='m-trending-tag rounded-pill' style='color:#D45986'>
+          <span>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='8'
+              height='8'
+              viewBox='0 0 8 8'
+              fill='none'
+            >
+              <path
+                  d="M3.43605 1.18852L6.44465 1.0425M6.44465 1.0425L6.59067 4.05111M6.44465 1.0425L1.0773 6.95742"
+                  stroke="#D45986" stroke-width="1.2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+            </svg>
+          </span>
+          Blush Bomb
+        </a>
+        <a href='' class='m-trending-tag rounded-pill'>
+          <span>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='8'
+              height='8'
+              viewBox='0 0 8 8'
+              fill='none'
+            >
+              <path
+                  d="M3.43605 1.18852L6.44465 1.0425M6.44465 1.0425L6.59067 4.05111M6.44465 1.0425L1.0773 6.95742"
+                  stroke="#404184" stroke-width="1.2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+            </svg>
+          </span>
+          Ohmy Gel Long Lasting Eyeliner
+        </a>
+      </div>
+    </div>
+    <div class='m-mega-menu megamenus-item'>
+      <ul class="m-menu-container d-flex flex-column p-0">
+        {% for link in linklists['main-mega-menu'].links -%}
+        {% render 'nav-list', link: link, index: 0, showSearchBtn: true %}
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class='m-social-container d_cent'>
+      <p class='m-social-text mb-0'>Have we met socially?</p>
+      <div class='m-social-icons'>
+        <a href=''>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='34'
+            height='34'
+            viewBox='0 0 34 34'
+            fill='none'
+          >
+            <path
+                d="M22.0436 10.8198C21.8195 10.8198 21.6004 10.8862 21.414 11.0108C21.2276 11.1353 21.0824 11.3123 20.9966 11.5194C20.9108 11.7265 20.8884 11.9544 20.9321 12.1742C20.9758 12.3941 21.0838 12.596 21.2423 12.7545C21.4008 12.913 21.6027 13.0209 21.8225 13.0647C22.0424 13.1084 22.2703 13.086 22.4773 13.0002C22.6844 12.9144 22.8614 12.7691 22.986 12.5828C23.1105 12.3964 23.177 12.1773 23.177 11.9531C23.177 11.6525 23.0576 11.3643 22.845 11.1517C22.6325 10.9392 22.3442 10.8198 22.0436 10.8198ZM26.3881 13.1053C26.3697 12.3217 26.223 11.5464 25.9536 10.8103C25.7135 10.1805 25.3397 9.61021 24.8581 9.13867C24.3904 8.65457 23.8188 8.28317 23.1864 8.05256C22.4523 7.77504 21.6761 7.62492 20.8914 7.60867C19.8903 7.552 19.5692 7.552 17.0003 7.552C14.4314 7.552 14.1103 7.552 13.1092 7.60867C12.3245 7.62492 11.5484 7.77504 10.8142 8.05256C10.183 8.2855 9.61186 8.65659 9.14253 9.13867C8.65843 9.60634 8.28703 10.178 8.05642 10.8103C7.7789 11.5445 7.62878 12.3206 7.61253 13.1053C7.55586 14.1064 7.55586 14.4276 7.55586 16.9964C7.55586 19.5653 7.55586 19.8864 7.61253 20.8876C7.62878 21.6722 7.7789 22.4484 8.05642 23.1826C8.28703 23.8149 8.65843 24.3866 9.14253 24.8542C9.61186 25.3363 10.183 25.7074 10.8142 25.9403C11.5484 26.2179 12.3245 26.368 13.1092 26.3842C14.1103 26.4409 14.4314 26.4409 17.0003 26.4409C19.5692 26.4409 19.8903 26.4409 20.8914 26.3842C21.6761 26.368 22.4523 26.2179 23.1864 25.9403C23.8188 25.7097 24.3904 25.3383 24.8581 24.8542C25.3419 24.3844 25.716 23.8136 25.9536 23.1826C26.223 22.4465 26.3697 21.6712 26.3881 20.8876C26.3881 19.8864 26.4448 19.5653 26.4448 16.9964C26.4448 14.4276 26.4448 14.1064 26.3881 13.1053ZM24.6881 20.7742C24.6812 21.3737 24.5726 21.9677 24.367 22.5309C24.2162 22.9419 23.974 23.3133 23.6586 23.617C23.3523 23.9291 22.9817 24.1709 22.5725 24.3253C22.0094 24.531 21.4154 24.6396 20.8159 24.6464C19.8714 24.6937 19.522 24.7031 17.0381 24.7031C14.5542 24.7031 14.2048 24.7031 13.2603 24.6464C12.6378 24.6581 12.018 24.5623 11.4281 24.3631C11.0369 24.2007 10.6833 23.9596 10.3892 23.6548C10.0757 23.3514 9.83655 22.9797 9.69031 22.5687C9.45973 21.9974 9.33184 21.3899 9.31253 20.7742C9.31253 19.8298 9.25586 19.4803 9.25586 16.9964C9.25586 14.5126 9.25586 14.1631 9.31253 13.2187C9.31676 12.6058 9.42865 11.9984 9.64308 11.4242C9.80935 11.0256 10.0646 10.6702 10.3892 10.3853C10.6761 10.0606 11.0307 9.8027 11.4281 9.62978C12.0038 9.42204 12.6105 9.31347 13.2225 9.30867C14.167 9.30867 14.5164 9.252 17.0003 9.252C19.4842 9.252 19.8336 9.252 20.7781 9.30867C21.3776 9.31554 21.9716 9.42412 22.5348 9.62978C22.9639 9.78906 23.3491 10.048 23.6586 10.3853C23.9681 10.6754 24.21 11.0301 24.367 11.4242C24.5769 11.9993 24.6855 12.6065 24.6881 13.2187C24.7353 14.1631 24.7448 14.5126 24.7448 16.9964C24.7448 19.4803 24.7353 19.8298 24.6881 20.7742ZM17.0003 12.1514C16.0425 12.1533 15.1067 12.4391 14.3111 12.9726C13.5156 13.5061 12.8961 14.2634 12.5309 15.1489C12.1656 16.0344 12.071 17.0082 12.259 17.9474C12.447 18.8867 12.9092 19.7491 13.5872 20.4257C14.2651 21.1023 15.1284 21.5629 16.068 21.749C17.0076 21.9352 17.9813 21.8387 18.866 21.4717C19.7508 21.1047 20.5069 20.4838 21.0389 19.6872C21.5708 18.8907 21.8547 17.9543 21.8548 16.9964C21.856 16.359 21.7312 15.7277 21.4876 15.1387C21.244 14.5497 20.8863 14.0147 20.4351 13.5644C19.984 13.1141 19.4483 12.7575 18.8588 12.515C18.2693 12.2725 17.6377 12.149 17.0003 12.1514ZM17.0003 20.1414C16.3783 20.1414 15.7702 19.957 15.253 19.6114C14.7358 19.2658 14.3327 18.7747 14.0947 18.2C13.8567 17.6253 13.7944 16.993 13.9157 16.3829C14.0371 15.7728 14.3366 15.2124 14.7765 14.7726C15.2163 14.3328 15.7767 14.0332 16.3867 13.9119C16.9968 13.7905 17.6292 13.8528 18.2038 14.0908C18.7785 14.3289 19.2697 14.732 19.6153 15.2492C19.9609 15.7664 20.1453 16.3744 20.1453 16.9964C20.1453 17.4095 20.064 17.8184 19.9059 18.2C19.7479 18.5816 19.5162 18.9283 19.2242 19.2203C18.9321 19.5123 18.5854 19.744 18.2038 19.902C17.8223 20.0601 17.4133 20.1414 17.0003 20.1414Z"
+                fill="#404184" />
+          </svg>
+        </a>
+        <a href=''>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='34'
+            height='34'
+            viewBox='0 0 34 34'
+            fill='none'
+          >
+            <path
+                d="M19.8715 10.988H21.5V8.12603C20.7115 8.04084 19.9193 7.99878 19.1266 8.00003C16.7705 8.00003 15.1593 9.49402 15.1593 12.23V14.588H12.5V17.792H15.1593V26H18.347V17.792H20.9976L21.3961 14.588H18.347V12.545C18.347 11.6 18.5895 10.988 19.8715 10.988Z"
+                fill="#404184" />
+          </svg>
+        </a>
+        <a href=''>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='34'
+            height='34'
+            viewBox='0 0 34 34'
+            fill='none'
+          >
+            <path
+                d="M20.5033 16.2717L15.2011 13.2147C14.9487 13.0691 14.6388 13.0706 14.3876 13.2185C14.1364 13.3664 13.9819 13.6385 13.9819 13.9327V20.0467C13.9819 20.341 14.1364 20.613 14.3876 20.761C14.6388 20.9089 14.9487 20.9104 15.2011 20.7647L20.5033 17.7077C21.0497 17.3988 21.0496 16.5805 20.5033 16.2717ZM15.6133 18.6257V15.3537L18.4509 16.9898L15.6133 18.6257ZM27.1275 12.6004C26.8623 10.7035 25.3613 9.24818 23.4772 9.06138C21.9889 8.91382 19.6571 8.73792 17 8.73792C14.343 8.73792 12.0112 8.91382 10.5229 9.06138C8.63883 9.24814 7.13777 10.7035 6.87254 12.6003C6.4546 15.6049 6.4546 18.3952 6.87254 21.3997C7.13777 23.2966 8.63883 24.7519 10.5229 24.9387C12.0112 25.0863 14.343 25.2622 17 25.2622C19.6571 25.2622 21.9889 25.0863 23.4772 24.9387C25.3613 24.752 26.8623 23.2966 27.1275 21.3998C27.5455 18.3952 27.5455 15.6049 27.1275 12.6004ZM25.5122 21.1681C25.3528 22.3076 24.4507 23.1819 23.3182 23.2941C21.8661 23.4382 19.5912 23.6098 17 23.6098C14.4089 23.6098 12.134 23.4382 10.6819 23.2941C9.54939 23.1819 8.64723 22.3076 8.48792 21.168C8.29035 19.7551 8.19018 18.3528 8.19018 17C8.19018 15.6473 8.29035 14.245 8.48792 12.832C8.64723 11.6925 9.54939 10.8182 10.6819 10.706C12.134 10.5619 14.4089 10.3903 17 10.3903C19.5912 10.3903 21.8661 10.5619 23.3182 10.706C24.4507 10.8182 25.3528 11.6925 25.5122 12.8321C25.9087 15.6832 25.9087 18.3169 25.5122 21.1681Z"
+                fill="#404184" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  {% comment %}
+    <div class="m-header d-flex align-items-center justify-content-center">
+      <img
+        loading="lazy"
+        src="https://cdn.shopify.com/s/files/1/0673/6396/3172/files/Logo.svg?v=1694073877"
+        alt="logo"
+        class="img-fluid"
+        width="90px"
+      >
+      <button
+        class="slide-close d-flex align-items-center justify-content-center border-0 bg-transparent menu-slide-toggle"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="14" viewBox="0 0 13 14" fill="none">
+          <path d="M0.5 1L12.5 13" stroke="#393939" stroke-linecap="round" />
+          <path d="M12.5 1L0.5 13" stroke="#393939" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  {% endcomment %}
+</div>
+{% if customer %}
+<script>
+  $('#m-nav-banner').slick();
+</script>
+{% endif %}
+<script>
+   $(document).ready(function () {
+  const openMenu = () => {
+    $('#catagory-section').addClass('d-none');
+    $('.mobile-nav').toggleClass('mobile-nav-open');
+    $('.filter-container').toggleClass('d-none');
+    $('html').toggleClass('overflow-hidden');
+  };
+  $('.menu-slide-toggle').on('click', openMenu);
+  });
+</script>

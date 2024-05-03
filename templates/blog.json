@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "custom_css": [
+        "nav.pagination{flex-direction:column;}"
+      ],
+      "settings": {
+        "layout": "collage",
+        "show_image": true,
+        "image_height": "medium",
+        "show_date": true,
+        "show_author": false,
+        "padding_top": 20,
+        "padding_bottom": 4
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

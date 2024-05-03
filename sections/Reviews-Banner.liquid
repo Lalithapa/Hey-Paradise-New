@@ -1,0 +1,137 @@
+<div class="container px-0 review-banner-section">
+  <div class="text-center">
+    <p class="deals_txt">{{ section.settings.qsirguwfh }}</p>
+    {% for block in section.blocks %}
+    <div class="shoCase">
+      <p class="sellersub_txt" style="color:{{block.settings.txtdfsdf}}">{{ block.settings.dflkjghdfjkg }}</p>
+      <p class="sellermini_txt">{{ block.settings.dfsdf }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="affordable_section">
+    <div id="new-product-carousel-{{ section.id }}" class="overflow-hidden position-relative">
+      <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide">
+        {% if customer and block.settings.dimgaftrlogin != blank %}
+        <a href="{{ block.settings.urlaftrlogin}}">
+          {% render 'image-video',
+          showVideo:false
+          desktopImage: block.settings.dimgaftrlogin,
+          mobileImage: block.settings.mimgaftrlogin %}
+        </a>
+        {% else %}
+        <a href="{{ block.settings.sdfgsdfsd}}">
+          {% render 'image-video',
+          showVideo:false
+          desktopImage:block.settings.dasfdf,
+          mobileImage: block.settings.asdasdasd %}
+        </a>
+        {% endif %}
+      </div>
+      {% endfor %}
+      </div>
+      <div class="text-center" id="reviews-dots-{{ section.id }}"></div>
+    </div>
+  </div>
+</div>
+<style>
+  #reviews-dots-{{ section.id }}{
+    position: absolute;
+    bottom:0;
+    z-index: 1;
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      {% if section.blocks.size > 1 %}
+      const mainBanner = new Swiper('#new-product-carousel-{{ section.id }}', {
+        slidesPerView: 1,
+        keyboard: {
+          enabled: true,
+          onlyInViewport: true,
+        },
+        loop: true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: "#reviews-dots-{{ section.id }}",
+          clickable: true,
+        }
+      });
+      {% endif %}
+    });
+</script>
+{% schema %}
+{
+"name": "Reviews Banner",
+"settings": [
+{
+"type": "text",
+"id": "qsirguwfh",
+"label": "Add Your Heading Here"
+}
+],
+"blocks": [
+{
+"name": "Image With Text",
+"type": "Image",
+"settings": [
+{
+"type": "image_picker",
+"id": "dasfdf",
+"label": "Add Your Desktop Image Here for without logged in customers"
+},
+{
+"type": "image_picker",
+"id": "asdasdasd",
+"label": "Add Your Mobile Image Here for without logged in customers"
+},
+{
+"type": "url",
+"id": "sdfgsdfsd",
+"label": "Add Your Link Here for without logged in customers"
+},
+{
+"type": "image_picker",
+"id": "dimgaftrlogin",
+"label": "Add Your Desktop Image Here for logged in customers"
+},
+{
+"type": "image_picker",
+"id": "mimgaftrlogin",
+"label": "Add Your Mobile Image Here for logged in customers"
+},
+{
+"type": "url",
+"id": "urlaftrlogin",
+"label": "Add Your Link Here for logged in customers"
+},
+{
+"type": "text",
+"id": "dflkjghdfjkg",
+"label": "Add Your Head Text"
+},
+{
+"type": "text",
+"id": "dfsdf",
+"label": "Add Your SubHead Text"
+},
+{
+"type": "color",
+"id": "txtdfsdf",
+"label": "Add Your Head Text Color"
+}
+]
+}
+],
+
+"presets": [
+{
+"name": "Reviews Banner"
+}
+]
+}
+{% endschema %}

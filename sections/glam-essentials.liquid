@@ -1,0 +1,386 @@
+<div id='glam-ess-wrapper' class='container'>
+  <h1 id='glam-ess-title'>{{ section.settings['glam-ess-title'] }}</h1>
+  <div id='glam-ess-content'>
+    <div id='glam-ess-slider-wrapper'>
+      <div id='glam-ess-slider'>
+        {% for block in section.blocks %}
+          <div
+            class='glam-ess-slide'
+            id='glam-ess-slide-{{forloop.index0 }}'
+          >
+            {% assign videoSettings = block.settings['glam-ess-video'] %}
+            {% assign posterImage = block.settings['glam-ess-image'] %}
+
+            {% if posterImage != blank %}
+              {% assign posterImage = posterImage | image_url %}
+            {% else %}
+              {% assign posterImage = videoSettings.preview_image.src
+                | image_url
+              %}
+            {% endif %}
+
+            <!-- Display the video tag -->
+            {{
+              videoSettings
+              | video_tag:
+                loop: true,
+                muted: true,
+                class: 'glam-ess-media asp34',
+                poster: posterImage
+            }}
+            <div
+              class='glam-ess-detail-container'
+              data-product-handle='{{block.settings['glam-ess-product'].handle |  handleize}}'
+              data-index='{{forloop.index0}}'
+            >
+              {% render 'glass-card',
+                product: block.settings['glam-ess-product']
+              %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div id='glam-ess-slider-nav'>
+        <button type='button' id='glam-ess-slider-prev'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='32'
+            height='32'
+            viewBox='0 0 28 28'
+            fill='none'
+          >
+            <g opacity="0.4">
+              <path d="M17.2148 7L10.2148 14L17.2148 21" stroke="#585858" stroke-width="2" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </button>
+        <button type='button' id='glam-ess-slider-next'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='32'
+            height='32'
+            viewBox='0 0 28 28'
+            fill='none'
+          >
+            <path d="M10.7852 7L17.7852 14L10.7852 21" stroke="#585585" stroke-opacity="0.533333" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% comment %}
+  <video
+    poster='{{posterImage}}'
+    alt='{{ videoSettings.alt }}'
+    class='glam-ess-media asp34'
+    loop
+    muted
+    preload='none'
+  >
+    <source
+      src='{{ videoSettings.sources[1].url }}'
+      type='{{ videoSettings.sources[1].mime_type }}'
+    >
+    Your browser does not support the video tag.
+  </video>
+{% endcomment %}
+
+<style>
+  #glam-ess-wrapper h1,
+  #glam-ess-wrapper p {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #glam-ess-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 32px 0px 24px 0px;
+    background-color:#FBFBFB;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+    margin-top:40px;
+  }
+
+  #glam-ess-title {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* text styles */
+    color: #393939;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px; /* 125% */
+    text-transform: capitalize;
+  }
+
+  #glam-ess-content {
+    width: 100%;
+  }
+
+  #glam-ess-slider-wrapper {
+    width: 100%;
+    padding-left: 6px;
+    position: relative;
+  }
+
+  #glam-ess-slider {
+    width: 100%;
+  }
+
+  #glam-ess-slider-nav {
+    display: none;
+    position: absolute;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 100%;
+  }
+
+  #glam-ess-slider-nav > button {
+    border: none;
+    background: none;
+    height: 55px;
+    aspect-ratio: 1;
+  }
+
+  #glam-ess-slider-nav > button > svg {
+    height: 28px;
+    width: 28px;
+  }
+
+  #glam-ess-slider-prev {
+    left: -55px;
+  }
+  #glam-ess-slider-next {
+    right: -55px;
+  }
+
+  #glam-ess-slider .glam-ess-slide {
+    position: relative;
+    margin: 0 6px;
+
+    overflow: hidden;
+    aspect-ratio: 3/4 !important;
+    border-radius: 4px;
+  }
+
+  #glam-ess-slider .glam-ess-slide .glam-ess-media {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+
+    object-fit: cover;
+    aspect-ratio: 3/4 !important;
+  }
+
+  .glam-ess-detail-container {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+
+    padding: 10px;
+  }
+  @media (min-width: 992px) {
+    #glam-ess-wrapper {
+      padding: 32px 55px;
+      border-radius:8px;
+      margin-top:96px;
+      column-gap: 40px;
+    }
+
+    #glam-ess-slider .glam-ess-slide .glam-ess-media {
+      border-radius: 8px;
+    }
+
+    .glam-ess-detail-container {
+      padding: 15px;
+    }
+
+    #glam-ess-slider-wrapper {
+      padding-left: 0px;
+    }
+
+    #glam-ess-slider-nav {
+      display: block;
+    }
+
+    #glam-ess-title {
+      font-size: 28px;
+      line-height: 32px; /* 114.286% */
+    }
+  }
+</style>
+
+<script>
+  $(document).ready(function () {
+    // slick
+    const roundToPrecision = (number, precision) => {
+      const multiplier = Math.pow(10, precision);
+      return Math.round(number * multiplier) / multiplier;
+    }
+
+    const numSlidesMobile = roundToPrecision('{{section.settings['glam-ess-num-slides-mobile']}}', 1);
+    const numSlidesTab = roundToPrecision('{{section.settings['glam-ess-num-slides-tab']}}', 1);
+    const numSlidesDesktop = roundToPrecision('{{section.settings['glam-ess-num-slides-desktop']}}' ,1);
+
+    const $slider = $('#glam-ess-slider');
+    $slider.slick({
+      arrows: false,
+      appendArrows: $('#glam-ess-slider-nav'),
+      prevArrow: $('#glam-ess-slider-prev'),
+      nextArrow: $('#glam-ess-slider-next'),
+      infinite: false,
+      speed: 300,
+      slidesToShow: numSlidesMobile,
+      slidesToScroll: 1,
+      mobileFirst: true,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: numSlidesTab,
+            slidesToScroll: 1,
+            arrows: true,
+          },
+        },
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: numSlidesDesktop,
+            slidesToScroll: 1,
+            arrows: true,
+          },
+        },
+      ],
+    });
+
+    // play pause media:video on slide change
+    function handleSlideChange() {
+      $('.glam-ess-slide').each(function () {
+        // initially, pause all media
+        playPauseMedia($(this), 'pause');
+      });
+
+      $('.glam-ess-slide.slick-active').each(function () {
+        // play media in active slides
+        playPauseMedia($(this), 'play');
+      });
+    }
+
+    // utility to play/pause media
+    function playPauseMedia($slide, action) {
+      const videoElement = $slide.find('.glam-ess-media').get(0);
+
+      if (videoElement && videoElement.tagName.toLowerCase() === 'video') {
+        videoElement[action]();
+      }
+    }
+
+    function handleHoverStart() {
+      const $slide = $(this);
+      if ($slide.hasClass('slick-active')) {
+        playPauseMedia($slide, 'play');
+      }
+    }
+
+    function handleHoverEnd() {
+      const $slide = $(this);
+      if ($slide.hasClass('slick-active')) {
+        playPauseMedia($slide, 'pause');
+      }
+    }
+
+    // Check if the device supports hover (pointer device)
+    if (window.matchMedia('(hover: hover)').matches) {
+      // Attach hover event handlers for pointer devices
+      $('.glam-ess-slide').hover(handleHoverStart, handleHoverEnd);
+    } else {
+      // Use slide change event handler for touch devices
+      $('.glam-ess-slide').off('hover', handleHoverStart, handleHoverEnd);
+      $('#glam-ess-slider').on('afterChange', handleSlideChange);
+      handleSlideChange(); // initially play active slides
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Glam Essentials",
+  "class": "glam-ess-section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "glam-ess-title",
+      "label": "Add Your Heading Here"
+    },
+    {
+      "type": "text",
+      "id": "glam-ess-num-slides-mobile",
+      "default": "1.5",
+      "label": "Number of slides on mobile",
+      "info": "optional, default 1.5, rounded to 1 decimal point"
+    },
+    {
+      "type": "text",
+      "id": "glam-ess-num-slides-tab",
+      "default": "2.5",
+      "label": "Number of slides on tab",
+      "info": "optional, default 2.5, rounded to 1 decimal point, breakpoint 768px"
+    },
+    {
+      "type": "text",
+      "id": "glam-ess-num-slides-desktop",
+      "default": "3.5",
+      "label": "Number of slides on desktop",
+      "info": "optional, default 3.5, rounded to 1 decimal point, breakpoint 1200px"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Video with card",
+      "type": "video-with-card",
+      "settings": [
+        {
+          "type": "video",
+          "id": "glam-ess-video",
+          "label": "Video"
+        },
+        {
+          "type": "product",
+          "id": "glam-ess-product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "glam-ess-image",
+          "label": "Poster Image (optional)"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "International Glam Essentials",
+      "settings": {
+        "glam-ess-title": "International Glam Essentials"
+      }
+    }
+  ]
+}
+{% endschema %}

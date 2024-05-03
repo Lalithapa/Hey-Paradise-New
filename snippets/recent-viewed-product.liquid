@@ -1,0 +1,193 @@
+<script>
+    // First Block
+    function setRecentlyViewedPdp() {
+        const pdpData = {
+            productId : "{{ product.first_available_variant.id }}",
+            productTitle : "{{ product.title }}",
+            productImg : "{{ product.featured_image | image_url }}",
+            productVendor : "{{ product.vendor }}",
+            productPrice : "{{ product.first_available_variant.price | money_without_trailing_zeros | remove_first: '' }}",
+            productCompare_at_price : "{{ product.first_available_variant.compare_at_price | money_without_trailing_zeros | remove_first: '' }}",
+            productDiscounted : "{{  product.compare_at_price_max | minus: product.price | times: 100.0 | divided_by: product.compare_at_price_max | money_without_currency | times: 100 | remove: '.0' }}",
+            productSize : "{{  product.variants.size }}",
+            productUrl : "{{ product.url }}"
+        };
+
+        // Init Empty Array to push data
+        const productArr = [];
+        // Create a couple of variables 
+        let jsonResp,
+            jsonRespArr, 
+            jsonRespArrStr; 
+        // Set the number how many products you want to capture 
+        const numberOfProduct = 4;
+        // Now push the pdpData into Array so that we can use it 
+        productArr.push(pdpData);
+        // Get the product title from pdpData 
+        const currPdpTitle = pdpData.productTitle;
+        // Now Convert current page data into Strings which we already pushed in Array 
+        const pdpDataString = JSON.stringify(productArr);
+        // Set the variable for localStorage 
+        const localData = localStorage.getItem('recently_viewed');
+        // Second Block
+        // first we need to check data if data is not there then store right // away 
+        if (localData == null) {
+            localStorage.setItem('recently_viewed', pdpDataString);
+            
+        }
+        // If data is there then we need to check couple of other conditions 
+        else if ( localData != null ) {
+            
+            // Create Variable for oldData or Previous page 
+            const oldPdpData = localStorage.getItem('recently_viewed');
+            // Count the amount of data stored in strings so that we can remove // old products from the stack 
+            const countPdpData = (oldPdpData.match(/productTitle/g) || []).length;
+            // we also need to check if user is not visiting page again 
+            const reVisitPdp =  oldPdpData.includes(currPdpTitle);
+            // Get old data, merged it with new data and store merged data
+            if (countPdpData < numberOfProduct && reVisitPdp == false) {
+                jsonResp = JSON.parse(oldPdpData);
+                jsonRespArr = jsonResp.concat(productArr);
+                jsonRespArrStr = JSON.stringify(jsonRespArr);
+                localStorage.setItem('recently_viewed', jsonRespArrStr);
+            }
+            // If User visited more the 4 pages delete first page data 
+            else if (countPdpData >= numberOfProduct && reVisitPdp == false) {
+                jsonResp = JSON.parse(oldPdpData);
+                jsonResp.shift();
+                jsonRespArr = jsonResp.concat(productArr);
+                jsonRespArr =  JSON.stringify(jsonRespArr);
+                localStorage.setItem('recently_viewed', jsonRespArr);
+            }
+        }
+    }
+    
+    // Now we write all our function and it's time to execute it 
+    setRecentlyViewedPdp();
+    // Set Variable for Local Storage Data 
+    const localViewed = localStorage.recently_viewed;
+
+
+    // Third Block
+    function getRecentPdp (){
+        // First let's convert localStorage data into object again
+        const pdpData = JSON.parse(localStorage.getItem('recently_viewed'));
+        // Create a empty Array
+        const recentViewHtml = []
+        // Loop through all the data and inject into HTML using ES6
+        pdpData.forEach(function(item){ 
+            let discountPrice = `<span class="rack-price">${item.productCompare_at_price}</span>`;
+            let discountPP = `<span class="discount-percent">${item.productDiscounted} % Off</span>`;
+            let carting = item.productSize > 1  ? `<p class="Xzxzxzx user-select-none w-100">
+                <a href="${item.productUrl}" class="no-line no-hover orCol">
+                    <svg class="desktop-screen" xmlns="http://www.w3.org/2000/svg" width="38" height="36" viewBox="0 0 38 36" fill="none">
+                        <path d="M13.8828 17.4116L13.8828 12.7057C13.8828 10.1068 15.9897 7.99986 18.5887 7.99986V7.99986C21.1877 7.99986 23.2946 10.1068 23.2946 12.7057L23.2946 17.4116" stroke="#F26823" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M8.87082 17.5501C9.01589 15.8092 9.08843 14.9388 9.66252 14.4106C10.2366 13.8823 11.1101 13.8823 12.857 13.8823H24.3195C26.0664 13.8823 26.9399 13.8823 27.514 14.4106C28.088 14.9388 28.1606 15.8092 28.3057 17.5501L28.996 25.8339C29.0804 26.8474 29.1227 27.3542 28.8256 27.6771C28.5285 28 28.0199 28 27.0029 28H10.1736C9.15655 28 8.64802 28 8.35092 27.6771C8.05382 27.3542 8.09605 26.8474 8.18051 25.8339L8.87082 17.5501Z" stroke="#F26823" stroke-width="2"/>
+                    </svg> Show Options 
+                </a>
+              </p>` : `<p class="Xzxzxzx user-select-none w-100"  onclick="reUseCart('/cart/add.js',${item.productId},1)">
+                <svg class="desktop-screen" xmlns="http://www.w3.org/2000/svg" width="38" height="36" viewBox="0 0 38 36" fill="none">
+                  <path d="M13.8828 17.4116L13.8828 12.7057C13.8828 10.1068 15.9897 7.99986 18.5887 7.99986V7.99986C21.1877 7.99986 23.2946 10.1068 23.2946 12.7057L23.2946 17.4116" stroke="#F26823" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M8.87082 17.5501C9.01589 15.8092 9.08843 14.9388 9.66252 14.4106C10.2366 13.8823 11.1101 13.8823 12.857 13.8823H24.3195C26.0664 13.8823 26.9399 13.8823 27.514 14.4106C28.088 14.9388 28.1606 15.8092 28.3057 17.5501L28.996 25.8339C29.0804 26.8474 29.1227 27.3542 28.8256 27.6771C28.5285 28 28.0199 28 27.0029 28H10.1736C9.15655 28 8.64802 28 8.35092 27.6771C8.05382 27.3542 8.09605 26.8474 8.18051 25.8339L8.87082 17.5501Z" stroke="#F26823" stroke-width="2"/>
+                </svg>
+                Shop Now
+              </p>`;
+            let nonCarting= `<button class="Xzxzxzx" type="button" disabled="true">Out of Stock</button>`
+            let no_offer=` <span></span>`;
+            recentViewHtml.push(`
+            <div class="p-0 d_cent">
+                <div class="product-card mx-1 mx-md-3 ">
+                  <a href="${item.productUrl}">
+                      <div class="product-image p-0">
+                          <img loading="lazy" class="img-fluid asp34" src="${item.productImg}" alt="${item.productTitle}"
+                              title="${item.productTitle}" width="292" height="390">
+                      </div>
+                  </a>
+                  <div class="product-details">
+                      <div>
+                          <p class="mb-0 product-brand">${item.productVendor}</p>
+                          <p class="mb-0 product-title">${item.productTitle}</p>
+                      </div>
+                      <div class="ssw-widget-avg-rate-listing ssw-stars ssw-stars-large ssw-hide" data-rate="0" tabindex="0" aria-label="Review listing, rating is: 0">
+                              <i class="ssw-icon-star-empty"></i>
+                            <span class="ssw-review-count" tabindex="0" aria-label=" 0"> (0) </span>
+                          </div>
+                      <div>
+                          <div class="product-price mb-0">
+                              <span>
+                                  <span class="selling-price">${item.productPrice}</span>
+                                  <span class="old-price">
+                                      ${item.productCompare_at_price > item.productPrice ? discountPrice : no_offer }
+                                  </span>
+                                  <span class="discount">
+                                      ${item.productCompare_at_price > item.productPrice ? discountPP : no_offer }
+                                  </span>
+                              </span>
+                          </div>
+                      <div class="shades">
+                      </div>
+                      </div>
+              
+                      <a href="{{ product.url }}">
+                          <button class="select-shade">
+                              Add To Bag
+                          </button>
+                      </a>
+                  </div>
+              </div>
+              </div>
+            `)
+        })
+        // Now consolidate the data 
+        const recentBlock = `${recentViewHtml.join('')}`
+        // Inject into PDP page
+        const contentBlock = document.querySelectorAll('.js-recentPdpBlock');
+        // Push the data
+       
+        contentBlock.forEach(element =>{
+            element.innerHTML = recentBlock;
+        });
+           $('#recentPdpBlock').slick({
+        dots: false,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 4,
+        slidesToScroll: 2,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 2,
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          }
+        ]
+      });
+    }
+    // Execute this function on DOM content load 
+  
+    // Execute this function on DOM content load
+    document.addEventListener('DOMContentLoaded', function (event) {
+      getRecentPdp();
+    });
+</script>
+{% if showSpaces %}
+  <div class="recnt_txt">
+    <h2 class="mt-5 text-center">Recently Viewed</h2>
+    <div class="container js-recentPdpBlock row w-100" id="recentPdpBlock"></div>
+  </div>
+{% endif %}

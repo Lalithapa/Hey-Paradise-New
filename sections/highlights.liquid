@@ -1,0 +1,98 @@
+<!-- social slider section -->
+{{ 'gridCollection.css' | asset_url | stylesheet_tag }}
+<section>
+  <div class="container">
+    <div class="social-slider-container">
+      <p class="social-slider-title deals_txt">
+        {{ section.settings.highlightTitle }}
+      </p>
+      <div class="social-slider" id="social-slider-{{ section.id }}">
+        {% for block in section.blocks %}
+          <div class="slider-item">
+            <div class="social-slide">
+              <img src="{{ block.settings.images | image_url }}" alt="Insta-{{ forloop.index }}">
+              <p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M4.54395 1.04002L8.7816 0.83435M8.7816 0.83435L8.98727 5.072M8.7816 0.83435L1.22163 9.16558"
+                    stroke="#404184" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                {{ block.settings.block_button_2 }}
+              </p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+<!-- NOTE: prior to v2.2.1 tiny-slider.js need to be in <body> -->
+<script>
+
+  var slider = tns({
+    container: '#social-slider-{{ section.id }}',
+    items: 5,
+    gutter: 10,
+    center: true,
+    edgePadding: 40,
+    swipeAngle: true,
+    mouseDrag: true,
+    speed: 400,
+    nav: false,
+    arrows: false,
+
+    responsive: {
+      0: {
+        edgePadding: 0,
+        items: 1.8,
+      },
+      768: {
+        edgePadding: 0,
+        items: 5,
+      }
+    },
+  });
+</script>
+{% schema %}
+{
+"name": "Highlights",
+"settings": [
+{
+"type": "text",
+"id": "highlightTitle",
+"label": "Section Title"
+}
+],
+"blocks": [
+{
+"type": "Image",
+"name": "Images",
+"limit": 20,
+"settings": [
+{
+"type": "image_picker",
+"id": "images",
+"label": "Image"
+},
+{
+"type": "text",
+"id": "block_button_2",
+"label": "Button label"
+},
+{
+"type": "url",
+"id": "block_link_2",
+"label": "Button link"
+}
+]
+}
+],
+
+"presets": [
+{
+"name": "Highlights",
+"category": "Image"
+}
+]
+}
+{% endschema %}

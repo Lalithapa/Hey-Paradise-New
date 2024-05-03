@@ -1,0 +1,36 @@
+<section>
+  <div class="container px-0">
+    <div class="text-container">
+      <p class="text-title text-center mb-0">{{ section.settings.textareatitle }}</p>
+      <div class="text-section">{{ section.settings.textareacontent }}</div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Text Content",
+  "settings": [
+     {
+    "type": "text",
+    "id": "textareatitle",
+    "label": "Title"
+  },
+     {
+    "type": "richtext",
+    "id": "textareacontent",
+    "label": "Add Content"
+  }
+  ],
+  "presets": [
+    {
+      "name": "Text Content"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,70 @@
+<section>
+  <div class="container our-brands-container">
+    <p class="brand-section-title">{{ section.settings.qsirguwfh }}</p>
+    <div class="brands-logo-container">
+      {% for block in section.blocks %}
+        <div class="brands-logo" style="background-color:{{ block.settings.bg_color_param }};">
+          <a href="{{ block.settings.jlk }}">
+            <img
+              src="{{ block.settings.adasda | image_url }}"
+              alt="Brands Logo {{ forloop.index }}"
+              class="img-fluid desktop-screen"
+            >
+            <img
+              src="{{ block.settings.adasda_mob | image_url }}"
+              alt="Brands Logo {{ forloop.index }}"
+              class="img-fluid mobile-screen"
+            >
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Brands List",
+  "settings": [
+    {
+      "type": "text",
+      "id": "qsirguwfh",
+      "label": "Add Your Heading Here"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Image With Text",
+      "type": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "adasda",
+          "label": "Add Your Mobile Image Here"
+        },
+        {
+          "type": "image_picker",
+          "id": "adasda_mob",
+          "label": "Add Your Image Here"
+        },
+        {
+          "type": "url",
+          "id": "jlk",
+          "label": "Add Your Link Here"
+        },
+        {
+          "type": "color",
+          "id": "bg_color_param",
+          "label": "Add Your Background Color Here",
+          "default": "#acc9ec"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Brands List"
+    }
+  ]
+}
+{% endschema %}

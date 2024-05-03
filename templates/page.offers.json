@@ -1,0 +1,274 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "a472acef-c0bb-4600-8e98-2392e08b91bf": {
+      "type": "Main_Banner",
+      "settings": {
+        "showCat": false,
+        "showTiles": "Category"
+      }
+    },
+    "c32934dc-b1a8-47fe-8720-7da8c18884cd": {
+      "type": "Multi-carousel",
+      "blocks": {
+        "b95ba773-a244-4d05-a065-95abd0cc750f": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/crausel-img3.jpg",
+            "dealsURL": "shopify:\/\/pages\/about-us",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "785a0043-989e-458f-ac36-2a985afcde90": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/deals-gif1.gif",
+            "dealsURL": "shopify:\/\/pages\/hey-exclusives",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "bdde2785-629a-4e18-8d06-df85b68d530e": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/crausel-img2.jpg",
+            "dealsURL": "shopify:\/\/pages\/reward-page",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "a012697a-4a48-4617-9e28-a0419a883f1b": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/category1.jpg",
+            "dealsURL": "shopify:\/\/pages\/reward-page",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "b95ba773-a244-4d05-a065-95abd0cc750f",
+        "785a0043-989e-458f-ac36-2a985afcde90",
+        "bdde2785-629a-4e18-8d06-df85b68d530e",
+        "a012697a-4a48-4617-9e28-a0419a883f1b"
+      ],
+      "settings": {
+        "sectionTitle": "Drippin’ Deals",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "3\/4",
+        "lagreScreenGap": 20,
+        "smallScreenGap": 12,
+        "bottomTextBackground": "linear-gradient(0deg, #292929 0%, rgba(47, 47, 47, 0.84) 20.87%, rgba(47, 47, 47, 0.43) 55.83%, rgba(74, 74, 74, 0.00) 93.04%)",
+        "smallNumber": 2,
+        "mediumNumber": 2.5,
+        "largeNumber": 3,
+        "defaultNumber": 3
+      }
+    },
+    "7b103b87-5b9b-4aba-a47c-b48120a6ca0f": {
+      "type": "Top_slider",
+      "blocks": {
+        "b2a2eff1-2b92-48ab-8b14-197d664494b7": {
+          "type": "Image",
+          "settings": {
+            "sdfsdfsdf": "",
+            "revdflkjgh": "shopify:\/\/shop_images\/WK52_TT_1.webp_4.png",
+            "revdflkjgh_mobile": "shopify:\/\/shop_images\/WK52_TT_1.webp_4.png",
+            "sfgsdgsdf": "re-imagine skincare with revolution",
+            "zxczxczx": "Shop Now"
+          }
+        },
+        "1cd364d9-f8e2-40dd-9c56-334ecba93c12": {
+          "type": "Image",
+          "settings": {
+            "sdfsdfsdf": "",
+            "revdflkjgh": "shopify:\/\/shop_images\/WK52_TT_1.webp_4.png",
+            "revdflkjgh_mobile": "shopify:\/\/shop_images\/WK52_TT_1.webp_4.png",
+            "sfgsdgsdf": "re-imagine skincare with revolution",
+            "zxczxczx": "Shop Now"
+          }
+        },
+        "f285c419-115f-4bd1-99ca-9dca157d9749": {
+          "type": "Image",
+          "settings": {
+            "sdfsdfsdf": "",
+            "revdflkjgh": "shopify:\/\/shop_images\/WK52_TT_1.webp_4.png",
+            "revdflkjgh_mobile": "shopify:\/\/shop_images\/WK52_TT_1.webp_4.png",
+            "sfgsdgsdf": "re-imagine skincare with revolution",
+            "zxczxczx": "Shop Now"
+          }
+        },
+        "b78a044c-5eac-41fe-b056-0fd6f5901cb3": {
+          "type": "Image",
+          "settings": {
+            "sdfsdfsdf": "",
+            "revdflkjgh": "shopify:\/\/shop_images\/WK52_TT_1.webp_4.png",
+            "revdflkjgh_mobile": "shopify:\/\/shop_images\/WK52_TT_1.webp_4.png",
+            "sfgsdgsdf": "re-imagine skincare with revolution",
+            "zxczxczx": "Shop Now"
+          }
+        },
+        "1c22d76c-3e74-4f3e-80d7-157d443a335f": {
+          "type": "Image",
+          "settings": {
+            "sdfsdfsdf": "",
+            "revdflkjgh": "shopify:\/\/shop_images\/WK52_TT_1.webp_4.png",
+            "revdflkjgh_mobile": "shopify:\/\/shop_images\/WK52_TT_1.webp_4.png",
+            "sfgsdgsdf": "re-imagine skincare with revolution",
+            "zxczxczx": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "b2a2eff1-2b92-48ab-8b14-197d664494b7",
+        "1cd364d9-f8e2-40dd-9c56-334ecba93c12",
+        "f285c419-115f-4bd1-99ca-9dca157d9749",
+        "b78a044c-5eac-41fe-b056-0fd6f5901cb3",
+        "1c22d76c-3e74-4f3e-80d7-157d443a335f"
+      ],
+      "settings": {
+        "main_heading": "No fomo here"
+      }
+    },
+    "82dee7ba-40f0-443d-9c26-df4826918adf": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Hot Offers",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#fff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "face",
+        "viewAllBtn": false,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "5041d74e-442d-4f13-b1e8-ab3ece9033a8": {
+      "type": "Reviews-Banner",
+      "blocks": {
+        "05709360-3570-425f-bf81-8fc4ce461138": {
+          "type": "Image",
+          "settings": {
+            "dasfdf": "shopify:\/\/shop_images\/signin-banner.jpg",
+            "asdasdasd": "shopify:\/\/shop_images\/New_Launch_1355x512_195729be-d6ec-4482-b403-8f7910cac4f0.jpg",
+            "sdfgsdfsd": "",
+            "urlaftrlogin": "",
+            "dflkjghdfjkg": "",
+            "dfsdf": "",
+            "txtdfsdf": ""
+          }
+        }
+      },
+      "block_order": [
+        "05709360-3570-425f-bf81-8fc4ce461138"
+      ],
+      "settings": {
+        "qsirguwfh": ""
+      }
+    },
+    "73fca99f-87d1-40cb-a88f-6b6e7d25437b": {
+      "type": "Image_carousel",
+      "blocks": {
+        "1959a7fc-e689-47eb-9f10-3bfbf007ed39": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3974.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "08d45c1b-c0a4-4f61-8309-b0be51e535f4": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3973.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "735afa29-7a67-4673-b7d6-ff40f796fe02": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3972.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "06808c5a-61ef-43a5-b0c5-b75715067f85": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3973.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "1a561962-24f4-4660-8117-564e114ebb71": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3974.png",
+            "threedtxt": "Discover More"
+          }
+        }
+      },
+      "block_order": [
+        "1959a7fc-e689-47eb-9f10-3bfbf007ed39",
+        "08d45c1b-c0a4-4f61-8309-b0be51e535f4",
+        "735afa29-7a67-4673-b7d6-ff40f796fe02",
+        "06808c5a-61ef-43a5-b0c5-b75715067f85",
+        "1a561962-24f4-4660-8117-564e114ebb71"
+      ],
+      "custom_css": [],
+      "settings": {
+        "qsirguwfh": "",
+        "sfswdef": "Boujee on a budget",
+        "bgcolor": false,
+        "dfasasd": "#fff0ea"
+      }
+    },
+    "ff59204b-c1b8-4a1c-a5a7-e97243e0f23d": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Save With Sets",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#fff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "derma-e",
+        "viewAllBtn": false,
+        "tcgjsgd": "#191919"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "a472acef-c0bb-4600-8e98-2392e08b91bf",
+    "c32934dc-b1a8-47fe-8720-7da8c18884cd",
+    "7b103b87-5b9b-4aba-a47c-b48120a6ca0f",
+    "82dee7ba-40f0-443d-9c26-df4826918adf",
+    "5041d74e-442d-4f13-b1e8-ab3ece9033a8",
+    "73fca99f-87d1-40cb-a88f-6b6e7d25437b",
+    "ff59204b-c1b8-4a1c-a5a7-e97243e0f23d"
+  ]
+}

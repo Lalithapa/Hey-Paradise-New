@@ -1,0 +1,66 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "c05d764f-ba12-4948-ab7c-0d5b7f416158": {
+      "type": "Main_Banner",
+      "blocks": {
+        "e7f1afb7-926a-41d4-aeca-2b249570b4d1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_4126.png",
+            "image_mobile": "shopify:\/\/shop_images\/Rectangle_4250.png",
+            "video_enabled": false,
+            "block_button_2": "",
+            "block_link_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "e7f1afb7-926a-41d4-aeca-2b249570b4d1"
+      ],
+      "settings": {
+        "showCat": false
+      }
+    },
+    "c0caafbd-2ea0-45a4-8666-749725ad093f": {
+      "type": "accordion",
+      "blocks": {
+        "f8eecef9-5fe8-4363-8481-b6942b7a8b89": {
+          "type": "text",
+          "settings": {
+            "questions": "Your Account",
+            "answers": "<p><strong>Do I need to register to shop from Hey! Makeup?<\/strong><\/p><p>It is not mandatory to create an account in order to place an order. However, if you sign up with Hey!, you will have access to exclusive member offers and benefits, and the order process will be quicker as your information will already be saved.<\/p><p><strong>How to create account?<\/strong><\/p><p>-It’s a simple 3-step sign-up form:<\/p><ol><li>Click on the Profile Icon<\/li><li>You will be redirected to Sign Up\/ Login page, you can sign-in via OTP or connect through other platform.<\/li><li>Click on Send OTP option. Enter the OTP, and you are good to go!<\/li><\/ol>"
+          }
+        },
+        "1c6bbfa5-c8d6-4d14-b046-700113cf8ec6": {
+          "type": "text",
+          "settings": {
+            "questions": "How to create account?",
+            "answers": "<p>-It’s a simple 3-step sign-up form:<\/p><ol><li>Click on the Profile Icon<\/li><li>You will be redirected to Sign Up\/ Login page, you can sign-in via OTP or connect through other platform.<\/li><li>Click on Send OTP option. Enter the OTP, and you are good to go!<\/li><\/ol>"
+          }
+        }
+      },
+      "block_order": [
+        "f8eecef9-5fe8-4363-8481-b6942b7a8b89",
+        "1c6bbfa5-c8d6-4d14-b046-700113cf8ec6"
+      ],
+      "settings": {
+        "show-help": true,
+        "bgaksjhd": "#fff",
+        "accordiontitle": "Quick Q’s"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "c05d764f-ba12-4948-ab7c-0d5b7f416158",
+    "c0caafbd-2ea0-45a4-8666-749725ad093f"
+  ]
+}

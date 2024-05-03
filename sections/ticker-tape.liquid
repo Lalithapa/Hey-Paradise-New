@@ -1,0 +1,35 @@
+<div class="tabbY2 mobile-screen">
+  <div class="wrapper-9ioi">
+    <div class="tickertapexx">
+      {% for _ in (1..10) %}
+        <span
+          ><span text="bold">{{ section.settings.main_heading }}</span>{{ section.settings.sub_heading -}}
+        </span>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "ticker-tape",
+  "settings": [
+    {
+    "type": "text",
+    "id": "main_heading",
+    "label": "HighLighted Text",
+    "default": "Don’t miss out!"
+    },
+    {
+    "type": "text",
+    "id": "sub_heading",
+    "label": "Non-HighLighted Text",
+    "default": "jOIN THE #hEY!FAM"
+    }
+    ],
+  "presets": [
+  {
+    "name": "ticker-tape"
+  }
+]
+}
+{% endschema %}

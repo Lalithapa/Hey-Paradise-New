@@ -1,0 +1,133 @@
+{%- style -%}
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top_desktop }}px;
+    margin-bottom: {{ section.settings.margin_bottom_desktop }}px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top_mobile }}px;
+      margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="container social-section-title-container section-{{ section.id }}-margin">
+  <p class="social-title">{{ section.settings.socialsectiontitle }}</p>
+  <p class="social-subtitle">Follow {{ section.settings.socialhandle | link_to: section.settings.socialhandleURL }}</p>
+</div>
+
+<style>
+  .social-section-title-container {
+    /* margin: 96px auto 24px auto; */
+    text-align: center;
+  }
+  .social-title {
+    color: #393939;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 32px; /* 114.286% */
+    text-transform: capitalize;
+    margin-bottom: 8px;
+  }
+  .social-subtitle {
+    color: #393939;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px; /* 120% */
+    text-transform: capitalize;
+  }
+  .social-subtitle a {
+    color: #404184;
+    text-transform: lowercase;
+  }
+
+  @media only screen and (max-width: 992px) {
+    /* .social-section-title-container {
+      margin: 40px auto 16px auto;
+    } */
+    .social-title {
+      font-size: 20px;
+      line-height: 25px; /* 125% */
+    }
+    .social-subtitle {
+      font-size: 14px;
+      line-height: 20px; /* 142.857% */
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Social Title",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Mobile Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "text",
+      "id": "socialsectiontitle",
+      "label": "Add Title"
+    },
+    {
+      "type": "text",
+      "id": "socialhandle",
+      "label": "Add Instagram Username"
+    },
+    {
+      "type": "url",
+      "id": "socialhandleURL",
+      "label": "Add Add Instagram URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Title"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,283 @@
+{%- style -%}
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top_desktop }}px;
+    margin-bottom: {{ section.settings.margin_bottom_desktop }}px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top_mobile }}px;
+      margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+{% assign product_card_slider = section.id | remove: '-' %}
+<div class="container on-our-radar-section section-{{ section.id }}-margin {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" id="hotBefore{{ product_card_slider }}">
+  <div class="d_cent">
+    <p class="deals_txt">
+      {{ section.settings.qsirguwfh }}
+    </p>
+  </div>
+  {% if section.settings.sdfsdf != blank %}
+    <p class="dealsub_txt mb-3">
+      {{ section.settings.sdfsdf }}
+    </p>
+  {% endif %}
+  <div class="product-carousel-wrapper">
+    <button
+      class="carousel-btn border-0 prev"
+      id="carousel-prev-btn-{{ product_card_slider }}"
+    >
+      {% render 'carousel-prev-btn-svg' %}
+    </button>
+
+    <div
+      class="product-carousel row element-carousel"
+      id="main{{ product_card_slider }}"
+    >
+      {% for block in section.blocks %}
+        <div class="col-8 col-md-4 element-carousel-item">
+          <a href="{{ block.settings.jlk }}" class="no-line">
+            <img
+              loading="lazy"
+              class="d-lg-none w-100"
+              src="{{ block.settings.adasda | image_url }}"
+              data-src="{{ block.settings.adasda | image_url }}"
+              data-sizes="auto"
+              width="100%"
+              height="auto"
+              alt="{{ block.settings.adasda | escape }}"
+            >
+            <img
+              loading="lazy"
+              class="d-none d-lg-block w-100"
+              src="{{ block.settings.adasda_mob | image_url }}"
+              width="100%"
+              height="auto"
+              alt="{{ block.settings.adasda_mob | escape }}"
+            >
+          </a>
+          {% if block.settings.slideTxt and block.settings.txt_datetxt and block.settings.slideLink %}
+            <div>
+              <p class="slideTxt">{{ block.settings.slideTxt }}</p>
+              <p class="txt_datetxt mb-0">
+                {{ block.settings.txt_datetxt -}}
+                <br>
+                <span class="txt_date">
+                  {{ block.settings.txt_date }}
+                  <a href="{{ block.settings.slideLink }}" class="slideLink">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="9"
+                      height="9"
+                      viewBox="0 0 9 9"
+                      fill="none"
+                    >
+                      <path d="M8.32031 1V0.5H8.82031V1H8.32031ZM4.55621 5.4712C4.36095 5.66647 4.04437 5.66647 3.84911 5.4712C3.65385 5.27594 3.65385 4.95936 3.84911 4.7641L4.55621 5.4712ZM7.82031 4.29412V1H8.82031V4.29412H7.82031ZM8.32031 1.5H5.02619V0.5H8.32031V1.5ZM8.67387 1.35355L4.55621 5.4712L3.84911 4.7641L7.96676 0.646447L8.67387 1.35355Z" fill="#404184" />
+                      <path
+                        d="M7.9082 5.94116V5.99999C7.9082 6.9428 7.9082 7.4142 7.61531 7.70709C7.32242 7.99999 6.85101 7.99999 5.9082 7.99999H3.31996C2.37715 7.99999 1.90575 7.99999 1.61285 7.70709C1.31996 7.4142 1.31996 6.9428 1.31996 5.99999V3.41174C1.31996 2.46893 1.31996 1.99753 1.61285 1.70464C1.90575 1.41174 2.37715 1.41174 3.31996 1.41174H3.37879"
+                        stroke="#404184"
+                        stroke-linecap="round" />
+                    </svg>
+                  </a>
+                </span>
+              </p>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <button
+      class="carousel-btn border-0 next"
+      id="carousel-next-btn-{{ product_card_slider }}"
+    >
+      {% render 'carousel-next-btn-svg' %}
+    </button>
+  </div>
+</div>
+
+<style>
+    #hotBefore{{ product_card_slider }} {
+      position: relative;
+    }
+
+    #hotBefore{{ product_card_slider }}:before {
+      content: "";
+      width: 100%;
+      height: 70%;
+      position: absolute;
+      left: 0;
+      border-radius: 4px;
+      top: -32px;
+      background: #EBECFF;
+      z-index: -1;
+    }
+    /* .on-our-radar-section {
+      margin-top: 128px;
+    } */
+    .on-our-radar-section .deals_txt {
+      margin-bottom: 32px;
+    }
+    
+    #{{ product_card_slider }}::-webkit-scrollbar {
+      display: none !important;
+    }
+  @media only screen and (max-width: 992px) {
+
+    .on-our-radar-slider-cover {
+      padding: 0 0 0 6px;
+    }
+    /* .on-our-radar-section {
+      margin-top: 72px;
+    } */
+    .on-our-radar-section .deals_txt {
+      margin-bottom: 20px;
+    }
+    .on-our-radar-section .slideTxt {
+      color: #393939;  
+      font-size: 14px;  
+      font-weight: 500;
+      margin:4px 0 0;
+    }
+    .on-our-radar-section .txt_datetxt {
+      color: #393939;
+      font-family: Montserrat;
+      font-size: 12px;
+      margin: 0;
+      font-weight: 400;
+      line-height: 14px; /* 116.667% */
+    }
+    .on-our-radar-section .txt_date {
+      font-size: 10px;
+    }
+  }
+</style>
+<script>
+  $(document).ready(function ready() {
+    const settings = {
+      root: $('#main{{ product_card_slider }}'),
+      slides: $('#main{{ product_card_slider }} > .element-carousel-item'),
+      prev: $('#carousel-prev-btn-{{ product_card_slider }}'),
+      next: $('#carousel-next-btn-{{ product_card_slider }}'),
+      mouseDragHandlers: true,
+      removeControls: true,
+    };
+    const carousel = new Carousel(settings);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Carousel_cards",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Mobile Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "text",
+      "id": "qsirguwfh",
+      "label": "Add Your Heading Here"
+    },
+    {
+      "type": "text",
+      "id": "sdfsdf",
+      "label": "Add Your Sub Heading Here"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Image With Text",
+      "type": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "adasda",
+          "label": "Add Your Mobile Image Here"
+        },
+        {
+          "type": "image_picker",
+          "id": "adasda_mob",
+          "label": "Add Your Image Here"
+        },
+        {
+          "type": "url",
+          "id": "jlk",
+          "label": "Add Your Link Here"
+        },
+        {
+          "type": "text",
+          "id": "slideTxt",
+          "label": "Add Your Main Text Here"
+        },
+        {
+          "type": "text",
+          "id": "txt_datetxt",
+          "label": "Add Your Main Text Here"
+        },
+        {
+          "type": "text",
+          "id": "txt_date",
+          "label": "Add Your Date here"
+        },
+        {
+          "type": "url",
+          "id": "slideLink",
+          "label": "Add Your Box Link Here"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Carousel_cards"
+    }
+  ]
+}
+{% endschema %}

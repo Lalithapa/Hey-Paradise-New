@@ -1,0 +1,112 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "8676b3ba-982b-4175-a359-7b661ad2bdae": {
+      "type": "accordion",
+      "blocks": {
+        "73680fdd-8cdd-404b-82c0-acd9515ca04d": {
+          "type": "text",
+          "settings": {
+            "questions": "Section 1: Information",
+            "answers": "<p>Return or exchange is permissible only in the event of receiving a damaged or incorrect product. \u2028To qualify for a replacement or refund, the item should be unused and remain in its original condition and packaging. Requests for return or replacement can be made within 7 days of delivery. \u2028Please note that for damaged or incorrect products, we require an unboxing video as evidence to process a refund or replacement. Kindly record a video while unpacking the package.<\/p><p><\/p><p>If you believe you meet the criteria for a replacement or refund, please follow these steps to initiate the process:<\/p><p><\/p><ol><li><strong>Contact Us:<\/strong> Email us at support@hokmakeup.com or call us at 9810245261.<\/li><li><strong>Provide Pictures & Video: <\/strong>Attach clear photos and videos of the received product, including a picture of the invoice.<\/li><li><strong>Refund Process<\/strong>: Refunds will be initiated on pick-up only if the products are received by us in their original packaging with their seals, labels and bar codes intact. It may take 2-4 business days for the credit to reflect into your account depending on the bank.<\/li><\/ol><p>*Returns are only possible within the stipulated return period and if specific conditions are fulfilled.<\/p>"
+          }
+        },
+        "096b1741-bf90-49d2-b44e-012a62583547": {
+          "type": "text",
+          "settings": {
+            "questions": "Section 2: Consent",
+            "answers": "<p>Return or exchange is permissible only in the event of receiving a damaged or incorrect product. \u2028To qualify for a replacement or refund, the item should be unused and remain in its original condition and packaging. Requests for return or replacement can be made within 7 days of delivery. \u2028Please note that for damaged or incorrect products, we require an unboxing video as evidence to process a refund or replacement. Kindly record a video while unpacking the package.<\/p><p><\/p><p>If you believe you meet the criteria for a replacement or refund, please follow these steps to initiate the process:<\/p><p><\/p><ol><li><strong>Contact Us:<\/strong> Email us at support@hokmakeup.com or call us at 9810245261.<\/li><li><strong>Provide Pictures & Video: <\/strong>Attach clear photos and videos of the received product, including a picture of the invoice.<\/li><li><strong>Refund Process<\/strong>: Refunds will be initiated on pick-up only if the products are received by us in their original packaging with their seals, labels and bar codes intact. It may take 2-4 business days for the credit to reflect into your account depending on the bank.<\/li><\/ol><p>*Returns are only possible within the stipulated return period and if specific conditions are fulfilled.<\/p>"
+          }
+        },
+        "82cad611-28c9-4332-823d-8d080ac51d87": {
+          "type": "text",
+          "settings": {
+            "questions": "Section 3: Disclosure",
+            "answers": "<p>Return or exchange is permissible only in the event of receiving a damaged or incorrect product. \u2028To qualify for a replacement or refund, the item should be unused and remain in its original condition and packaging. Requests for return or replacement can be made within 7 days of delivery. \u2028Please note that for damaged or incorrect products, we require an unboxing video as evidence to process a refund or replacement. Kindly record a video while unpacking the package.<\/p><p><\/p><p>If you believe you meet the criteria for a replacement or refund, please follow these steps to initiate the process:<\/p><p><\/p><ol><li><strong>Contact Us:<\/strong> Email us at support@hokmakeup.com or call us at 9810245261.<\/li><li><strong>Provide Pictures & Video: <\/strong>Attach clear photos and videos of the received product, including a picture of the invoice.<\/li><li><strong>Refund Process<\/strong>: Refunds will be initiated on pick-up only if the products are received by us in their original packaging with their seals, labels and bar codes intact. It may take 2-4 business days for the credit to reflect into your account depending on the bank.<\/li><\/ol><p>*Returns are only possible within the stipulated return period and if specific conditions are fulfilled.<\/p>"
+          }
+        },
+        "text_ndkPjj": {
+          "type": "text",
+          "settings": {
+            "questions": "Section 4: Shopify",
+            "answers": "<p>We use Shopify Inc. as the host for our online store, which enables us to offer our products and services to you. Shopify's data storage, databases, and the overall Shopify application are where your data is stored securely on a server protected by a firewall.<br\/><br\/> Payment:<br\/>If you choose a direct payment gateway to complete your purchase, then Shopify stores your credit card data. It is encrypted through the Payment Card Industry Data Security Standard (PCI-DSS). Your purchase transaction data is stored only as long as is necessary to complete your purchase transaction. After that is complete, your purchase transaction information is deleted.<br\/>All direct payment gateways adhere to the standards set by PCI-DSS as managed by the PCI Security Standards Council, which is a joint effort of brands like Visa, Mastercard, American Express and Discover.<br\/>PCI-DSS requirements help ensure the secure handling of credit card information by our store and its service providers.<br\/>For more insight, you may also want to read Shopify’s Terms of Service (https:\/\/www.shopify.com\/legal\/terms) or Privacy Statement (https:\/\/www.shopify.com\/legal\/privacy). <br\/><\/p>"
+          }
+        },
+        "text_3yTXg7": {
+          "type": "text",
+          "settings": {
+            "questions": "Section 5: Third-Party Services",
+            "answers": "<p>In general, the third-party providers used by us will only collect, use and disclose your information to the extent necessary to allow them to perform the services they provide to us.<br\/>However, certain third-party service providers, such as payment gateways and other payment transaction processors, have their own privacy policies in respect to the information we are required to provide to them for your purchase-related transactions.<br\/>For these providers, we recommend that you read their privacy policies so you can understand the manner in which your personal information will be handled by these providers.<br\/>In particular, remember that certain providers may be located in or have facilities that are located a different jurisdiction than either you or us. So if you elect to proceed with a transaction that involves the services of a third-party service provider, then your information may become subject to the laws of the jurisdiction(s) in which that service provider or its facilities are located.<br\/>As an example, if you are located in Canada and your transaction is processed by a payment gateway located in the United States, then your personal information used in completing that transaction may be subject to disclosure under United States legislation, including the Patriot Act.<br\/>Once you leave our store’s website or are redirected to a third-party website or application, you are no longer governed by this Privacy Policy or our website’s Terms of Service.<br\/><br\/>Links<br\/><br\/>When you click on links on our store, they may direct you away from our site. We are not responsible for the privacy practices of other sites and encourage you to read their privacy statements.<\/p>"
+          }
+        },
+        "text_LijQrN": {
+          "type": "text",
+          "settings": {
+            "questions": "Section 6: Security",
+            "answers": "<p>To safeguard your personal information, we employ sensible measures and adhere to the best industry practices to prevent any improper loss, misuse, access, disclosure, alteration, or destruction of your data.<br\/>When you provide us with your credit card details, we utilize secure socket layer technology (SSL) for encryption, and your information is stored with AES-256 encryption. While it's important to note that no method of data transmission or electronic storage is 100% secure, , we follow all PCI-DSS requirements and implement additional generally accepted industry standards.<\/p>"
+          }
+        },
+        "text_m44PLC": {
+          "type": "text",
+          "settings": {
+            "questions": "Section 7: Cookies",
+            "answers": "<p>Here is a list of cookies that we use. We’ve listed them here so you that you can choose if you want to opt-out of cookies or not.<br\/>_session_id, unique token, sessional, Allows Shopify to store information about your session (referrer, landing page, etc).<br\/>_shopify_visit, no data held, Persistent for 30 minutes from the last visit, Used by our website provider’s internal stats tracker to record the number of visits<br\/>_shopify_uniq, no data held, expires midnight (relative to the visitor) of the next day, Counts the number of visits to a store by a single customer.<br\/>cart, unique token, persistent for 2 weeks, Stores information about the contents of your cart.<br\/>_secure_session_id, unique token, sessional<br\/>storefront_digest, unique token, indefinite If the shop has a password, this is used to determine if the current visitor has access.<\/p>"
+          }
+        },
+        "text_zcrKeD": {
+          "type": "text",
+          "settings": {
+            "questions": "Section 8: Age Of Consent (If Applicable)",
+            "answers": "<p>By using this site, you represent that you are at least the age of majority in your state or province of residence, or that you are the age of majority in your state or province of residence and you have given us your consent to allow any of your minor dependents to use this site.<\/p>"
+          }
+        },
+        "text_t8NTNy": {
+          "type": "text",
+          "settings": {
+            "questions": "Section 9: Changes to the Privacy Policy",
+            "answers": "<p>We retain the right to amend this privacy policy whenever necessary, so we recommend reviewing it regularly. Any alterations or clarifications will be put into effect immediately upon publication on the website. In the event of substantial changes to this policy, we will provide a notification here to inform you of the updates. This way, you'll be informed about the information we collect, its purpose, and the conditions under which it is used or disclosed, if applicable.<br\/>In the event that our store is acquired or merges with another company, your information may be transferred to the new owners to ensure the continuity of product sales to you.<br\/><\/p>"
+          }
+        },
+        "text_egDQPd": {
+          "type": "text",
+          "settings": {
+            "questions": "Questions and Contact Information",
+            "answers": "<p>If you wish to: access, correct, modify, or remove any of your personal information held by us, raise a concern, or seek further information, please get in touch with our Privacy Compliance Officer at support@hokmakeup.com.<br\/><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "73680fdd-8cdd-404b-82c0-acd9515ca04d",
+        "096b1741-bf90-49d2-b44e-012a62583547",
+        "82cad611-28c9-4332-823d-8d080ac51d87",
+        "text_ndkPjj",
+        "text_3yTXg7",
+        "text_LijQrN",
+        "text_m44PLC",
+        "text_zcrKeD",
+        "text_t8NTNy",
+        "text_egDQPd"
+      ],
+      "custom_css": [
+        ".faq-question-container > p,.faq-question-container > ol {color: #373737;}"
+      ],
+      "settings": {
+        "show-help": false,
+        "helpbannerimage": "shopify:\/\/shop_images\/Return_Policy_image.jpg",
+        "bgaksjhd": "#ffffff",
+        "accordiontitle": "Privacy Policy"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "8676b3ba-982b-4175-a359-7b661ad2bdae"
+  ]
+}

@@ -1,0 +1,259 @@
+{%- style -%}
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top_desktop }}px;
+    margin-bottom: {{ section.settings.margin_bottom_desktop }}px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top_mobile }}px;
+      margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="container px-0 adv-banner-section section-{{ section.id }}-margin {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+  {% if customer %}
+    <div class="text-center">
+      <p class="deals_txt">{{ section.settings.sectionTitle }}</p>
+    </div>
+  {% endif %}
+  <div class="affordable_section">
+    {% if customer %}
+      <div class="position-relative">
+        <div id="loggendInSlides-container-{{ section.id }}" class="overflow-hidden loggendInSlides-container">
+          {% for block in section.blocks %}
+            <a href="{{ block.settings.loginSlideURL}}" class="loggendInSlides"
+              ><img
+                width="100%"
+                loading="lazy"
+                class=""
+                src="{{ block.settings.loginSlideImages | image_url }}"
+                alt="{{ block.settings.loginSlideImages | escape }}"
+              >
+            </a>
+          {% endfor %}
+        </div>
+        <button class="slick-prev-btn slick-prev-btn-{{ section.id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M18.5718 5.50977L10.082 13.9996L18.5718 22.4894" stroke="#585858" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="slick-next-btn slick-next-btn-{{ section.id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M9.42817 5.50977L17.918 13.9996L9.42817 22.4894" stroke="#585858" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="loggendInSlides-{{ section.id }} d-lg-none"></div>
+      </div>
+    {% else %}
+      <div class="overflow-hidden">
+        <a href="{{ section.settings.loginLink}}">
+          <img
+            width="100%"
+            loading="lazy"
+            class="d-none d-lg-block"
+            src="{{ section.settings.desktopImage | image_url }}"
+            alt="{{ section.settings.desktopImage | escape }}"
+          >
+          <img
+            width="100%"
+            loading="lazy"
+            class="d-lg-none"
+            src="{{ section.settings.mobileImage | image_url }}"
+            alt="{{  section.settings.mobileImage | escape }}"
+          >
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+    .adv-banner-section .deals_txt {
+      margin-bottom: 32px;
+    }
+    .loggendInSlides-container{
+      max-width: calc(100% - 130px);
+      margin:0 auto;
+    }
+    .loggendInSlides-{{ section.id }} .slick-dots{
+    display: flex;
+    justify-content: center;
+    gap:5px;
+    background-color: transparent;
+    }
+    .loggendInSlides-{{ section.id }} .slick-dots li{
+    background-color: #eee;
+    height: 6px;
+    width: 6px;
+    flex: none;
+    border-radius: 50%;
+    }
+    .loggendInSlides-{{ section.id }} .slick-dots li.slick-active{
+    background-color: #CDCDCD;
+    }
+    .loggendInSlides-{{ section.id }} .slick-dots li button{
+    display: none;
+    }
+    .loggendInSlides {
+      aspect-ratio: 13/8;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 0 10px;
+    }
+    .loggendInSlides > img {
+      object-fit: cover;
+    }
+
+    /* .adv-banner-section {
+      margin-top: 96px;
+    } */
+    @media only screen and (max-width: 992px) {
+      /* .adv-banner-section {
+        margin-top: 40px;
+      } */
+      .adv-banner-section .deals_txt {
+      margin-bottom: 20px;
+    }
+    .loggendInSlides-container{
+      max-width: calc(100%);
+      margin:0 auto;
+    }
+
+    }
+</style>
+
+<script>
+  $('#loggendInSlides-container-{{ section.id }}').slick({
+    dots: true,
+    infinite: false,
+    autoplay: false,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    prevArrow: '.slick-prev-btn-{{ section.id }}',
+    nextArrow: '.slick-next-btn-{{ section.id }}',
+    appendDots: '.loggendInSlides-{{ section.id }}',
+    mobileFirst: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2.5,
+          slidesToScroll: 2,
+          arrows: true,
+          dots: false,
+        },
+      }
+    ],
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Advertisement Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Mobile Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "text",
+      "id": "sectionTitle",
+      "label": "Add Your Heading Here"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobileImage",
+      "label": "Add Your Mobile Image Here for without logged in customers"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktopImage",
+      "label": "Add Your Desktop Image Here for without logged in customers"
+    },
+    {
+      "type": "url",
+      "id": "loginLink",
+      "label": "Add Your Link Here for without logged in customers"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Logged In Slider",
+      "type": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "loginSlideImages",
+          "label": "Add Image for logged in customers"
+        },
+        {
+          "type": "url",
+          "id": "loginSlideURL",
+          "label": "Add URL for logged in customers"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Advertisement Banner"
+    }
+  ]
+}
+{% endschema %}

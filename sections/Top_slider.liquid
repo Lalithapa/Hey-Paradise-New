@@ -1,0 +1,172 @@
+{%- style -%}
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top_desktop }}px;
+    margin-bottom: {{ section.settings.margin_bottom_desktop }}px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top_mobile }}px;
+      margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="container top-self-section position-relative section-{{ section.id }}-margin {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+  <h2 class="deals_txt text-left text-md-center mt-md-4">
+    {{ section.settings.main_heading }}
+  </h2>
+  <div class="product-carousel-wrapper">
+    <button
+    class="carousel-btn border-0 prev"
+    id="new-product-carousel-prev-btn-{{ section.id }}"
+  >
+    {% render 'carousel-prev-btn-svg' %}
+  </button>
+
+    <div class="product-carousel row element-carousel" id="new-product-carousel-{{ section.id }}">
+      {% for block in section.blocks %}
+        <div class="col-7 col-md-3 d_cent talk-of-the-town-cards element-carousel-item">
+          <a href="{{  block.settings.sdfsdfsdf }}" class="no-line w-100">
+            <div class="cards">
+              {% render 'image-video',
+              showVideo:false
+              desktopImage: block.settings.slider,
+              mobileImage: block.settings.slider_mobile,
+              class:"review_images"
+              %}
+              <p class="review_head">
+                {{ block.settings.sfgsdgsdf }}
+              </p>
+              <p class="review_content">
+                {{ block.settings.zxczxczx }}
+                <svg xmlns="http://www.w3.org/2000/svg" width="5" height="9" viewBox="0 0 7 12" fill="none">
+                  <path d="M1 10.5L5.5 6L1 1.5" stroke="#393939" stroke-width="1.5"/>
+                </svg>
+              </p>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+    <button
+      class="carousel-btn border-0 next"
+      id="new-product-carousel-next-btn-{{ section.id }}"
+    >
+      {% render 'carousel-next-btn-svg' %}
+    </button>
+  </div>
+</div>
+<script>
+   document.addEventListener('DOMContentLoaded', function () {
+    const settings = {
+      root: $('#new-product-carousel-{{ section.id }}'),
+      slides: $('#new-product-carousel-{{section.id}} > .element-carousel-item'),
+      prev: $('#new-product-carousel-prev-btn-{{section.id}}'),
+      next: $('#new-product-carousel-next-btn-{{section.id}}'),
+      mouseDragHandlers: true,
+      removeControls: true,
+    };
+
+    const carousel = new Carousel(settings);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Top Sliders",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Mobile Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Add Your Heading Here"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Image With Text",
+      "type": "Image",
+      "settings": [
+        {
+          "type": "url",
+          "id": "sdfsdfsdf",
+          "label": "Add Url"
+        },
+        {
+          "type": "image_picker",
+          "id": "slider",
+          "label": "Add Your Image Here"
+        },
+        {
+          "type": "image_picker",
+          "id": "slider_mobile",
+          "label": "Add Your Mobile Image Here"
+        },
+        {
+          "type": "text",
+          "id": "sfgsdgsdf",
+          "label": "Add Text Here"
+        },
+        {
+          "type": "text",
+          "id": "zxczxczx",
+          "label": "Add Text Here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Top Sliders top-self-slider-cover"
+    }
+  ]
+}
+{% endschema %}

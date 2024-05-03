@@ -1,0 +1,45 @@
+<style>
+  @media screen and (max-width: 991px) {
+       .ssw-reward-tab {
+         display: none !important;
+         }
+         #ssw-reward-box {
+           bottom: 0;
+           right: 0;
+           max-width: 100%;
+         }
+     }
+   
+</style>
+
+  <script>
+     window.addEventListener("sswhelperload", () => {
+      sswRun(function () {
+        if ($(window).width() < 991) {
+          ssw('.reward-mob-btn').on('click', function(e) {
+        e.preventDefault()
+        if(!ssw('#ssw-reward-box').length) {
+          ssw.get(`${sswProxyUrl}/lite2/reward/index/popup`)
+          ssw('#ssw-reward-box').hide()
+        }
+        
+        var openTabIntervalMob = setInterval(function () {
+          console.log("test")
+          ssw('#ssw-reward-box').show()
+        ssw('#ssw-reward-box').animate({'bottom': '0'}, {
+        duration: 100
+        })
+        clearInterval(openTabIntervalMob);
+        }, 600)
+        })
+        
+        ssw(document.body).on('click', '.ssw-reward-close-btn', function(e) {
+          e.preventDefault()
+          ssw('#ssw-reward-box').animate({'bottom': '-800'}, {
+            duration: 100
+          })
+        })
+      }
+  })
+})
+</script>

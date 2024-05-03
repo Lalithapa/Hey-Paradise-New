@@ -1,0 +1,356 @@
+{%- style -%}
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top_desktop }}px;
+    margin-bottom: {{ section.settings.margin_bottom_desktop }}px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top_mobile }}px;
+      margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+{% capture ratings %}
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
+      <path id="Vector 16"
+          d="M2.23385 8.70371L8.50116 14.6818C8.69377 14.8655 8.79007 14.9573 8.89999 14.9923C8.99869 15.0238 9.10472 15.0238 9.20342 14.9923C9.31334 14.9573 9.40964 14.8655 9.60225 14.6818L15.8696 8.70371C17.602 7.0512 17.8132 4.35959 16.3595 2.45717L16.0454 2.04608C14.2884 -0.253352 10.7192 0.128342 9.48816 2.74732C9.31449 3.1168 8.78893 3.1168 8.61525 2.74732C7.38422 0.128342 3.81504 -0.253351 2.05803 2.04608L1.74391 2.45718C0.29026 4.35959 0.501371 7.05119 2.23385 8.70371Z"
+          fill="{{ section.settings.heartColor }}" />
+  </svg>
+  {% endcapture %}
+{% capture ratings_white %}
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
+      <path id="Vector 16"
+          d="M2.23385 8.70371L8.50116 14.6818C8.69377 14.8655 8.79007 14.9573 8.89999 14.9923C8.99869 15.0238 9.10472 15.0238 9.20342 14.9923C9.31334 14.9573 9.40964 14.8655 9.60225 14.6818L15.8696 8.70371C17.602 7.0512 17.8132 4.35959 16.3595 2.45717L16.0454 2.04608C14.2884 -0.253352 10.7192 0.128342 9.48816 2.74732C9.31449 3.1168 8.78893 3.1168 8.61525 2.74732C7.38422 0.128342 3.81504 -0.253351 2.05803 2.04608L1.74391 2.45718C0.29026 4.35959 0.501371 7.05119 2.23385 8.70371Z"
+          fill="#fff" />
+  </svg>
+  {% endcapture %}
+{% assign splicesectionId = section.id | remove: '-' | slice: 25, 33 %}
+
+<section {% if settings.animations_reveal_on_scroll %} class="scroll-trigger animate--slide-in"{% endif %}>
+<div class="container spotlight-section section-{{ section.id }}-margin">
+    <div class="row feedback-slider-container" id="{{ section.id }}">
+      <div class="col-12 col-lg-5 feedback-image">
+        {% if section.settings.brandSlider %}
+        <img
+          loading="lazy"
+          src="{{ section.settings.mainLogo | image_url  }}"
+          alt="MainLogo"
+          class="d-sm-none"
+          height="56"
+        >
+        {% endif %}
+        <img
+          loading="lazy"
+          src="{{ section.settings.mainImage | image_url }}"
+          alt="Main Image"
+          class="img-fluid feedback-gif w-100"
+        >
+      </div>
+
+      <div class="col-12 col-lg-7 feedback-main-content-container">
+        {% if section.settings.brandSlider %}
+          {%  assign brandSliderBtn = true  %}
+        <div class="feedback-title-container">
+          <div class="feedback-logo d-none d-md-block ">
+            <img
+              loading="lazy"
+              src="{{ section.settings.mainLogo | image_url  }}"
+              alt="mainLogo"
+              class="mt-3 mt-lg-0" width="100%"
+              height="56"
+            >
+          </div>
+          <div class="feedback-slider overflow-hidden" id="slides{{ section.id }}">
+            <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              <div class="feedback-content swiper-slide">
+                <div class="feedback-rating">
+                  {% assign userRating = block.settings.userRating %}
+                  {% for i in (1..5) %}
+                    {% if i <= userRating %}
+                      {{ ratings }}
+                    {% else %}
+                      {{ ratings_white }}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <p class="feedback-text ">
+                  {{ block.settings.feedbackText }}
+                </p>
+                <p class="feedback-user">{{ block.settings.userName }}</p>
+              </div>
+            {% endfor %}
+            </div>
+          </div>
+          <div class="feedback-dots text-center" id="feedback-dots-{{ section.id }}"></div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              const review_list = new Swiper('#slides{{ section.id }}', {
+                centeredSlides: true,
+                autoplay: {
+                  delay: 1500,
+                  disableOnInteraction: false,
+                },
+                loop:true,
+                pagination: {
+                  el: "#feedback-dots-{{ section.id }}",
+                  clickable: true,
+                },
+                navigation: false,
+              });
+            });
+        </script>
+        {% else %}
+        {%  assign brandSliderBtn = false  %}
+        <div class="collection-title-container">
+          <p class="lable">{{ section.settings.skjdfhasdjk }}</p>
+           <p class="collection-title">{{ section.settings.jkfghkfghlk }}</p>
+          <p
+            class="slider-discover-btn"
+          >
+            Discover More
+            <span class="material-symbols-outlined ">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="7"
+                height="10"
+                viewBox="0 0 7 10"
+                fill="none"
+              >
+                <path d="M1 9.5L5.5 5L1 0.5" stroke="#393939" stroke-width="1.2" />
+              </svg>
+            </span>
+          </p>
+         </div>
+        {% endif %}
+
+        <div class="product-carousel-wrapper">
+          <button
+          class="carousel-btn border-0 prev"
+          id="new-product-carousel-prev-btn-{{ section.id }}"
+        >
+          {% render 'carousel-prev-btn-svg' %}
+        </button>
+
+          <div class="product-carousel row element-carousel element-carousel-bar" id="new-product-carousel-{{ section.id }}">
+            {% for product in collections[section.settings.home_featured_products].products limit: 7 %}
+              <div class="col-6 col-md-5 element-carousel-item">
+                {% render 'main_product_cards',
+                  product: product,
+                  sectionId: splicesectionId,
+                  card_margin: false,
+                  show_button: brandSliderBtn
+                %}
+              </div>
+            {% endfor %}
+          </div>
+          {% if section.settings.viewAllBtn %}
+            <a
+              href="{{ collections[section.settings.home_featured_products].url }}"
+              class="collection-view-btn"
+              id="collection-view-btn-{{ section.id }}"
+              >View All</a
+            >
+          {% endif %}
+          <button
+          class="carousel-btn border-0 next"
+          id="new-product-carousel-next-btn-{{ section.id }}"
+        >
+          {% render 'carousel-next-btn-svg' %}
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% if section.settings.brandSlider %}
+{% for product in collections[section.settings.home_featured_products].products limit: 7 %}
+  {% render 'quick_shades', product: product, sectionId: splicesectionId %}
+{% endfor %}
+{% endif %}
+
+<style>
+  #collection-view-btn-{{ section.id }}{
+    background-color: {{ section.settings.backgroundcolor }};
+  }
+  #{{ section.id }}.feedback-slider-container::before {
+    background: {{ section.settings.backgroundcolor  }};
+  }
+</style>
+
+<script>
+  $(document).ready(function () {
+    const settings = {
+      root: $('#new-product-carousel-{{ section.id }}'),
+      slides: $('#new-product-carousel-{{section.id}} > .element-carousel-item'),
+      prev: $('#new-product-carousel-prev-btn-{{section.id}}'),
+      next: $('#new-product-carousel-next-btn-{{section.id}}'),
+      mouseDragHandlers: true,
+      removeControls: true,
+    };
+    const carousel = new Carousel(settings);
+  });
+</script>
+{% schema %}
+{
+  "name": "Brand In Spotlight",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Mobile Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "checkbox",
+      "id": "brandSlider",
+      "label": "Show Brand Slider",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "mainImage",
+      "label": "Add Your Main Image Here"
+    },
+    {
+      "type": "image_picker",
+      "id": "mainLogo",
+      "label": "Add Your Logo Image Here"
+    },
+    {
+      "type": "text",
+      "id": "skjdfhasdjk",
+      "label": "Add Your Heading For Carousel Text"
+    },
+    {
+      "type": "text",
+      "id": "jkfghkfghlk",
+      "label": "Add Your Sub Heading For Carousel Text"
+    },
+    {
+      "type": "color",
+      "id": "heartColor",
+      "label": "Rating Heart Color"
+    },
+    {
+      "type": "checkbox",
+      "id": "viewAllBtn",
+      "label": "Show View All Button",
+      "default": false
+    },
+    {
+      "type": "collection",
+      "id": "home_featured_products",
+      "label": "Add Your Collection Here"
+    },
+    {
+      "type": "color",
+      "id": "backgroundcolor",
+      "label": "Add Background Color"
+    },
+    {
+      "type": "number",
+      "id": "smallNumber",
+      "label": "Number Of slides for Small Screens",
+      "default": 2
+    },
+    {
+      "type": "number",
+      "id": "mediumNumber",
+      "label": "Number Of slides for medium Screens",
+      "default": 2
+    },
+    {
+      "type": "number",
+      "id": "largeNumber",
+      "label": "Number Of slides for Large Screens",
+      "default": 2
+    },
+    {
+      "type": "number",
+      "id": "extraLargeNumber",
+      "label": "Number Of slides for Extra Large Screens",
+      "default": 2
+    }
+  ],
+  "blocks": [
+    {
+      "name": "User Feedback",
+      "type": "Feedback",
+      "settings": [
+        {
+          "type": "range",
+          "id": "userRating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "User Rating ( Number of Heart )",
+          "default": 4
+        },
+        {
+          "type": "text",
+          "id": "userName",
+          "label": "User Name"
+        },
+        {
+          "type": "text",
+          "id": "feedbackText",
+          "label": "Write Feedback"
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand In Spotlight"
+    }
+  ]
+}
+{% endschema %}

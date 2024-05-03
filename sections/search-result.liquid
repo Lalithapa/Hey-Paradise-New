@@ -1,0 +1,367 @@
+{{ 'gridCollection.css' | asset_url | stylesheet_tag }}
+<!-- filter section -->
+<section class="">
+    <div class="container filter-container mx-auto">
+        <p class="filter-results text-capitalize mb-0">
+            {{ search.results_count }} items for {{ search.terms | escape }}
+        </p>
+        <div class="filter-methods-container d-none d-sm-flex ">
+            <div class="filter-tags d-none">
+                <div class="active-filters">
+                    {%- for filter in search.filters -%}
+                    {%- if filter.type == 'price_range' -%}
+                    {%- if filter.min_value.value != null or filter.max_value.value != null -%}
+                    <a class="active-filters__remove-filter" href="{{ filter.url_to_remove }}">
+                        {%- assign min_value = filter.min_value.value | default: 0 -%}
+                        {%- assign max_value = filter.max_value.value | default: filter.range_max -%}
+                        {{ min_value | money }} - <strong>{{ max_value | money }}</strong> X
+                    </a>
+                    {%- endif -%}
+                    {%- else -%}
+                    {%- for filter_value in filter.active_values -%}
+                    <span class="active-filters__remove-filter user-select-none">
+                        {{ filter.label }}: <strong>{{ filter_value.label }}</strong>
+                        <a href="{{ filter_value.url_to_remove }}"
+                            class="no-line text-muted font-weight-bold m-2">&#10005;</a>
+                    </span>
+                    {%- endfor -%}
+                    {%- endif -%}
+                    {%- endfor -%}
+                </div>
+            </div>
+
+            <div class="filter-methods d-none d-sm-flex">
+                <button class="filters filter-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="23" viewBox="0 0 26 23" fill="none">
+                        <path d="M22.3545 11.2842L22.3545 21.5686" stroke="#393939" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <path d="M22.3545 1L22.3545 6.14219" stroke="#393939" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <circle cx="22.3547" cy="8.71308" r="2.5711" transform="rotate(-180 22.3547 8.71308)"
+                            stroke="#393939" stroke-width="1.5" stroke-linecap="round" />
+                        <path d="M4.07129 11.2842L4.07129 21.5686" stroke="#393939" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <path d="M4.07129 1L4.07129 6.14219" stroke="#393939" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <circle cx="4.07148" cy="8.71308" r="2.5711" transform="rotate(-180 4.07148 8.71308)"
+                            stroke="#393939" stroke-width="1.5" stroke-linecap="round" />
+                        <path d="M13.2129 18.1431L13.2129 21.9997" stroke="#393939" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <path d="M13.2129 1.43115L13.2129 11.7155" stroke="#393939" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <circle cx="13.2131" cy="15.572" r="2.5711" transform="rotate(-180 13.2131 15.572)"
+                            stroke="#393939" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+                    <p class="">Filters</p>
+                </button>
+                <button class="sort-by">
+                    <p class="sort-btn">Sort By</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- small device filter -->
+        <div class="m-filter-methods d-sm-none">
+            <button class="sort-btn">
+                <svg class="mobile-screen" width="18" height="24" viewBox="0 0 18 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g id="Group 9115">
+                        <path id="Vector 9"
+                            d="M5 2L4.46967 1.46967L5 0.93934L5.53033 1.46967L5 2ZM5.75 17C5.75 17.4142 5.41421 17.75 5 17.75C4.58579 17.75 4.25 17.4142 4.25 17L5.75 17ZM0.46967 5.46967L4.46967 1.46967L5.53033 2.53033L1.53033 6.53033L0.46967 5.46967ZM5.53033 1.46967L9.53033 5.46967L8.46967 6.53033L4.46967 2.53033L5.53033 1.46967ZM5.75 2L5.75 17L4.25 17L4.25 2L5.75 2Z"
+                            fill="#393939" />
+                        <path id="Vector 10"
+                            d="M13 22L12.4697 22.5303L13 23.0607L13.5303 22.5303L13 22ZM13.75 7C13.75 6.58579 13.4142 6.25 13 6.25C12.5858 6.25 12.25 6.58579 12.25 7L13.75 7ZM8.46967 18.5303L12.4697 22.5303L13.5303 21.4697L9.53033 17.4697L8.46967 18.5303ZM13.5303 22.5303L17.5303 18.5303L16.4697 17.4697L12.4697 21.4697L13.5303 22.5303ZM13.75 22L13.75 7L12.25 7L12.25 22L13.75 22Z"
+                            fill="#393939" />
+                    </g>
+                </svg>
+                <p>Sort By <span>Popularity</span></p>
+            </button>
+
+            <div class="line"></div>
+
+            <button class="filter-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="23" viewBox="0 0 26 23" fill="none">
+                    <path d="M22.3545 11.2842L22.3545 21.5686" stroke="#393939" stroke-width="1.5"
+                        stroke-linecap="round" />
+                    <path d="M22.3545 1L22.3545 6.14219" stroke="#393939" stroke-width="1.5" stroke-linecap="round" />
+                    <circle cx="22.3547" cy="8.71308" r="2.5711" transform="rotate(-180 22.3547 8.71308)"
+                        stroke="#393939" stroke-width="1.5" stroke-linecap="round" />
+                    <path d="M4.07129 11.2842L4.07129 21.5686" stroke="#393939" stroke-width="1.5"
+                        stroke-linecap="round" />
+                    <path d="M4.07129 1L4.07129 6.14219" stroke="#393939" stroke-width="1.5" stroke-linecap="round" />
+                    <circle cx="4.07148" cy="8.71308" r="2.5711" transform="rotate(-180 4.07148 8.71308)"
+                        stroke="#393939" stroke-width="1.5" stroke-linecap="round" />
+                    <path d="M13.2129 18.1431L13.2129 21.9997" stroke="#393939" stroke-width="1.5"
+                        stroke-linecap="round" />
+                    <path d="M13.2129 1.43115L13.2129 11.7155" stroke="#393939" stroke-width="1.5"
+                        stroke-linecap="round" />
+                    <circle cx="13.2131" cy="15.572" r="2.5711" transform="rotate(-180 13.2131 15.572)" stroke="#393939"
+                        stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+                <p>Filters<span>No Filter Applied</span></p>
+            </button>
+        </div>
+
+        <div class="filter-slides">
+            <div class="overlay"></div>
+
+            <div class="filters-slide">
+                <form action="{{ collection.url }}" method="get" id="filter-form">
+                    <div class="filter-controls-container flex-row flex-md-column justify-content-between">
+                        <div class="filter-controls">
+                            <div class="filter-close">
+                                <button class="filter-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="18" viewBox="0 0 11 18"
+                                        fill="none">
+                                        <path d="M1 1L9 9L1 17" stroke="#393939" stroke-width="2"
+                                            stroke-linecap="round" />
+                                    </svg>
+                                </button>
+
+                                <p class="mb-0">Filter By</p>
+                            </div>
+
+                            <button type="submit" class="apply-btn d-none d-md-block">Apply Filter</button>
+                        </div>
+                        <button type="reset" class="reset-btn">Clear All</button>
+                    </div>
+
+                    <div class="filter-tags">
+                        {%- for filter_value in filter.active_values -%}
+                        {% assign filterApplied = true %}
+                        <div>
+                            {{ filter.label }}
+                            <a href="{{ filter_value.url_to_remove }}" class="material-symbols-outlined"> close </a>
+                        </div>
+                        {%- endfor -%}
+                    </div>
+
+                    <ul class="filter-props-container">
+                        {%- for filter in search.filters -%}
+                        <li class="filter-props">
+                            <input type="checkbox" value="{{ filter.label }}" id="{{ filter.label }}" class="d-none">
+                            <label for="{{ filter.label }}"> {{ filter.label }}</label>
+                            <ul>
+                                {%- for filter_value in filter.values -%}
+                                <li>
+                                    <label for="{{ filter.label }}"> {{ filter_value.label }}<span>
+                                            ({{ filter_value.count }})
+                                        </span> </label>
+                                    <input type="checkbox" name="" id="{{ filter.label }}">
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="m-apply-btn-container d-md-none">
+                        <button type="submit" class="m-apply-btn ">Apply Filter</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="sort-by-slide">
+                <form action="">
+                    <div class="sort-controls-container flex-row flex-md-column justify-content-between">
+                        <div class="sort-controls">
+                            <div class="sort-close">
+                                <button class="sort-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="18" viewBox="0 0 11 18"
+                                        fill="none">
+                                        <path d="M1 1L9 9L1 17" stroke="#393939" stroke-width="2"
+                                            stroke-linecap="round" />
+                                    </svg>
+                                </button>
+
+                                <p class="mb-0">Sort By</p>
+                            </div>
+
+                            <button type="submit" class="sort-apply-btn d-none d-md-block">Apply Sort</button>
+                        </div>
+                    </div>
+
+                    <ul class="sort-props-container">
+                        <li class="sort-props">
+                            <input type="radio" value="" name="sort-values" id="popularity" class="d-none">
+                            <label for="popularity">Popularity</label>
+                        </li>
+                        <li class="sort-props">
+                            <input type="radio" value="" name="sort-values" id="newest" class="d-none">
+                            <label for="newest">Newest</label>
+                        </li>
+                        <li class="sort-props">
+                            <input type="radio" value="" name="sort-values" id="low-to-heigh" class="d-none">
+                            <label for="low-to-heigh">Price : Low to High</label>
+                        </li>
+                        <li class="sort-props">
+                            <input type="radio" value="" name="sort-values" id="heigh-to-low" class="d-none">
+                            <label for="heigh-to-low">Price : High to Low</label>
+                        </li>
+                        <li class="sort-props">
+                            <input type="radio" value="" name="sort-values" id="discount-heigh-to-low" class="d-none">
+                            <label for="discount-heigh-to-low">Discount : High to Low </label>
+                        </li>
+                    </ul>
+
+                    <div class="m-sort-apply-btn-container  d-md-none">
+                        <button type="submit" class="m-sort-apply-btn ">Apply sort</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    document.getElementById('filter-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        var selectedTag = document.getElementById('tag-filter').value;
+        var newUrl = '{{ collection.url }}';
+        if (selectedTag) {
+            newUrl += '?tag=' + selectedTag;
+        }
+        window.location.href = newUrl;
+    });
+</script>
+
+{% assign secId = section.id | remove: '--' %}
+{% assign coll_page = secId  %}
+{% assign spliceSection = section.id | remove: '-' | slice: 25, 33 %}
+<!-- products section -->
+<section>
+    <div class="container">
+        <div class="row mx-auto" id="grid-loader">
+            {% for product in search.results %}
+            <div class="col-6 col-md-4 col-lg-3">
+                {% render 'main_product_cards' product:product , sectionId: spliceSection 
+                ,card_margin:false,show_button:true %}
+                {% render 'quick_shades' product:product , sectionId: spliceSection  %}
+                </div>
+                {% else %}
+                <p>no matches</p>
+            {% endfor %}
+            </div>
+            {% if paginate.pages > 1 %}
+                
+                <input type="hidden" value="{{ paginate.next.url }}" data-next-link>
+                <input type="hidden" value="{{ paginate.pages }}" data-all-pages>
+                <input type="hidden" value="{{ paginate.current_page }}" data-this-page>
+                <input type="hidden" value="{{ search.terms | escape }}" data-coll-url>
+                <div class="l-plp-product_grid_footer">
+                    <div class="itemsghf"> {{ paginate.current_page | times: paginate.page_size }} / {{ paginate.items }}</div>
+                    <button class="b-button_2 js-load-more">Load More</button>
+                    
+                    <input type="hidden" class="permalink" value="#">
+                    <input type="hidden" class="category-id" value="makeup">
+                    </div>
+                    {% render 'skeleton' %}
+                {% endif %}
+            {% comment %} {% paginate search.results by 21 %} {% endpaginate %} {% endcomment %}
+
+    </div>
+</section>
+{% render "modals" %}
+<!-- <div class="m-filter-methods-area-fix"></div> -->
+<script>
+    const filterBtn = document.querySelectorAll(".filter-btn"), filterSlide = document.querySelector(".filters-slide"), sortBtn = document.querySelectorAll(".sort-btn"), sortSlide = document.querySelector(".sort-by-slide"), overlay = document.querySelector(".overlay");
+    const toggleFilterSlide = () => {
+        filterSlide.classList.toggle("open");
+        overlay.classList.toggle("overlay-open");
+    };
+    const togglesortSlide = () => {
+        sortSlide.classList.toggle("open");
+        overlay.classList.toggle("overlay-open");
+    };
+    filterBtn.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            toggleFilterSlide();
+        });
+    });
+    sortBtn.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            togglesortSlide();
+        });
+    });
+    overlay.addEventListener("click", () => {
+        filterSlide.classList.remove("open");
+        sortSlide.classList.remove("open");
+        overlay.classList.remove("overlay-open");
+    });
+    $(".js-load-more").on("click", async function () {
+        $("#skeleton").removeClass("d-none");
+        var $this = $(this),
+            totalPages = parseInt($("[data-all-pages]").val()),
+            currentPage = parseInt($("[data-this-page]").val()),
+            datacollurl = $("[data-coll-url]").val();
+        $this.attr("disabled", true);
+        $this.find("[load-more-text]").addClass("hide");
+        $this.find("[loader]").removeClass("hide");
+        var nextUrl = $("[data-next-link]").val();
+        var current_page_new = currentPage + 1;
+        var next_coll = currentPage + 2;
+        await $.ajax({
+            url: nextUrl,
+            type: "GET",
+            dataType: "html",
+            success: function (responseHTML) {
+                window.location.pathname.includes("/collections/")
+                    ? $("[data-next-link]").val(
+                        `/collections/{{ collection.handle }}?page=${next_coll}`
+                    )
+                    : $("[data-next-link]").val(
+                        `/search?page=${next_coll}&q=${datacollurl}`
+                    );
+                $("[data-this-page]").val(current_page_new);
+                $("#grid-loader").append($(responseHTML).find("#grid-loader").html());
+                //nonWishBtn = document.querySelectorAll('.b-wishlist_button');
+                //productFirstVariant = document.querySelectorAll('.b-add_to_bagId');
+               // initializeQuickViewSlider();
+            },
+            complete: function () {
+                if (current_page_new < totalPages) {
+                    $this.attr("disabled", false);
+                    $this.find("[load-more-text]").removeClass("hide");
+                    $this.find("[loader]").addClass("hide");
+                }
+                if (current_page_new >= totalPages) {
+                    $this
+                        .find("[load-more-text]")
+                        .text("No More Products Left")
+                        .removeClass("hide");
+                    $this.find("[loader]").addClass("hide");
+                }
+            },
+        });
+        $("#skeleton").addClass("d-none");
+    });
+
+</script>
+{% schema %}
+{
+"name": "Search Result Products",
+"tag": "section",
+"class": "section",
+"settings": [
+{
+"type": "range",
+"id": "columns_desktop",
+"min": 1,
+"max": 5,
+"step": 1,
+"default": 4,
+"label": "main-search.settings.columns_desktop.label"
+}
+],
+"blocks": [
+{
+"type": "@app"
+}
+],
+"presets": [
+{
+"name": "Search Result Products"
+}
+]
+}
+{% endschema %}

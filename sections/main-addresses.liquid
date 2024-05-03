@@ -1,0 +1,667 @@
+{% comment %} {{ 'customer.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'customer.js' | asset_url }}" defer></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- paginate customer.addresses by 5 -%}
+  <div class="customer addresses section-{{ section.id }}-padding" data-customer-addresses>
+    <svg style="display: none">
+      <symbol id="icon-caret" viewBox="0 0 10 6">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+      </symbol>
+    </svg>
+    <h1>{{ 'customer.addresses.title' | t }}</h1>
+    <a href="{{ routes.account_url }}">
+      {{ 'customer.account.return' | t }}
+    </a>
+
+    <div data-address>
+      <button
+        type="button"
+        aria-expanded="false"
+        aria-controls="AddAddress"
+      >
+        {{ 'customer.addresses.add_new' | t }}
+      </button>
+      <div id="AddAddress">
+        <h2 id="AddressNewHeading">{{ 'customer.addresses.add_new' | t }}</h2>
+        {%- form 'customer_address', customer.new_address, aria-labelledBy: 'AddressNewHeading' -%}
+          <div class="field">
+            <input
+              type="text"
+              id="AddressFirstNameNew"
+              name="address[first_name]"
+              value="{{ form.first_name }}"
+              autocomplete="given-name"
+              placeholder="{{ 'customer.addresses.first_name' | t }}"
+            >
+            <label for="AddressFirstNameNew">{{ 'customer.addresses.first_name' | t }}</label>
+          </div>
+          <div class="field">
+            <input
+              type="text"
+              id="AddressLastNameNew"
+              name="address[last_name]"
+              value="{{ form.last_name }}"
+              autocomplete="family-name"
+              placeholder="{{ 'customer.addresses.last_name' | t }}"
+            >
+            <label for="AddressLastNameNew">{{ 'customer.addresses.last_name' | t }}</label>
+          </div>
+          <div class="field">
+            <input
+              type="text"
+              id="AddressCompanyNew"
+              name="address[company]"
+              value="{{ form.company }}"
+              autocomplete="organization"
+              placeholder="{{ 'customer.addresses.company' | t }}"
+            >
+            <label for="AddressCompanyNew">{{ 'customer.addresses.company' | t }}</label>
+          </div>
+          <div class="field">
+            <input
+              type="text"
+              id="AddressAddress1New"
+              name="address[address1]"
+              value="{{ form.address1 }}"
+              autocomplete="address-line1"
+              placeholder="{{ 'customer.addresses.address1' | t }}"
+            >
+            <label for="AddressAddress1New">{{ 'customer.addresses.address1' | t }}</label>
+          </div>
+          <div class="field">
+            <input
+              type="text"
+              id="AddressAddress2New"
+              name="address[address2]"
+              value="{{ form.address2 }}"
+              autocomplete="address-line2"
+              placeholder="{{ 'customer.addresses.address2' | t }}"
+            >
+            <label for="AddressAddress2New">{{ 'customer.addresses.address2' | t }}</label>
+          </div>
+          <div class="field">
+            <input
+              type="text"
+              id="AddressCityNew"
+              name="address[city]"
+              value="{{ form.city }}"
+              autocomplete="address-level2"
+              placeholder="{{ 'customer.addresses.city' | t }}"
+            >
+            <label for="AddressCityNew">{{ 'customer.addresses.city' | t }}</label>
+          </div>
+          <div>
+            <label for="AddressCountryNew">{{ 'customer.addresses.country' | t }}</label>
+            <div class="select">
+              <select
+                id="AddressCountryNew"
+                name="address[country]"
+                data-default="{{ form.country }}"
+                autocomplete="country"
+              >
+                {{ all_country_option_tags }}
+              </select>
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                <use href="#icon-caret" />
+              </svg>
+            </div>
+          </div>
+          <div id="AddressProvinceContainerNew" style="display: none">
+            <label for="AddressProvinceNew">{{ 'customer.addresses.province' | t }}</label>
+            <div class="select">
+              <select
+                id="AddressProvinceNew"
+                name="address[province]"
+                data-default="{{ form.province }}"
+                autocomplete="address-level1"
+              ></select>
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                <use href="#icon-caret" />
+              </svg>
+            </div>
+          </div>
+          <div class="field">
+            <input
+              type="text"
+              id="AddressZipNew"
+              name="address[zip]"
+              value="{{ form.zip }}"
+              autocapitalize="characters"
+              autocomplete="postal-code"
+              placeholder="{{ 'customer.addresses.zip' | t }}"
+            >
+            <label for="AddressZipNew">{{ 'customer.addresses.zip' | t }}</label>
+          </div>
+          <div class="field">
+            <input
+              type="tel"
+              id="AddressPhoneNew"
+              name="address[phone]"
+              value="{{ form.phone }}"
+              autocomplete="tel"
+              placeholder="{{ 'customer.addresses.phone' | t }}"
+            >
+            <label for="AddressPhoneNew">{{ 'customer.addresses.phone' | t }}</label>
+          </div>
+          <div>
+            {{ form.set_as_default_checkbox }}
+            <label for="address_default_address_new">{{ 'customer.addresses.set_default' | t }}</label>
+          </div>
+          <div>
+            <button>{{ 'customer.addresses.add' | t }}</button>
+            <button type="reset">{{ 'customer.addresses.cancel' | t }}</button>
+          </div>
+        {%- endform -%}
+      </div>
+    </div>
+
+    <ul role="list">
+      {%- for address in customer.addresses -%}
+        <li data-address>
+          {%- if address == customer.default_address -%}
+            <h2>{{ 'customer.addresses.default' | t }}</h2>
+          {%- endif -%}
+          {{ address | format_address }}
+          <button
+            type="button"
+            id="EditFormButton_{{ address.id }}"
+            aria-label="{{ 'customer.addresses.edit_address' | t }} {{ forloop.index }}"
+            aria-controls="EditAddress_{{ address.id }}"
+            aria-expanded="false"
+            data-address-id="{{ address.id }}"
+          >
+            {{ 'customer.addresses.edit' | t }}
+          </button>
+          <button
+            type="button"
+            aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}"
+            data-target="{{ address.url }}"
+            data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
+          >
+            {{ 'customer.addresses.delete' | t }}
+          </button>
+          <div id="EditAddress_{{ address.id }}">
+            <h2>{{ 'customer.addresses.edit_address' | t }}</h2>
+            {%- form 'customer_address', address -%}
+              <div class="field">
+                <input
+                  type="text"
+                  id="AddressFirstName_{{ form.id }}"
+                  name="address[first_name]"
+                  value="{{ form.first_name }}"
+                  autocomplete="given-name"
+                  placeholder="{{ 'customer.addresses.first_name' | t }}"
+                >
+                <label for="AddressFirstName_{{ form.id }}">{{ 'customer.addresses.first_name' | t }}</label>
+              </div>
+              <div class="field">
+                <input
+                  type="text"
+                  id="AddressLastName_{{ form.id }}"
+                  name="address[last_name]"
+                  value="{{ form.last_name }}"
+                  autocomplete="family-name"
+                  placeholder="{{ 'customer.addresses.last_name' | t }}"
+                >
+                <label for="AddressLastName_{{ form.id }}">{{ 'customer.addresses.last_name' | t }}</label>
+              </div>
+              <div class="field">
+                <input
+                  type="text"
+                  id="AddressCompany_{{ form.id }}"
+                  name="address[company]"
+                  value="{{ form.company }}"
+                  autocomplete="organization"
+                  placeholder="{{ 'customer.addresses.company' | t }}"
+                >
+                <label for="AddressCompany_{{ form.id }}">{{ 'customer.addresses.company' | t }}</label>
+              </div>
+              <div class="field">
+                <input
+                  type="text"
+                  id="AddressAddress1_{{ form.id }}"
+                  name="address[address1]"
+                  value="{{ form.address1 }}"
+                  autocomplete="address-line1"
+                  placeholder="{{ 'customer.addresses.address1' | t }}"
+                >
+                <label for="AddressAddress1_{{ form.id }}">{{ 'customer.addresses.address1' | t }}</label>
+              </div>
+              <div class="field">
+                <input
+                  type="text"
+                  id="AddressAddress2_{{ form.id }}"
+                  name="address[address2]"
+                  value="{{ form.address2 }}"
+                  autocomplete="address-line2"
+                  placeholder="{{ 'customer.addresses.address2' | t }}"
+                >
+                <label for="AddressAddress2_{{ form.id }}">{{ 'customer.addresses.address2' | t }}</label>
+              </div>
+              <div class="field">
+                <input
+                  type="text"
+                  id="AddressCity_{{ form.id }}"
+                  name="address[city]"
+                  value="{{ form.city }}"
+                  autocomplete="address-level2"
+                  placeholder="{{ 'customer.addresses.city' | t }}"
+                >
+                <label for="AddressCity_{{ form.id }}">{{ 'customer.addresses.city' | t }}</label>
+              </div>
+              <div>
+                <label for="AddressCountry_{{ form.id }}">
+                  {{ 'customer.addresses.country' | t }}
+                </label>
+                <div class="select">
+                  <select
+                    id="AddressCountry_{{ form.id }}"
+                    name="address[country]"
+                    data-address-country-select
+                    data-default="{{ form.country }}"
+                    data-form-id="{{ form.id }}"
+                    autocomplete="country"
+                  >
+                    {{ all_country_option_tags }}
+                  </select>
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                    <use href="#icon-caret" />
+                  </svg>
+                </div>
+              </div>
+              <div id="AddressProvinceContainer_{{ form.id }}" style="display:none;">
+                <label for="AddressProvince_{{ form.id }}">
+                  {{ 'customer.addresses.province' | t }}
+                </label>
+                <div class="select">
+                  <select
+                    id="AddressProvince_{{ form.id }}"
+                    name="address[province]"
+                    data-default="{{ form.province }}"
+                    autocomplete="address-level1"
+                  ></select>
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                    <use href="#icon-caret" />
+                  </svg>
+                </div>
+              </div>
+              <div class="field">
+                <input
+                  type="text"
+                  id="AddressZip_{{ form.id }}"
+                  name="address[zip]"
+                  value="{{ form.zip }}"
+                  autocapitalize="characters"
+                  autocomplete="postal-code"
+                  placeholder="{{ 'customer.addresses.zip' | t }}"
+                >
+                <label for="AddressZip_{{ form.id }}">{{ 'customer.addresses.zip' | t }}</label>
+              </div>
+              <div class="field">
+                <input
+                  type="tel"
+                  id="AddressPhone_{{ form.id }}"
+                  name="address[phone]"
+                  value="{{ form.phone }}"
+                  autocomplete="tel"
+                  placeholder="{{ 'customer.addresses.phone' | t }}"
+                >
+                <label for="AddressPhone_{{ form.id }}">{{ 'customer.addresses.phone' | t }}</label>
+              </div>
+              <div>
+                {{ form.set_as_default_checkbox }}
+                <label for="address_default_address_{{ form.id }}">
+                  {{ 'customer.addresses.set_default' | t }}
+                </label>
+              </div>
+              <div>
+                <button>{{ 'customer.addresses.update' | t }}</button>
+                <button type="reset">{{ 'customer.addresses.cancel' | t }}</button>
+              </div>
+            {%- endform -%}
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+
+    {%- if paginate.pages > 1 -%}
+      {%- if paginate.parts.size > 0 -%}
+        <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+          <ul role="list">
+            {%- if paginate.previous -%}
+              <li>
+                <a href="{{ paginate.previous.url }}" aria-label="{{ 'general.pagination.previous' | t }}">
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                  </svg>
+                </a>
+              </li>
+            {%- endif -%}
+
+            {%- for part in paginate.parts -%}
+              <li>
+                {%- if part.is_link -%}
+                  <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
+                    {{- part.title -}}
+                  </a>
+                {%- else -%}
+                  {%- if part.title == paginate.current_page -%}
+                    <span aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
+                      {{- part.title -}}
+                    </span>
+                  {%- else -%}
+                    <span>{{ part.title }}</span>
+                  {%- endif -%}
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+
+            {%- if paginate.next -%}
+              <li>
+                <a href="{{ paginate.next.url }}" aria-label="{{ 'general.pagination.next' | t }}">
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                  </svg>
+                </a>
+              </li>
+            {%- endif -%}
+          </ul>
+        </nav>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}
+
+<script>
+  window.addEventListener('load', () => {
+    typeof CustomerAddresses !== 'undefined' && new CustomerAddresses();
+  });
+</script> {% endcomment %}
+{%- assign aj_point = customer.metafields.avada_joy.point | split: '' -%}
+{%- assign official_points = 0 -%}
+{%- for digit in aj_point -%}
+  {%- assign threeFromEnd = aj_point.size | minus: forloop.index | modulo: 3 -%}
+  {%- if threeFromEnd == 2 and forloop.index != 1 -%}
+    {% assign official_points = digit | prepend: ',' %}
+  {%- else -%}
+    {% assign official_points = digit %}
+  {%- endif -%}
+{% endfor %}
+<div class="profile-section-banner d-flex flex-column justify-content-center ">
+  <div class="profile-section-banner-inner container d-flex flex-column ">
+    <p class="profile-username mb-0">Hey! {{ customer.first_name }}</p>
+    <div class="user-points-container">
+      <p class="user-points mb-0">
+        Points : <span class="user-points-text">{{ official_points }} </span>
+      </p>
+      <p class="user-points mb-0">Tier: <span class="user-points-text">First</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="container ">
+  <div class="row gx-lg-10 profile-page-container">
+    <div class="profile-sidebar-tabs d-none d-lg-block col-12 col-lg-4">
+      <ul class="list-unstyled">
+        <li>
+          <a href="/account" id="myInfo" class="sidebar-tabs-link">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M11.9986 5.14453C11.151 5.14453 10.3224 5.39588 9.61759 5.8668C8.91281 6.33772 8.3635 7.00706 8.03912 7.79017C7.71475 8.57329 7.62988 9.435 7.79524 10.2663C7.96061 11.0977 8.36878 11.8613 8.96815 12.4607C9.56752 13.0601 10.3312 13.4682 11.1625 13.6336C11.9939 13.799 12.8556 13.7141 13.6387 13.3897C14.4218 13.0654 15.0911 12.516 15.562 11.8113C16.033 11.1065 16.2843 10.2779 16.2843 9.43024C16.2843 8.2936 15.8328 7.20351 15.0291 6.39979C14.2253 5.59606 13.1352 5.14453 11.9986 5.14453ZM11.9986 12.0017C11.49 12.0017 10.9929 11.8509 10.57 11.5683C10.1471 11.2858 9.81754 10.8842 9.62292 10.4143C9.42829 9.94442 9.37737 9.42739 9.47659 8.92858C9.57581 8.42978 9.82071 7.97159 10.1803 7.61197C10.54 7.25235 10.9981 7.00744 11.4969 6.90823C11.9958 6.80901 12.5128 6.85993 12.9826 7.05455C13.4525 7.24918 13.8541 7.57877 14.1367 8.00164C14.4192 8.4245 14.57 8.92166 14.57 9.43024C14.5693 10.112 14.2981 10.7656 13.816 11.2477C13.334 11.7297 12.6804 12.0009 11.9986 12.0017Z" fill="#C9B541"/>
+                <path d="M12 0C9.62663 0 7.30655 0.703788 5.33316 2.02236C3.35977 3.34094 1.8217 5.21508 0.913451 7.4078C0.0051994 9.60051 -0.232441 12.0133 0.230582 14.3411C0.693605 16.6689 1.83649 18.807 3.51472 20.4853C5.19295 22.1635 7.33115 23.3064 9.65892 23.7694C11.9867 24.2324 14.3995 23.9948 16.5922 23.0865C18.7849 22.1783 20.6591 20.6402 21.9776 18.6668C23.2962 16.6934 24 14.3734 24 12C23.9964 8.8185 22.731 5.76834 20.4813 3.51868C18.2317 1.26902 15.1815 0.00358448 12 0ZM6.85715 20.8941V19.7143C6.8579 19.0325 7.12905 18.3789 7.61113 17.8968C8.0932 17.4148 8.74682 17.1436 9.42858 17.1429H14.5714C15.2532 17.1436 15.9068 17.4148 16.3889 17.8968C16.871 18.3789 17.1421 19.0325 17.1429 19.7143V20.8941C15.5821 21.8055 13.8073 22.2857 12 22.2857C10.1927 22.2857 8.41786 21.8055 6.85715 20.8941ZM18.8507 19.6507C18.8337 18.5263 18.3756 17.4537 17.5751 16.6639C16.7746 15.8741 15.6959 15.4305 14.5714 15.4286H9.42858C8.30409 15.4305 7.22537 15.8741 6.42491 16.6639C5.62445 17.4537 5.16633 18.5263 5.14929 19.6507C3.59492 18.2628 2.49877 16.4354 2.00601 14.4107C1.51324 12.3859 1.64709 10.2593 2.38984 8.31228C3.13259 6.36529 4.44919 4.68983 6.16532 3.50774C7.88145 2.32566 9.91615 1.69271 12 1.69271C14.0839 1.69271 16.1186 2.32566 17.8347 3.50774C19.5508 4.68983 20.8674 6.36529 21.6102 8.31228C22.3529 10.2593 22.4868 12.3859 21.994 14.4107C21.5012 16.4354 20.4051 18.2628 18.8507 19.6507Z" fill="#C9B541"/>
+              </svg>
+            </span>
+            My Info
+          </a>
+        </li>
+        <li>
+          <a href="/apps/wishlist" class="sidebar-tabs-link">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21" viewBox="0 0 24 21" fill="none">
+                <path d="M2.96828 11.8444L10.9653 19.3568C11.2898 19.6616 11.452 19.814 11.65 19.814C11.848 19.814 12.0102 19.6616 12.3347 19.3568L20.3317 11.8444C22.5813 9.73118 22.8545 6.25359 20.9625 3.81498L20.6067 3.35644C18.3433 0.439167 13.8001 0.928417 12.2097 4.2607C11.985 4.7314 11.315 4.7314 11.0903 4.2607C9.49993 0.928418 4.95668 0.439164 2.69328 3.35644L2.33752 3.81498C0.445491 6.25359 0.718678 9.73118 2.96828 11.8444Z" stroke="#F294B7" stroke-width="2"/>
+              </svg>
+            </span>
+            Wishlist
+          </a>
+        </li>
+        <li>
+          <a href="/account" id="orders" class="sidebar-tabs-link">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7674 1.4968C11.5958 1.42769 11.4042 1.42769 11.2326 1.4968L2.65363 4.94468L6.10938 6.33278L14.9558 2.77802L11.7674 1.4968ZM16.8906 3.55657L8.04425 7.11134L11.5 8.49944L20.3464 4.94468L16.8906 3.55657ZM21.5625 6.01212L12.2188 9.76766V21.2105L21.5625 17.455V6.01212ZM10.7812 21.212V9.76622L1.4375 6.01212V17.4564L10.7812 21.212ZM10.6993 0.154917C11.2133 -0.051639 11.7867 -0.051639 12.3007 0.154917L22.5486 4.27446C22.6819 4.32811 22.7961 4.42062 22.8765 4.54008C22.957 4.65953 23 4.80045 23 4.94468V17.4564C22.9998 17.745 22.9136 18.027 22.7524 18.2659C22.5913 18.5048 22.3626 18.6898 22.0958 18.7969L11.7674 22.9482C11.5958 23.0173 11.4042 23.0173 11.2326 22.9482L0.905625 18.7969C0.638611 18.69 0.409605 18.5052 0.248173 18.2662C0.0867412 18.0273 0.000296598 17.7452 0 17.4564L0 4.94468C3.34074e-05 4.80045 0.0430441 4.65953 0.123491 4.54008C0.203939 4.42062 0.318137 4.32811 0.451375 4.27446L10.6993 0.154917Z" fill="#F3A07A"/>
+              </svg>
+            </span>
+            Orders
+          </a>
+        </li>
+        <li>
+          <a href="/account" id="my-addresses" class="sidebar-tabs-link active">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="25" viewBox="0 0 19 25" fill="none">
+                <path d="M9.33132 12.3184C8.31175 12.3184 7.29198 11.9569 6.51593 11.234C4.96344 9.78844 4.96344 7.43611 6.51593 5.99034C7.26781 5.28996 8.26772 4.9043 9.33132 4.9043C10.3949 4.9043 11.3946 5.29015 12.1467 5.99034C13.6992 7.43611 13.6992 9.78844 12.1467 11.234C11.3705 11.9569 10.3509 12.3184 9.33132 12.3184ZM9.33132 6.372C8.71503 6.372 8.09874 6.59039 7.62951 7.02737C6.69105 7.90131 6.69105 9.32324 7.62951 10.1972C8.084 10.6204 8.68841 10.8535 9.33132 10.8535C9.97423 10.8535 10.5786 10.6204 11.0331 10.1972C11.9716 9.32324 11.9716 7.90131 11.0331 7.02737C10.5639 6.59039 9.94761 6.372 9.33132 6.372Z" fill="#81AB96"/>
+                <path d="M9.34058 25L8.73167 24.334C8.37529 23.9439 0 14.7123 0 8.68988C0 3.89824 4.18601 0 9.33136 0C14.4767 0 18.6627 3.89824 18.6627 8.68988C18.6627 14.4161 10.2948 23.9235 9.93864 24.3254L9.34058 25ZM9.33136 1.46656C5.05442 1.46656 1.57482 4.70695 1.57482 8.68988C1.57482 10.9283 3.00812 14.1678 5.71986 18.0582C7.12715 20.0771 8.54426 21.7869 9.32276 22.6917C10.1025 21.7621 11.5331 19.9961 12.9492 17.9388C15.6569 14.0057 17.0879 10.8072 17.0879 8.68988C17.0879 4.70695 13.6083 1.46656 9.33136 1.46656Z" fill="#81AB96"/>
+              </svg>
+            </span>
+            My Addresses
+          </a>
+        </li>
+        <li>
+          <a href="{{ routes.account_logout_url  }}"
+            ><button class="sidebar-tabs no-border">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                  <path d="M19.3786 8.26314L19.3788 8.26298C19.5538 8.0879 19.8377 8.08779 20.013 8.26306L22.0249 10.2749C22.725 10.975 22.725 12.1149 22.0249 12.815L20.013 14.8268C19.9253 14.9145 19.8113 14.9582 19.6958 14.9582C19.5804 14.9582 19.4665 14.9145 19.3787 14.8268L19.3786 14.8267C19.2035 14.6517 19.2035 14.3678 19.3786 14.1928L19.3787 14.1927L20.8098 12.7615L21.5779 11.9934H20.4916H9.70355C9.45579 11.9934 9.25507 11.7926 9.25507 11.5449C9.25507 11.2972 9.45579 11.0965 9.70355 11.0965H20.4916H21.5779L20.8098 10.3283L19.3787 8.89712L19.3786 8.89702C19.2035 8.722 19.2035 8.43816 19.3786 8.26314ZM15.7675 17.6094V19.4062C15.7675 21.1394 14.3568 22.55 12.6236 22.55H3.59391C1.86068 22.55 0.45 21.1394 0.45 19.4062V3.59375C0.45 1.86065 1.86068 0.45 3.59391 0.45H12.6236C14.3568 0.45 15.7675 1.86065 15.7675 3.59375V5.39062C15.7675 5.63832 15.5668 5.83906 15.319 5.83906C15.0713 5.83906 14.8706 5.63832 14.8706 5.39062V3.59375C14.8706 2.35447 13.8629 1.34687 12.6236 1.34687H3.59391C2.35462 1.34687 1.34695 2.35447 1.34695 3.59375V19.4062C1.34695 20.6455 2.35462 21.6531 3.59391 21.6531H12.6236C13.8629 21.6531 14.8706 20.6455 14.8706 19.4062V17.6094C14.8706 17.3617 15.0713 17.1609 15.319 17.1609C15.5668 17.1609 15.7675 17.3617 15.7675 17.6094Z" stroke="#8F93DF" stroke-width="0.9"/>
+                </svg>
+              </span>
+              Logout
+            </button>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <section class="col-12 col-lg-8 ">
+      <div class="profile-mobile-tab-btn-link " data-title="myInfo">
+        <div class="btn-for-mobile d-lg-none">
+          <a href="/account" class="sidebar-tabs-link">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M11.9986 5.14453C11.151 5.14453 10.3224 5.39588 9.61759 5.8668C8.91281 6.33772 8.3635 7.00706 8.03912 7.79017C7.71475 8.57329 7.62988 9.435 7.79524 10.2663C7.96061 11.0977 8.36878 11.8613 8.96815 12.4607C9.56752 13.0601 10.3312 13.4682 11.1625 13.6336C11.9939 13.799 12.8556 13.7141 13.6387 13.3897C14.4218 13.0654 15.0911 12.516 15.562 11.8113C16.033 11.1065 16.2843 10.2779 16.2843 9.43024C16.2843 8.2936 15.8328 7.20351 15.0291 6.39979C14.2253 5.59606 13.1352 5.14453 11.9986 5.14453ZM11.9986 12.0017C11.49 12.0017 10.9929 11.8509 10.57 11.5683C10.1471 11.2858 9.81754 10.8842 9.62292 10.4143C9.42829 9.94442 9.37737 9.42739 9.47659 8.92858C9.57581 8.42978 9.82071 7.97159 10.1803 7.61197C10.54 7.25235 10.9981 7.00744 11.4969 6.90823C11.9958 6.80901 12.5128 6.85993 12.9826 7.05455C13.4525 7.24918 13.8541 7.57877 14.1367 8.00164C14.4192 8.4245 14.57 8.92166 14.57 9.43024C14.5693 10.112 14.2981 10.7656 13.816 11.2477C13.334 11.7297 12.6804 12.0009 11.9986 12.0017Z" fill="#C9B541"/>
+                <path d="M12 0C9.62663 0 7.30655 0.703788 5.33316 2.02236C3.35977 3.34094 1.8217 5.21508 0.913451 7.4078C0.0051994 9.60051 -0.232441 12.0133 0.230582 14.3411C0.693605 16.6689 1.83649 18.807 3.51472 20.4853C5.19295 22.1635 7.33115 23.3064 9.65892 23.7694C11.9867 24.2324 14.3995 23.9948 16.5922 23.0865C18.7849 22.1783 20.6591 20.6402 21.9776 18.6668C23.2962 16.6934 24 14.3734 24 12C23.9964 8.8185 22.731 5.76834 20.4813 3.51868C18.2317 1.26902 15.1815 0.00358448 12 0ZM6.85715 20.8941V19.7143C6.8579 19.0325 7.12905 18.3789 7.61113 17.8968C8.0932 17.4148 8.74682 17.1436 9.42858 17.1429H14.5714C15.2532 17.1436 15.9068 17.4148 16.3889 17.8968C16.871 18.3789 17.1421 19.0325 17.1429 19.7143V20.8941C15.5821 21.8055 13.8073 22.2857 12 22.2857C10.1927 22.2857 8.41786 21.8055 6.85715 20.8941ZM18.8507 19.6507C18.8337 18.5263 18.3756 17.4537 17.5751 16.6639C16.7746 15.8741 15.6959 15.4305 14.5714 15.4286H9.42858C8.30409 15.4305 7.22537 15.8741 6.42491 16.6639C5.62445 17.4537 5.16633 18.5263 5.14929 19.6507C3.59492 18.2628 2.49877 16.4354 2.00601 14.4107C1.51324 12.3859 1.64709 10.2593 2.38984 8.31228C3.13259 6.36529 4.44919 4.68983 6.16532 3.50774C7.88145 2.32566 9.91615 1.69271 12 1.69271C14.0839 1.69271 16.1186 2.32566 17.8347 3.50774C19.5508 4.68983 20.8674 6.36529 21.6102 8.31228C22.3529 10.2593 22.4868 12.3859 21.994 14.4107C21.5012 16.4354 20.4051 18.2628 18.8507 19.6507Z" fill="#C9B541"/>
+              </svg>
+            </span>
+            My Info
+          </a>
+        </div>
+      </div>
+
+      <div class="profile-mobile-tab-btn-link" data-title="wishlist">
+        <div class="btn-for-mobile d-lg-none">
+          <a href="/apps/wishlist" target="_blank" class="sidebar-tabs-link">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="22" viewBox="0 0 25 22" fill="none">
+                <path d="M3.14081 12.4899L11.5153 20.3568C11.8398 20.6616 12.002 20.814 12.2 20.814C12.398 20.814 12.5602 20.6616 12.8847 20.3568L21.2592 12.4899C23.6066 10.2847 23.8917 6.65592 21.9174 4.11128L21.5461 3.63281C19.1843 0.588696 14.4436 1.09922 12.784 4.57638C12.5496 5.06755 11.8504 5.06755 11.616 4.57638C9.95644 1.09922 5.21567 0.588691 2.85386 3.63281L2.48263 4.11128C0.508338 6.65592 0.7934 10.2847 3.14081 12.4899Z" stroke="#F294B7" stroke-width="2"/>
+              </svg>
+            </span>
+            Wishlist
+          </a>
+        </div>
+      </div>
+
+      <div class="profile-mobile-tab-btn-link " data-title="orders">
+        <div class="btn-for-mobile d-lg-none">
+          <a href="/account" class="sidebar-tabs-link">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7674 1.9968C11.5958 1.92769 11.4042 1.92769 11.2326 1.9968L2.65363 5.44468L6.10938 6.83278L14.9558 3.27802L11.7674 1.9968ZM16.8906 4.05657L8.04425 7.61134L11.5 8.99944L20.3464 5.44468L16.8906 4.05657ZM21.5625 6.51212L12.2188 10.2677V21.7105L21.5625 17.955V6.51212ZM10.7812 21.712V10.2662L1.4375 6.51212V17.9564L10.7812 21.712ZM10.6993 0.654917C11.2133 0.448361 11.7867 0.448361 12.3007 0.654917L22.5486 4.77446C22.6819 4.82811 22.7961 4.92062 22.8765 5.04008C22.957 5.15953 23 5.30045 23 5.44468V17.9564C22.9998 18.245 22.9136 18.527 22.7524 18.7659C22.5913 19.0048 22.3626 19.1898 22.0958 19.2969L11.7674 23.4482C11.5958 23.5173 11.4042 23.5173 11.2326 23.4482L0.905625 19.2969C0.638611 19.19 0.409605 19.0052 0.248173 18.7662C0.0867412 18.5273 0.000296598 18.2452 0 17.9564L0 5.44468C3.34074e-05 5.30045 0.0430441 5.15953 0.123491 5.04008C0.203939 4.92062 0.318137 4.82811 0.451375 4.77446L10.6993 0.654917Z" fill="#F3A07A"/>
+              </svg>
+            </span>
+            Orders
+          </a>
+        </div>
+      </div>
+      <div class="profile-mobile-tab-btn active" data-title="my-addresses">
+        <div class="btn-for-mobile d-lg-none">
+          <a href="/account" class="sidebar-tabs-link active">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="26" viewBox="0 0 20 26" fill="none">
+                <path d="M9.73294 12.8113C8.66953 12.8113 7.6059 12.4354 6.79648 11.6836C5.17722 10.1802 5.17722 7.7338 6.79648 6.23019C7.58069 5.5018 8.6236 5.10071 9.73294 5.10071C10.8423 5.10071 11.885 5.502 12.6694 6.23019C14.2887 7.7338 14.2887 10.1802 12.6694 11.6836C11.8598 12.4354 10.7964 12.8113 9.73294 12.8113ZM9.73294 6.62712C9.09015 6.62712 8.44736 6.85425 7.95795 7.3087C6.97913 8.21761 6.97913 9.69641 7.95795 10.6053C8.43198 11.0455 9.06238 11.2879 9.73294 11.2879C10.4035 11.2879 11.0339 11.0455 11.5079 10.6053C12.4868 9.69641 12.4868 8.21761 11.5079 7.3087C11.0185 6.85425 10.3757 6.62712 9.73294 6.62712Z" fill="#81AB96"/>
+                <path d="M9.74228 26L9.10718 25.3073C8.73547 24.9017 0 15.3008 0 9.03748C0 4.05417 4.36603 0 9.73267 0C15.0993 0 19.4653 4.05417 19.4653 9.03748C19.4653 14.9928 10.7375 24.8804 10.3661 25.2984L9.74228 26ZM9.73267 1.52522C5.27179 1.52522 1.64255 4.89523 1.64255 9.03748C1.64255 11.3655 3.13748 14.7345 5.96585 18.7805C7.43365 20.8802 8.91171 22.6584 9.72369 23.5994C10.537 22.6326 12.0291 20.7959 13.5061 18.6564C16.3302 14.5659 17.8228 11.2395 17.8228 9.03748C17.8228 4.89523 14.1935 1.52522 9.73267 1.52522Z" fill="#81AB96"/>
+              </svg>
+            </span>
+            My Addresses
+          </a>
+        </div>
+      </div>
+      <div class="add-address-slides ">
+        <div class="add-address-topbaro d-flex align-items-center justify-content-center">
+          <p class="address-topbar-title mb-0">ADD YOUR ADDRESS</p>
+        </div>
+        {% comment %} Form starts  {% endcomment %}
+       {% form 'customer_address', customer.new_address, aria-labelledBy: 'AddressNewHeading' %}
+          <div class="address-input-form">
+            {{ form.errors | default_errors }}
+
+            <p class="add-address-title mb-0">Address</p>
+
+            <div class="m-0 address-inputs d-flex flex-column">
+              <div class="d-flex align-items-center" style="gap: 12px;">
+                <input type="text" class="add-pin-code" placeholder="Pin Code" value="{{ form.zip }}" name="address[zip]">
+                <input type="text" class="add-city" placeholder="{{ 'customer.addresses.city' | t }}" value="{{ form.city }}" name="address[city]">
+              </div>
+              <div class="d-flex align-items-center" style="gap: 12px;">
+                <input type="text" class="add-state" name="address[province]" placeholder="State" value="{{ form.province }}">
+                <select
+                id="AddressCountryNew"
+                name="address[country]"
+                data-default="{{ form.country }}"
+                autocomplete="country"
+                class="add-country" 
+              >
+                {{ all_country_option_tags }}
+              </select>
+              </div>
+              <input
+                type="text"
+                class="add-house"
+                placeholder="House no./ Flat no./ Office no."
+                value="{{ form.address1 }}"
+                name="address[address1]"
+              >
+              <textarea
+                type="text"
+                class="add-more-address"
+                placeholder="Road Name/ Area/ Colony"
+                value="{{ form.address2 }}"
+                name="address[address2]"
+              ></textarea>
+              <input type="text" class="add-name" placeholder="Company" value="{{ form.company }}" name="address[company]" size="30">
+            </div>
+            <p class="add-address-title mb-0">Contact</p>
+            <div class="m-0 address-inputs d-flex flex-column">
+              <input
+                type="text"
+                class="add-name"
+                placeholder="First Name"
+                value="{{ form.first_name }}"
+                name="address[first_name]"
+                size="30"
+              >
+              <input type="text" class="add-name" placeholder="last Name" value="" name="address[last_name]" size="30">
+              <input
+                type="tel"
+                inputmode="numeric"
+                class="add-mobile"
+                placeholder="mobile"
+                value="{{ form.last_name }}"
+                name="address[phone]"
+              >
+            </div>
+            <div>
+            {{ form.set_as_default_checkbox }}
+              <label for="address_default_address_new">{{ 'customer.addresses.set_default' | t }}</label>
+            </div>
+
+            <!-- See docs for @shopify/theme-addresses to support Country and Province -->
+            {% comment %}
+              <label for="country">Country</label>
+              <select name="address[country]" ></select>
+
+              <label for="province">Province</label>
+              <select name="address[province]" ></select>
+
+              <label for="zip">Zip/Post Code</label>
+              <input type="text" value="" name="address[zip]" >
+
+              <label for="phone">Phone Number</label>
+              <input type="tel" value="" name="address[phone]" >
+            {% endcomment %}
+
+            <div class="add-address-submit-btn-container pt-3">
+              <button class="add-address-submit-btn border-0">Save Address</button>
+            </div>
+          </div>
+        {% endform %}
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+  $('#my-addresses, #orders, #myInfo').click(function () {
+    let id = $(this).attr('id');
+    localStorage.setItem('lastClickedID', id);
+  });
+
+  $('div.profile-mobile-tab-btn-link').click(function () {
+    let id = $(this).attr('data-title');
+    localStorage.setItem('lastClickedID', id);
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "t:sections.main-addresses.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

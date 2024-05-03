@@ -1,0 +1,653 @@
+{% capture trendingSearches %}
+  <ul class="megamenu-items-2 justify-self-flexend">
+                  <p class="mb-0 megamenu-subitems-2">Trending</p>
+                  <li class="megamenu-subitems-2">
+                    <a href="#">
+                      <span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="9"
+                          height="7"
+                          viewBox="0 0 9 7"
+                          fill="none"
+                        >
+                          <path
+                              d="M4.85934 0.775002L7.77124 1.04324M7.77124 1.04324L7.31589 3.9318M7.77124 1.04324L1.45764 5.95634"
+                              stroke="#404184" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </span>
+                      Ohmy Gel Long Lasting Eyeliner
+                    </a>
+                  </li>
+                  <li class="megamenu-subitems-2">
+                    <a href="#">
+                      <span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="9"
+                          height="7"
+                          viewBox="0 0 9 7"
+                          fill="none"
+                        >
+                          <path
+                              d="M4.85934 0.775002L7.77124 1.04324M7.77124 1.04324L7.31589 3.9318M7.77124 1.04324L1.45764 5.95634"
+                              stroke="#404184" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </span>
+                      Blush Bomb
+                    </a>
+                  </li>
+                  <li class="megamenu-subitems-2">
+                    <a href="#">
+                      <span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="9"
+                          height="7"
+                          viewBox="0 0 9 7"
+                          fill="none"
+                        >
+                          <path
+                              d="M4.85934 0.775002L7.77124 1.04324M7.77124 1.04324L7.31589 3.9318M7.77124 1.04324L1.45764 5.95634"
+                              stroke="#404184" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </span>
+                      Shimmer Bomb
+                    </a>
+                  </li>
+                  <li class="megamenu-subitems-2">
+                    <a href="#">
+                      <span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="9"
+                          height="7"
+                          viewBox="0 0 9 7"
+                          fill="none"
+                        >
+                          <path
+                              d="M4.85934 0.775002L7.77124 1.04324M7.77124 1.04324L7.31589 3.9318M7.77124 1.04324L1.45764 5.95634"
+                              stroke="#404184" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </span>
+                      Lip Comfort Oil
+                    </a>
+                  </li>
+                  <li class="megamenu-subitems-2">
+                    <a href="#">
+                      <span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="9"
+                          height="7"
+                          viewBox="0 0 9 7"
+                          fill="none"
+                        >
+                          <path
+                              d="M4.85934 0.775002L7.77124 1.04324M7.77124 1.04324L7.31589 3.9318M7.77124 1.04324L1.45764 5.95634"
+                              stroke="#404184" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </span>
+                      Long Lasting Highly Pigmented Gel Lip Liner
+                    </a>
+                  </li>
+                  <li class="megamenu-subitems-2">
+                    <a href="#">
+                      <span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="9"
+                          height="7"
+                          viewBox="0 0 9 7"
+                          fill="none"
+                        >
+                          <path
+                              d="M4.85934 0.775002L7.77124 1.04324M7.77124 1.04324L7.31589 3.9318M7.77124 1.04324L1.45764 5.95634"
+                              stroke="#404184" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </span>
+                      Self Love Soft & Blendable Texture Eyeshadow Palette
+                    </a>
+                  </li>
+                </ul>
+  {% endcapture %}
+{% capture arrowUp %}
+  <svg xmlns="http://www.w3.org/2000/svg"
+    width="8"
+    height="8"
+    viewBox="0 0 8 8"
+    fill="none"
+  >
+    <path
+        d="M3.69605 1.36001L6.52115 1.2229M6.52115 1.2229L6.65826 4.048M6.52115 1.2229L1.48117 6.77706"
+        stroke="#404184" stroke-width="1.5" stroke-linecap="round"
+        stroke-linejoin="round" />
+  </svg>
+{% endcapture %}
+<header class="d-none d-lg-block">
+  <nav class="container-fluid px-0">
+    <ul class="megamenu-container">
+      {% for link in linklists[section.settings.navs].links -%}
+        <li class="megamenu">
+      <a  href="{{ link.url }}" {% if link.current %}class="megamenu-active"{% endif %}> {{ link.title | escape }}</a>
+          {%- if link.links != blank -%}
+            <div class="megamenu-items-container">
+              {% assign showSecondary = false %}
+              <ul class="megamenu-items">
+                {%- for childlink in link.links -%}
+                  <li class="megamenu-subitems">
+                    <a href="{{ childlink.url }}" {% if childlink.current %}class="megamenu-active"{% endif %}> {{ childlink.title | escape }}</a>
+                    {% if childlink.links.size > 13 %}
+                      {% assign showSecondary = true %}
+                    {% endif %}
+                    {%- if childlink.links != blank -%}
+                      <ul class="megamenu-subitems-child" sequemce="{{ forloop.index }}">
+                        {%- for grandchildlink in childlink.links -%}
+                          <li class="megamenu-subitems-2 sub-links" data-toggle="one" {% if grandchildlink.current %}class="megamenu-active"{% endif %}>
+                            <a href="{{ grandchildlink.url }}"> {{ grandchildlink.title | escape }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+              {% assign sections = section.settings %}
+              {% case link.title %}
+                {% when 'New In' %}
+                  {% assign bannerImg = sections.newInImg %}
+                  {% assign bannerTxt = sections.newInTxt %}
+                  {% assign bannerUrl = sections.newInUrl %}
+                  {% assign bannerImg_2 = sections.newInImg_2 %}
+                  {% assign bannerTxt_2 = sections.newInTxt_2 %}
+                  {% assign bannerUrl_2 = sections.newInUrl_2 %}
+                {% when 'Brands' %}
+                  {% assign bannerImg = sections.brandsImg %}
+                  {% assign bannerTxt = sections.brandsTxt %}
+                  {% assign bannerUrl = sections.brandsUrl %}
+                  {% assign bannerImg_2 = sections.brandsImg_2 %}
+                  {% assign bannerTxt_2 = sections.brandsTxt_2 %}
+                  {% assign bannerUrl_2 = sections.brandsUrl_2 %}
+                {% when 'Makeup' %}
+                  {% assign bannerImg = sections.makeupImg %}
+                  {% assign bannerTxt = sections.makeupTxt %}
+                  {% assign bannerUrl = sections.makeupUrl %}
+                  {% assign bannerImg_2 = sections.makeupImg_2 %}
+                  {% assign bannerTxt_2 = sections.makeupTxt_2 %}
+                  {% assign bannerUrl_2 = sections.makeupUrl_2 %}
+                {% when 'Skin' %}
+                  {% assign bannerImg = sections.skinImg %}
+                  {% assign bannerTxt = sections.skinTxt %}
+                  {% assign bannerUrl = sections.skinUrl %}
+                  {% assign bannerImg_2 = sections.skinImg_2 %}
+                  {% assign bannerTxt_2 = sections.skinTxt_2 %}
+                  {% assign bannerUrl_2 = sections.skinUrl_2 %}
+                {% when 'Value Sets' %}
+                  {% assign bannerImg = sections.setsImg %}
+                  {% assign bannerTxt = sections.setsTxt %}
+                  {% assign bannerUrl = sections.setsUrl %}
+                  {% assign bannerImg_2 = sections.setsImg_2 %}
+                  {% assign bannerTxt_2 = sections.setsTxt_2 %}
+                  {% assign bannerUrl_2 = sections.setsUrl_2 %}
+                {% when 'Hair' %}
+                  {% assign bannerImg = sections.hairImg %}
+                  {% assign bannerTxt = sections.hairTxt %}
+                  {% assign bannerUrl = sections.hairUrl %}
+                  {% assign bannerImg_2 = sections.hairImg_2 %}
+                  {% assign bannerTxt_2 = sections.hairTxt_2 %}
+                  {% assign bannerUrl_2 = sections.hairUrl_2 %}
+                {% when 'Bath & Body' %}
+                  {% assign bannerImg = sections.bnbImg %}
+                  {% assign bannerTxt = sections.bnbTxt %}
+                  {% assign bannerUrl = sections.bnbUrl %}
+                  {% assign bannerImg_2 = sections.bnbImg_2 %}
+                  {% assign bannerTxt_2 = sections.bnbTxt_2 %}
+                  {% assign bannerUrl_2 = sections.bnbUrl_2 %}
+                {% when 'Fragrances' %}
+                  {% assign bannerImg = sections.fragrancesImg %}
+                  {% assign bannerTxt = sections.fragrancesTxt %}
+                  {% assign bannerUrl = sections.fragrancesUrl %}
+                  {% assign bannerImg_2 = sections.fragrancesImg_2 %}
+                  {% assign bannerTxt_2 = sections.fragrancesTxt_2 %}
+                  {% assign bannerUrl_2 = sections.fragrancesUrl_2 %}
+                {% when 'Accessories' %}
+                  {% assign bannerImg = sections.accessoriesImg %}
+                  {% assign bannerTxt = sections.accessoriesTxt %}
+                  {% assign bannerUrl = sections.accessoriesUrl %}
+                  {% assign bannerImg_2 = sections.accessoriesImg_2 %}
+                  {% assign bannerTxt_2 = sections.accessoriesTxt_2 %}
+                  {% assign bannerUrl_2 = sections.accessoriesUrl_2 %}
+              {% endcase %}
+              {% if link.title == 'New In' %}
+                {{ trendingSearches }}
+              {% endif %}
+              {%- unless link.title == 'New In' -%}
+                <div class="megamenu-image-container">
+                  {% if bannerTxt and bannerImg %}
+                    <div class="megamenu-image-box">
+                      <a href="{{ bannerUrl }}" title="{{ bannerTxt | escape }}">
+                        <img
+                          loading="lazy"
+                          src="{{ bannerImg | image_url }}"
+                          alt="Image"
+                          class="img-fluid"
+                          width="300"
+                          height="300"
+                        >
+                        <p class="d-flex align-items-center">
+                          <span>
+                            {{ arrowUp }}
+                          </span>
+                          {{ bannerTxt | escape }}
+                        </p>
+                      </a>
+                    </div>
+                  {% endif %}
+                  {% if bannerTxt_2 and bannerImg_2 %}
+                    <div class="megamenu-image-box {% if showSecondary %} secondary-img {% endif %}">
+                      <a href="{{ bannerUrl_2 }}" title="{{ bannerTxt_2 | escape }}">
+                        <img
+                          loading="lazy"
+                          src="{{ bannerImg_2 | image_url }}"
+                          alt="Image"
+                          class="img-fluid"
+                          width="300"
+                          height="300"
+                        >
+                        <p class="d-flex align-items-center">
+                          <span>
+                            {{ arrowUp }}
+                          </span>
+                          {{ bannerTxt_2 | escape }}
+                        </p>
+                      </a>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endunless %}
+            </div>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</header>
+<style>
+  #shopify-section-{{ section.id }}{
+    z-index: 1;
+    position: relative;
+    top: inherit;
+    background: transparent;
+  }
+</style>
+<script>
+    const megamenus = document.querySelectorAll('.megamenu');
+    // Loop through each .megamenu
+    megamenus.forEach((megamenu) => {
+    // Find the first .megamenu-subitems-child within the current .megamenu
+    const firstChild = megamenu.querySelector('.megamenu-subitems-child');
+
+    // Check if a firstChild was found and apply the background color
+    if (firstChild) {
+      firstChild.style.display = 'flex';
+    }
+  });
+  const navs = $(".megamenu");
+  $(navs).on('mouseenter',function(){
+    const megamenu = $(this).find('.megamenu-items-container').find(".megamenu-items").find(".megamenu-subitems-child");
+     $(megamenu[0]).css({'display': 'flex' });
+    let subNav = $(this).find(".megamenu-subitems")
+    subNav.find().closest(".megamenu-subitems-child").css({'display': 'flex' });
+    $(subNav).on("mouseenter", function(){
+      $(".megamenu-subitems-child").css({'display': 'none' });
+      let links = $(this).find(".megamenu-subitems-child");
+      $(links).css({'display': 'flex' });
+    });
+  })
+</script>
+{% schema %}
+{
+"name": "Navigation Bar",
+"settings": [
+{
+  "type": "link_list",
+  "id": "navs",
+  "label": "Add Your Heading Here"
+},
+  {
+    "type": "header",
+    "content": "Nav Image (New In)"
+  },
+  {
+    "type": "image_picker",
+    "id": "newInImg",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "newInTxt",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "newInUrl",
+    "label": "URL"
+    },
+  {
+    "type": "image_picker",
+    "id": "newInImg_2",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "newInTxt_2",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "newInUrl_2",
+    "label": "URL"
+    },
+  {
+    "type": "header",
+    "content": "Nav Image (Brands)"
+  },
+  {
+    "type": "image_picker",
+    "id": "brandsImg",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "brandsTxt",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "brandsUrl",
+    "label": "URL"
+    },
+  {
+    "type": "image_picker",
+    "id": "brandsImg_2",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "brandsTxt_2",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "brandsUrl_2",
+    "label": "URL"
+    },
+  {
+    "type": "header",
+    "content": "Nav Image (Makeup)"
+  },
+  {
+    "type": "image_picker",
+    "id": "makeupImg",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "makeupTxt",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "makeupUrl",
+    "label": "URL"
+    },
+  {
+    "type": "image_picker",
+    "id": "makeupImg_2",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "makeupTxt_2",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "makeupUrl_2",
+    "label": "URL"
+    },
+  {
+    "type": "header",
+    "content": "Nav Image (Skin)"
+  },
+  {
+    "type": "image_picker",
+    "id": "skinImg",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "skinTxt",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "skinUrl",
+    "label": "URL"
+    },
+  {
+    "type": "image_picker",
+    "id": "skinImg_2",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "skinTxt_2",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "skinUrl_2",
+    "label": "URL"
+    },
+  {
+    "type": "header",
+    "content": "Nav Image (Value Sets)"
+  },
+  {
+    "type": "image_picker",
+    "id": "setsImg",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "setsTxt",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "setsUrl",
+    "label": "URL"
+    },
+  {
+    "type": "image_picker",
+    "id": "setsImg_2",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "setsTxt_2",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "setsUrl_2",
+    "label": "URL"
+    },
+  {
+    "type": "header",
+    "content": "Nav Image (Hair)"
+  },
+  {
+    "type": "image_picker",
+    "id": "hairImg",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "hairTxt",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "hairUrl",
+    "label": "URL"
+    },
+  {
+    "type": "image_picker",
+    "id": "hairImg_2",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "hairTxt_2",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "hairUrl_2",
+    "label": "URL"
+    },
+  {
+    "type": "header",
+    "content": "Nav Image (Bath & Body)"
+  },
+  {
+    "type": "image_picker",
+    "id": "bnbImg",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "bnbTxt",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "bnbUrl",
+    "label": "URL"
+    },
+  {
+    "type": "image_picker",
+    "id": "bnbImg_2",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "bnbTxt_2",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "bnbUrl_2",
+    "label": "URL"
+    },
+  {
+    "type": "header",
+    "content": "Nav Image (Fragrances)"
+  },
+  {
+    "type": "image_picker",
+    "id": "fragrancesImg",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "fragrancesTxt",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "fragrancesUrl",
+    "label": "URL"
+    },
+   {
+    "type": "image_picker",
+    "id": "fragrancesImg_2",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "fragrancesTxt_2",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "fragrancesUrl_2",
+    "label": "URL"
+    },
+  {
+    "type": "header",
+    "content": "Nav Image (Accessories)"
+  },
+  {
+    "type": "image_picker",
+    "id": "accessoriesImg",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "accessoriesTxt",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "accessoriesUrl",
+    "label": "URL"
+    },
+   {
+    "type": "image_picker",
+    "id": "accessoriesImg_2",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "accessoriesTxt_2",
+    "label": "Banner Text"
+    },
+    {
+    "type": "url",
+    "id": "accessoriesUrl_2",
+    "label": "URL"
+    }
+],
+  "blocks": [
+{
+"name": "Image With Text",
+"type": "Image",
+"settings": [
+{
+"type": "image_picker",
+"id": "dasfdf",
+"label": "Add Your Desktop Image Here for without logged in customers"
+},
+{
+"type": "image_picker",
+"id": "asdasdasd",
+"label": "Add Your Mobile Image Here for without logged in customers"
+},
+{
+"type": "url",
+"id": "sdfgsdfsd",
+"label": "Add Your Link Here for without logged in customers"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Navigation Bar"
+}
+]
+}
+{% endschema %}

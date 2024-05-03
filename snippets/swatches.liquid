@@ -1,0 +1,195 @@
+{% liquid
+  if showall
+    assign swatch_limit = product.variants.size
+  else
+    assign swatch_limit = 3
+  endif
+  assign has_size_option = false
+  for option in product.options_with_values
+    for value in option.values
+      if option.name == 'Size'
+        assign has_size_option = true
+      elsif option.name == 'Color'
+        assign has_size_option = false
+      endif
+    endfor
+  endfor
+%}
+
+{% if swatch == blank %}
+  <div class="swatch error">
+    <p>Swatches Error</p>
+  </div>
+{% else %}
+  {% assign found_option = false %}
+  {% assign is_color = false %}
+  {% assign is_size = false %}
+  {% assign option_index = 0 %}
+  {% for option in product.options limit: 2 %}
+    {% if option == swatch %}
+      {% assign found_option = true %}
+      {% assign option_index = forloop.index0 %}
+      {% assign downcased_option = swatch | downcase %}
+      {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+        {% assign is_color = true %}
+      {% endif %}
+    {% elsif option == 'Size' %}
+      {% assign found_option = true %}
+      {% assign option_index = forloop.index0 %}
+      {% assign is_size = true %}
+    {% endif %}
+  {% endfor %}
+  {% unless found_option %}
+    <div class="swatch error">
+      <p>Add color as swatch in code</p>
+    </div>
+  {% else %}
+    <div class="swatch swatch_param clearfix" data-option-index="{{ forloop.index0 }}">
+      {% assign values = '' %}
+      {%- assign first_variant = product.selected_or_first_available_variant -%}
+      {% for variant in product.variants limit: swatch_limit %}
+        {% assign value = variant.options[option_index] %}
+        {% unless values contains value %}
+          {% assign values = values | join: ',' %}
+          {% assign values = values | append: ',' | append: value %}
+          {% assign values = values | split: ',' %}
+          <div
+            data-value="{{ value | escape }}"
+            class="swatch-element {% if is_color %}color {% else %} size {% endif %}{{ value | handle }}"
+          >
+            <input
+              id="swatch-{{ forloop.index0 }}-{{ value | handle }}-{{ sectionId }}"
+                class="swatch_available"
+              productId="{{ product.id }}"
+              productHandle="{{ product.handle }}"
+              section_Id="{{ sectionId }}"
+              index="{{ forloop.index0 }}"
+              type="radio"
+              availability="{% if variant.available %}true{% else %}false{% endif %}"
+              imagePosition="{{ variant.featured_media.position | plus:if_video }}"
+              varientPrice="{{ variant.price | money_without_currency }}"
+              rackPrice="{{ variant.compare_at_price | money_without_currency }}"
+              name="{% if template == "product" %}{{ product.id |  prepend: 'Variant'  }}{% else %}{{ sectionId | append:product.id }}{% endif %}"
+              variantId="{{ value | handle }}"
+              value="{{  variant.id }}"
+              {% if first_variant.id == variant.id %}
+                checked="checked"
+              {% endif %}
+            >
+            <label
+              for="swatch-{{ forloop.index0 }}-{{ value | handle }}-{{ sectionId }}"
+              {% if is_color %}
+                loading="lazy"
+                class="lazy-load-background {% if variant.available %} available{% else %}b-swatch_colors-item m-disabled{% endif %}"
+                  style="
+                    {% if product.variants[forloop.index0].metafields.custom.colour != blank %}
+                  background-color:{{ product.variants[forloop.index0].metafields.custom.colour }} !important;
+                {% else %}
+                  background-image: url({% if product.variants[forloop.index0].metafields.custom.variant !=blank %}
+                {{- product.variants[forloop.index0].metafields.custom.variant | image_url -}} {% else %} {{ variant.featured_image | image_url }}{% endif %}); background-size: contain; {% endif %}
+                    "
+              {% else %}
+                class="{% if variant.available %}available size_label {% else %} b-swatch_colors-item m-disabled{% endif %}"
+              {% endif %}
+            >
+              {% if is_size %} {{ value | handle }} {% endif %}
+            </label>
+          </div>
+        {% endunless %}
+        {% comment %}
+          {% if variant.available %}
+          <script>
+              jQuery('.swatch[data-option-index="{{ forloop.index0 }}"] .{{ value | handle }}').removeClass('soldout').addClass('available').find(':radio').removeAttr('disabled');
+          </script>
+          {% endif %}
+        {% endcomment %}
+      {% endfor %}
+      {% if product.variants.size > 3 and showall == false %}
+        {% liquid
+          assign product_count = product.variants.size | minus: 3
+        %}
+        <span class="b-swatch_colors-more mt-1">
+          <a href="{{ product.url}}" class="no-line pink">
+            + <span class="b-swatch_colors-more_count">{{ product_count | t }}</span>
+          </a>
+        </span>
+      {% endif %}
+    </div>
+  {% endunless %}
+  <div class="product-adding-for-mobile" data-shadeDropdown="closed">
+    {% if showdropdown %}
+      <div class="custom-dropdown" id="customDropdown">
+        <div class="dropdown-button">
+          <div class="dropdown-selected-shade" section_Id="{{ sectionId }}">
+            {% unless has_size_option %}
+              <div
+                class="dropdown-color"
+                {% comment %} style="background-color:{{ first_variant.metafields.custom.colour }}" {% endcomment %}
+                style="{% if first_variant.metafields.custom.colour != blank %}
+                  background-color:{{ first_variant.metafields.custom.colour }} !important;
+                {% else %}
+                  background-image: url({% if first_variant.metafields.custom.variant !=blank %}
+                {{- first_variant.metafields.custom.variant | image_url -}} {% else %} {{ first_variant.featured_image | image_url }}{% endif %}); background-size: contain; {% endif %}"
+            
+              ></div>
+            {% endunless %}
+            <div class="dropdown-color-name">{{ first_variant.title }}</div>
+          </div>
+          <span class="shadow-dropdown-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
+              <path id="Vector 9" d="M9 1L5 5L1 1" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </div>
+        <ul class="dropdown-content">
+          {% for variant in product.variants %}
+            {% assign value = variant.options[option_index] %}
+            <li
+              class="dropdown-shades"
+              value="{{ variant.id }}"
+              variantId="{{ value | handle }}"
+              productId="{{ product.id }}"
+              section_Id="{{ sectionId }}"
+              imagePosition="{{ variant.featured_media.position | plus:if_video }}"
+              varientPrice="{{ variant.price | money_without_currency }}"
+              rackPrice="{{ variant.compare_at_price | money_without_currency }}"
+              index="{{ forloop.index0 }}"
+              availability="{% if variant.available %}true{% else %}false{% endif %}"
+            >
+              {% unless has_size_option %}
+                <div
+                  class="dropdown-color"
+                  style="{% if product.variants[forloop.index0].metafields.custom.colour != blank %}
+                    background-color:{{ product.variants[forloop.index0].metafields.custom.colour }} !important;
+                  {% else %}
+                    background-image: url({% if product.variants[forloop.index0].metafields.custom.variant !=blank %}
+                  {{- product.variants[forloop.index0].metafields.custom.variant | image_url -}} {% else %} {{ variant.featured_image | image_url }}{% endif %}); background-size: contain; {% endif %}"
+                ></div>
+              {% endunless %}
+              <div class="dropdown-color-name">{{ variant.title }}</div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% if template == 'product' %}
+      <div class="add-to-bag-btn d-lg-none {% if section.id contains "product_quickview" %}d-none{% endif %}">
+          <button
+            data-product_id="{{ product.selected_or_first_available_variant.id }}"
+            data-product_quantity="1"
+            type="button"
+          >
+            Add To Bag
+          </button>
+          <div
+          notifyBtn
+          onclick="$('.product-form__buttons').click()"
+          class="add-quick-bag-btn-notify rounded-pill border-0" style="display: none;"
+          >
+            Notify Me
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+{% endif %}
+{% render 'swatchesCss' %}

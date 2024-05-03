@@ -1,0 +1,165 @@
+<div class="recently-viewed-container">
+  <h2 class="text-center my-5">Recently Viewed</h2>
+  <div class="container  recently-viewed-products-container">
+    <div id="responsive" class="d-flex flex-nowrap">
+    {% for product in section.settings['id-recently-viewed-collection'].products limit: 4 %}
+      <div class="p-0 col-6 col-md-3">
+      {% render 'recently-viewed-product-card', product: product, sectionId: section.id, index: forloop.index0 %}
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+"name": "recent-viewed",
+"settings": [
+{
+    "type": "collection",
+    "id": "id-recently-viewed-collection",
+    "label": "Recently Viewed Collection"
+  }
+],
+
+"presets": [
+{
+"name": "recent-viewed"
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+  .recently-viewed-container {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: no-wrap;
+    justify-content: center;
+    align-items: center;
+  }
+{% endstylesheet %}
+
+<script>
+  // init slick slider
+  $(document).ready(function () {
+    $('#responsive').slick({
+      infinite: false,
+      speed: 300,
+      slidesToShow: 4,
+      slidesToScroll: 2,
+      mobileFirst: true,
+      arrows : false,
+      responsive: [
+        {
+          breakpoint: 0,
+          settings: {
+            slidesToShow:2
+          }
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2.5
+          }
+        },
+        {
+          breakpoint: 1440,
+          settings: {
+            slidesToShow: 4
+          }
+        }
+      ]
+    });
+  })
+</script>
+
+<script src="{{ 'recentlyViewed.js' | asset_url }}" defer="defer"></script>
+
+<script>
+  $(document).ready(function() {
+    const MyShopify = Shopify || {};
+// ---------------------------------------------------------------------------
+// Money format handler
+// ---------------------------------------------------------------------------
+Shopify.money_format = "{{ shop.money_format }}";
+Shopify.formatMoney = function(cents, format) {
+  if (typeof cents == 'string') { cents = cents.replace('.',''); }
+  var value = '';
+  var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
+  var formatString = (format || this.money_format);
+
+  function defaultOption(opt, def) {
+     return (typeof opt == 'undefined' ? def : opt);
+  }
+
+  function formatWithDelimiters(number, precision, thousands, decimal) {
+    precision = defaultOption(precision, 2);
+    thousands = defaultOption(thousands, ',');
+    decimal   = defaultOption(decimal, '.');
+
+    if (isNaN(number) || number == null) { return 0; }
+
+    number = (number/100.0).toFixed(precision);
+
+    var parts   = number.split('.'),
+        dollars = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + thousands),
+        cents   = parts[1] ? (decimal + parts[1]) : '';
+
+    return dollars + cents;
+  }
+
+  switch(formatString.match(placeholderRegex)[1]) {
+    case 'amount':
+      value = formatWithDelimiters(cents, 2);
+      break;
+    case 'amount_no_decimals':
+      value = formatWithDelimiters(cents, 0);
+      break;
+    case 'amount_with_comma_separator':
+      value = formatWithDelimiters(cents, 2, '.', ',');
+      break;
+    case 'amount_no_decimals_with_comma_separator':
+      value = formatWithDelimiters(cents, 0, '.', ',');
+      break;
+  }
+
+  return formatString.replace(placeholderRegex, value);
+};
+    const viewedProduct = getViewedProduct({{product|json}});
+    const key = `heyparadise.com-recently-viewed`;
+    const collection = {{section.settings['id-recently-viewed-collection'].products | json}};
+
+    clearLocalStorage();
+    
+    initLocalStorageWithCollection(key, collection);
+    
+    saveRecentlyViewedToLocalStorage(key, viewedProduct);
+
+    const products = JSON.parse(getFromLocalStorage(key));
+    for (let i=0; i< products.length; i++) {
+      const product = products[i];
+      const url = document.getElementById(`recently-viewed-url-{{ section.id|handle }}-${i}`);
+      if (url) url.setAttribute("href", product.productUrl);
+        
+      const image = document.getElementById(`recently-viewed-image-{{ section.id|handle }}-${i}`);
+      if (image) image.setAttribute("src", product.productFeaturedImageUrl);
+
+      const vendor = document.getElementById(`recently-viewed-vendor-{{ section.id|handle }}-${i}`);
+      if (vendor) vendor.innerText = product.vendor;
+        
+      const title = document.getElementById(`recently-viewed-title-{{ section.id|handle }}-${i}`);
+      if (title) title.innerText = product.title;
+        
+      const sellingPrice = document.getElementById(`recently-viewed-selling-price-{{ section.id|handle }}-${i}`);
+      if (sellingPrice) sellingPrice.innerText = MyShopify.formatMoney(product.price);
+        
+      const oldPrice = document.getElementById(`recently-viewed-old-price-{{ section.id|handle }}-${i}`);
+      if (oldPrice) oldPrice.innerText = MyShopify.formatMoney(product.compareAtPrice);
+        
+      const discount = document.getElementById(`recently-viewed-discount-{{ section.id|handle }}-${i}`);
+      //if (discount) image.setAttribute("src", product.featured_image);
+    }
+  });
+</script>

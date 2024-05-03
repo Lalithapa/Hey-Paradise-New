@@ -1,0 +1,32 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "product_collection_slides_rURKMB": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#fff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 10,
+        "home_featured_products": "bh-cosmetics",
+        "viewAllBtn": false,
+        "tcgjsgd": "#191919"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product_collection_slides_rURKMB"
+  ]
+}

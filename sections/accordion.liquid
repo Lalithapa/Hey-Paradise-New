@@ -1,0 +1,89 @@
+<section>
+  {% if section.settings.helpbannerimage %}
+    <div class="help-banner-container">
+      <img src="{{section.settings.helpbannerimage |  image_url }}" alt="banner" class="help-banner">
+    </div>
+  {% endif %}
+  <div class="container">
+    {% if section.settings['show-help'] %}
+      {% render 'help-center' %}
+    {% endif %}
+    <div class="faq-container">
+      <p class="faq-title text-center">{{ section.settings.accordiontitle }}</p>
+
+      {% for block in section.blocks %}
+        <div class="faq-section-container">
+          <p class="faq-section">
+            {{ block.settings.questions }}
+            <img
+              src="https://cdn.shopify.com/s/files/1/0673/6396/3172/files/dropdown_icon_0c235a83-b700-468a-857a-90110fea1f7b.svg"
+              alt="icon"
+              class="dropdown-icon"
+            >
+          </p>
+          <div class="faq-question-container">
+            {{ block.settings.answers }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<script>
+  $(document).ready(function () {
+    $('.faq-section:first').click();
+  });
+</script>
+{% schema %}
+{
+  "name": "Accordion",
+  "settings": [
+     {
+      "type": "checkbox",
+      "id": "show-help",
+      "label": "Show Help"
+    },
+    {
+      "type": "image_picker",
+      "id": "helpbannerimage",
+      "label": "Add Banner Here Image"
+    },
+    {
+      "type": "color",
+      "id": "bgaksjhd",
+      "label": "Add Your background Color Here",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "accordiontitle",
+      "label": "Accordion Title"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Concern Title",
+      "type": "text",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "text",
+          "id": "questions",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answers",
+          "label": "Write Answers"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Accordion"
+    }
+  ]
+}
+{% endschema %}

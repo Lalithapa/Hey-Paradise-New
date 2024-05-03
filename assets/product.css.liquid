@@ -1,0 +1,1068 @@
+.section-title {
+  color: #393939;
+  font-family: Poppins;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  text-transform: uppercase;
+  text-align: center
+}
+/* .image_controls .previous{
+  position: absolute;
+  top:-30px;
+  width:100%;
+} */
+
+.product-preview-track-prev, 
+.product-preview-track-next {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+
+  height: 48px;
+  aspect-ratio: 1;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-preview-track-prev[disabled], 
+.product-preview-track-next[disabled] {
+  opacity: 0.5;
+}
+
+
+@media only screen and (min-width: 1024px) {
+  .product-preview-track-prev,
+  .product-preview-track-next {
+    display: flex;
+  }
+}
+.image_controls li[aria-disabled="true"]{
+  opacity: .6;
+}
+.thumb_container{
+  width:100px;
+  border-radius: 4px;
+}
+.product-thumb-slider .tns-slide-active.tns-nav-active {
+  outline: 1.5px solid #DDD;
+  outline-offset: -1px;
+}
+/* .varient-container {
+  position: sticky;
+  top:200px;
+} */
+
+.varient-container .m-live-views {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  z-index: 1
+}
+
+.varient-container .varient-fav-container {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: end;
+  z-index: 1;
+  width: max-content;
+  padding: 0;
+}
+
+
+.varient-container .varient-fav-container .active-fav::after,
+.varient-container .varient-fav-container .active-fav::before {
+  content: url("../images/Heart states/after.svg");
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: 0;
+  transform: scale(1.1);
+  top: 5px
+}
+
+.varient-container .varient-fav-container .active-fav::after {
+  animation: heart-fly 0.3s linear
+}
+
+.product-details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  
+}
+
+.product-details-container .product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px
+}
+
+.product-details-container .product-info .product-brand {
+  margin-bottom: 0;
+  color: #7e7e7e;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 14px;
+  text-transform: capitalize
+}
+
+.product-details-container .product-info .product-title {
+  margin-bottom: 0;
+  color: #393939;
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  text-transform: uppercase
+}
+
+.product-details-container .product-info .ratings {
+  display: flex;
+  align-items: center;
+  gap: 4px
+}
+
+.product-details-container .product-pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 8px
+}
+
+.product-details-container .product-pricing .product-prices {
+  font-size: 20px;
+  font-family: Poppins;
+  line-height: 24px;
+  display: flex;
+  gap: 4px
+}
+
+.product-details-container .product-pricing .product-prices .current-price {
+  color: #393939;
+  font-weight: 500
+}
+
+.product-details-container .product-pricing .product-prices .old-price {
+  color: silver;
+  font-weight: 400;
+  -webkit-text-decorations-in-effect: line-through;
+  text-decoration: line-through;
+}
+
+.product-details-container .product-pricing .product-prices .discount {
+  color: #e33f75;
+  font-weight: 600;
+  margin-left: 10px
+}
+
+.product-details-container .product-pricing .tax-info {
+  color: #9f9f9f;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  margin-bottom:.5rem;
+}
+
+.product-details-container .product-varient-selector .current-shade {
+  color: #393939;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 25px;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  gap: 3px
+}
+
+.product-details-container .product-varient-selector .current-shade span {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px
+}
+
+.product-details-container .product-varient-selector .product-shades-container .product-shades-color input[type=radio] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none
+}
+
+.product-details-container .product-varient-selector .product-shades-container .product-shades-color label {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  border: 3px solid #fff
+}
+
+.product-details-container .product-varient-selector .product-shades-container .product-shades-color label[data-instock=false] {
+  position: relative
+}
+
+.product-details-container .product-varient-selector .product-shades-container .product-shades-color label[data-instock=false]::after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  content: "";
+  height: 1px;
+  background-color: #fff;
+  width: 100%
+}
+
+.product-details-container .product-varient-selector .product-shades-container .product-shades-color input[type=radio]:checked + label {
+  border: 3px solid #ddd
+}
+.reward-coupon-cards-container{
+  display: flex;
+    flex-direction: row;
+    gap: 10px;
+    overflow-x: auto;
+  padding-bottom: 3px;
+}
+
+.reward-coupon-cards-container::-webkit-scrollbar {
+  height: 5px;
+}
+
+.reward-coupon-cards-container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0);
+}
+
+.reward-coupon-cards-container::-webkit-scrollbar-thumb {
+  height: 5px;
+  background-color: #d5ac68;
+}
+
+.reward-coupon-cards-container::-webkit-scrollbar-thumb:hover {
+  background-color: #f1db9d;
+}
+
+.reward-coupon-cards-container::-webkit-scrollbar:vertical {
+  display: none;
+}
+
+.product-details-container .reward-notification {
+  color: #393939;
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: capitalize
+}
+
+.product-details-container .reward-notification .required-star {
+  color: #e33f75;
+  font-family: Poppins;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px
+}
+
+.product-details-container .reward-notification .login-for-reward a {
+  color: #404184;
+  font-family: Poppins;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
+  text-transform: capitalize
+}
+
+.product-details-container .reward-notification .number-of-reward-points {
+  color: #393939;
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  text-transform: capitalize
+}
+.reward-coupon-cards[offer="gifts"] {
+  background-image: url('https://cdn.shopify.com/s/files/1/0673/6396/3172/files/Subtract.svg?v=1693822647');
+}
+.reward-coupon-cards[offer="discount"] {
+  background-image: url('https://cdn.shopify.com/s/files/1/0577/9000/5290/files/Subtract.png?v=1700811684');
+}
+input[name='properties[__shopify_send_gift_card_to_recipient]']:checked ~ #gift_details{
+  display:block;
+}
+#gift_details{
+  display: none;
+}
+.social-share-wrapper {
+  height: 40px;
+  width: 255px;
+  padding: 3px 14px 3px 4px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 100px;
+  background-color: #E7E7E7;
+}
+.reward-coupon-cards {
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 20px;
+  width: 366px;
+  height: 95px;
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details {
+  font-family: Poppins;
+  display: flex;
+  flex-direction: column;
+  gap: 4px
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .coupon-title {
+  color: #393939;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: uppercase
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .coupon-text {
+  color: #606060;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px
+}
+
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section button.view-gifts-slide-btn , #offerToCopy {
+  color: #404184;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 16px;
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
+  cursor: pointer;
+  background:transparent;
+  border: 0;
+}
+
+
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide {
+  position: fixed;
+  background-color: #fff;
+  width: 80vw;
+  height: 100vh;
+  max-width: 500px;
+  top: 0;
+  right: 0;
+  transform: translateX(101%);
+  transition: all ease-in-out 0.2s;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10
+}
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section  .view-gifts-slide.active {
+  transform: translateX(0)
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-slide-close-btn {
+  align-self: flex-end;
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents {
+  position: relative;
+  height: 100%
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .gift-slide-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .gift-slide-heading .gift-slide-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 500;
+  line-height: 20px
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .gift-slide-heading .gift-slide-details .coupon-title {
+  color: #393939;
+  font-family: Poppins;
+  font-size: 18px;
+  text-transform: uppercase
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .gift-slide-heading .gift-slide-details .coupon-text {
+  color: #606060;
+  font-family: Montserrat;
+  font-size: 14px
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-points-container {
+  margin: 28px 0 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-family: Poppins;
+  border-radius: 6px;
+  overflow: hidden;
+  list-style: none
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-points-container .reward-points {
+  border-right: 1px solid #e6e6e6;
+  height: 100%;
+  width: 100%
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-points-container .reward-points:last-child {
+  border: none
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-points-container .reward-points .active {
+  background-color: #f2f2ff;
+  color: #404184
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-points-container .reward-points button {
+  padding: 12px 25px;
+  color: #373737;
+  border: none;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 12px;
+  text-transform: lowercase;
+  text-decoration: none;
+  background: #f9f9f9;
+  white-space: nowrap;
+  outline: none
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-points-container .reward-points button:focus {
+  outline: none
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-points-container .reward-points button span {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  text-transform: capitalize
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-product-container {
+  margin-top: 28px;
+  background-color: #fff0f6;
+  padding: 16px
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-product-container .reward-product-title {
+  color: #393939;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: capitalize
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-product-container .reward-product-card-container {
+  display: flex;
+  gap: 8px;
+  overflow-x:auto ;
+}
+
+.reward-product-card-container::-webkit-scrollbar {
+ display: none;
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-product-container .reward-product-card-container .reward-product-card {
+  display: flex;
+  min-width: 132px;
+  max-width: 132px;
+  flex-direction: column;
+  padding: 10px;
+  gap: 5px;
+  border-radius: 4px;
+  border: 1px solid #dcdcdc;
+  background: #fff;
+ 
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-product-container .reward-product-card-container .reward-product-card .reward-product-image img {
+  -o-object-fit: cover;
+  object-fit: cover
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-product-container .reward-product-card-container .reward-product-card .reward-product-details {
+  font-family: Poppins;
+  text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+  gap: 4px
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-product-container .reward-product-card-container .reward-product-card .reward-product-details .product-brand {
+  color: #7e7e7e;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  margin-bottom: 0
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-product-container .reward-product-card-container .reward-product-card .reward-product-details .product-details {
+  color: #212529;
+  margin-bottom: 0;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .view-gifts-banner {
+  background-color: silver;
+  margin-top: 28px;
+  height: 100%;
+  max-height: 170px;
+  text-transform: capitalize;
+  display: grid;
+  place-items: center
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .view-gifts-terms {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px 0;
+  position: absolute;
+  bottom: 0;
+  background-color: #fff
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .view-gifts-terms .t-c {
+  color: #7b7b7b;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: uppercase;
+  margin-bottom: 0
+}
+
+.product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .view-gifts-terms .t-c-d {
+  margin-bottom: 0;
+  color: #7b7b7b;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 18px;
+  text-transform: capitalize
+}
+
+.product-details-container .add-to-bag-btn button , bis-inline  {
+  width: 100%;
+  border: none;
+  display: flex;
+  padding: 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 50px !important;
+  background: #dedffc;
+  font-weight: 600 !important;
+  color: #404184 !important;
+  text-transform: uppercase;
+}
+bis-inline:after{
+  box-shadow:none !important;
+}
+
+.live-views {
+  display: flex;
+  align-items: center
+}
+
+.live-views img {
+  max-width: 23px
+}
+
+.live-views p {
+  color: #585858;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin-bottom: 0
+}
+
+.review-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 480px;
+  padding: 10px;
+  margin: auto
+}
+
+.review-container .review-title {
+  margin-bottom: 0;
+  color: #393939;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  text-transform: uppercase;
+  text-align: center
+}
+
+.review-container .reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px
+}
+
+.review-container .reviews .review-text {
+  color: #393939;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px
+}
+
+.review-container .reviews .reviewer {
+  color: #9a9a9a;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px
+}
+
+.review-container .view-more-reviews-container {
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.review-container .view-more-reviews-container .view-more-reviews {
+  color: #404184;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 14px;
+  text-align: center
+}
+
+.product-more-details {
+  margin-top: 28px
+}
+
+.product-more-details .product-description-container,
+.product-more-details .product-ingredients-container,
+.product-more-details .product-htu-container {
+  padding: 18px 16px;
+  border-bottom: 1px solid #e9e9e9
+}
+
+.product-more-details .product-description-container input[type=checkbox],
+.product-more-details .product-ingredients-container input[type=checkbox],
+.product-more-details .product-htu-container input[type=checkbox] {
+  display: none
+}
+
+.product-more-details .product-description-container label,
+.product-more-details .product-ingredients-container label,
+.product-more-details .product-htu-container label {
+  color: #373737;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 5px 0;
+  position: relative;
+  display: flex;
+  align-items: center
+}
+
+.product-more-details .product-description-container label::before,
+.product-more-details .product-description-container label::after,
+.product-more-details .product-ingredients-container label::before,
+.product-more-details .product-ingredients-container label::after,
+.product-more-details .product-htu-container label::before,
+.product-more-details .product-htu-container label::after {
+  content: " ";
+  position: absolute;
+  right: 0;
+  height: 2px;
+  width: 16px;
+  background-color: #767676;
+  transition: all ease-in-out 0.2s
+}
+
+.product-more-details .product-description-container label::after,
+.product-more-details .product-ingredients-container label::after,
+.product-more-details .product-htu-container label::after {
+  transform: rotate(90deg)
+}
+
+.product-more-details .product-description-container > div,
+.product-more-details .product-ingredients-container>div,
+.product-more-details .product-htu-container > div {
+  max-height: 0;
+  overflow: hidden;
+  transition: all ease-in-out 0.2s
+}
+
+.product-more-details .product-description-container input[type=checkbox]:checked + label,
+.product-more-details .product-ingredients-container input[type=checkbox]:checked + label,
+.product-more-details .product-htu-container input[type=checkbox]:checked + label {
+  font-weight: 600
+}
+
+.product-more-details .product-description-container input[type=checkbox]:checked + label::after,
+.product-more-details .product-ingredients-container input[type=checkbox]:checked + label::after,
+.product-more-details .product-htu-container input[type=checkbox]:checked + label::after {
+  transform: rotate(180deg)
+}
+
+.product-more-details .product-description-container input[type=checkbox]:checked + label + div,
+.product-more-details .product-ingredients-container input[type=checkbox]:checked + label + div,
+.product-more-details .product-htu-container input[type=checkbox]:checked + label + div {
+  max-height: 1000px
+}
+
+.image-link {
+  border: 1px solid black;
+}
+
+.product-image-carousels {
+  display: flex;
+  padding: 5px;
+  /* justify-content: center; */
+}
+
+/**
+  Thumbnails carousel
+*/
+.thumbnails-slider {
+  /* width: var(--thumbnail-track-width); */
+  padding: 30px 0;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbnails-slider button {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.thumbnails-slider button:not([disabled]):hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+
+
+.thumbnails-slider button.slick-prev {
+  top: 15px;
+  left: 0;
+}
+
+.thumbnails-slider button.slick-prev .slick-prev-icon {
+  display: inline-block;
+  transform: rotate(90deg);
+  color: black;
+}
+
+.thumbnails-slider button.slick-next {
+  bottom: -15px;
+  right: 0;
+  top: auto;
+}
+
+.thumbnails-slider button.slick-next .slick-next-icon {
+  display: inline-block;
+  transform: rotate(90deg);
+  color: black;
+}
+
+.thumbnails-slider .thumbnail-button {
+  display: block;
+  cursor: pointer;
+  border: 0;
+  transition: opacity 0.1s linear;
+}
+
+.thumbnails-slider .thumbnail-button:focus img {
+  border: 2px solid rgba(128, 128, 128, 0.4);
+}
+
+
+.thumbnails-slider .thumbnail-button:focus img,
+.thumbnails-slider .thumbnail-button:hover img,
+.thumbnails-slider .thumbnail-button[aria-current=true] img {
+  border: 2px solid rgba(128, 128, 128, 0.8);
+  border-radius: 4px;
+  border: 2px solid rgba(128, 128, 128, 0.8);
+}
+
+
+.thumbnails-slider .thumbnail-button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  object-fit: cover;
+  transition: all 0.1s linear;
+}
+
+/**
+  Main image carousel
+*/
+.main-image-slider {
+  position: relative;
+  width: var(--main-image-width);
+  position: relative;
+  margin-bottom: 1px;
+}
+
+.main-image-slider button {
+  z-index: 1;
+}
+
+.main-image-slider button.slick-prev {
+  left: 10px;
+}
+
+.main-image-slider button.slick-prev .slick-prev-icon {
+  opacity: 1;
+}
+
+.main-image-slider button.slick-next {
+  right: 10px;
+}
+
+.main-image-slider button.slick-next .slick-next-icon {
+  opacity: 1;
+}
+
+.main-image-slider .slick-slide {
+  ;
+  /* width: var(--main-image-width); */
+}
+
+.main-image-slider .slick-slide .image-link {
+  /* height: var(--main-image-height); */
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: outline 0.1s linear;
+}
+
+.main-image-slider .slick-slide .image-link:focus {
+  outline: 4px dashed white;
+  outline-offset: -7px;
+}
+
+.main-image-slider .slick-slide .image-link img {
+  display: block;
+  border: 1px solid yellow;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+
+}
+
+@media only screen and (max-width:992px){
+  .live-views p{
+    font-size:12px;
+  }
+ .reward-points-container .reward-points button span {
+    font-size: 16px;
+  }
+
+ .reward-points-container .reward-points button {
+    font-size: 13px;
+  }
+
+
+  .reward-coupon-details .view-gifts-section .view-gifts-slide {
+    width: 100vw;
+    height: fit-content;
+    max-width: 100vw;
+    top:unset;
+    bottom: 0;
+    border-radius: 8px 8px 0 0;
+  }
+  .product-thumb-slider .thumb_container:nth-child(even) {
+    display: none;
+  }
+  .product-thumb-slider .thumb_container.tns-nav-active + .thumb_container {
+    background:#cdcdcd;
+  }
+}
+@media screen and (max-width: 576px) {
+  .varient-container .varient-fav-container {
+    bottom: 10px !important;
+    top: unset;
+  }
+  .product-details-container {
+    padding-top: 20px;
+    gap: 10px
+  }
+  .product-details-container .product-info{
+    gap:0;
+  }
+  .product-details-container .product-info .product-brand {
+    font-size: 13px
+  }
+
+  .product-details-container .product-info .product-title {
+    font-size: 18px;
+    line-height: 25px
+  }
+
+  .product-details-container .product-pricing .product-prices {
+    font-size: 18px;
+    line-height: 20px
+  }
+
+  .product-details-container .product-pricing .tax-info {
+    font-size: 12px
+  }
+
+  .product-details-container .product-varient-selector .current-shade {
+    font-size: 15px;
+    line-height: 14px
+  }
+
+  .product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section input[type=checkbox]:checked + label::after {
+    content: "";
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9
+  }
+
+  .product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section input[type=checkbox]:checked + label + .view-gifts-slide {
+    transform: translateY(20%)
+  }
+
+  .product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide {
+    width: 100vw;
+    transform: translateY(101%)
+  }
+
+  .product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .gift-slide-heading .gift-slide-details .coupon-title {
+    font-size: 18px
+  }
+
+  .product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .gift-slide-heading .gift-slide-details .coupon-text {
+    font-size: 12px
+  }
+
+  .product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-points-container .reward-points button {
+    padding: 5px 6px
+  }
+
+  .product-details-container .reward-coupon-cards-container .reward-coupon-cards .reward-coupon-details .view-gifts-section .view-gifts-slide .view-gifts-contents .reward-product-container {
+    margin-top: 21px;
+    padding: 12px
+  }
+
+  .m-review-container .review-title {
+    font-size: 16px
+  }
+
+  .m-review-container .reviews .review-text {
+    font-size: 14px
+  }
+
+  .m-review-container .reviews .reviewer {
+    font-size: 11px
+  }
+}
+
+@keyframes heart-fly {
+  0% {
+    transform: translateY(0) scale(0.7);
+    opacity: .5
+  }
+
+  20% {
+    transform: translateY(-5px) scale(0.7);
+    opacity: .3
+  }
+
+  40% {
+    transform: translateY(-15px) scale(0.7);
+    opacity: .3
+  }
+
+  60% {
+    transform: translateY(-16px) scale(0.7);
+    opacity: .3
+  }
+
+  80% {
+    transform: translateY(-18px) scale(0.7);
+    opacity: .3
+  }
+
+  100% {
+    transform: translateY(-20px) scale(0.7);
+    opacity: 0
+  }
+}
+
+
+
+
+

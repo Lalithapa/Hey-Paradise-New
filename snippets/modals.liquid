@@ -1,0 +1,82 @@
+{% comment %} <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body  main_product_data">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div> {% endcomment %}
+<div class="popup-container">
+    <div class="popup-content">
+        <p>fasdfas</p>
+    </div>
+</div>
+<style>
+    /* Styles for the popup container */
+    .popup-container {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 999;
+    }
+
+    /* Styles for the popup content */
+    .popup-content {
+        background-color: #fff;
+        width: 80%;
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        // Handle button clicks to show variants
+        $('.show-variants-button').click(function () {
+             
+            var productId = $(this).data('product-id');
+            var popupContainer = $('.popup-container');
+            var popupContent = $('.popup-content');
+
+            // Make an AJAX request to get product variants
+            $.ajax({
+                type: 'get',
+                url: '/variants/' + productId + '.js',
+                dataType: 'json',
+                success: function (responseHTML) {
+                    // Build and display the popup with variants
+                    $('.popup-container').append($(responseHTML).find('.popup-container').html());
+                    //popupContent.html(variantsHtml);
+                    console.log(responseHTML);
+                    popupContainer.show();
+                },
+                error: function (error) {
+                    console.error('Error fetching product variants:', error);
+                }
+            });
+        });
+
+        // Close the popup when clicking outside of it
+        $('.popup-container').click(function (event) {
+            if (event.target === this) {
+                $(this).hide();
+            }
+        });
+    });
+</script>

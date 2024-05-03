@@ -1,0 +1,416 @@
+{% comment %}
+  {% capture star_rating %}
+  {% for _ in (1..5) %}
+  <img src="https://cdn.shopify.com/s/files/1/0673/6396/3172/files/Star_1.svg?v=1692598346" width="14" height="14"
+    alt="stars" class="img-fluid">
+  {% endfor %}
+  {% endcapture %}
+{% endcomment %}
+
+<div class="cart-slide">
+  <div class="cart-overlay"></div>
+
+  <div class="cart-container">
+    <div id="mainCartContainer">
+      <div class="cart-heading-container">
+        <div class="cart-heading d_cent h-100">
+          YOUR BAG
+          {% if cart.item_count > 0 %}
+            <span class="cart-item-count">({{ cart.item_count }} Item)</span>
+          {% endif %}
+        </div>
+        <div class="cart-slide-close-btn d-flex justify-content-end position-absolute">
+          <button class=" d_cent bg-transparent border-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M1 1L13 13" stroke="#393939" stroke-linecap="round" />
+              <path d="M13 1L1 13" stroke="#393939" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      {% if cart.item_count > 0 %}
+        <div class="cart-has-items">
+          <div class="free-shipping-note-container">
+            <div class="free-shipping-note text-center">
+              <p class="free-shipping-text">
+                {% if cart.total_price < 69900 %}
+                  {% assign shipping_limit_param = cart.total_price | minus: 69900 | abs %} only
+                  <span>{{ shipping_limit_param | money_without_trailing_zeros }}</span> away from free shipping
+                {% else %}
+                  Free Shipping
+                {% endif %}
+              </p>
+              <div class="cart-progress-container rounded-pill ">
+                <div class="cart-progress rounded-pill" style="width:{{ cart.total_price | divided_by: 699 }}%"></div>
+                <img
+                  loading="lazy"
+                  src="https://cdn.shopify.com/s/files/1/0673/6396/3172/files/little_heart.svg?v=1694757544"
+                  alt="heart_icon"
+                >
+              </div>
+            </div>
+          </div>
+          {% comment %}
+            <div class="free-gift-cards-container">
+              <div class="free-gift-cards-heading d-flex">
+                <p class="free-gift-cards-title text-center text-md-end">Add a free gift</p>
+                <div class="gift-btns d-none d-md-flex">
+                  <button class="gift-left">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                      <path d="M10.0003 2.85742L5.35742 7.50028L10.0003 12.1431" stroke="#585858" stroke-width="1.5"
+                        stroke-linecap="round" />
+                    </svg>
+                  </button>
+                  <button class="gift-right">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                      <path d="M4.99972 2.85742L9.64258 7.50028L4.99972 12.1431" stroke="#585858" stroke-width="1.5"
+                        stroke-linecap="round" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="free-gift-cards free-gift-swiper overflow-hidden">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="free-gift-card d-flex">
+                      <div class="free-gift-image-container d_cent overflow-hidden">
+                        <img loading="lazy" src="https://ik.imagekit.io/gfzma0cor/product1b.jpg?updatedAt=1692963855295"
+                          alt="" class="img-fluid">
+                      </div>
+                      <div class="gift-item-details-container">
+                        <div class="gift-item-details d-flex align-items-start">
+                          <div class="d-flex flex-column">
+                            <p class="mb-0 brand-name">Pigment Play</p>
+                            <p class="mb-0 product-title">Lift 'em High Mascara</p>
+                            <p class="mb-0 product-price">FREE <span>₹399</span></p>
+                            <div class="ratings">
+                              {{ star_rating }}
+                            </div>
+                          </div>
+                          <button class="gift-add-btn border bg-transparent rounded-pill d_cent">
+                            Add
+                          </button>
+                        </div>
+                        <p class="mb-0">Add items worth <span>₹250 more</span> to unlock</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="free-gift-card d-flex">
+                      <div class="free-gift-image-container d_cent overflow-hidden">
+                        <img loading="lazy" src="https://ik.imagekit.io/gfzma0cor/product1b.jpg?updatedAt=1692963855295"
+                          alt="" class="img-fluid">
+                      </div>
+                      <div class="gift-item-details-container">
+                        <div class="gift-item-details d-flex align-items-start">
+                          <div class="d-flex flex-column">
+                            <p class="mb-0 brand-name">L.a. Colors</p>
+                            <p class="mb-0 product-title">Color Block 10 Color...</p>
+                            <p class="mb-0 product-price">FREE <span>₹399</span></p>
+                            <div class="ratings">
+                              {{ star_rating }}
+                            </div>
+                          </div>
+                          <button class="gift-add-btn border bg-transparent rounded-pill d_cent">
+                            Add
+                          </button>
+                        </div>
+                        <p class="mb-0">Add items worth <span>₹250 more</span> to unlock</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="gift-cards-pagination position-static"></div>
+              </div>
+            </div>
+          {% endcomment %}
+
+          <div class="cart-products-container">
+            {% assign totalSavings = 0 %}
+            {% for item in cart.items %}
+              <div class="cart-item-cards d-flex align-items-center border-bottom">
+                <div class="item-image-container d_cent w-25">
+                  <a href="{{ item.url }}">
+                    <img src="{{ item.image | image_url }}" alt="{{ item.title | escape }}" class="img-fluid w-100">
+                  </a>
+                </div>
+                <div class="cart-item-details-container d-flex flex-column w-75 ">
+                  <div class="cart-item-details d-flex align-items-start justify-content-between">
+                    <div class="d-flex flex-column">
+                      <p class="mb-0 brand-name">{{ item.vendor }}</p>
+                      <p class="mb-0 product-title">
+                        <a href="{{ item.url }}">{{ item.title }}</a>
+                      </p>
+                      {%- if item.product.has_only_default_variant == false
+                        or item.properties.size != 0
+                        or item.selling_plan_allocation != null
+                      -%}
+                        <dl class="m-0 p-0">
+                          {%- if item.product.has_only_default_variant == false -%}
+                            {%- for option in item.options_with_values -%}
+                              <div class="product-option">
+                                <dt>
+                                  {% if item.title contains 'E-Gift card' %}Vibe{% else %}{{ option.name }}{% endif %}:
+                                </dt>
+                                <dd>{{ option.value }}</dd>
+                              </div>
+                            {%- endfor -%}
+                          {%- endif -%}
+
+                          {%- for property in item.properties -%}
+                            {%- assign property_first_char = property.first | slice: 0 -%}
+                            {%- if property.last != blank and property_first_char != '_' -%}
+                              <div class="product-option">
+                                <dt>{{ property.first }}:</dt>
+                                <dd>
+                                  {%- if property.last contains '/uploads/' -%}
+                                    <a href="{{ property.last }}" class="link" target="_blank">
+                                      {{ property.last | split: '/' | last }}
+                                    </a>
+                                  {%- else -%}
+                                    {{ property.last }}
+                                  {%- endif -%}
+                                </dd>
+                              </div>
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </dl>
+                        {% if item.selling_plan_allocation.selling_plan.name != blank %}
+                          <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                        {%- endif -%}
+                      {%- endif -%}
+                      {% if item.line_level_discount_allocations != blank %}
+                        <ul
+                          class="discounts list-unstyled"
+                          role="list"
+                          aria-label="{{ 'customer.order.discount' | t }}"
+                        >
+                          {%- for discount in item.line_level_discount_allocations -%}
+                            <li class="discounts__discount">
+                              {%- render 'icon-discount' -%}
+                              <span>{{ discount.discount_application.title }}</span>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      {% endif %}
+                    </div>
+                    <button class="item-close-btn  bg-transparent border-0 d_cent">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                        <path d="M1 1L9 9" stroke="#393939" stroke-linecap="round" />
+                        <path d="M9 1L1 9" stroke="#393939" stroke-linecap="round" />
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="qtydiv cart-item-counter-container">
+                    <div class="qtybox cart-item-counter" data-key="{{ item.id }}" data-index="{{ forloop.index }}">
+                      <button
+                        class="btnqty qtyminus icon icon-minus item-count-btn d_cent"
+                        {% if item.quantity == 1 %}
+                          disabled
+                        {% endif %}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                          <path d="M13.5 9.5L4.5 9.5" stroke="#404184" stroke-width="1.2" stroke-linecap="round" />
+                        </svg>
+                      </button>
+                      <div class="showSpinner">
+                        <span class="spinner-border spinner-border-sm" role="status"></span>
+                      </div>
+                      <input
+                        type="text"
+                        id="quantity{{ forloop.index }}"
+                        name="quantity"
+                        value="{{ item.quantity }}"
+                        min="1"
+                        class="quantity-selector quantity-input cart-item-quantity "
+                        readonly=""
+                      >
+
+                      <button
+                        class="btnqty qtyplus icon icon-plus item-count-btn d_cent"
+                        {% if item.quantity == 10 %}
+                          disabled
+                        {% endif %}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                          <path d="M9.5 4.75L9.5 13.75" stroke="#404184" stroke-width="1.2" stroke-linecap="round" />
+                          <path d="M14 9.25L5 9.25" stroke="#404184" stroke-width="1.2" stroke-linecap="round" />
+                        </svg>
+                      </button>
+                    </div>
+
+                    <div class="cart-item-price">
+                      {{ item.price | money_without_trailing_zeros }}
+                      <span>
+                        {% if item.variant.compare_at_price > item.variant.price %}
+                          {{ item.variant.compare_at_price | money_without_trailing_zeros }}
+                        {% endif -%}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="line-item-remove-container d-none">
+                    <div
+                      class="item-remove-btn  bg-transparent border-0 d_cent"
+                      cart-data-key="{{ item.id }}"
+                      cart-data-index="{{ forloop.index }}"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                        <rect x="0.5" y="0.5" width="33.4" height="33" rx="16.5" stroke="#B1B3E3" />
+                        <path
+                          d="M20.5016 11.5579L20.6154 11.9H20.976H23.6C23.6796 11.9 23.7559 11.9316 23.8121 11.9879C23.8684 12.0441 23.9 12.1204 23.9 12.2C23.9 12.2796 23.8684 12.3559 23.8121 12.4121C23.7559 12.4684 23.6796 12.5 23.6 12.5H22.8H22.3V13V22.6C22.3 23.1039 22.0998 23.5872 21.7435 23.9435C21.3872 24.2998 20.9039 24.5 20.4 24.5H14C13.4961 24.5 13.0128 24.2998 12.6565 23.9435C12.3002 23.5872 12.1 23.1039 12.1 22.6V13V12.5H11.6H10.8C10.7204 12.5 10.6441 12.4684 10.5879 12.4121C10.5316 12.3559 10.5 12.2796 10.5 12.2C10.5 12.1204 10.5316 12.0441 10.5879 11.9879C10.6441 11.9316 10.7204 11.9 10.8 11.9H13.424H13.7846L13.8984 11.5579L14.3328 10.2524C14.3328 10.2524 14.3328 10.2523 14.3328 10.2523C14.4058 10.0332 14.5459 9.84265 14.7332 9.70763L14.4456 9.30862L14.7332 9.70763C14.9206 9.57259 15.1457 9.49994 15.3767 9.5H15.3768L19.0239 9.5C19.0239 9.5 19.024 9.5 19.024 9.5C19.2548 9.50009 19.4798 9.57278 19.667 9.70779C19.8542 9.8428 19.9942 10.0333 20.0672 10.2523C20.0672 10.2523 20.0672 10.2524 20.0672 10.2524L20.5016 11.5579ZM21.7 13V12.5H21.2H13.2H12.7V13V22.6C12.7 22.9448 12.837 23.2754 13.0808 23.5192L13.4343 23.1657L13.0808 23.5192C13.3246 23.763 13.6552 23.9 14 23.9H20.4C20.7448 23.9 21.0754 23.763 21.3192 23.5192C21.563 23.2754 21.7 22.9448 21.7 22.6V13ZM19.4984 10.442L19.3845 10.1H19.024H15.376H15.0155L14.9016 10.442L14.6352 11.242L14.4161 11.9H15.1096H19.2904H19.9839L19.7648 11.242L19.4984 10.442Z"
+                          fill="#B1B3E3" stroke="#B1B3E3" />
+                      </svg>
+                    </div>
+                    <div class="move-to-wishlist-btn">
+                      {% render 'ssw-widget-faveicon' with item.product.id %}
+                    </div>
+                  </div>
+                  {% comment %}
+                    {% capture the_snippet_fave_icon %}{% render 'ssw-widget-faveicon' with item.product.id %}{% endcapture
+                    -%}
+                    {% unless the_snippet_fave_icon contains 'Liquid error' %}
+                    {{ the_snippet_fave_icon }}
+                    {% endunless %}
+                  {% endcomment %}
+                </div>
+              </div>
+              {% assign regularPrice = item.product.price %}
+              {% assign compareAtPrice = item.product.compare_at_price %}
+              {% assign savings = regularPrice | minus: compareAtPrice %}
+              {% assign itemSavings = savings | times: item.quantity %}
+              {% assign totalSavings = totalSavings | plus: itemSavings %}
+            {% endfor %}
+          </div>
+          {%- assign plus_savings = totalSavings | abs -%}
+          <div id="main_cart_price_list">
+            <div class="total-amount-container">
+              <p class="total-amount-title">PRICE DETAILS:</p>
+              <div class="total-container d-flex flex-column">
+                <div class="per-product-total d-flex justify-content-between align-items-center">
+                  <p class="item-heading mb-0">
+                    MRP: {% comment %} <span>({{ cart.item_count }} Items)</span> {% endcomment %}
+                  </p>
+                  <p class="item-amount mb-0">
+                    {{ cart.total_price | plus: plus_savings | money_without_trailing_zeros }}
+                  </p>
+                </div>
+                <div class="per-product-total d-flex justify-content-between align-items-center">
+                  <p class="item-heading mb-0">Bag Discount:</p>
+                  <p class="item-amount mb-0" style="color: #E33F75;">
+                    {{ plus_savings | money_without_trailing_zeros }}
+                  </p>
+                </div>
+                <div class="grand-total d-flex justify-content-between align-items-center">
+                  <p class="total-heading mb-0">
+                    Total: <span>({{ cart.item_count }} Items)</span>
+                  </p>
+                  <p class="total-amount mb-0">{{ cart.total_price | money_without_trailing_zeros }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="login-reward-container d-flex align-items-center">
+              {% unless customer %}
+                <div>
+                  <span class="login-btn"><a href="/account">login</a></span
+                  >/<span class="signup-btn"
+                    ><a
+                      href="/account"
+                      >signup</a
+                    ></span
+                  >
+                  for <span class="reward-info">1X REWARD POINTS</span>
+                </div>
+                <button class="d_cent" type="button">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    x="0px"
+                    y="0px"
+                    width="12"
+                    height="12"
+                    viewBox="0,0,256,256"
+                    style="fill:#000000;"
+                  >
+                    <g fill="#404184" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                      stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                      font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                      style="mix-blend-mode: normal">
+                      <g transform="scale(10.66667,10.66667)">
+                        <path
+                          d="M12,2c-5.511,0 -10,4.489 -10,10c0,5.511 4.489,10 10,10c5.511,0 10,-4.489 10,-10c0,-5.511 -4.489,-10 -10,-10zM12,4c4.43012,0 8,3.56988 8,8c0,4.43012 -3.56988,8 -8,8c-4.43012,0 -8,-3.56988 -8,-8c0,-4.43012 3.56988,-8 8,-8zM11,7v2h2v-2zM11,11v6h2v-6z">
+                        </path>
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+              {% else %}
+                <div class="customer-rewards-container">
+                  <p class="mb-0">
+                    <span class="rwd-points">2000</span> Hey! Creds (₹<span class="rw-money">20</span>)
+                  </p>
+                  <button class="redeem-popup-btn reward-mob-btn">Redeem Now</button>
+                </div>
+              {% endunless %}
+            </div>
+            {% comment %}
+              <div class="login-reward-container gw-points-rewards">
+                <p>Earn Hey! Creds on this order</p>
+                <button class="reward-mob-btn">Learn More ></button>
+              </div>
+            {% endcomment %}
+          </div>
+        </div>
+      {% else %}
+        <div class="cart-is-empty">
+          <div class="empty-cart-container d-flex flex-column justify-content-between">
+            <div class="empty-cart-section d-flex flex-column">
+              <div class="empty-note d-flex flex-column text-center">
+                <p class="dark-note m-0">Your bag is Empty</p>
+                <p class="lite-note m-0">Whoops... Nothing in here! Explore around to add items.</p>
+              </div>
+              <div class="add-items-btn d-flex flex-column">
+                <a href="/collections/all"><button class="btn-fill w-100">START SHOPPING</button></a>
+                <a href="/pages/wishlist"><button class="btn-outline w-100">ADD FROM WISHLIST</button></a>
+              </div>
+            </div>
+            <div class="cart-suggestions-container">
+              <p class="section-title text-uppercase text-center">Hand picked for you</p>
+              <div class="product-carousel">
+                <div
+                  class="swiper-wrapper pl-1"
+                  id="empty-slider-cards"
+                  data-slick='{"infinite": true, "mobileFirst": true, "slidesToShow": 2, "slidesToScroll": 2, "arrows": false}'
+                >
+                  {% for product in cart_coll.products limit: recomToShow %}
+                    <div class="p-0 d_cent">
+                      {% render 'main_product_cards',
+                        product: product,
+                        sectionId: splicesectionId,
+                        card_margin: true,
+                        show_button: false,
+                        showLink: true
+                      %}
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      <div
+        class="checkout-btn-container bg-white"
+        {% if cart.item_count == 0 %}
+          style="display:none"
+        {% endif %}
+      >
+        <form action="/checkout" method="post" novalidate>
+          <button class="checkout-btn rounded-pill border-0" type="submit">
+            Checkout - <span>{{ cart.total_price | money_without_trailing_zeros }}</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

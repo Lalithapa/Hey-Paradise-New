@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-login",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "2af653f2-2d68-4e90-9f04-4a7f756b6c0a": {
+      "type": "Main_Banner",
+      "blocks": {
+        "image_7fka7f": {
+          "type": "image",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Rectangle_4250.png",
+            "block_link_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_7fka7f"
+      ],
+      "custom_css": [
+        ".desktop-screen {display: none !important;}"
+      ],
+      "settings": {
+        "showCat": false,
+        "showTiles": "Category"
+      }
+    },
+    "165460479522332vv3": {
+      "type": "otp-login",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "2af653f2-2d68-4e90-9f04-4a7f756b6c0a",
+    "165460479522332vv3"
+  ]
+}

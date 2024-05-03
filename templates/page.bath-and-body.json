@@ -1,0 +1,379 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "3ca2d601-1f92-42d7-8c19-e304e97fabe9": {
+      "type": "Main_Banner",
+      "blocks": {
+        "image_6Kt7Uk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/makeup-banner.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/mobile-makeup-banner.jpg",
+            "block_link_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_6Kt7Uk"
+      ],
+      "settings": {
+        "showCat": false,
+        "showTiles": "Category"
+      }
+    },
+    "multi_carousel_cxBRDd": {
+      "type": "Multi-carousel",
+      "blocks": {
+        "careproof_UiT4cj": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/5057566712217_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Eye"
+          }
+        },
+        "careproof_pXdVzC": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/5057566712200_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Eye"
+          }
+        },
+        "careproof_dxXMQF": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/5057566711975_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Eye"
+          }
+        },
+        "careproof_mcJRLx": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Eye"
+          }
+        },
+        "careproof_ghYn9a": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/849953023243_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Eye"
+          }
+        },
+        "careproof_e4e8Bq": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/5057566723183_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Eye"
+          }
+        }
+      },
+      "block_order": [
+        "careproof_UiT4cj",
+        "careproof_pXdVzC",
+        "careproof_dxXMQF",
+        "careproof_mcJRLx",
+        "careproof_ghYn9a",
+        "careproof_e4e8Bq"
+      ],
+      "settings": {
+        "sectionTitle": "Shop By category",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "1",
+        "lagreScreenGap": 20,
+        "smallScreenGap": 12,
+        "bottomTextBackground": "",
+        "smallNumber": 2,
+        "mediumNumber": 2.8,
+        "largeNumber": 4.2,
+        "defaultNumber": 4.2
+      }
+    },
+    "a67d1187-40f6-4f9d-adcb-201f8ff7fb19": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Selling Fast",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#fff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "face",
+        "viewAllBtn": true,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "c478d4b1-ad16-4b47-8999-e5c214a7b03b": {
+      "type": "Image_carousel",
+      "blocks": {
+        "dfff9ff2-b9af-4a97-9397-fa74ef657782": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3972.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "a7eeee0e-21c8-4ceb-a23e-a90668e33756": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3974.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "8c907700-949a-40fe-8b39-2e1b0ab64bba": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3973.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "29736856-9866-408c-b5a4-726b2b358bbd": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3972.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "06a74858-ce3c-4ebd-8c60-89e12a0d6eb0": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3973.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "9f2da14f-a56d-4276-adb6-7820c975c6d3": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3974.png",
+            "threedtxt": "Discover More"
+          }
+        }
+      },
+      "block_order": [
+        "dfff9ff2-b9af-4a97-9397-fa74ef657782",
+        "a7eeee0e-21c8-4ceb-a23e-a90668e33756",
+        "8c907700-949a-40fe-8b39-2e1b0ab64bba",
+        "29736856-9866-408c-b5a4-726b2b358bbd",
+        "06a74858-ce3c-4ebd-8c60-89e12a0d6eb0",
+        "9f2da14f-a56d-4276-adb6-7820c975c6d3"
+      ],
+      "settings": {
+        "qsirguwfh": "",
+        "sfswdef": "Body Care Bliss",
+        "bgcolor": true,
+        "dfasasd": "#fff0ea"
+      }
+    },
+    "04b1addd-5828-4da5-a467-1ac279f549d2": {
+      "type": "Brand_Spotlight",
+      "blocks": {
+        "feedback_RLBhXB": {
+          "type": "Feedback",
+          "settings": {
+            "userRating": 3,
+            "userName": "LT",
+            "feedbackText": "“From prepping to ace the base to those defined, to those luscious lips, L.A. Girl has an answer in...”"
+          }
+        },
+        "feedback_L6Phym": {
+          "type": "Feedback",
+          "settings": {
+            "userRating": 5,
+            "userName": "SR",
+            "feedbackText": "“From prepping to ace the base to those defined, to those luscious lips, L.A. Girl has an answer in...”"
+          }
+        },
+        "feedback_xXy6L7": {
+          "type": "Feedback",
+          "settings": {
+            "userRating": 4,
+            "userName": "SM",
+            "feedbackText": "“From prepping to ace the base to those defined, to those luscious lips, L.A. Girl has an answer in...”"
+          }
+        }
+      },
+      "block_order": [
+        "feedback_RLBhXB",
+        "feedback_L6Phym",
+        "feedback_xXy6L7"
+      ],
+      "custom_css": [
+        ".feedback-slider-container::before {background: #f3fff8;}",
+        ".slick-prev-btn {top: 40%; left: 15px;}",
+        ".slick-next-btn {top: 40%; right: 15px;}"
+      ],
+      "settings": {
+        "mainImage": "shopify:\/\/shop_images\/carbon.jpg",
+        "mainLogo": "shopify:\/\/shop_images\/logo_2_140x_f11071c9-b3c9-4d02-9525-a2f425bd1866.png",
+        "heartColor": "#a3d0ba",
+        "viewAllBtn": true,
+        "home_featured_products": "face",
+        "backgroundcolor": "",
+        "smallNumber": 2,
+        "mediumNumber": 2.8,
+        "largeNumber": 2,
+        "extraLargeNumber": 2.8
+      }
+    },
+    "63c0511b-a755-4a28-83d2-c49f3e90c1f9": {
+      "type": "Reviews-Banner",
+      "blocks": {
+        "034ebefb-60cf-439a-b97a-be46459c5f46": {
+          "type": "Image",
+          "settings": {
+            "dasfdf": "shopify:\/\/shop_images\/signin-banner.jpg",
+            "asdasdasd": "shopify:\/\/shop_images\/signin-banner.jpg",
+            "sdfgsdfsd": "",
+            "urlaftrlogin": "",
+            "dflkjghdfjkg": "",
+            "dfsdf": "",
+            "txtdfsdf": ""
+          }
+        }
+      },
+      "block_order": [
+        "034ebefb-60cf-439a-b97a-be46459c5f46"
+      ],
+      "settings": {
+        "qsirguwfh": ""
+      }
+    },
+    "f0c0f0bc-8cde-4215-b564-ff33eac90b2c": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Baggit’ when it’s hot",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#fff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "face",
+        "viewAllBtn": false,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "194d7e87-96b5-4763-86ef-96ff55f8f8cf": {
+      "type": "multi-carousel",
+      "blocks": {
+        "dd38603f-b719-4169-994d-603560bb2ea7": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/deals-gif1.gif",
+            "dealsURL": "shopify:\/\/collections",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "27eae9e8-41c4-417f-9e44-cbdad7b72d77": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/crausel-img3.jpg",
+            "dealsURL": "shopify:\/\/collections\/all",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "077e3273-b182-4e51-8a37-4fa447e1f868": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/deals-gif1.gif",
+            "dealsURL": "shopify:\/\/collections\/derma-e",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "28107a40-8321-42a4-a7de-6f1eab116336": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/crausel-img2.jpg",
+            "dealsURL": "shopify:\/\/collections\/bath-body",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "2b3dcc5a-06fe-4e2c-8998-b89660c723cd": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/deals-img1.jpg",
+            "dealsURL": "shopify:\/\/collections\/lord-berry",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "dd38603f-b719-4169-994d-603560bb2ea7",
+        "27eae9e8-41c4-417f-9e44-cbdad7b72d77",
+        "077e3273-b182-4e51-8a37-4fa447e1f868",
+        "28107a40-8321-42a4-a7de-6f1eab116336",
+        "2b3dcc5a-06fe-4e2c-8998-b89660c723cd"
+      ],
+      "settings": {
+        "sectionTitle": "Bath & Body Essentials",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "3\/4",
+        "lagreScreenGap": 20,
+        "smallScreenGap": 12,
+        "bottomTextBackground": "linear-gradient(0deg, #292929 0%, rgba(47, 47, 47, 0.84) 20.87%, rgba(47, 47, 47, 0.43) 55.83%, rgba(74, 74, 74, 0.00) 93.04%)",
+        "smallNumber": 1.5,
+        "mediumNumber": 2,
+        "largeNumber": 2.5,
+        "defaultNumber": 3.5
+      }
+    }
+  },
+  "order": [
+    "main",
+    "3ca2d601-1f92-42d7-8c19-e304e97fabe9",
+    "multi_carousel_cxBRDd",
+    "a67d1187-40f6-4f9d-adcb-201f8ff7fb19",
+    "c478d4b1-ad16-4b47-8999-e5c214a7b03b",
+    "04b1addd-5828-4da5-a467-1ac279f549d2",
+    "63c0511b-a755-4a28-83d2-c49f3e90c1f9",
+    "f0c0f0bc-8cde-4215-b564-ff33eac90b2c",
+    "194d7e87-96b5-4763-86ef-96ff55f8f8cf"
+  ]
+}

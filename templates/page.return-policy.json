@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "e62a8c8c-de95-401f-a0ba-a2d89298df4d": {
+      "type": "Main_Banner",
+      "settings": {
+        "showCat": false,
+        "showTiles": "Category"
+      }
+    },
+    "8676b3ba-982b-4175-a359-7b661ad2bdae": {
+      "type": "accordion",
+      "blocks": {
+        "73680fdd-8cdd-404b-82c0-acd9515ca04d": {
+          "type": "text",
+          "settings": {
+            "questions": "Return & Refund",
+            "answers": "<p>Return or exchange is permissible only in the event of receiving a damaged or incorrect product. \u2028To qualify for a replacement or refund, the item should be unused and remain in its original condition and packaging. Requests for return or replacement can be made within 7 days of delivery. \u2028Please note that for damaged or incorrect products, we require an unboxing video as evidence to process a refund or replacement. Kindly record a video while unpacking the package.<\/p><p><\/p><p>If you believe you meet the criteria for a replacement or refund, please follow these steps to initiate the process:<\/p><p><\/p><ol><li><strong>Contact Us:<\/strong> Email us at support@hokmakeup.com or call us at 9810245261.<\/li><li><strong>Provide Pictures & Video: <\/strong>Attach clear photos and videos of the received product, including a picture of the invoice.<\/li><li><strong>Refund Process<\/strong>: Refunds will be initiated on pick-up only if the products are received by us in their original packaging with their seals, labels and bar codes intact. It may take 2-4 business days for the credit to reflect into your account depending on the bank.<\/li><\/ol><p>*Returns are only possible within the stipulated return period and if specific conditions are fulfilled.<\/p>"
+          }
+        },
+        "096b1741-bf90-49d2-b44e-012a62583547": {
+          "type": "text",
+          "settings": {
+            "questions": "Cancellation Policy",
+            "answers": "<p>Cancellations for orders are only accepted prior to the commencement of shipment. <br\/><br\/>To initiate a cancellation request: <br\/><br\/><strong>1. Contact Us:<\/strong> Feel free to get in touch with our support team through email at 'support@hokmakeup.com', reach us via WhatsApp chat, or call us at +91 9810245261 to request a cancellation.<br\/><strong>2. Refund Process:<\/strong> Refunds for prepaid orders will be processed in the original mode of payment upon receipt of the items back to our warehouse.<br\/><br\/><strong>*<\/strong>Please note that Hey! reserves the authority to cancel orders or items at any time if there are concerns or questions. In case of cancellation, refunds for prepaid orders will be processed within 24-48 business hours. If you have any questions or concerns, feel free to contact us at support@hokmakeup.com or call us at 9810245261.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "73680fdd-8cdd-404b-82c0-acd9515ca04d",
+        "096b1741-bf90-49d2-b44e-012a62583547"
+      ],
+      "custom_css": [
+        ".faq-question-container > p,.faq-question-container > ol {color: #373737;}"
+      ],
+      "settings": {
+        "show-help": false,
+        "bgaksjhd": "#ffffff",
+        "accordiontitle": "Return & Refund Policy"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "e62a8c8c-de95-401f-a0ba-a2d89298df4d",
+    "8676b3ba-982b-4175-a359-7b661ad2bdae"
+  ]
+}

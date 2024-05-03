@@ -1,0 +1,495 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "3ca2d601-1f92-42d7-8c19-e304e97fabe9": {
+      "type": "Main_Banner",
+      "blocks": {
+        "image_pChF8G": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/makeup-banner.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/mobile-makeup-banner.jpg",
+            "block_link_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_pChF8G"
+      ],
+      "settings": {
+        "showCat": false,
+        "showTiles": "Category"
+      }
+    },
+    "multi_carousel_LqkECe": {
+      "type": "Multi-carousel",
+      "blocks": {
+        "careproof_cCbVW4": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/get-the-glam-4_29e89ed3-466b-42ae-9a01-b23865c9f927.png",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Product Name"
+          }
+        },
+        "careproof_LQW63m": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/5057566723176_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Product Name"
+          }
+        },
+        "careproof_dTnTkW": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/5057566723183_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Product Name"
+          }
+        },
+        "careproof_cgcX7t": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/5057566712880_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Product Name"
+          }
+        },
+        "careproof_jzRcYi": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/5057566712255_3_ffb2ce99-941b-4c9e-8baa-e760be4533b3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Product Name"
+          }
+        }
+      },
+      "block_order": [
+        "careproof_cCbVW4",
+        "careproof_LQW63m",
+        "careproof_dTnTkW",
+        "careproof_cgcX7t",
+        "careproof_jzRcYi"
+      ],
+      "settings": {
+        "sectionTitle": "Shop By category",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "1",
+        "lagreScreenGap": 20,
+        "smallScreenGap": 12,
+        "bottomTextBackground": "",
+        "smallNumber": 2,
+        "mediumNumber": 2.8,
+        "largeNumber": 4.2,
+        "defaultNumber": 4.2
+      }
+    },
+    "a67d1187-40f6-4f9d-adcb-201f8ff7fb19": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Hey! Exclusives",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#ffffff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "bh-cosmetics",
+        "viewAllBtn": false,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "c478d4b1-ad16-4b47-8999-e5c214a7b03b": {
+      "type": "Image_carousel",
+      "blocks": {
+        "dfff9ff2-b9af-4a97-9397-fa74ef657782": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3972.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "a7eeee0e-21c8-4ceb-a23e-a90668e33756": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3974.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "8c907700-949a-40fe-8b39-2e1b0ab64bba": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3973.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "29736856-9866-408c-b5a4-726b2b358bbd": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3972.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "06a74858-ce3c-4ebd-8c60-89e12a0d6eb0": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3973.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "9f2da14f-a56d-4276-adb6-7820c975c6d3": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3974.png",
+            "threedtxt": "Discover More"
+          }
+        }
+      },
+      "block_order": [
+        "dfff9ff2-b9af-4a97-9397-fa74ef657782",
+        "a7eeee0e-21c8-4ceb-a23e-a90668e33756",
+        "8c907700-949a-40fe-8b39-2e1b0ab64bba",
+        "29736856-9866-408c-b5a4-726b2b358bbd",
+        "06a74858-ce3c-4ebd-8c60-89e12a0d6eb0",
+        "9f2da14f-a56d-4276-adb6-7820c975c6d3"
+      ],
+      "settings": {
+        "qsirguwfh": "",
+        "sfswdef": "New Drips",
+        "bgcolor": true,
+        "dfasasd": "#fff0ea"
+      }
+    },
+    "04b1addd-5828-4da5-a467-1ac279f549d2": {
+      "type": "Brand_Spotlight",
+      "blocks": {
+        "feedback_w3rT99": {
+          "type": "Feedback",
+          "settings": {
+            "userRating": 4,
+            "userName": "Lalit",
+            "feedbackText": "“From prepping to ace the base to those defined, to those luscious lips, L.A. Girl has an answer in...”"
+          }
+        },
+        "feedback_J9UdVV": {
+          "type": "Feedback",
+          "settings": {
+            "userRating": 5,
+            "userName": "SM",
+            "feedbackText": "“From prepping to ace the base to those defined, to those luscious lips, L.A. Girl has an answer in...”"
+          }
+        },
+        "feedback_FYpYkq": {
+          "type": "Feedback",
+          "settings": {
+            "userRating": 5,
+            "userName": "SR",
+            "feedbackText": "“From prepping to ace the base to those defined, to those luscious lips, L.A. Girl has an answer in...”"
+          }
+        }
+      },
+      "block_order": [
+        "feedback_w3rT99",
+        "feedback_J9UdVV",
+        "feedback_FYpYkq"
+      ],
+      "custom_css": [
+        ".feedback-slider-container::before {background: #f3f3f3;}",
+        ".slick-prev-btn {top: 40%; left: 15px;}",
+        ".slick-next-btn {top: 40%; right: 15px;}"
+      ],
+      "settings": {
+        "mainImage": "shopify:\/\/shop_images\/carbon.jpg",
+        "mainLogo": "shopify:\/\/shop_images\/cb.svg",
+        "heartColor": "#b8d215",
+        "viewAllBtn": false,
+        "home_featured_products": "face",
+        "backgroundcolor": "",
+        "smallNumber": 2,
+        "mediumNumber": 2.8,
+        "largeNumber": 2,
+        "extraLargeNumber": 2.8
+      }
+    },
+    "product_collection_slides_egtjfN": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "New in makeup",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#fff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "face",
+        "viewAllBtn": true,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "c7de5088-eebd-4c7f-ac70-129951980a8a": {
+      "type": "Limelight",
+      "blocks": {
+        "a4a148c1-fff4-4d40-8a9e-5072ba4317a0": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_176_3.png",
+            "wikdfytasidf": "shopify:\/\/shop_images\/ca9d96a6f46f4f9785f491ed7495d841.gif",
+            "weuofryhwei": "<p>Makeup Revolution’s Blush Bomb - featured in <strong>NDTV<\/strong>.<\/p>"
+          }
+        },
+        "c576a9a7-9865-43f7-a354-f64a7bbe50fc": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_176_4.png",
+            "wikdfytasidf": "shopify:\/\/shop_images\/e361239b9d7e72b5f54063007a39407c.gif",
+            "weuofryhwei": "<p>Makeup Revolution’s Blush Bomb - featured in <strong>Pinkvilla<\/strong>.<\/p>"
+          }
+        },
+        "cb43249e-d2d5-4734-8b86-13c7c6cb2223": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_176_5.png",
+            "wikdfytasidf": "shopify:\/\/shop_images\/e18c1dc92e66eee30a263e5fecda2bc9.gif",
+            "weuofryhwei": "<p>Makeup Revolution’s Blush Bomb - featured in <strong>NDTV<\/strong><\/p>"
+          }
+        },
+        "c2191077-e8fd-48d2-90f7-2fa08bb85a87": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_176_4.png",
+            "wikdfytasidf": "shopify:\/\/shop_images\/e361239b9d7e72b5f54063007a39407c.gif",
+            "weuofryhwei": "<p>Makeup Revolution’s Blush Bomb - featured in <strong>Pinkvilla<\/strong>.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "a4a148c1-fff4-4d40-8a9e-5072ba4317a0",
+        "c576a9a7-9865-43f7-a354-f64a7bbe50fc",
+        "cb43249e-d2d5-4734-8b86-13c7c6cb2223",
+        "c2191077-e8fd-48d2-90f7-2fa08bb85a87"
+      ],
+      "custom_css": [
+        ".limelight-container::before {background: #ffe9f2;}"
+      ],
+      "settings": {
+        "qsirguwfh": "IN THE LIMELIGHT",
+        "smallNumber": 2,
+        "mediumNumber": 3,
+        "largeNumber": 4,
+        "defaultNumber": 4
+      }
+    },
+    "e325ee6f-c951-4284-bb51-67370640b729": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "New in Skin",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#ffffff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "i-heart-revolution-makeup",
+        "viewAllBtn": false,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "63c0511b-a755-4a28-83d2-c49f3e90c1f9": {
+      "type": "Reviews-Banner",
+      "blocks": {
+        "034ebefb-60cf-439a-b97a-be46459c5f46": {
+          "type": "Image",
+          "settings": {
+            "dasfdf": "shopify:\/\/shop_images\/signin-banner.jpg",
+            "asdasdasd": "shopify:\/\/shop_images\/signin-banner.jpg",
+            "sdfgsdfsd": "",
+            "urlaftrlogin": "",
+            "dflkjghdfjkg": "",
+            "dfsdf": "",
+            "txtdfsdf": ""
+          }
+        }
+      },
+      "block_order": [
+        "034ebefb-60cf-439a-b97a-be46459c5f46"
+      ],
+      "settings": {
+        "qsirguwfh": ""
+      }
+    },
+    "f0c0f0bc-8cde-4215-b564-ff33eac90b2c": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "New in personal care",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#ffffff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "face",
+        "viewAllBtn": false,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "8183ba8c-3d71-437d-82f8-91eb8a4b3928": {
+      "type": "multi-carousel",
+      "blocks": {
+        "c46d377c-7e38-43f8-a9a4-bd4502c2e38f": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/crausel-img3.jpg",
+            "dealsURL": "shopify:\/\/collections\/derma-e",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "21b09ee9-74eb-4d6c-ae23-155645ef0ed3": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/deals-gif1.gif",
+            "dealsURL": "shopify:\/\/collections\/face",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "3c0cf94b-ad03-4df4-9dc6-055c0f2b6281": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/crausel-img2.jpg",
+            "dealsURL": "shopify:\/\/collections\/derma-e",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "0e6b4a89-59e2-4685-98e1-d30a734713ce": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/deals-img1.jpg",
+            "dealsURL": "shopify:\/\/collections\/eveline-cosmetics",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "5904a3b4-7259-4135-90a9-c4cb5f11d4c4": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/crausel-img3.jpg",
+            "dealsURL": "shopify:\/\/collections\/face",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "2fd8819d-41f9-4f50-8c5b-2b86e471497b": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/deals-gif1.gif",
+            "dealsURL": "shopify:\/\/collections\/fragrances",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "3e56c4be-5f1a-463f-9a4e-803702fdcd4d": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/crausel-img2.jpg",
+            "dealsURL": "shopify:\/\/collections\/accessories",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "e4fd9230-9cc9-49ec-8dae-360a201afa2c": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/deals-img1.jpg",
+            "dealsURL": "shopify:\/\/collections\/bh-cosmetics",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "c46d377c-7e38-43f8-a9a4-bd4502c2e38f",
+        "21b09ee9-74eb-4d6c-ae23-155645ef0ed3",
+        "3c0cf94b-ad03-4df4-9dc6-055c0f2b6281",
+        "0e6b4a89-59e2-4685-98e1-d30a734713ce",
+        "5904a3b4-7259-4135-90a9-c4cb5f11d4c4",
+        "2fd8819d-41f9-4f50-8c5b-2b86e471497b",
+        "3e56c4be-5f1a-463f-9a4e-803702fdcd4d",
+        "e4fd9230-9cc9-49ec-8dae-360a201afa2c"
+      ],
+      "settings": {
+        "sectionTitle": "Drool Over Deals",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "3\/4",
+        "lagreScreenGap": 12,
+        "smallScreenGap": 10,
+        "bottomTextBackground": "linear-gradient(0deg, #292929 0%, rgba(47, 47, 47, 0.84) 20.87%, rgba(47, 47, 47, 0.43) 55.83%, rgba(74, 74, 74, 0.00) 93.04%)",
+        "smallNumber": 2,
+        "mediumNumber": 2.8,
+        "largeNumber": 3.8,
+        "defaultNumber": 3.8
+      }
+    }
+  },
+  "order": [
+    "main",
+    "3ca2d601-1f92-42d7-8c19-e304e97fabe9",
+    "multi_carousel_LqkECe",
+    "a67d1187-40f6-4f9d-adcb-201f8ff7fb19",
+    "c478d4b1-ad16-4b47-8999-e5c214a7b03b",
+    "04b1addd-5828-4da5-a467-1ac279f549d2",
+    "product_collection_slides_egtjfN",
+    "c7de5088-eebd-4c7f-ac70-129951980a8a",
+    "e325ee6f-c951-4284-bb51-67370640b729",
+    "63c0511b-a755-4a28-83d2-c49f3e90c1f9",
+    "f0c0f0bc-8cde-4215-b564-ff33eac90b2c",
+    "8183ba8c-3d71-437d-82f8-91eb8a4b3928"
+  ]
+}

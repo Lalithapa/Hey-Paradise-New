@@ -1,0 +1,133 @@
+<section id="levelsBenefits">
+    <div class="container reward-section">
+        <div class="level-fun-container">
+            <p class="reward-section-title">Level Up The Fun</p>
+            <div class="level-fun-card-container">
+                {% for block in section.blocks %}
+                <div class="level-fun-card-slide">
+                    <div class="level-fun-card " data-bg="{{ block.settings.backgroundColor }}">
+                        <div class="level-fun-card-img-container d-flex justify-content-center align-items-center">
+                            <img src="{{ block.settings.brandImage | image_url}}" alt="blish"
+                                class="level-fun-card-img img-fluid">
+                        </div>
+                        <div class="level-fun-card-body-container">
+                            <div class="level-fun-card-brand-container d-flex align-items-center flex-column">
+                                <img src="{{ block.settings.brandLogo | image_url}}" alt="brand"
+                                    class="level-fun-card-brand">
+                                <p class="level-fun-brand-text">{{ block.settings.brandLogoText }}</p>
+                            </div>
+                            {{ block.settings.offers }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+"name": "Reward Guide",
+"settings": [],
+"blocks": [
+{
+"name": "Level Up The Fun",
+"type": "text",
+"settings": [
+{
+"type": "image_picker",
+"id": "brandImage",
+"label": "Add brand Image"
+},
+{
+"type": "image_picker",
+"id": "brandLogo",
+"label": "Add Brand Logo"
+},
+{
+"type": "text",
+"id": "brandLogoText",
+"label": "Add Brand Logo Text"
+},
+{
+"type": "select",
+"id": "backgroundColor",
+"label": "Choose Background Color",
+"options": [
+{
+"label": "Pink",
+"value": "pink"
+},
+{
+"label": "Yellow",
+"value": "yellow"
+},
+{
+"label": "Sea-Green",
+"value": "sea-green"
+}
+]
+},
+{
+"type": "html",
+"id": "offers",
+"label": "Add offers in <ul> tag and <li> tag"
+        }
+        ]
+        }
+        ],
+        "presets": [
+        {
+        "name": "Reward Guide"
+        }
+        ]
+        }
+        {% endschema %}
+
+        {% stylesheet %}
+        {% endstylesheet %}
+
+        <script>
+            $('.level-fun-card-container').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                centerMode: false,
+                // centerPadding: '40px',
+                arrows: false,
+
+                responsive: [
+                    {
+                        breakpoint: 992,
+                        settings: {
+                            slidesToShow: 1.5,
+                        },
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1.5,
+                        },
+                    },
+
+                    {
+                        breakpoint: 460,
+                        settings: {
+                            slidesToShow: 1,
+                        },
+                    },
+                ],
+            });
+
+      $(document).ready(function () {
+    let allSlides = $('.level-fun-card-slide');
+    let maxHeightOfSlide = Math.max.apply(
+        null,
+        allSlides.map(function () {
+            return $(this).height();
+        }).get()
+    );
+    allSlides.height(maxHeightOfSlide);
+});
+        </script>

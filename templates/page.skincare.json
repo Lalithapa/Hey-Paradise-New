@@ -1,0 +1,501 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "3ca2d601-1f92-42d7-8c19-e304e97fabe9": {
+      "type": "Main_Banner",
+      "blocks": {
+        "image_7rdwkg": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/banner2.gif-1_1_2100x_fe657133-59c4-4645-9a17-b72d34b9bc79.webp",
+            "image_mobile": "shopify:\/\/shop_images\/banner2gif_md_1_150x_0d8028f6-c840-49f3-854a-c5bba211df61.webp",
+            "block_link_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_7rdwkg"
+      ],
+      "settings": {
+        "showCat": false,
+        "showTiles": "Category"
+      }
+    },
+    "multi_carousel_CGmk8E": {
+      "type": "Multi-carousel",
+      "blocks": {
+        "careproof_nzKDkG": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/5057566712811_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Skin"
+          }
+        },
+        "careproof_qF9ibL": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/5057566712224_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Face"
+          }
+        },
+        "careproof_H9gAh7": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/5057566712590_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "All"
+          }
+        },
+        "careproof_G6pxDi": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/5057566712613_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Makeup"
+          }
+        },
+        "careproof_QgJnK9": {
+          "type": "careproof",
+          "settings": {
+            "careproofImg": "shopify:\/\/shop_images\/5057566712255_3.jpg",
+            "careproofURL": "",
+            "careproofResult": "",
+            "careproofText": "",
+            "careproofProduct": "Eyes"
+          }
+        }
+      },
+      "block_order": [
+        "careproof_nzKDkG",
+        "careproof_qF9ibL",
+        "careproof_H9gAh7",
+        "careproof_G6pxDi",
+        "careproof_QgJnK9"
+      ],
+      "settings": {
+        "sectionTitle": "Shop By category",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "1",
+        "lagreScreenGap": 12,
+        "smallScreenGap": 10,
+        "bottomTextBackground": "linear-gradient(0deg, #292929 0%, rgba(47, 47, 47, 0.84) 20.87%, rgba(47, 47, 47, 0.43) 55.83%, rgba(74, 74, 74, 0.00) 93.04%)",
+        "smallNumber": 2,
+        "mediumNumber": 3,
+        "largeNumber": 4,
+        "defaultNumber": 4
+      }
+    },
+    "a67d1187-40f6-4f9d-adcb-201f8ff7fb19": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Selling Fast",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#fff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "face",
+        "viewAllBtn": false,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "5e6d6f0e-47a1-4b13-891b-2f11be24f86c": {
+      "type": "multi-carousel",
+      "blocks": {
+        "29165f0a-dd17-4140-9dc4-19f64dfa42ff": {
+          "type": "brandRating",
+          "settings": {
+            "brandRatingImg": "shopify:\/\/shop_images\/cb-1.jpg",
+            "brandRatingURL": "",
+            "brandRatingTitle": "CARBON THEORY",
+            "brandRatingStar": 4,
+            "brandRatingText": "Stack up on award winning skincare solutions.",
+            "brandRatingBtnText": "Shop Now"
+          }
+        },
+        "29ef88cc-94ab-4bb5-9b53-ef3eeb68117d": {
+          "type": "brandRating",
+          "settings": {
+            "brandRatingImg": "shopify:\/\/shop_images\/trimaay.jpg",
+            "brandRatingURL": "",
+            "brandRatingTitle": "TRIMAAY",
+            "brandRatingStar": 5,
+            "brandRatingText": "Stack up on award winning skincare solutions.",
+            "brandRatingBtnText": "Shop Now"
+          }
+        },
+        "7e07f6a5-865c-40d3-b60c-75102db90eee": {
+          "type": "brandRating",
+          "settings": {
+            "brandRatingImg": "shopify:\/\/shop_images\/cb-1.jpg",
+            "brandRatingURL": "",
+            "brandRatingTitle": "CARBON THEORY",
+            "brandRatingStar": 5,
+            "brandRatingText": "Stack up on award winning skincare solutions.",
+            "brandRatingBtnText": "Shop Now"
+          }
+        },
+        "4ae8eb50-5886-4739-86a0-45d8293137f3": {
+          "type": "brandRating",
+          "settings": {
+            "brandRatingImg": "shopify:\/\/shop_images\/trimaay.jpg",
+            "brandRatingURL": "",
+            "brandRatingTitle": "TRIMAAY",
+            "brandRatingStar": 4,
+            "brandRatingText": "Stack up on award winning skincare solutions.",
+            "brandRatingBtnText": "Shop Now"
+          }
+        },
+        "f631473c-4c14-42fb-852b-47d95fd71a47": {
+          "type": "brandRating",
+          "settings": {
+            "brandRatingImg": "shopify:\/\/shop_images\/cb-1.jpg",
+            "brandRatingURL": "",
+            "brandRatingTitle": "CARBON THEORY",
+            "brandRatingStar": 5,
+            "brandRatingText": "Stack up on award winning skincare solutions.",
+            "brandRatingBtnText": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "29165f0a-dd17-4140-9dc4-19f64dfa42ff",
+        "29ef88cc-94ab-4bb5-9b53-ef3eeb68117d",
+        "7e07f6a5-865c-40d3-b60c-75102db90eee",
+        "4ae8eb50-5886-4739-86a0-45d8293137f3",
+        "f631473c-4c14-42fb-852b-47d95fd71a47"
+      ],
+      "settings": {
+        "sectionTitle": "Trusted Skincare Selections",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "3\/4",
+        "lagreScreenGap": 12,
+        "smallScreenGap": 10,
+        "bottomTextBackground": "linear-gradient(0deg, #292929 0%, rgba(47, 47, 47, 0.84) 20.87%, rgba(47, 47, 47, 0.43) 55.83%, rgba(74, 74, 74, 0.00) 93.04%)",
+        "smallNumber": 2,
+        "mediumNumber": 2.5,
+        "largeNumber": 3,
+        "defaultNumber": 3
+      }
+    },
+    "c478d4b1-ad16-4b47-8999-e5c214a7b03b": {
+      "type": "Image_carousel",
+      "blocks": {
+        "dfff9ff2-b9af-4a97-9397-fa74ef657782": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3972.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "a7eeee0e-21c8-4ceb-a23e-a90668e33756": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3974.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "8c907700-949a-40fe-8b39-2e1b0ab64bba": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3973.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "29736856-9866-408c-b5a4-726b2b358bbd": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3972.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "06a74858-ce3c-4ebd-8c60-89e12a0d6eb0": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3973.png",
+            "threedtxt": "Discover More"
+          }
+        },
+        "9f2da14f-a56d-4276-adb6-7820c975c6d3": {
+          "type": "Image",
+          "settings": {
+            "threedlink": "",
+            "threeddd": "shopify:\/\/shop_images\/Rectangle_3974.png",
+            "threedtxt": "Discover More"
+          }
+        }
+      },
+      "block_order": [
+        "dfff9ff2-b9af-4a97-9397-fa74ef657782",
+        "a7eeee0e-21c8-4ceb-a23e-a90668e33756",
+        "8c907700-949a-40fe-8b39-2e1b0ab64bba",
+        "29736856-9866-408c-b5a4-726b2b358bbd",
+        "06a74858-ce3c-4ebd-8c60-89e12a0d6eb0",
+        "9f2da14f-a56d-4276-adb6-7820c975c6d3"
+      ],
+      "settings": {
+        "qsirguwfh": "",
+        "sfswdef": "Dive into skincare",
+        "bgcolor": true,
+        "dfasasd": "#fff0ea"
+      }
+    },
+    "04b1addd-5828-4da5-a467-1ac279f549d2": {
+      "type": "Brand_Spotlight",
+      "custom_css": [
+        ".feedback-slider-container::before {background: #f3fff8;}",
+        ".slick-prev-btn {top: 40%; left: 15px;}",
+        ".slick-next-btn {top: 40%; right: 15px;}"
+      ],
+      "settings": {
+        "mainImage": "shopify:\/\/shop_images\/carbon.jpg",
+        "mainLogo": "shopify:\/\/shop_images\/lamel.svg",
+        "heartColor": "",
+        "viewAllBtn": false,
+        "home_featured_products": "face",
+        "backgroundcolor": "",
+        "smallNumber": 2,
+        "mediumNumber": 2,
+        "largeNumber": 2,
+        "extraLargeNumber": 2
+      }
+    },
+    "63c0511b-a755-4a28-83d2-c49f3e90c1f9": {
+      "type": "Reviews-Banner",
+      "blocks": {
+        "034ebefb-60cf-439a-b97a-be46459c5f46": {
+          "type": "Image",
+          "settings": {
+            "dasfdf": "shopify:\/\/shop_images\/signin-banner.jpg",
+            "asdasdasd": "shopify:\/\/shop_images\/signin-banner.jpg",
+            "sdfgsdfsd": "",
+            "urlaftrlogin": "",
+            "dflkjghdfjkg": "",
+            "dfsdf": "",
+            "txtdfsdf": ""
+          }
+        }
+      },
+      "block_order": [
+        "034ebefb-60cf-439a-b97a-be46459c5f46"
+      ],
+      "settings": {
+        "qsirguwfh": ""
+      }
+    },
+    "f0c0f0bc-8cde-4215-b564-ff33eac90b2c": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Baggit’ when it’s hot",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#fff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "face",
+        "viewAllBtn": false,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "194d7e87-96b5-4763-86ef-96ff55f8f8cf": {
+      "type": "multi-carousel",
+      "blocks": {
+        "a55f48f0-b99e-4852-9215-133bf6f6313e": {
+          "type": "concern",
+          "settings": {
+            "concernImg": "shopify:\/\/shop_images\/deals-img1.jpg",
+            "concernURL": "",
+            "concernTitle": "Acne & Blemishes",
+            "concernText": "Treat Blackheads, Pimples, Hormonal Flare-ups & more.",
+            "concernBtnText": "Shop Now"
+          }
+        },
+        "e3b71bc5-ec11-4af0-930e-ae30014fd7fa": {
+          "type": "concern",
+          "settings": {
+            "concernImg": "shopify:\/\/shop_images\/crausel-img2.jpg",
+            "concernURL": "",
+            "concernTitle": "Acne & Blemishes",
+            "concernText": "Treat Blackheads, Pimples, Hormonal Flare-ups & more.",
+            "concernBtnText": "Shop Now"
+          }
+        },
+        "3c9a9400-ec74-4831-80a2-14d6fe52fddc": {
+          "type": "concern",
+          "settings": {
+            "concernImg": "shopify:\/\/shop_images\/deals-img1.jpg",
+            "concernURL": "",
+            "concernTitle": "Acne & Blemishes",
+            "concernText": "Treat Blackheads, Pimples, Hormonal Flare-ups & more.",
+            "concernBtnText": "Shop Now"
+          }
+        },
+        "4a73ea10-579c-4995-b86d-87c42a22e3b2": {
+          "type": "concern",
+          "settings": {
+            "concernImg": "shopify:\/\/shop_images\/crausel-img2.jpg",
+            "concernURL": "",
+            "concernTitle": "Acne & Blemishes",
+            "concernText": "Treat Blackheads, Pimples, Hormonal Flare-ups & more.",
+            "concernBtnText": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "a55f48f0-b99e-4852-9215-133bf6f6313e",
+        "e3b71bc5-ec11-4af0-930e-ae30014fd7fa",
+        "3c9a9400-ec74-4831-80a2-14d6fe52fddc",
+        "4a73ea10-579c-4995-b86d-87c42a22e3b2"
+      ],
+      "settings": {
+        "sectionTitle": "What’s your concern?",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "3\/4",
+        "lagreScreenGap": 12,
+        "smallScreenGap": 10,
+        "bottomTextBackground": "linear-gradient(0deg, #292929 0%, rgba(47, 47, 47, 0.84) 20.87%, rgba(47, 47, 47, 0.43) 55.83%, rgba(74, 74, 74, 0.00) 93.04%)",
+        "smallNumber": 1.5,
+        "mediumNumber": 2,
+        "largeNumber": 2.8,
+        "defaultNumber": 3
+      }
+    },
+    "product_collection_slides_LrLDDx": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Skincare in Budget",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#fff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "derma-e",
+        "viewAllBtn": true,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "8183ba8c-3d71-437d-82f8-91eb8a4b3928": {
+      "type": "multi-carousel",
+      "blocks": {
+        "c46d377c-7e38-43f8-a9a4-bd4502c2e38f": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/deals-gif1.gif",
+            "dealsURL": "shopify:\/\/collections",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "b7019eb7-05c9-454e-8ae1-09fd7164b154": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/crausel-img3.jpg",
+            "dealsURL": "shopify:\/\/collections\/bath-body",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "21b09ee9-74eb-4d6c-ae23-155645ef0ed3": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/deals-gif1.gif",
+            "dealsURL": "shopify:\/\/collections\/carbon-theory",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "17afa4cd-38a1-4b78-b1ce-7583086e6b51": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/crausel-img3.jpg",
+            "dealsURL": "shopify:\/\/collections\/carbon-theory",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "012092ea-f4c3-4968-aaad-37ef7b4e3ce8": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/crausel-img2.jpg",
+            "dealsURL": "shopify:\/\/collections\/accessories",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "c46d377c-7e38-43f8-a9a4-bd4502c2e38f",
+        "b7019eb7-05c9-454e-8ae1-09fd7164b154",
+        "21b09ee9-74eb-4d6c-ae23-155645ef0ed3",
+        "17afa4cd-38a1-4b78-b1ce-7583086e6b51",
+        "012092ea-f4c3-4968-aaad-37ef7b4e3ce8"
+      ],
+      "settings": {
+        "sectionTitle": "Skincare Value Mix",
+        "comboSection": false,
+        "bgColor": "",
+        "aspectRatio": "3\/4",
+        "lagreScreenGap": 12,
+        "smallScreenGap": 10,
+        "bottomTextBackground": "linear-gradient(0deg, #292929 0%, rgba(47, 47, 47, 0.84) 20.87%, rgba(47, 47, 47, 0.43) 55.83%, rgba(74, 74, 74, 0.00) 93.04%)",
+        "smallNumber": 2,
+        "mediumNumber": 3,
+        "largeNumber": 3.8,
+        "defaultNumber": 3.8
+      }
+    }
+  },
+  "order": [
+    "main",
+    "3ca2d601-1f92-42d7-8c19-e304e97fabe9",
+    "multi_carousel_CGmk8E",
+    "a67d1187-40f6-4f9d-adcb-201f8ff7fb19",
+    "5e6d6f0e-47a1-4b13-891b-2f11be24f86c",
+    "c478d4b1-ad16-4b47-8999-e5c214a7b03b",
+    "04b1addd-5828-4da5-a467-1ac279f549d2",
+    "63c0511b-a755-4a28-83d2-c49f3e90c1f9",
+    "f0c0f0bc-8cde-4215-b564-ff33eac90b2c",
+    "194d7e87-96b5-4763-86ef-96ff55f8f8cf",
+    "product_collection_slides_LrLDDx",
+    "8183ba8c-3d71-437d-82f8-91eb8a4b3928"
+  ]
+}

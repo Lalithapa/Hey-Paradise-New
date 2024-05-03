@@ -1,0 +1,460 @@
+{{ 'gridCollection.css' | asset_url | stylesheet_tag }}
+{% assign offsetCollections = section.settings.productStarts %}
+{% assign filterApplied = false %}
+<!-- filter section -->
+<section id="grid_collection">
+  <div class="container collCount d-lg-none">
+    <strong>
+      {%- if template contains 'collection' -%}
+        {{ collection.all_products_count }}
+        {% else %}
+        {{ search.results_count | escape | capitalize }}
+      {%- endif -%}
+    </strong>
+    Items for&nbsp; 
+    {%- if template contains 'collection' -%}
+      {{ collection.title | capitalize -}}
+    {%- else -%}
+      {{ search.terms | escape | capitalize }}
+    {%- endif -%}
+  </div>
+  <div class="filter-container mx-auto">
+    {%- if template contains 'collection' -%}
+      <div class="container filter-results">
+        <div class="collectionCount">
+          {{ collection.title | capitalize -}}
+        </div>
+        {% render 'filter_and_sort', collection: collection, filterApplied: filterApplied %}
+      </div>
+    {% elsif template == 'search' %}
+      <div class="container filter-results">
+        <div class="collectionCount d-flex">
+          <span>
+            {{ search.results_count | escape | capitalize }}
+          </span>&nbsp;Items for {{ search.terms | escape | capitalize }}
+        </div>
+        {% render 'filter_and_sort', collection: search, filterApplied: filterApplied %}
+      </div>
+    {%- endif -%}
+  </div>
+  <div class="container">
+    <div>
+      {%- for filter in collection.filters -%}
+        {%- for filter_value in filter.active_values -%}
+          {% assign offsetCollections = 0 %}
+          {% assign filterApplied = true %}
+        {% endfor %}
+      {% endfor %}
+      {% liquid
+        assign adsPosition = 0
+        assign firstBanner = 0
+        assign medium_container = 'col-6 col-md-4 col-lg-3'
+        assign large_container = 'col-12 col-md-8 col-lg-6'
+        assign defaultAd1 = 'https://cdn.shopify.com/s/files/1/0673/6396/3172/files/4038d63f76309199f1d7261b57d4cb24.gif?v=1697703198'
+        assign defaultAd2 = 'https://cdn.shopify.com/s/files/1/0673/6396/3172/files/SKINCARE_Video_02_AdobeExpress_1.gif?v=1693634612'
+        assign defaultAd3 = 'https://www.heyparadise.com/cdn/shop/files/Desktop_Banner.png?v=1709021683'
+        if section.settings.showAd1 and section.settings.ad1_container
+          assign firstBanner = 3
+        else
+          assign firstBanner = 1
+        endif 
+         %}
+         {% if template contains 'collection' %}
+        {% paginate collection.products by 24 %}
+          <div class="row mx-auto d-flex" id="grid-loader">
+            {% for product in collection.products offset: offsetCollections %}
+              {% unless filterApplied %}
+              {% if adsPosition == firstBanner and section.settings.showAd1 != blank %}
+                <div
+                  class="{% if section.settings.ad1_container %}{{ medium_container }}{% else %}{{ large_container }}{% endif %} order-1 advertisement-cover"
+                >
+                  <a
+                    href="{% if collection.metafields.custom.first_adv_url != blank %} {{ collection.metafields.custom.first_adv_url }} {% else %} # {% endif %}"
+                    class="no-line no-hover w-100"
+                  >
+                    <img
+                      class="advertisement-banner"
+                      src="{% if collection.metafields.custom.advertisement_1 %} {{ collection.metafields.custom.advertisement_1 | image_url }}
+                        {% else %}{{ defaultAd1 }} {% endif %}"
+                      alt="{{ collection.metafields.custom.advertisement_1 | escape }} img"
+                      {% if section.settings.ad1_container %}
+                        width="296"
+                      {% else %}
+                        width="680"
+                      {% endif %}
+                      height="648"
+                    >
+                  </a>
+                </div>
+              {% elsif adsPosition == 8 and section.settings.showAd2 != blank %}
+                <div
+                  class="{% if section.settings.ad2_container %}{{ medium_container }}{% else %}{{ large_container }}{% endif %} order-1 advertisement-cover"
+                >
+                  <a href="{% if collection.metafields.custom.second_adv_url != blank %} {{ collection.metafields.custom.second_adv_url }}{% else %} # {% endif %}" class="no-line no-hover w-100">
+                    <img
+                      class="advertisement-banner"
+                      loading="lazy"
+                      src="{% if collection.metafields.custom.advertisement_2 %} {{ collection.metafields.custom.advertisement_2 | image_url }}
+                        {% else %} {{ defaultAd2 }} {% endif %}"
+                      alt="{{ collection.metafields.custom.advertisement_2 | escape }}img"
+                      {% if section.settings.ad2_container %}
+                        width="296"
+                      {% else %}
+                        width="680"
+                      {% endif %}
+                      height="648"
+                    >
+                  </a>
+                </div>
+              {% elsif adsPosition == 13 and section.settings.showAd3 != blank %}
+                <div
+                  class="{% if section.settings.ad3_container %}{{ medium_container }}{% else %}{{ large_container }}{% endif %} order-1 advertisement-cover"
+                >
+                  <a href="{% if collection.metafields.custom.third_adv_url != blank %} {{ collection.metafields.custom.third_adv_url }} {% else %} # {% endif %}" class="no-line no-hover w-100">
+                    <img  
+                      class="advertisement-banner"
+                      loading="lazy"
+                      src="
+                        {% if collection.metafields.custom.advertisement_3 %} {{ collection.metafields.custom.advertisement_3 | image_url }}
+                        {% else %} {{ defaultAd3 }} {% endif %}
+                      "
+                      alt="{{ collection.metafields.custom.advertisement_3 | escape }} img"
+                      {% if section.settings.ad3_container %}
+                        width="296"
+                      {% else %}
+                        width="680"
+                      {% endif %}
+                      height="648"
+                  ></a>
+                </div>
+              {% endif %}
+              {% endunless %}
+              <div
+                class="{{ medium_container }} product-cards-for-collection {% if forloop.first or forloop.index == 2 %} order-0 order-md-1 {% else %} order-1 {% endif %}"
+              >
+                {% render 'main_product_cards',
+                  product: product,
+                  sectionId: splicesectionId,
+                  card_margin: false,
+                  show_button: true
+                %}
+              </div>
+              {% unless filterApplied %}
+                {% cycle '', '', '', '', '', '', '', '', '', '','', '', '', '', '', '', '', '', '', '', adsPosition: 24 %}
+                {% assign adsPosition = adsPosition | plus: 1 %}
+              {% endunless %}
+            {% else %}
+              <p>no matches</p>
+            {% endfor %}
+          </div>
+          {% if paginate.pages > 1 %}
+            <input type="hidden" value="{{ paginate.next.url }}" data-next-link="{{ paginate.next.url }}">
+            <input type="hidden" value="{{ paginate.pages }}" data-all-pages="{{ paginate.pages }}">
+            <input type="hidden" value="{{ paginate.current_page }}" data-this-page="{{ paginate.current_page }}">
+            <input type="hidden" value="{{ search.terms | escape }}" data-coll-url >
+
+            {% render 'skeleton' %}
+            <div class="load-more-container">
+                <button class="js-load-more">Load More</button>
+            </div>
+          {% endif %}
+        {% endpaginate %}
+        {% elsif template == 'search' %}
+          {% paginate search.results by 24 %}
+            <div class="row mx-auto d-flex" id="grid-loader">
+              {% for product in search.results %}
+                <div
+                  class="{{ medium_container }} product-cards-for-collection {% if forloop.first or forloop.index == 2 %} order-0 order-md-1 {% else %} order-1 {% endif %}"
+                >
+                  {% render 'main_product_cards',
+                    product: product,
+                    sectionId: splicesectionId,
+                    card_margin: false,
+                    show_button: true
+                  %}
+                </div>
+              {% else %}
+                <p>no matches</p>
+              {% endfor %}
+            </div>
+            {% if paginate.pages > 1 %}
+              <input type="hidden" value="{{ paginate.next.url }}" data-next-link>
+              <input type="hidden" value="{{ paginate.pages }}" data-all-pages>
+              <input type="hidden" value="{{ paginate.current_page }}" data-this-page>
+              <input type="hidden" value="{{ search.terms | escape }}" data-coll-url >
+  
+              {% render 'skeleton' %}
+              <div class="load-more-container">
+                  <p><span id="search_count_per_page" data-count="{{ paginate.current_page | times: paginate.page_size }}" dataAllItems="{{ paginate.items }}" >{{ paginate.current_page | times: paginate.page_size }}</span>/{{ paginate.items }}</p>
+                  <button class="js-load-more" >Load More</button>
+              </div>
+            {% endif %}
+          {% endpaginate %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+<style>
+  .search-results-container {
+    margin-top: 48px;
+  }
+  @media only screen and (max-width: 992px) {
+    .search-results-container,
+    #grid_collection {
+      margin-top: 24px;
+    }
+  }
+</style>
+{% if section.settings.margintop %}
+  <style>
+    #grid_collection{
+      margin-top:48px;
+    }
+  </style>
+{% endif %}
+
+<script>
+  var priceRangeSlider = $("#price-range"),priceRangeInput = $("#priceRange"),currentSortUrl = window.location.href,filterResults = document.querySelector('#grid-loader');
+  let minPrice = $(".min-price-display"),maxPrice = $(".max-price-display");
+   const filterBtn = document.querySelectorAll(".filter-btn"), filterSlide = document.querySelector(".filters-slide"), sortBtn = document.querySelectorAll(".sort-btn"), sortSlide = document.querySelector(".sort-by-slide"), overlay = document.querySelector(".overlay"),radioInputs = document.querySelectorAll(".sort-props input"); 
+  function getfilterResults(param) {
+    let errorResult = filterResults.innerHTML;
+    filterResults.innerHTML = '';
+       fetch(param)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(response.status);;
+          }
+          return response.text();
+        })
+        .then((text) => {
+          const resultsMarkup = new DOMParser().parseFromString(text, 'text/html').querySelector('#grid-loader').innerHTML;
+          filterResults.innerHTML = `${resultsMarkup}`;
+         // initializeQuickViewSlider();
+          $(".add-to-bag-btn button").on("click", function () {
+            handleAddToBagClick($(this), true);
+          });
+          
+          $("div[atc_cta='product']").on("click", function () {
+            handleAddToBagClick($(this), false);
+          });
+          // toggleFilterSlide();
+          // togglesortSlide();
+          return history.replaceState(null,null, param);
+        })
+        .catch((error) => {
+          filterResults.innerHTML = `${errorResult}`;
+          throw error;
+        });
+    }
+  function updatePriceRangeFilter(minValue, maxValue) { 
+    var currentUrl = window.location.href;
+    currentUrl = currentUrl.replace(/(\?|&)filter\.v\.price\.gte=\d+&filter\.v\.price\.lte=\d+/i, '');
+    var separator = currentUrl.indexOf('?') !== -1 ? '&' : '?';
+    var newUrl = `${currentUrl}${separator}filter.v.price.gte=${minValue}&filter.v.price.lte=${maxValue}`;
+    getfilterResults(newUrl);
+  }
+  $(function priceRange() {
+  priceRangeSlider.slider({
+    step: 1,
+    range: true,
+    min: 0,
+    max: parseFloat(priceRangeSlider.attr('max-range')),
+    values: [parseFloat(priceRangeSlider.attr('min')), parseFloat(priceRangeSlider.attr('max'))],
+    slide: function(event, ui) {
+      priceRangeInput.val(ui.values[0] + " - " + ui.values[1]);
+       $(minPrice).text("₹"+ui.values[0]);
+      $(maxPrice).text("₹"+ui.values[1]);
+    },
+    change: function(event, ui) {
+      updatePriceRangeFilter(ui.values[0], ui.values[1]);
+    }
+  });
+ // Set initial values for the input field
+  priceRangeInput.val(priceRangeSlider.slider("values", 0) + " - " + priceRangeSlider.slider("values", 1));
+  // Update the URL and trigger filter when input changes
+  priceRangeInput.on('input', function() {
+    var values = $(this).val().split(" - ");
+    updatePriceRangeFilter(parseFloat(values[0]), parseFloat(values[1]));
+  });
+    radioInputs.forEach(function (radioInput) {
+        radioInput.addEventListener("change", function (e) {
+          e.preventDefault();
+          currentSortUrl = currentSortUrl.replace(/([&?])sort_by=[^&]*(&|$)/i, '$1');
+          let value = e.target.value, separator = currentSortUrl.indexOf('?') !== -1 ? '&' : '?', newUrl = `${currentSortUrl}${separator}sort_by=${value}`;
+           getfilterResults(newUrl);
+        });
+      });
+     function toggleFilterSlide(){
+        filterSlide.classList.toggle("open");
+        overlay.classList.toggle("overlay-open");
+        $('html').toggleClass('overflow-hidden');
+      };
+      function togglesortSlide(){
+        sortSlide.classList.toggle("open");
+        overlay.classList.toggle("overlay-open");
+         $('html').toggleClass('overflow-hidden');
+      };
+      filterBtn.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          toggleFilterSlide();
+        });
+      });
+      sortBtn.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          togglesortSlide();
+        });
+      });
+
+      overlay.addEventListener("click", () => {
+        filterSlide.classList.remove("open");
+        sortSlide.classList.remove("open");
+        overlay.classList.remove("overlay-open");
+        $('html').removeClass('overflow-hidden');
+      });
+});
+  function collectionJs() {
+      $(".js-load-more").on("click", async function () {
+        $("#skeleton").removeClass("d-none");
+        $(".js-load-more").addClass("d-none");
+        var $this = $(this),
+          totalPages = parseInt($("[data-all-pages]").val()),
+          currentPage = parseInt($("[data-this-page]").val()),
+          datacollurl = $("[data-coll-url]").val(),
+          dataAllItems = $("#search_count_per_page").attr("dataAllItems"),
+          loadedPdpCount = $("#search_count_per_page").attr("data-count");
+        $this.attr("disabled", true);
+        $this.find("[load-more-text]").addClass("hide");
+        $this.find("[loader]").removeClass("hide");
+        var nextUrl = $("[data-next-link]").val();
+        var current_page_new = currentPage + 1;
+        var next_coll = currentPage + 2;
+        await $.ajax({
+          url: nextUrl,
+          type: "GET",
+          dataType: "html",
+          success: function (responseHTML) {
+            window.location.pathname.includes("/collections/")
+              ? $("[data-next-link]").val(
+                `/collections/{{ collection.handle }}?page=${next_coll}`
+              )
+              : $("[data-next-link]").val(
+                `/search?page=${next_coll}&q=${datacollurl}`
+              );
+            $("[data-this-page]").val(current_page_new);
+            $("#grid-loader").append($(responseHTML).find("#grid-loader").html());
+            $("#search_count_per_page").text(`${ loadedPdpCount * current_page_new }`);
+            //nonWishBtn = document.querySelectorAll('.b-wishlist_button');
+            //productFirstVariant = document.querySelectorAll('.b-add_to_bagId');
+            //initializeQuickViewSlider();
+          },
+          complete: function () {
+            if (current_page_new < totalPages) {
+              $this.attr("disabled", false);
+            }
+            if (current_page_new >= totalPages) {
+              $this
+                .text("No More Products Left")
+                .removeClass("hide");
+                $("#search_count_per_page").text(`${dataAllItems}`);
+            }
+          },
+        });
+        $("#skeleton").addClass("d-none");
+        $(".js-load-more").removeClass("d-none");
+      });
+    }
+    document.addEventListener("DOMContentLoaded",collectionJs);
+    // js for collection filter bar 
+    $(document).ready(function() {
+    {% if filterApplied == true and template != "search" %}
+      setTimeout(() => $('html, body').animate({
+          scrollTop: $("#grid_collection").offset().top - 100
+      }, 500), 500);
+      {% endif %}
+      const fixedDiv = $('.filter-container');
+      const footer = $("footer");
+      $(window).scroll(function() {
+        let scrollPosition = $(window).scrollTop();
+        let footerPosition = footer.offset().top;
+        if (scrollPosition > footerPosition - $(window).height()) {
+          fixedDiv.fadeOut(200);
+        } else {
+          fixedDiv.fadeIn(300);
+        }
+      });
+    });
+</script>
+{% schema %}
+{
+"name": "Main Collection",
+"settings": [
+{
+"type": "text",
+"id": "maindtext",
+"label": "Add Your Heading Here"
+},
+  {
+"type": "checkbox",
+"id": "margintop",
+"label": "Have Hey! Heighlights in this page?",
+"info": "If you check it, this will add magrin on top."
+},
+  {
+      "type": "number",
+      "id": "productStarts",
+      "label": "Products Starts From",
+      "info": "Enter number from where you want to starts in this slider",
+      "default" : 0
+    },
+{
+"type": "checkbox",
+"id": "showAd1",
+"label": "Show First Advertisement",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "ad1_container",
+"label": "First Advertisement Size - If unselected -> Large ",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "showAd2",
+"label": "Show Second Advertisement",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "ad2_container",
+"label": "Second Advertisement Size - If unselected -> Large ",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "showAd3",
+"label": "Show Third Advertisement",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "ad3_container",
+"label": "Third Advertisement Size - If unselected -> Large ",
+"default": true
+}
+],
+"blocks": [
+{
+"type": "@app"
+}
+],
+"presets": [
+{
+"name": "Main Collection"
+}
+]
+}
+{% endschema %}

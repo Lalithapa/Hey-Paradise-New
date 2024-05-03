@@ -1,0 +1,170 @@
+{% comment %} Quick View Modal for {{ first_variant }} {% endcomment %}
+{% assign first_variant = product.selected_or_first_available_variant %}
+{% comment %}  quick-view-slide-open {% endcomment %}
+<div class="quick-view-slide-container" id="product_Quick_View" sectionId="{{ section.id }}">
+  <div class="quick-view-main-container">
+    <div class="hey-quick-view">
+      <div class="hey-quick-view-header border-0">
+        <h1 class="hey-quick-view-title text-center mb-0" id="staticBackdropLabel">{{ product.title }}</h1>
+        <button type="button" class="hey-quick-view-close close_overlay">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M1 1L13 13" stroke="#393939" stroke-linecap="round"/>
+            <path d="M13 1L1 13" stroke="#393939" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="hey-quick-view-images">
+        <div class="quick-slideshow">
+          <ul class="controls desktop-screen" id="quick_view_image_container">
+            <li class="quick-view-prev">
+              <button class="quick-prev-slide">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="28"
+                    height="28"
+                    viewBox="0 0 28 28"
+                    fill="none"
+                  >
+                    <path d="M17.2148 7L10.2148 14L17.2148 21" stroke="#585858" stroke-width="2"
+                        stroke-linecap="round" />
+                  </svg>
+              </button>
+            </li>  
+            <li class="quick-view-next">
+                <button class="quick-next-slide">
+                  <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 28 28"
+                  fill="none"
+                >
+                  <path d="M10.7852 7L17.7852 14L10.7852 21" stroke="#585585" stroke-width="2"
+                      stroke-linecap="round" />
+                </svg>
+                </button>
+              </li>
+          </ul>
+          <div class="quick-view-slider overflow-hidden" id="quick_view_image_slider">
+            <div class="swiper-pagination quick-view-slider-pagination"></div>
+          </div>
+        </div>
+      </div>
+      <div class="quick-view-details">
+        <div class="live-count d-flex align-items-center">
+          <span
+            ><img
+              loading="lazy"
+              src="https://cdn.shopify.com/s/files/1/1743/7443/files/33d72e41b1889e6e1bee4e76cf87b0e9.gif?v=1693810925"
+              alt=""
+              class="img-fluid"
+              width="23px"
+              height="23px"
+          ></span>
+          <p class="mb-0">{{ 'now' | date: '%N' | modulo: 199 | plus: 59 }} people are viewing</p>
+        </div>
+        {% if product.available and product.variants.size > 1 %}
+          <div class="quick-view-current-shade d-none">
+            SHADE: <span>{{ first_variant.title }}</span>
+          </div>
+        {% endif %}
+          {% capture the_snippet_review_avg %}{% render 'ssw-widget-avg-rate-listing', product: product %}{% endcapture %}
+        {% unless the_snippet_review_avg contains 'Liquid error' %}
+          {{ the_snippet_review_avg }}
+        {% endunless %}
+        <div class="quick-view-price d-flex">
+          <span>
+            <span class="selling-price">{{ first_variant.price | money_without_trailing_zeros }}</span>
+            <span class="old-price">
+              {% if first_variant.compare_at_price > first_variant.price %}
+                {{ first_variant.compare_at_price | money_without_trailing_zeros -}}
+              {% endif %}
+            </span>
+            <span class="discount">
+              {% if first_variant.compare_at_price > first_variant.price %}
+                {{-
+                  first_variant.compare_at_price
+                  | minus: first_variant.price
+                  | times: 100.0
+                  | divided_by: first_variant.compare_at_price
+                  | money_without_currency
+                  | times: 100
+                  | remove: '.0'
+                -}}
+                % Off
+              {% endif %}
+            </span>
+          </span>
+        </div>
+         <div class="quick-view-shades d-flex flex-column-reverse flex-wrap">
+          {% if product.available and product.variants.size > 1 %}
+            {% render 'swatches'
+              with 'Color' as swatch,
+              class_variable: class_variable,
+              product: product,
+              sectionId:sectionId,
+              indexIs: indexIs,
+              showall: true,
+              showdropdown: true
+            %}
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="hey-quick-view-container">
+        <div class="add-to-bag-btn hey-quick-view-footer d_cent">
+          <a href="{{ product.url }}" class="view-product-btn"
+            > View Product Details
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="6"
+                height="10"
+                viewBox="0 0 6 10"
+                fill="none"
+              >
+                <path d="M0.5 9.5L4.5 5L0.5 0.5" stroke="#404184" />
+              </svg></span
+          ></a>
+
+          <button
+            type="button"
+            class="add-quick-bag-btn rounded-pill"
+            data-product_id="{{ first_variant.id }}"
+            data-product_quantity="1"
+          >
+            Add to bag
+          </button>
+          <a href="{% if section.id contains "product_quickview" %}javascript:void(0){% else %}{{ product.url }}{% endif %}"
+            class="add-quick-bag-btn-notify rounded-pill" style="display: none;"
+          >
+         {% if section.id contains "product_quickview" %}Out Of Stock{% else %}Notify Me{% endif %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+    {
+      "name": "Product Quick View",
+      "class": "pdp_quick_view",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Default Product"
+        },
+        {
+          "type": "product",
+          "id": "default_product",
+          "label": "Default Product"
+        }
+      ],
+      "presets": [
+        {
+          "name": "Product Quick View"
+        }
+      ]
+    }
+    {% endschema %}

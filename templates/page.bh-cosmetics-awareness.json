@@ -1,0 +1,191 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "c6393fd3-80a1-4450-b440-5f8a528d1f51": {
+      "type": "Main_Banner",
+      "settings": {
+        "showCat": false
+      }
+    },
+    "e4050d7c-05d9-4ff3-ba7e-78e2caca1e1c": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Just Landed",
+        "maindtextSub": "",
+        "home_featured_products": "test",
+        "tcgjsgd": "#191919"
+      }
+    },
+    "d6e9ce19-bbac-4fe1-bee6-f6f5b3b59af8": {
+      "type": "highlights",
+      "blocks": {
+        "513b5c6a-8985-4462-b86d-0363f7518a30": {
+          "type": "Image",
+          "settings": {
+            "images": "shopify:\/\/shop_images\/img1_ec2afba3-525e-48c4-ae2a-444ce28db9bc.jpg",
+            "block_button_2": "Main 1",
+            "block_link_2": ""
+          }
+        },
+        "e8d4db86-e14d-4ae0-b30a-1998bf0ab2f6": {
+          "type": "Image",
+          "settings": {
+            "images": "shopify:\/\/shop_images\/img2_4f4fabb3-33a7-474d-a74a-a657b0c20d91.jpg",
+            "block_button_2": "Main 2",
+            "block_link_2": ""
+          }
+        },
+        "9b7bcd80-2dcd-4d0e-9161-3a8f69d1b6fe": {
+          "type": "Image",
+          "settings": {
+            "images": "shopify:\/\/shop_images\/img3.jpg",
+            "block_button_2": "Main 3",
+            "block_link_2": ""
+          }
+        },
+        "82b5d6bd-58bc-45cc-9cf2-b16cd6a5afb4": {
+          "type": "Image",
+          "settings": {
+            "images": "shopify:\/\/shop_images\/img4.jpg",
+            "block_button_2": "Main 4",
+            "block_link_2": ""
+          }
+        },
+        "17d417ed-c44c-4ef7-9b69-3d9d80c1dd7d": {
+          "type": "Image",
+          "settings": {
+            "images": "shopify:\/\/shop_images\/img1_ec2afba3-525e-48c4-ae2a-444ce28db9bc.jpg",
+            "block_button_2": "Main 5",
+            "block_link_2": ""
+          }
+        },
+        "cc43c041-a351-4162-b615-f7ad75449e62": {
+          "type": "Image",
+          "settings": {
+            "images": "shopify:\/\/shop_images\/img2_4f4fabb3-33a7-474d-a74a-a657b0c20d91.jpg",
+            "block_button_2": "Main 6",
+            "block_link_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "513b5c6a-8985-4462-b86d-0363f7518a30",
+        "e8d4db86-e14d-4ae0-b30a-1998bf0ab2f6",
+        "9b7bcd80-2dcd-4d0e-9161-3a8f69d1b6fe",
+        "82b5d6bd-58bc-45cc-9cf2-b16cd6a5afb4",
+        "17d417ed-c44c-4ef7-9b69-3d9d80c1dd7d",
+        "cc43c041-a351-4162-b615-f7ad75449e62"
+      ],
+      "settings": {}
+    },
+    "bc37e443-5b6f-4811-82c7-d59fe97144c4": {
+      "type": "Brand_Spotlight",
+      "settings": {
+        "mainImage": "shopify:\/\/shop_images\/overlay.png",
+        "mainLogo": "shopify:\/\/shop_images\/Logo.svg",
+        "home_featured_products": "test"
+      }
+    },
+    "56b9fa11-1556-44a2-a592-d7be4ca7656d": {
+      "type": "Top_slider",
+      "blocks": {
+        "f1764e61-946c-49f8-9d28-09b0d4a59a46": {
+          "type": "Image",
+          "settings": {
+            "sdfsdfsdf": "",
+            "revdflkjgh": "shopify:\/\/shop_images\/WK52_TT_1.webp_2.png",
+            "revdflkjgh_mobile": "shopify:\/\/shop_images\/WK52_TT_1.webp_2_789cfb38-77d0-4a49-bc2d-98de46d631ff.png",
+            "sfgsdgsdf": "OhMy Collection! Get Bowled with Glam",
+            "zxczxczx": "Shop Now"
+          }
+        },
+        "e2245a74-b365-4f0a-ae08-9c56ab0800e4": {
+          "type": "Image",
+          "settings": {
+            "sdfsdfsdf": "",
+            "revdflkjgh": "shopify:\/\/shop_images\/WK52_TT_1.webp_3.png",
+            "revdflkjgh_mobile": "shopify:\/\/shop_images\/top_shelf_2.svg",
+            "sfgsdgsdf": "Flash lash mascara by natalina Mua",
+            "zxczxczx": "Shop Now"
+          }
+        },
+        "ddedf745-13f5-48c1-9233-a8a23dd0d7fc": {
+          "type": "Image",
+          "settings": {
+            "sdfsdfsdf": "shopify:\/\/pages\/hey-exclusives",
+            "revdflkjgh": "shopify:\/\/shop_images\/WK52_TT_1.webp_5.png",
+            "revdflkjgh_mobile": "shopify:\/\/shop_images\/top_shelf_4.svg",
+            "sfgsdgsdf": "LOOONG! Lasting lip liner",
+            "zxczxczx": "Shop Now"
+          }
+        },
+        "fe21827a-0ddf-492b-aac7-a6e151fc6b34": {
+          "type": "Image",
+          "settings": {
+            "sdfsdfsdf": "",
+            "revdflkjgh": "shopify:\/\/shop_images\/WK52_TT_1.webp_4.png",
+            "revdflkjgh_mobile": "shopify:\/\/shop_images\/tiop_shelf_3.svg",
+            "sfgsdgsdf": "SELFLOVE Eyeshadow Palette",
+            "zxczxczx": "Shop Now"
+          }
+        },
+        "310d48aa-10ec-4d74-a925-d6bc181c6e21": {
+          "type": "Image",
+          "settings": {
+            "sdfsdfsdf": "",
+            "revdflkjgh": "shopify:\/\/shop_images\/WK52_TT_1.webp_5.png",
+            "revdflkjgh_mobile": "shopify:\/\/shop_images\/top_shelf_4.svg",
+            "sfgsdgsdf": "SELFLOVE Eyeshadow Palette",
+            "zxczxczx": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "f1764e61-946c-49f8-9d28-09b0d4a59a46",
+        "e2245a74-b365-4f0a-ae08-9c56ab0800e4",
+        "ddedf745-13f5-48c1-9233-a8a23dd0d7fc",
+        "fe21827a-0ddf-492b-aac7-a6e151fc6b34",
+        "310d48aa-10ec-4d74-a925-d6bc181c6e21"
+      ],
+      "settings": {
+        "main_heading": "Top Shelf"
+      }
+    },
+    "aecf512d-3289-47a0-9e7e-f32c0742b54e": {
+      "type": "ScrollingStrip",
+      "blocks": {
+        "bc4bafa0-8583-4e22-a927-8534ee5dad17": {
+          "type": "Image",
+          "settings": {
+            "aloefruinc": "shopify:\/\/shop_images\/strip2.png",
+            "sdfgfsd": "shopify:\/\/shop_images\/strip2.png",
+            "sdfasdf": ""
+          }
+        }
+      },
+      "block_order": [
+        "bc4bafa0-8583-4e22-a927-8534ee5dad17"
+      ],
+      "settings": {
+        "qsirguwfh": "",
+        "asdasd": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "c6393fd3-80a1-4450-b440-5f8a528d1f51",
+    "e4050d7c-05d9-4ff3-ba7e-78e2caca1e1c",
+    "d6e9ce19-bbac-4fe1-bee6-f6f5b3b59af8",
+    "bc37e443-5b6f-4811-82c7-d59fe97144c4",
+    "56b9fa11-1556-44a2-a592-d7be4ca7656d",
+    "aecf512d-3289-47a0-9e7e-f32c0742b54e"
+  ]
+}

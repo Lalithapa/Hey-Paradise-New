@@ -1,0 +1,221 @@
+{% assign hkjh = section.id | remove: '--' %}
+{% assign splicesectionId = section.id | remove: '-' | slice: 25, 33 %}
+<div class="container brand-spotlight-2" id="flow">
+  <div class="row collection-slider-container" id="{{ section.id }}">
+    <div class="col-12 col-lg-5 collection-image-container">
+      <img
+        loading="lazy"
+        src="{{ section.settings.sdfsdf | image_url }}"
+        alt="exclusive-image"
+        class="img-fluid collection-gif w-100"
+      >
+    </div>
+
+    <div class="col-12 col-lg-7 collection-main-content-container">
+      <div class="collection-title-container">
+        <p class="lable">{{ section.settings.skjdfhasdjk }}</p>
+        <p class="collection-title">{{ section.settings.jkfghkfghlk }}</p>
+        <p
+          class="slider-discover-btn"
+        >
+          Discover More
+          <span class="material-symbols-outlined ">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="7"
+              height="10"
+              viewBox="0 0 7 10"
+              fill="none"
+            >
+              <path d="M1 9.5L5.5 5L1 0.5" stroke="#393939" stroke-width="1.2" />
+            </svg>
+          </span>
+        </p>
+      </div>
+
+      <div class="collection-slider ">
+
+        {% comment %} Collection products Starts {% endcomment %}
+        <div class="product-carousel-wrapper">
+          <button
+          class="carousel-btn border-0 prev"
+          id="new-product-carousel-prev-btn-{{ section.id }}"
+        >
+          {% render 'carousel-prev-btn-svg' %}
+        </button>
+
+          <div class="product-carousel row element-carousel" id="new-product-carousel-{{ section.id }}">
+            {% for product in collections[section.settings.home_featured_products].products limit: 7 %}
+              <div class="col-6 col-md-5 d_cent element-carousel-item">
+                {% render 'main_product_cards',
+                  product: product,
+                  sectionId: splicesectionId,
+                  card_margin: false,
+                  show_button: true
+                %}
+              </div>
+            {% endfor %}
+          </div>
+
+          <button
+          class="carousel-btn border-0 next"
+          id="new-product-carousel-next-btn-{{ section.id }}"
+        >
+          {% render 'carousel-next-btn-svg' %}
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #{{ section.id }}.collection-slider-container::before{
+    background-color: {{ section.settings.bgcolor }};
+  }
+  #collection-view-btn-{{ section.id }}{
+      background-color: {{ section.settings.bgcolor }};
+    }
+</style>
+
+<script>
+  $(document).ready(function () {
+
+    const settings = {
+      root: $('#new-product-carousel-{{ section.id }}'),
+      slides: $('#new-product-carousel-{{section.id}} > .element-carousel-item'),
+      prev: $('#new-product-carousel-prev-btn-{{section.id}}'),
+      next: $('#new-product-carousel-next-btn-{{section.id}}'),
+      mouseDragHandlers: true,
+      removeControls: true,
+    };
+
+    const carousel = new Carousel(settings);
+
+    $('#{{ hkjh }}').on('afterChange', function () {
+      let totalSlides = $('#{{ section.id }} .slick-slide');
+      let maxSlideIndex = -1;
+      let maxSlideElement = null;
+      totalSlides.each(function () {
+        let slideIndex = parseInt($(this).attr('data-slick-index'), 10);
+        if (slideIndex > maxSlideIndex) {
+          maxSlideIndex = slideIndex;
+          maxSlideElement = this;
+        }
+      });
+
+      if ($(maxSlideElement).hasClass("slick-active")) {
+      $("#collection-view-btn-{{ section.id }}").addClass("collection-view-btn-show");
+    } else {
+      $("#collection-view-btn-{{ section.id }}").removeClass("collection-view-btn-show");
+    }
+    });
+
+    $('#{{ hkjh }}').slick({
+      dots: false,
+      infinite: false,
+      speed: 300,
+      mobileFirst: true,
+      arrows: false,
+      slidesToShow: {{ section.settings.smallNumber }},
+      slidesToScroll: 1,
+      prevArrow: '.slick-prev-btn-{{ section.id }}',
+      nextArrow: '.slick-next-btn-{{ section.id }}',
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: {{ section.settings.mediumNumber }},
+          },
+        },
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: {{ section.settings.largeNumber }},
+            arrows: true
+          },
+        },
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: {{ section.settings.extraLargeNumber }},
+            arrows: true
+          }
+        },
+      ],
+    });
+  });
+</script>
+{% schema %}
+{
+  "name": "Brand Spotlight 2",
+  "settings": [
+    {
+      "type": "text",
+      "id": "skjdfhasdjk",
+      "label": "Add Your Heading Text"
+    },
+    {
+      "type": "text",
+      "id": "jkfghkfghlk",
+      "label": "Add Your Sub Heading Text"
+    },
+    {
+      "type": "collection",
+      "id": "home_featured_products",
+      "label": "Collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "viewallcollectionbtn",
+      "label": "Show View All Button",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "sdfsdf",
+      "label": "Add Main Image"
+    },
+    {
+      "type": "color",
+      "id": "bgcolor",
+      "label": "Add Background Color"
+    },
+    {
+      "type": "number",
+      "id": "smallNumber",
+      "label": "Number Of slides for Small Screens",
+      "default": 2
+    },
+    {
+      "type": "number",
+      "id": "mediumNumber",
+      "label": "Number Of slides for medium Screens",
+      "default": 2
+    },
+    {
+      "type": "number",
+      "id": "largeNumber",
+      "label": "Number Of slides for Large Screens",
+      "default": 2
+    },
+    {
+      "type": "number",
+      "id": "extraLargeNumber",
+      "label": "Number Of slides for Extra Large Screens",
+      "default": 2
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Brand Spotlight 2"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,218 @@
+{%- style -%}
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top_desktop }}px;
+    margin-bottom: {{ section.settings.margin_bottom_desktop }}px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top_mobile }}px;
+      margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+<section class="section-{{ section.id }}-margin {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+  <div class="container limelight-container">
+    <p class="deals_txt">{{ section.settings.qsirguwfh }}</p>
+      <div id="main{{ section.id }}" class="limelight-card-container d-flex slick-carousel" 
+     data-slick='{
+       "dots": false,
+       "infinite": false,
+       "speed": 300,
+       "slidesToShow": {{ section.settings.defaultNumber }},
+       "slidesToScroll": 1,
+       "prevArrow": ".slick-prev-btn-{{ section.id }}",
+       "nextArrow": ".slick-next-btn-{{ section.id }}",
+       "responsive": [
+         {
+           "breakpoint": 1200,
+           "settings": {
+             "slidesToShow": {{ section.settings.largeNumber }},
+             "infinite": true,
+             "arrows": true
+           }
+         },
+         {
+           "breakpoint": 992,
+           "settings": {
+             "slidesToShow": {{ section.settings.mediumNumber }},
+             "arrows": false
+           }
+         },
+         {
+           "breakpoint": 576,
+           "settings": {
+             "slidesToShow": {{ section.settings.smallNumber }},
+             "arrows": false
+           }
+         }
+       ]
+     }'>
+      {% for block in section.blocks %}
+        <div class="limelight-card">
+          <div class="limelight-image-container">
+            <img
+              src="{{ block.settings.threeddd | image_url }}"
+              alt="limelight-image{{ forloop.index }}"
+              class="limelight-image"
+              loading="lazy"
+            >
+            <img
+              src="{{ block.settings.wikdfytasidf | image_url }}"
+              alt="limelight-image{{ forloop.index0 }}"
+              class="limelight-gif"
+              loading="lazy"
+            >
+          </div>
+          <div class="limelight-details">
+            <p>{{ block.settings.weuofryhwei }}</p>
+            <a href="{{ block.settings.threedlink }}">
+              SHOP NOW
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="7"
+                height="12"
+                viewBox="0 0 7 12"
+                fill="none"
+              >
+                <path d="M1 10.5L5.5 6L1 1.5" stroke="#393939" stroke-width="1.5" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <button class="slick-next-btn slick-next-btn-{{ section.id }} border-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M9.42817 5.50977L17.918 13.9996L9.42817 22.4894" stroke="#585858" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <button class="slick-prev-btn slick-prev-btn-{{ section.id }} border-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M18.5718 5.50977L10.082 13.9996L18.5718 22.4894" stroke="#585858" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+</section>
+<script>
+  $('#main{{ section.id }}').slick();
+</script>
+{% schema %}
+{
+  "name": "Limelight", 
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Mobile Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 36
+    },
+    {
+      "type": "text",
+      "id": "qsirguwfh",
+      "label": "Add Your Heading Here"
+    },
+
+    {
+      "type": "number",
+      "id": "smallNumber",
+      "label": "Number Of slides for Small Screen",
+      "default": 2
+    },
+    {
+      "type": "number",
+      "id": "mediumNumber",
+      "label": "Number Of slides for medium Screen",
+      "default": 3
+    },
+    {
+      "type": "number",
+      "id": "largeNumber",
+      "label": "Number Of slides for Large Screen",
+      "default": 4
+    },
+    {
+      "type": "number",
+      "id": "defaultNumber",
+      "label": "Number Of slides for Default Screen",
+      "default": 4
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Image With Text",
+      "type": "Image",
+      "settings": [
+        {
+          "type": "url",
+          "id": "threedlink",
+          "label": "Add Url"
+        },
+        {
+          "type": "image_picker",
+          "id": "threeddd",
+          "label": "Add Your Image Here"
+        },
+        {
+          "type": "image_picker",
+          "id": "wikdfytasidf",
+          "label": "Add Your Image Gif Here"
+        },
+        {
+          "type": "richtext",
+          "id": "weuofryhwei",
+          "label": "Add Your Image Text Here"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Limelight"
+    }
+  ]
+}
+{% endschema %}

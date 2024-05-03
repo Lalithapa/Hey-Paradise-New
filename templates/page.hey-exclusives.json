@@ -1,0 +1,318 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "main_banner_MxGtzE": {
+      "type": "Main_Banner",
+      "blocks": {
+        "image_YCr9LN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/makeup-banner.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/mobile-makeup-banner.jpg",
+            "block_link_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_YCr9LN"
+      ],
+      "settings": {
+        "showCat": false,
+        "showTiles": "Category"
+      }
+    },
+    "product_collection_slides_hxtgpL": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Only At Hey!",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#ffffff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "face",
+        "viewAllBtn": true,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "brand_spotlight_dEEbme": {
+      "type": "Brand_Spotlight",
+      "blocks": {
+        "feedback_t6MfwF": {
+          "type": "Feedback",
+          "settings": {
+            "userRating": 4,
+            "userName": "SM",
+            "feedbackText": "“From prepping to ace the base to those defined, to those luscious lips, L.A. Girl has an answer in...”"
+          }
+        },
+        "feedback_Vkz6qi": {
+          "type": "Feedback",
+          "settings": {
+            "userRating": 3,
+            "userName": "LT",
+            "feedbackText": "“From prepping to ace the base to those defined, to those luscious lips, L.A. Girl has an answer in...”"
+          }
+        },
+        "feedback_MDJjFD": {
+          "type": "Feedback",
+          "settings": {
+            "userRating": 5,
+            "userName": "SR",
+            "feedbackText": "“From prepping to ace the base to those defined, to those luscious lips, L.A. Girl has an answer in...”"
+          }
+        }
+      },
+      "block_order": [
+        "feedback_t6MfwF",
+        "feedback_Vkz6qi",
+        "feedback_MDJjFD"
+      ],
+      "settings": {
+        "mainImage": "shopify:\/\/shop_images\/l._a-colors-mobile_80f39d35-7196-4f05-a20e-f335105f849a.webp",
+        "mainLogo": "shopify:\/\/shop_images\/lamel.svg",
+        "heartColor": "#a3d0ba",
+        "viewAllBtn": false,
+        "home_featured_products": "la-colors",
+        "backgroundcolor": "#f3fff8",
+        "smallNumber": 2,
+        "mediumNumber": 2.5,
+        "largeNumber": 2,
+        "extraLargeNumber": 2.5
+      }
+    },
+    "global_buzz_G7LfKB": {
+      "type": "global-buzz",
+      "blocks": {
+        "video_with_card_4k8eE6": {
+          "type": "video-with-card",
+          "settings": {
+            "global-buzz-video": "shopify:\/\/files\/videos\/Snapinsta.app_video_7C44319EB63384547E56C18F8BAF6DAA_video_dashinit.mp4",
+            "global-buzz-product": "bh-ruby-for-july-7-color-shadow-palette"
+          }
+        },
+        "video_with_card_h6Re3d": {
+          "type": "video-with-card",
+          "settings": {
+            "global-buzz-video": "shopify:\/\/files\/videos\/Snapinsta.app_video_89441517BA9568132254CF434C63F2A8_video_dashinit.mp4",
+            "global-buzz-product": "bh-angled-contour-brush"
+          }
+        },
+        "video_with_card_L9mtTR": {
+          "type": "video-with-card",
+          "settings": {
+            "global-buzz-video": "shopify:\/\/files\/videos\/international-glam-essentials.mp4",
+            "global-buzz-product": "bh-angled-powder-brush"
+          }
+        },
+        "video_with_card_UQUkWA": {
+          "type": "video-with-card",
+          "settings": {
+            "global-buzz-video": "shopify:\/\/files\/videos\/Hey lifestyle video Mid Res.mp4",
+            "global-buzz-product": "bh-cosmetics-bombshell-beauty-10-piece-brush-set"
+          }
+        }
+      },
+      "block_order": [
+        "video_with_card_4k8eE6",
+        "video_with_card_h6Re3d",
+        "video_with_card_L9mtTR",
+        "video_with_card_UQUkWA"
+      ],
+      "settings": {
+        "global-buzz-title": "Global buzz",
+        "global-buzz-num-slides-mobile": "1.5",
+        "global-buzz-num-slides-tab": "2.5",
+        "global-buzz-num-slides-desktop": "3.5"
+      }
+    },
+    "reviews_banner_PmkVrz": {
+      "type": "Reviews-Banner",
+      "blocks": {
+        "image_edpehi": {
+          "type": "Image",
+          "settings": {
+            "dasfdf": "shopify:\/\/shop_images\/banner_f5af3f53-0f9d-4c89-b894-e77cab23fb93_2100xf.webp",
+            "asdasdasd": "shopify:\/\/shop_images\/mobile-banner_150x_918bbed8-8580-4743-8b72-323405d45427.webp",
+            "sdfgsdfsd": "",
+            "urlaftrlogin": "",
+            "dflkjghdfjkg": "",
+            "dfsdf": "",
+            "txtdfsdf": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_edpehi"
+      ],
+      "settings": {
+        "qsirguwfh": ""
+      }
+    },
+    "product_collection_slides_pXnqxi": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Baggit’ when it’s hot",
+        "maindtextSub": "",
+        "comboSection": false,
+        "bgColor": "#ffffff",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "face",
+        "viewAllBtn": true,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "multi_carousel_pXGcpV": {
+      "type": "Multi-carousel",
+      "blocks": {
+        "deals_9edMPf": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/5057566712255_3_ffb2ce99-941b-4c9e-8baa-e760be4533b3.jpg",
+            "dealsURL": "shopify:\/\/collections\/bh-cosmetics",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "deals_LYKTM4": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/5057566723183_3.jpg",
+            "dealsURL": "shopify:\/\/collections\/bh-cosmetics",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "deals_fGdx4w": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/5057566723176_3.jpg",
+            "dealsURL": "shopify:\/\/collections\/bh-cosmetics",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        },
+        "deals_tgqdiA": {
+          "type": "deals",
+          "settings": {
+            "dealsImg": "shopify:\/\/shop_images\/5057566712811_3.jpg",
+            "dealsURL": "shopify:\/\/collections\/bh-cosmetics",
+            "dealsTitle": "Get the flawless look with filter finish concealer",
+            "dealsDiscount": "Up to 25% off",
+            "dealsBtnText": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "deals_9edMPf",
+        "deals_LYKTM4",
+        "deals_fGdx4w",
+        "deals_tgqdiA"
+      ],
+      "settings": {
+        "sectionTitle": "value sets",
+        "comboSection": true,
+        "bgColor": "#fbfbfb",
+        "aspectRatio": "3\/4",
+        "lagreScreenGap": 20,
+        "smallScreenGap": 12,
+        "bottomTextBackground": "linear-gradient(0deg, #292929 0%, rgba(47, 47, 47, 0.84) 20.87%, rgba(47, 47, 47, 0.43) 55.83%, rgba(74, 74, 74, 0.00) 93.04%)",
+        "smallNumber": 2,
+        "mediumNumber": 2.8,
+        "largeNumber": 3.5,
+        "defaultNumber": 3.5
+      }
+    },
+    "product_collection_slides_cTc9kr": {
+      "type": "Product-Collection-Slides",
+      "settings": {
+        "maindtext": "Tools & Brush Bundles",
+        "maindtextSub": "",
+        "comboSection": true,
+        "bgColor": "#fbfbfb",
+        "indi_barSm": true,
+        "indi_barMd": true,
+        "indi_barLg": false,
+        "indi_barDef": false,
+        "productLimit": 15,
+        "home_featured_products": "koric",
+        "viewAllBtn": true,
+        "tcgjsgd": "#191919"
+      }
+    },
+    "glam_essentials_WzxQnn": {
+      "type": "glam-essentials",
+      "blocks": {
+        "video_with_card_beCQPC": {
+          "type": "video-with-card",
+          "settings": {
+            "glam-ess-video": "shopify:\/\/files\/videos\/Hey lifestyle video Mid Res.mp4",
+            "glam-ess-product": "bh-ruby-for-july-7-color-shadow-palette"
+          }
+        },
+        "video_with_card_Dczixa": {
+          "type": "video-with-card",
+          "settings": {
+            "glam-ess-video": "shopify:\/\/files\/videos\/international-glam-essentials.mp4",
+            "glam-ess-product": "bh-brush-v9-vegan-eye-precision-brush"
+          }
+        },
+        "video_with_card_wPKP4t": {
+          "type": "video-with-card",
+          "settings": {
+            "glam-ess-video": "shopify:\/\/files\/videos\/Snapinsta.app_video_89441517BA9568132254CF434C63F2A8_video_dashinit.mp4",
+            "glam-ess-product": "bh-cosmetics-bombshell-beauty-10-piece-brush-set"
+          }
+        },
+        "video_with_card_ggTYnF": {
+          "type": "video-with-card",
+          "settings": {
+            "glam-ess-video": "shopify:\/\/files\/videos\/Snapinsta.app_video_7C44319EB63384547E56C18F8BAF6DAA_video_dashinit.mp4",
+            "glam-ess-product": "bh-angled-contour-brush"
+          }
+        }
+      },
+      "block_order": [
+        "video_with_card_beCQPC",
+        "video_with_card_Dczixa",
+        "video_with_card_wPKP4t",
+        "video_with_card_ggTYnF"
+      ],
+      "settings": {
+        "glam-ess-title": "International Glam Essentials",
+        "glam-ess-num-slides-mobile": "1.5",
+        "glam-ess-num-slides-tab": "2.5",
+        "glam-ess-num-slides-desktop": "3.5"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "main_banner_MxGtzE",
+    "product_collection_slides_hxtgpL",
+    "brand_spotlight_dEEbme",
+    "global_buzz_G7LfKB",
+    "reviews_banner_PmkVrz",
+    "product_collection_slides_pXnqxi",
+    "multi_carousel_pXGcpV",
+    "product_collection_slides_cTc9kr",
+    "glam_essentials_WzxQnn"
+  ]
+}
