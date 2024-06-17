@@ -177,7 +177,9 @@
         }
       }
     },
-    "content_for_index": [],
+    "content_for_index": [
+
+    ],
     "blocks": {
       "15683396631634586217": {
         "type": "shopify:\/\/apps\/inbox\/blocks\/chat\/841fc607-4181-4ad1-842d-e24d7f8bad6b",
@@ -195,33 +197,40 @@
       "246967388992510375": {
         "type": "shopify:\/\/apps\/msg91\/blocks\/app-embed\/a23a396c-1b96-4cfa-80d4-96656b7dcfbc",
         "disabled": true,
-        "settings": {}
+        "settings": {
+        }
       },
       "9717370649079274736": {
         "type": "shopify:\/\/apps\/simply-otp-login\/blocks\/app-embed-block\/c26b7b17-273d-4800-af62-8ec88ba18251",
         "disabled": true,
-        "settings": {}
+        "settings": {
+        }
       },
       "13951170544780599758": {
         "type": "shopify:\/\/apps\/tapita-seo-speed\/blocks\/app-embed\/cd37ca7a-40ad-4fdc-afd3-768701482209",
         "disabled": false,
-        "settings": {}
+        "settings": {
+        }
       },
       "195526565939087f94": {
         "type": "shopify:\/\/apps\/growave-loyalty-wishlist\/blocks\/block.embed.socialshopwave-helper\/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
         "disabled": false,
-        "settings": {}
+        "settings": {
+        }
       },
       "246135896087123374": {
         "type": "shopify:\/\/apps\/1clickpopup\/blocks\/main\/233742b9-16cb-4f75-9de7-3fe92c29fdff",
         "disabled": true,
-        "settings": {}
+        "settings": {
+        }
       },
       "4887604186841085581": {
         "type": "shopify:\/\/apps\/yanet-back-in-stock\/blocks\/bis\/4a272ca4-2ae2-4e8b-9da8-8dc6353ba485",
         "disabled": false,
         "settings": {
-          "product_list": [],
+          "product_list": [
+
+          ],
           "tags": "",
           "show": false,
           "inline": true,
@@ -252,7 +261,15 @@
       "7445024463111146658": {
         "type": "shopify:\/\/apps\/pwa-ios-android-app\/blocks\/app-block\/4ac46764-72e4-4b90-933d-c63e9b80bb36",
         "disabled": true,
-        "settings": {}
+        "settings": {
+        }
+      },
+      "10605408327587305396": {
+        "type": "shopify:\/\/apps\/eg-auto-add-to-cart\/blocks\/app-embed\/0f7d4f74-1e89-4820-aec4-6564d7e535d2",
+        "disabled": false,
+        "settings": {
+          "version": "v3"
+        }
       }
     },
     "color_schemes": {
