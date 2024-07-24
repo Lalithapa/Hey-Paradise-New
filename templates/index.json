@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "74f32547-098c-45d0-b7a4-046eada2ae04": {
@@ -262,7 +271,7 @@
         "jkfghkfghlk": "",
         "heartColor": "#ff028d",
         "viewAllBtn": false,
-        "home_featured_products": "serums-moisturizers",
+        "home_featured_products": "ardell",
         "backgroundcolor": "#ffe5f4",
         "smallNumber": 2,
         "mediumNumber": 2.5,
@@ -342,7 +351,7 @@
         "indi_barLg": false,
         "indi_barDef": false,
         "productLimit": 15,
-        "home_featured_products": "makeup",
+        "home_featured_products": "lamel",
         "viewAllBtn": true,
         "tcgjsgd": "#191919"
       }
@@ -472,7 +481,7 @@
         "jkfghkfghlk": "Revolution X Fortnite collection!",
         "heartColor": "#e8f4ff",
         "viewAllBtn": true,
-        "home_featured_products": "bh-cosmetics",
+        "home_featured_products": "lamel",
         "backgroundcolor": "#e8f4ff",
         "smallNumber": 2,
         "mediumNumber": 2.5,
