@@ -619,7 +619,7 @@
         "jkfghkfghlk": "Skin and Body Care Collection!",
         "heartColor": "#e8f4ff",
         "viewAllBtn": true,
-        "home_featured_products": "face",
+        "home_featured_products": "all-products",
         "backgroundcolor": "#f3fff8",
         "smallNumber": 2,
         "mediumNumber": 2.5,
@@ -938,6 +938,7 @@
             "title_color": "",
             "title_size": 0,
             "alignment": "center",
+            "background_color": "",
             "html_area": ""
           }
         }
