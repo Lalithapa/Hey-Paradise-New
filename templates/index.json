@@ -15,8 +15,8 @@
         "997b3e37-79c7-4559-aa54-d363e7ccd603": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/New_Launch_1355x512_195729be-d6ec-4482-b403-8f7910cac4f0.jpg",
-            "image_mobile": "shopify:\/\/shop_images\/Frame_34994.png",
+            "image": "shopify:\/\/shop_images\/Hey_Banner_desktop.webp",
+            "image_mobile": "shopify:\/\/shop_images\/Hey_Banner_mobile.webp",
             "block_link_2": "shopify:\/\/collections\/all"
           }
         },
@@ -27,29 +27,11 @@
             "image_mobile": "shopify:\/\/shop_images\/Frame_34994.png",
             "block_link_2": "shopify:\/\/collections\/all"
           }
-        },
-        "image_7tAxzx": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/New_Launch_1355x512_195729be-d6ec-4482-b403-8f7910cac4f0.jpg",
-            "image_mobile": "shopify:\/\/shop_images\/Frame_34994.png",
-            "block_link_2": "shopify:\/\/collections\/all"
-          }
-        },
-        "image_X7AWig": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/New_Launch_1355x512_195729be-d6ec-4482-b403-8f7910cac4f0.jpg",
-            "image_mobile": "shopify:\/\/shop_images\/Frame_34994.png",
-            "block_link_2": "shopify:\/\/collections\/all"
-          }
         }
       },
       "block_order": [
         "997b3e37-79c7-4559-aa54-d363e7ccd603",
-        "image_kCBTEr",
-        "image_7tAxzx",
-        "image_X7AWig"
+        "image_kCBTEr"
       ],
       "settings": {
         "margin_top_desktop": 0,
