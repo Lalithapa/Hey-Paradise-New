@@ -1,426 +1,100 @@
 <section>
-    <div class="container-fluid">
-        <div class="row reward-banner-container">
-            <div class="col-12 col-lg-6 col-xl-5 reward-banner">
-                <img src="{{ section.settings.rewardBanner | image_url }}" alt="reward-banner"
-                    class="reward-banner-img">
-            </div>
-            <div class="col-12 col-lg-6 col-xl-7 reward-banner-content d-flex flex-column justify-content-center">
-                <div class="reward-banner-text-container text-center text-md-start">
-                    {% if customer %}
-
-                    <p class="reward-banner-title">It Pays Off To Be A Member</p>
-                    <p class="reward-banner-sub-title">
-                        Welcome yo the exclusive community. You have <span class="reward-banner-points">2399
-                            Points</span>
-                    </p>
-                    {% else %}
-                    <p class="reward-banner-title">FOMO is Real, Don't Miss Out!!</p>
-                    <p class="reward-banner-sub-title">
-                        Join The #Hey!Fam for exclusive Rewards, Offers, Discounts, Perks and more.
-                    </p>
-                    {% endif %}
-                </div>
-                <div
-                    class="reward-banner-button-container d-flex flex-column flex-sm-row flex-lg-column flex-xl-row align-items-center align-items-lg-start ">
-                    <!-- if user does not logged-in -->
-                    {% if customer %}
-
-                    <button class="btn-type-fill w-100 redeem-popup-btn" isFirst="true" >Redeem points</button>
-                    <button class="btn-type-transparent w-100 ph-slide-open-btn">point history</button>
-                    {% else %}
-                    <!-- if user logged-in -->
-                    <a href="/account/login" class="btn-type-fill w-100">Sign In To Hey! Perks</a>
-                    <a href="/account/login" class="btn-type-transparent w-100">Login</a>
-                    {% endif %}
-                </div>
-            </div>
+  <div class="container-fluid">
+    <div class="row reward-banner-container">
+      <div class="col-12 col-lg-6 col-xl-5 reward-banner">
+        <img src="{{ section.settings.rewardBanner | image_url }}" alt="reward-banner" class="reward-banner-img">
+      </div>
+      <div class="col-12 col-lg-6 col-xl-7 reward-banner-content d-flex flex-column justify-content-center">
+        <div class="reward-banner-text-container text-center text-md-start">
+          {% if customer %}
+            <p class="reward-banner-title">It Pays Off To Be A Member</p>
+            <p class="reward-banner-sub-title">
+              Welcome to the exclusive community. You have <span class="reward-banner-points">2399 Points</span>
+            </p>
+          {% else %}
+            <p class="reward-banner-title">FOMO is Real, Don't Miss Out!!</p>
+            <p class="reward-banner-sub-title">
+              Join The #Hey!Fam for exclusive Rewards, Offers, Discounts, Perks, and more.
+            </p>
+          {% endif %}
         </div>
-    </div>
-</section>
-<section>
-    <div class="point-history-overlay "></div>
-    <div class="point-history-slide-container ">
-        <div class="ph-container">
-            <div class="ph-topbar">
-                <p class="ph-title mb-0 text-center">Rewards history</p>
-                <button class="ph-slide-close-btn border-0 bg-transparent">
-                    <img src="https://cdn.shopify.com/s/files/1/0673/6396/3172/files/close.svg?v=1696318785"
-                        alt="close">
-                </button>
-            </div>
-            <div class="ph-main-container">
-                <img src="{{ section.settings.pointHistoryBanner | image_url }}" alt="hey" class="ph-image img-fluid">
-                <ul class="ph-details-container list-unstyled d-flex flex-column mb-0">
-                    <li class="ph-details d-flex justify-content-between">
-                        <div class="ph-text">
-                            Join The Hey! Perks
-                            <span class="ph-date">(01/09/2022)</span>
-                        </div>
-                        <div class="ph-points">2000 Points</div>
-                    </li>
-                    <li class="ph-details d-flex justify-content-between align-items-center">
-                        <div class="ph-text">
-                            Shopping Points
-                            <span class="ph-date">(14/09/2022)</span>
-                        </div>
-                        <div class="ph-points">300 Points</div>
-                    </li>
-                    <li class="ph-details d-flex justify-content-between align-items-center">
-                        <div class="ph-text">
-                            Join The Hey! Perks
-                            <span class="ph-date">(01/09/2022)</span>
-                        </div>
-                        <div class="ph-points">800 Points</div>
-                    </li>
-                </ul>
-            </div>
-            <div class="ph-bottom">
-                <div class="ph-total-points-container d-flex justify-content-between align-items-center">
-                    <p class="ph-total-text mb-0">Total Points:</p>
-                    <span class="ph-total-points">3100</span>
-                </div>
-                <div class="ph-redeem-btn-container">
-                    <button class="btn-type-fill w-100" onclick="redeemWidget()" isFirst="true" >REDEEM POINTS</button>
-                </div>
-            </div>
+        <div class="reward-banner-button-container d-flex flex-column flex-sm-row flex-lg-column flex-xl-row align-items-center align-items-lg-start">
+          {% if customer %}
+            <button class="btn-type-fill w-100 redeem-popup-btn" isFirst="true">Redeem points</button>
+            <button class="btn-type-transparent w-100 ph-slide-open-btn">Point History</button>
+          {% else %}
+            <a href="/account/login" class="btn-type-fill w-100">Sign In To Hey! Perks</a>
+            <a href="/account/login" class="btn-type-transparent w-100">Login</a>
+          {% endif %}
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
-{% comment %} is user logged in {% endcomment %}
-{% if customer %}
-<section>
-    <div class="container reward-section">
-        <div class="your-status-container">
-            <p class="reward-section-title">Your Status</p>
-            <div class="your-status-banner-container d-flex flex-column">
-                <p class="your-points-title mb-0">Your POINTS: <span class="your-points-value">2399</span></p>
-                <p class="your-points-title mb-0">Your TIER: <span class="your-points-value">Joy</span></p>
-                <p class="your-points-title mb-0">Value: <span class="your-points-value">₹24</span></p>
-            </div>
-            <div class="your-status-progress-container">
-                <div class="your-status-progress-bar-container">
-                    <div class="your-status-progress-stop" data-step="1"></div>
-                    <div class="your-status-progress-bar" data-step="1"></div>
-                    <div class="your-status-progress-stop" data-step="2"></div>
-                    <div class="your-status-progress-bar" data-step="2"></div>
-                    <div class="your-status-progress-stop" data-step="3"></div>
-                </div>
-                <div class="your-status-position-container d-flex justify-content-between">
-                    <div class="your-status-position text-start">
-                        <p class="your-status-position-name mb-0">Joy</p>
-                        <p class="your-status-position-condition mb-0">Cherish Joy</p>
-                    </div>
-                    <div class="your-status-position text-center">
-                        <p class="your-status-position-name mb-0">Bliss</p>
-                        <p class="your-status-position-condition mb-0">Spend ₹4000</p>
-                    </div>
-                    <div class="your-status-position text-end">
-                        <p class="your-status-position-name mb-0">Euphoria</p>
-                        <p class="your-status-position-condition mb-0">Spend ₹8000</p>
-                    </div>
-                </div>
-
-                <div class="your-status-benifits mt-3 d-lg-none">
-                    <p class="your-status-points-benifits-title">Benefits:</p>
-                    <ul class="your-status-points-benifits-container d-flex flex-column">
-                        <li class="your-status-points-benifits">
-                            Welcome Gift:<span class="your-status-points-benifits-heighlight">4000 Points for Level
-                                Up</span>
-                        </li>
-                        <li class="your-status-points-benifits">
-                            Points Per Purchase:<span class="your-status-points-benifits-heighlight">2X points</span>
-                        </li>
-                        <li class="your-status-points-benifits">
-                            We can't wait to surprise you:<span class="your-status-points-benifits-heighlight">Birthday
-                                Gift</span>
-                        </li>
-                        <li class="your-status-points-benifits">
-                            We Love You Back:<span class="your-status-points-benifits-heighlight">Exclusive Member
-                                Offers</span>
-                        </li>
-                        <li class="your-status-points-benifits">
-                            Treat is on Us::<span class="your-status-points-benifits-heighlight">Free Shipping</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-{% endif %}
-
+<!-- Swiper JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
 <section>
-    <div class="way-to-earn-points-gif-container d-lg-none">
-        <video autoplay muted loop class="way-to-earn-points-gif img-fluid">
-            <source src="https://cdn.shopify.com/videos/c/o/v/af35b0ca2cb047bca58f8c0b4568bd25.mp4">
-        </video>
-    </div>
-</section>
-
-{% unless customer %}
-<section>
-    <div class="container reward-section how-it-works-section">
-        <div class="how-it-works-container ">
-            <p class="reward-section-title">How It Works?</p>
-            <div class="how-it-works-card-container text-center">
-
-                {% for block in section.blocks %}
-                <div class="how-it-works-card-slide ">
-                    <div class="how-it-works-card d-flex flex-column justify-content-center align-items-center">
-                        <img src="{{ block.settings.howItWorksIcon | image_url }}" alt="create account"
-                            class="how-it-works-img">
-                        <p class="how-it-works-title">{{ block.settings.howItWorksTitle }}</p>
-                        <p class="how-it-works-text">{{ block.settings.howItWorksText }}</p>
-                        <a href="{{ block.settings.howItWorksBtnURL }}" class="how-it-works-btn btn-type-transparent">{{ block.settings.howItWorksBtnText
-                            }}</a>
-                    </div>
-                </div>
-                {% endfor %}
+  <div class="container reward-section how-it-works-section">
+    <div class="how-it-works-container">
+      <p class="reward-section-title">How It Works?</p>
+      <div class="swiper how-it-works-card-container">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide how-it-works-card-slide">
+              <div class="how-it-works-card d-flex flex-column justify-content-center align-items-center">
+                <img
+                  src="{{ block.settings.howItWorksIcon | image_url }}"
+                  alt="create account"
+                  class="how-it-works-img"
+                >
+                <p class="how-it-works-title">{{ block.settings.howItWorksTitle }}</p>
+                <p class="how-it-works-text">{{ block.settings.howItWorksText }}</p>
+                <a href="{{ block.settings.howItWorksBtnURL }}" class="how-it-works-btn btn-type-transparent">
+                  {{- block.settings.howItWorksBtnText -}}
+                </a>
+              </div>
             </div>
+          {% endfor %}
         </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
     </div>
-</section>
-{% endunless %}
-
-<section>
-    <div class="container p-0">
-        <div class="ways-to-earn-points-container  d-flex">
-            <div class="way-to-earn-points-gif-container d-none d-lg-block ">
-                {% comment %}
-                <img src="https://cdn.shopify.com/s/files/1/0673/6396/3172/files/baloon.png?v=1696415716" alt=""
-                    class="way-to-earn-points-gif img-fluid">
-                {% endcomment %}
-
-                <video autoplay muted loop class="way-to-earn-points-gif img-fluid">
-                    <source src="https://cdn.shopify.com/videos/c/o/v/af35b0ca2cb047bca58f8c0b4568bd25.mp4">
-                </video>
-            </div>
-            <div class="way-to-earn-points-details-container ">
-                <div class="way-to-earn-points-details d-flex flex-column justify-content-center">
-                    <p class="reward-section-title text-lg-start">Ways To Earn Points</p>
-                    <ul class="ways-to-earn-points-list d-flex flex-column">
-                        <li class="ways-to-earn-points-list-item d-flex align-items-center">
-                            <span class="ways-to-earn-points-list-item-icon-container">
-                                <img src="https://cdn.shopify.com/s/files/1/0673/6396/3172/files/profile.svg?v=1696318785"
-                                    alt="" class="ways-to-earn-points-list-item-icon">
-                            </span>
-                            <p class="ways-to-earn-points-list-item-text mb-0">Join The Hey! Perks</p>
-                            <p class="ways-to-earn-points-list-item-points mb-0">2000 Points</p>
-                        </li>
-                        <li class="ways-to-earn-points-list-item d-flex align-items-center">
-                            <span class="ways-to-earn-points-list-item-icon-container">
-                                <img src="https://cdn.shopify.com/s/files/1/0673/6396/3172/files/bag.svg?v=1696318785"
-                                    alt="" class="ways-to-earn-points-list-item-icon">
-                            </span>
-                            <p class="ways-to-earn-points-list-item-text mb-0">Points Per Purchase</p>
-                            <p class="ways-to-earn-points-list-item-points mb-0">1X Points</p>
-                        </li>
-                        <li class="ways-to-earn-points-list-item d-flex align-items-center">
-                            <span class="ways-to-earn-points-list-item-icon-container">
-                                <img src="https://cdn.shopify.com/s/files/1/0673/6396/3172/files/group.svg?v=1696318785"
-                                    alt="" class="ways-to-earn-points-list-item-icon">
-                            </span>
-                            <p class="ways-to-earn-points-list-item-text mb-0">Refer A Friend</p>
-                            <p class="ways-to-earn-points-list-item-points mb-0">1000 Points</p>
-                        </li>
-                        <li class="ways-to-earn-points-list-item d-flex align-items-center">
-                            <span class="ways-to-earn-points-list-item-icon-container">
-                                <img src="https://cdn.shopify.com/s/files/1/0673/6396/3172/files/insta.svg?v=1696318785"
-                                    alt="" class="ways-to-earn-points-list-item-icon">
-                            </span>
-                            <p class="ways-to-earn-points-list-item-text mb-0">Follow On Insta</p>
-                            <p class="ways-to-earn-points-list-item-points mb-0">500 Points</p>
-                        </li>
-                        <li class="ways-to-earn-points-list-item d-flex align-items-center">
-                            <span class="ways-to-earn-points-list-item-icon-container">
-                                <img src="https://cdn.shopify.com/s/files/1/0673/6396/3172/files/youtube.svg?v=1696318785"
-                                    alt="" class="ways-to-earn-points-list-item-icon">
-                            </span>
-                            <p class="ways-to-earn-points-list-item-text mb-0">Subscribe Our Youtube</p>
-                            <p class="ways-to-earn-points-list-item-points mb-0">500 Points</p>
-                        </li>
-                        <li class="ways-to-earn-points-list-item d-flex align-items-center">
-                            <span class="ways-to-earn-points-list-item-icon-container">
-                                <img src="https://cdn.shopify.com/s/files/1/0673/6396/3172/files/people.svg?v=1696318785"
-                                    alt="" class="ways-to-earn-points-list-item-icon">
-                            </span>
-                            <p class="ways-to-earn-points-list-item-text mb-0">Write A Review</p>
-                            <p class="ways-to-earn-points-list-item-points mb-0">1000 Points</p>
-                        </li>
-                        <li class="ways-to-earn-points-list-item d-flex align-items-center">
-                            <span class="ways-to-earn-points-list-item-icon-container">
-                                <img src="https://cdn.shopify.com/s/files/1/0673/6396/3172/files/add-img.svg?v=1696318785"
-                                    alt="" class="ways-to-earn-points-list-item-icon">
-                            </span>
-                            <p class="ways-to-earn-points-list-item-text mb-0">Add A Photo with Review</p>
-                            <p class="ways-to-earn-points-list-item-points mb-0">3000 Points</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </section>
 
-{% comment %} <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> {% endcomment %}
 <script>
-    // point history slide
+  // Initialize Swiper
+  var swiper = new Swiper('.how-it-works-card-container', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+      },
+      breakpoints: {
+          992: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+          },
+      }
+  });
 
-    const pointHistorySlideOpen = () => {
-        $('.point-history-overlay').addClass('point-history-overlay-open');
-        $('.point-history-slide-container').addClass('point-history-slide-container-open');
-    };
-    const pointHistorySlideClose = () => {
-        $('.point-history-overlay').removeClass('point-history-overlay-open');
-        $('.point-history-slide-container').removeClass('point-history-slide-container-open');
-    };
+  // Point history slide toggle
+  const pointHistorySlideOpen = () => {
+      document.querySelector('.point-history-overlay').classList.add('point-history-overlay-open');
+      document.querySelector('.point-history-slide-container').classList.add('point-history-slide-container-open');
+  };
 
-    $('.ph-slide-open-btn').on('click', () => {
-        pointHistorySlideOpen();
-    });
-    $('.ph-slide-close-btn').on('click', () => {
-        pointHistorySlideClose();
-    });
-    $('.point-history-overlay').on('click', () => {
-        pointHistorySlideClose();
-    });
+  const pointHistorySlideClose = () => {
+      document.querySelector('.point-history-overlay').classList.remove('point-history-overlay-open');
+      document.querySelector('.point-history-slide-container').classList.remove('point-history-slide-container-open');
+  };
 
-    // sliders
-
-    $('.how-it-works-card-container').slick({
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        // centerPadding: '40px',
-        arrows: false,
-        dotsClass: 'how-it-works-slider-dots',
-
-        responsive: [
-            {
-                breakpoint: 992,
-                settings: {
-                    slidesToShow: 1,
-                    dots: true,
-                },
-            },
-        ],
-    });
-
-    $('.level-fun-card-container').slick({
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        centerMode: false,
-        // centerPadding: '40px',
-        arrows: false,
-
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 2,
-                    dots: true,
-                },
-            },
-            {
-                breakpoint: 992,
-                settings: {
-                    centerMode: true,
-                    slidesToShow: 2,
-                    dots: true,
-                },
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    centerMode: true,
-                    slidesToShow: 2,
-                    dots: true,
-                },
-            },
-            {
-                breakpoint: 576,
-                settings: {
-                    centerMode: true,
-                    slidesToShow: 1,
-                    dots: true,
-                },
-            },
-            {
-                breakpoint: 460,
-                settings: {
-                    centerMode: true,
-                    slidesToShow: 1,
-                    dots: true,
-                },
-            },
-        ],
-    });
+  document.querySelector('.ph-slide-open-btn').addEventListener('click', pointHistorySlideOpen);
+  document.querySelector('.ph-slide-close-btn').addEventListener('click', pointHistorySlideClose);
+  document.querySelector('.point-history-overlay').addEventListener('click', pointHistorySlideClose);
 </script>
-
-{% schema %}
-{
-"name": "Reward Section",
-"settings": [
-{
-"type": "image_picker",
-"id": "rewardBanner",
-"label": "Add Reward Banner Image Here"
-},
-{
-"type": "color",
-"id": "bgaksjhd",
-"label": "Add Your background Color Here",
-"default": "#fff"
-},
-{
-"type": "image_picker",
-"id": "pointHistoryBanner",
-"label": "Add Point History Banner"
-}
-],
-"blocks": [
-{
-"name": "How It Works Card",
-"type": "Image",
-"settings": [
-{
-"type": "image_picker",
-"id": "howItWorksIcon",
-"label": "Add Icon"
-},
-{
-"type": "text",
-"id": "howItWorksTitle",
-"label": "Add Title"
-},
-{
-"type": "text",
-"id": "howItWorksText",
-"label": "Add Text"
-},
-{
-"type": "text",
-"id": "howItWorksBtnText",
-"label": "Add Btn Text"
-},
-{
-"type": "url",
-"id": "howItWorksBtnURL",
-"label": "Add Btn URL"
-}
-
-]
-}
-],
-
-"presets": [
-{
-"name": "Reward Section"
-}
-]
-}
-{% endschema %}
