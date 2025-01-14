@@ -156,6 +156,7 @@ async function fetchQuickViewData(quickTogglebtnHandle, quickview_sectionid) {
   try {
     const sectionUrl = `/products/${quickTogglebtnHandle}?section_id=${quickview_sectionid}`;
     const response = await axios.get(sectionUrl);
+    debugger;
     console.log(response.data, "response");
      await $(".pdp_quick_view").replaceWith(response.data); 
   } catch (error) {
