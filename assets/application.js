@@ -169,6 +169,7 @@ $body.on("click", 'div[data-quickviewslide="open"]', async function () {
   quickTogglebtnId = $(this).attr("data-quickviewID");
   let quickTogglebtnHandle = $(this).attr("data-quickviewHandle");
   // Call the fetchQuickViewData function
+  debugger;
    await fetchQuickViewData(quickTogglebtnHandle, quickview_sectionid);
    let pdp_MediaData = JSON.parse($(this).attr("pdp_MediaData")),
    sliders = "#quick_view_image_slider",firstImgPos = $(this).attr("firstImgPos");
