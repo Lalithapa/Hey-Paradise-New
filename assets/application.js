@@ -256,6 +256,7 @@ $body.on("click", 'div[data-quickviewslide="open"]', async function () {
 
   //Change Swatch For QuickView and Product Page
 function changeSwatch() {
+  debugger;
   let $this = $(this),
   productId = $this.attr("productId"),
   optionValue = $this.attr("value"),
