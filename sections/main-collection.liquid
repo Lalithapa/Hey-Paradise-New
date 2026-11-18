@@ -140,7 +140,7 @@
                 %}
               </div>
               {% unless filterApplied %}
-                {% cycle '', '', '', '', '', '', '', '', '', '','', '', '', '', '', '', '', '', '', '', adsPosition: 24 %}
+                {% cycle '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', adsPosition %}
                 {% assign adsPosition = adsPosition | plus: 1 %}
               {% endunless %}
             {% else %}
@@ -458,3 +458,15 @@
 ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% cycle '', '', '', '', '', '', '', '', '', '','', '', '', '', '', '', '',
+    '', '', '', adsPosition: 24 %}"
+  to: "{% cycle '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
+    '', '', '', adsPosition %}"
+  position: 6924..7027
+{% endcomment %}
